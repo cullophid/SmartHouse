@@ -1,7 +1,13 @@
 package SmartHouse;
+//another test comment
 public class SmartHouse{
+	
+	public static void main(String[] args) {
+		new SmartHouse();
+	}
+	
     public SmartHouse(){
-        System.out.println("HEllo SCALA!!");
+        System.out.println("Hello SCALA!!");
     }
     public void sensorEvent(int sensorId){
         
