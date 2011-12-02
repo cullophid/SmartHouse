@@ -76,12 +76,12 @@ public class SmartHouse{
         }
     }
     
-    public Map<Integer, Boolean> shouldLampsBeTurnedOn(int sensorId) {
+    public Map<Integer, Boolean> markovLookup(int sensorId) {
         Map<Integer, Boolean> lamps = new HashMap<Integer, Boolean>();
         lamps.put(sensorId, true);
-        lamps.put(3, false);
-        lamps.put(7, false);
-        lamps.put(42, true);
+//        lamps.put(3, false);
+//        lamps.put(7, false);
+//        lamps.put(42, true);
         
         return lamps;
     }
