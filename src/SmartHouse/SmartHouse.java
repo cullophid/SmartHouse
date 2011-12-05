@@ -76,13 +76,16 @@ public class SmartHouse{
         }
     }
     
+    private Map<Integer, Boolean> testMap = new HashMap<Integer, Boolean>();
+    
     public Map<Integer, Boolean> markovLookup(int sensorId) {
-        Map<Integer, Boolean> lamps = new HashMap<Integer, Boolean>();
-        lamps.put(sensorId, true);
-//        lamps.put(3, false);
-//        lamps.put(7, false);
-//        lamps.put(42, true);
+        Map<Integer, Boolean> switches = new HashMap<Integer, Boolean>();
+                
+        boolean b = (testMap.containsKey(sensorId)) ? testMap.get(sensorId) : true;
+        testMap.put(sensorId, !b);
         
-        return lamps;
+        switches.put(sensorId, b);
+        
+        return switches;
     }
 }
