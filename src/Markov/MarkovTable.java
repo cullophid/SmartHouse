@@ -1,4 +1,4 @@
-package SmartHouse;
+package markov;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Connection;
@@ -10,15 +10,17 @@ import java.util.HashMap;
  * this class is to be extended when the markovtable gets mopre dimensions
  */
 public class MarkovTable {
-    Statement stmt;
-    Connection conn;
-    HashMap<Tuple,Integer> MarkovTable;// the HashMap holding the markov table
-    HashMap<Integer,Integer> sensorEvents;//this HashMap holds the number of times each sensor have fired
+    private Statement stmt;
+    private Connection conn;
+    private HashMap<Tuple,Integer> MarkovTable;// the HashMap holding the markov table
+    private HashMap<Integer,Integer> sensorEvents;//this HashMap holds the number of times each sensor have fired
+    private boolean status;
     /*
      * constructor for the markoc table class
      */
-    public MarkovTable(){
+    public MarkovTable(boolean status){
         //connect to the database
+        this.status = status;
         try {
             Class.forName("com.mysql.jdbc.Driver");//load the mysql driver
             conn = DriverManager.getConnection("jdbc:mysql://localhost/kiiib?user=KIIIB&password=42");//connect to the database
@@ -50,7 +52,6 @@ public class MarkovTable {
             while(result.next()){
                 sensorEvents.put(result.getInt("id"),0);
             }
-            System.out.println(sensorEvents.keySet().size());
             result = stmt.executeQuery("SELECT DISTINCT id FROM switch_events"); 
             while(result.next()){
                 for(int sensor : sensorEvents.keySet()){
@@ -58,7 +59,7 @@ public class MarkovTable {
                 } 
             }
             //first we fill in the times each sensor have been fired emidiately before a switch event 
-            result = stmt.executeQuery("(select id,timestamp,'sensor' AS type from sensor_events) union (select id,timestamp,'switch' AS type from switch_events) order by timestamp;"); 
+            result = stmt.executeQuery("(select id,timestamp,'sensor' AS type, '0' AS status from sensor_events) union (select id,timestamp,'switch' AS type,status from switch_events) order by timestamp;"); 
             
             int lastSensor = -1;
             while(result.next()){
@@ -66,11 +67,11 @@ public class MarkovTable {
                     int id = result.getInt("id");
                     sensorEvents.put(id,sensorEvents.get(id)+1);
                     lastSensor = id;
-                }else if(lastSensor != -1){
+                }else if(lastSensor != -1 && status == result.getBoolean("status")){
                     int id = result.getInt("id");
                     put(id,lastSensor,get(id,lastSensor)+1);
                 }
-                
+               
                 
             }
             // now we divide the number in the markov table with the total times a sensor have fired
@@ -79,7 +80,6 @@ public class MarkovTable {
                 
                 
             }
-            printMarkovTable();
 
         }
         catch (SQLException se){
@@ -97,7 +97,10 @@ public class MarkovTable {
      * Prints the markovtable to system.out
      */
     public void printMarkovTable(){
-        System.out.println("printing");
+        if(status)
+            System.out.println("printing ON table");
+        else
+            System.out.println("printing OFF table");
         int line = 0;
         for(Tuple t : MarkovTable.keySet()){
             line++;

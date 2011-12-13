@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
+import markov.MarkovTable;
 
 public class SmartHouse{
 	
@@ -31,8 +32,13 @@ public class SmartHouse{
             Class.forName("com.mysql.jdbc.Driver");//load the mysql driver
             conn = DriverManager.getConnection("jdbc:mysql://localhost/kiiib?user=KIIIB&password=42");//connect to the database
             stmt = conn.createStatement();
-            MarkovTable mt = new MarkovTable();
-            mt.generateMarkovTable();
+            MarkovTable onMarkov = new MarkovTable(true);
+            MarkovTable offMarkov = new MarkovTable(false);
+            onMarkov.generateMarkovTable();
+            offMarkov.generateMarkovTable();
+            onMarkov.printMarkovTable();
+            offMarkov.printMarkovTable(); 
+            
         }
         catch (SQLException se){
             System.out.println("SQLException: " + se.getMessage());
@@ -43,7 +49,6 @@ public class SmartHouse{
         catch (Exception e){
              e.printStackTrace();
        }
-       System.out.println("Hello SCALA!!");
     }
     /*
      * Method called when a sensorevent occurs in the simulator
