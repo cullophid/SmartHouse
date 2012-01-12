@@ -1,4 +1,7 @@
+package SmartHouse;
+
 import java.util.HashMap;
+
 public class arraytest{
     public static HashMap<int[],Integer> map;
     public static void main(String[] args){

@@ -8,11 +8,13 @@ import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
 import markov.MarkovTable;
+import ai.impl.Ai;
 
 public class SmartHouse{
 	
     Connection conn = null;
     Statement stmt;
+    Ai ai;
     
     public static void main(String[] args) {        
         Map<Integer, Boolean> lamps = new HashMap<Integer, Boolean>();
@@ -37,8 +39,7 @@ public class SmartHouse{
             onMarkov.generateMarkovTable();
             offMarkov.generateMarkovTable();
             onMarkov.printMarkovTable();
-            offMarkov.printMarkovTable(); 
-            
+            offMarkov.printMarkovTable();
         }
         catch (SQLException se){
             System.out.println("SQLException: " + se.getMessage());
@@ -49,6 +50,11 @@ public class SmartHouse{
         catch (Exception e){
              e.printStackTrace();
        }
+    }
+    
+    public SmartHouse(Ai ai) {
+        this();
+        this.ai = ai;
     }
     /*
      * Method called when a sensorevent occurs in the simulator
