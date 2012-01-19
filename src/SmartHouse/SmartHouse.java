@@ -1,4 +1,4 @@
-package SmartHouse;
+package smarthouse;
 //hopefully non conflicting test commit
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
 import markov.MarkovTable;
+import config.Config;
 
 public class SmartHouse{
 	
@@ -28,6 +29,7 @@ public class SmartHouse{
      * Handles the input and output for the ai
      */
     public SmartHouse(){
+        Config config = new Config();
         try {
             Class.forName("com.mysql.jdbc.Driver");//load the mysql driver
             conn = DriverManager.getConnection("jdbc:mysql://localhost/kiiib?user=KIIIB&password=42");//connect to the database
