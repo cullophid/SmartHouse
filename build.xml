@@ -6,6 +6,8 @@
   <property name="src" location="src"/>
   <property name="build" location="build"/>
   <property name="dist"  location="dist"/>
+  <property name="lib" location="lib"/>
+  <property name="sbt-class" location="${user.home}/Dropbox/dtu/KIIIB/simulator/code/target/scala_2.7.7/classes"/>
 
   <target name="init">
     <!-- Create the time stamp -->
@@ -14,10 +16,14 @@
     <mkdir dir="${build}"/>
   </target>
 
-  <target name="compile" depends="init"
-        description="compile the source " >
+  <target name="compile" depends="init" description="compile the source ">
     <!-- Compile the java code from ${src} into ${build} -->
-    <javac srcdir="${src}" destdir="${build}"/>
+    <javac srcdir="${src}" destdir="${build}">
+      <classpath>
+        <pathelement path="${sbt-class}"/>
+        <pathelement location="${lib}/scala-library.jar"/>
+      </classpath>
+    </javac>
   </target>
 
   <target name="dist" depends="compile"
