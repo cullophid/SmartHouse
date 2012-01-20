@@ -22,4 +22,18 @@ public class SwitchEvent extends Event {
         return tsString() + " Switch event " + this.id + 
                 ((cmd) ? " on" : " off");
     }
+    
+    public boolean equals(Object o) {        
+        if (!super.equals(o))
+            return false;
+
+        if (!(o instanceof SwitchEvent))
+            return false;        
+
+        SwitchEvent e = (SwitchEvent) o;
+        if (e.cmd != this.cmd)
+            return false;
+        
+        return true;
+    }
 }

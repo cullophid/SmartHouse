@@ -55,26 +55,12 @@ public class EventList {
         
         events.add(e);
     }
-    
-    /**
-     * removes all events more than pattern interval old 
-     */
-    private void removeOld() {
-        while(events.size() > 0)
-        {
-            if (System.currentTimeMillis() - events.get(0).getTS() > pattern_interval) {
-                events.remove(0);
-            }
-            else
-                return;
-        }
-    }
-    
+        
     /**
      * removes all events if more than pattern interval has passed since the last event
      * also mantains a maximum pattern depth
      */
-    private void removeOld2() {
+    private void removeOld() {
         if(events.size() > 0 && System.currentTimeMillis() - events.get(events.size()-1).getTS() > pattern_interval)
             events.clear();
 
@@ -95,7 +81,6 @@ public class EventList {
         for (int i = zone.size() - 1; i >= 0; i--) {
             if (zone.get(i).compareID(e.getID())) {
                 duplicates = true;
-                System.out.println("found");
             }
                         
             if (duplicates)
@@ -129,6 +114,13 @@ public class EventList {
     public Event[] getEvents() {
         Event[] array = new Event[events.size()];
         events.toArray(array);
+        return array;
+    }
+    
+    public Event[] getDistinctEvents() {
+        HashSet<Event> set = new HashSet<Event>(events);
+        Event[] array = new Event[set.size()];
+        set.toArray(array);
         return array;
     }
     

@@ -22,7 +22,6 @@ public class ZoneEvent extends Event {
             ids[i] = zone.get(i).getID();
         
         Arrays.sort(ids);
-        this.ids = ids;
     }
     
     public int[] getIDs() {
@@ -40,5 +39,23 @@ public class ZoneEvent extends Event {
     
     public String toString() {
         return tsString() + " Zone event " + Arrays.toString(ids);
+    }
+    
+    public boolean equals(Object o) {
+        if (!super.equals(o))
+            return false;
+
+        if (!(o instanceof ZoneEvent)) 
+            return false;
+        
+        ZoneEvent e = (ZoneEvent) o;
+        if (e.ids.length != this.ids.length)
+            return false;
+        
+        for (int i = 0; i < e.ids.length; i++) {
+            if (e.ids[i] != this.ids[i])
+                return false;
+        }
+        return true;
     }
 }

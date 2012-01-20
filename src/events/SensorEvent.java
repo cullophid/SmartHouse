@@ -14,4 +14,14 @@ public class SensorEvent extends Event {
         return tsString() + " Sensor event " + this.id;
     }
     
+    public boolean equals(Object o) {
+        if (!super.equals(o))
+            return false;
+
+        if (!(o instanceof SensorEvent))
+            return false;
+        
+        return true;
+    }
+    
 }

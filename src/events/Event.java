@@ -31,6 +31,19 @@ public abstract class Event {
         return this.id == id;
     }
     
+    public boolean equals(Object o) {
+        if (!(o instanceof Event)) {
+            return false;
+        }
+        Event e = (Event) o;
+        if (e.id != this.id)
+            return false;
+        if (e.ts != this.ts)
+            return false;
+        
+        return true;
+    }
+    
     /**
      * return timestamp as human readable string
      * @return
