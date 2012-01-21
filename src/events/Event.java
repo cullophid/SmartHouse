@@ -27,10 +27,6 @@ public abstract class Event {
         return ts;
     }
     
-    public boolean compareID(int id) {
-        return this.id == id;
-    }
-    
     public boolean equals(Object o) {
         if (!(o instanceof Event)) {
             return false;
