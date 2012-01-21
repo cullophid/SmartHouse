@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 import config.Config;
@@ -22,7 +24,7 @@ public class EventList {
     /**
      * Time interval stored in the event list. 
      */
-    private int pattern_interval = 10*1000;
+    private int pattern_interval =  10*1000;
     private int pattern_depth = 7;
     
     public static void main(String[] args) {
@@ -34,7 +36,7 @@ public class EventList {
     }
     
     public EventList() {
-        events = new ArrayList<Event>(7);
+        events = new LinkedList<Event>();
         zone = new ArrayList<Event>(3);
     }
     
@@ -66,6 +68,14 @@ public class EventList {
 
         if (events.size() >= pattern_depth)
             events.remove(0);
+    }
+    
+    private int currentPatternDepth() {
+        int count = 0;
+        for (Event e : events)
+            if (e instanceof SensorEvent)
+                count++;
+        return count;
     }
     
     private void determineZone(Event e) {
@@ -110,18 +120,30 @@ public class EventList {
         add(new SwitchEvent(id, cmd));
     }
     
-    //TODO various get methods
+    /**
+     * get events in event list, including detected zone events
+     * @return
+     */
     public Event[] getEvents() {
-        Event[] array = new Event[events.size()];
-        events.toArray(array);
-        return array;
+        return events.toArray(new Event[events.size()]);
     }
     
-    public Event[] getDistinctEvents() {
-        HashSet<Event> set = new HashSet<Event>(events);
-        Event[] array = new Event[set.size()];
-        set.toArray(array);
-        return array;
+    /**
+     * get only sensor and zone events
+     * @return
+     */
+    public Event[] getPattern() {
+        //TODO  
+        Event[] pattern = new Event[pattern_depth];
+        //if current pattern depth is less than pattern depth, fill missing with -1 
+        for (int i = 0; i < pattern_depth - currentPatternDepth(); i++) {
+            pattern[i] = new SensorEvent(-1);
+        }
+        
+        Iterator<Event> it = events.iterator();
+        for (int i = pattern_depth - currentPatternDepth(); i < pattern_depth; i++) {
+            pattern[i] = it.next();
+        }
+        return pattern;
     }
-    
 }
