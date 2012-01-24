@@ -37,7 +37,7 @@ public class EventList {
     
     public EventList() {
         events = new LinkedList<Event>();
-        zone = new ArrayList<Event>(3);
+        zone = new LinkedList<Event>();
     }
     
     public EventList(int zone_interval, int pattern_interval) {
@@ -81,11 +81,11 @@ public class EventList {
     private void determineZone(Event e) {
         if (!(e instanceof SensorEvent))
             return;
-
+        
         //remove events more than zone_interval old
         while(zone.size() > 0 && (e.getTS() - zone.get(0).getTS() > zone_interval))
                 zone.remove(0);
-        
+                
         //remove duplicates and older (e.g. 1,2,3,4,2 -> 3,4,2)
         boolean duplicates = false;
         for (int i = zone.size() - 1; i >= 0; i--) {
@@ -97,6 +97,10 @@ public class EventList {
                 zone.remove(i);
         }
         zone.add(e);
+
+        //limit to 4 sensors
+        while (zone.size() > 4)
+            zone.remove(0);
         
         if(zone.size() >= 2) {
             events.add(new ZoneEvent(zone));
