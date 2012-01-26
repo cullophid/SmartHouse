@@ -8,10 +8,7 @@ import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
 import markov.MarkovTable;
-<<<<<<< HEAD
 import config.Config;
-=======
->>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
 import ai.impl.Ai;
 
 public class SmartHouse{
