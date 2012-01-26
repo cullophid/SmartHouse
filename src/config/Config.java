@@ -2,11 +2,13 @@ package config;
 import java.io.*;
 import java.util.Scanner;
 public class Config{
-    private static int depth = 1;
-    private static int dayIntervals = 1;
-
+    public static int patternLength = 1;
+    public static int patternInterval = 3;
+    public static double probabilityThreshold = 5.0;
+    public static boolean useSensorZones = true;
+    public static int zoneInterval = 1; 
        public static void loadConfig(){
-
+        System.out.println("Loading Configurations");
         try{
             File f = new File("kiiib.properties");
             if(!f.exists()){
@@ -15,8 +17,11 @@ public class Config{
                 FileWriter fstream = new FileWriter(f);
                 BufferedWriter out = new BufferedWriter(fstream);
                 out.write("#automatically generated preferences file\n#delete to return to default settings\n");
-                out.write("depth 1\n");
-                out.write("dayIntervals 1\n");
+                out.write("pattern_interval "+patternInterval+"\n");
+                out.write("pattern_length "+patternLength+"\n");
+                out.write("probability_threshold "+probabilityThreshold+"\n");
+                out.write("use_sensor_zones "+useSensorZones+"\n");
+                out.write("zone_interval "+zoneInterval+"\n");
                 out.close();
 
             }
@@ -25,13 +30,30 @@ public class Config{
                 String token;
                 while(scan.hasNextLine()){
                     token = scan.next(); 
-                    if(token.equals("depth")){
-                        depth = Integer.parseInt(scan.next());
+                    if(token.equals("pattern_length")){
+                        patternLength = Integer.parseInt(scan.next());
                         scan.nextLine();
+                        System.out.println("pattern_length = "+patternLength);
                     }
-                    else if(token.equals("dayIntervals")){
-                        dayIntervals = Integer.parseInt(scan.next());
+                    else if(token.equals("pattern_interval")){
+                        patternInterval = Integer.parseInt(scan.next());
                         scan.nextLine();
+                        System.out.println("pattern_interval = "+patternInterval);
+                    }
+                    else if(token.equals("probability_threshold")){
+                        probabilityThreshold = Double.parseDouble(scan.next());
+                        scan.nextLine();
+                        System.out.println("probablility_threshold = "+probabilityThreshold);
+                    }
+                    else if(token.equals("use_sensor_zones")){
+                        useSensorZones = Boolean.parseBoolean(scan.next());
+                        scan.nextLine();
+                        System.out.println("use_sensor_zones = "+useSensorZones);
+                    }
+                    else if(token.equals("zone_interval")){
+                        zoneInterval = Integer.parseInt(scan.next());
+                        scan.nextLine();
+                        System.out.println("zone_interval = "+zoneInterval);
                     }
                     else {
                         scan.nextLine();
@@ -47,11 +69,4 @@ public class Config{
             System.out.println("could not read preferences file... using default settings");
         }
     } 
-    public static int getDepth(){
-        return depth;
     }
-    public static int getDayIntervals(){
-        return dayIntervals;
-    }
-         
-}

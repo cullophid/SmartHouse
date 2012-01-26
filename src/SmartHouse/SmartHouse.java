@@ -31,7 +31,7 @@ public class SmartHouse{
      * Handles the input and output for the ai
      */
     public SmartHouse(){
-        Config config = new Config();
+        Config.loadConfig();
         try {
             Class.forName("com.mysql.jdbc.Driver");//load the mysql driver
             conn = DriverManager.getConnection("jdbc:mysql://localhost/kiiib?user=KIIIB&password=42");//connect to the database

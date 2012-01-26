@@ -7,7 +7,7 @@
   <property name="build" location="build"/>
   <property name="dist"  location="dist"/>
   <property name="lib" location="lib"/>
-  <property name="sbt-class" location="${user.home}/Dropbox/dtu/KIIIB/simulator/code/target/scala_2.7.7/classes"/>
+  <property name="sbt-class" location="${user.home}/Documents/KIIIB/simulator/code/target/scala_2.7.7/classes"/>
 
   <target name="init">
     <!-- Create the time stamp -->
