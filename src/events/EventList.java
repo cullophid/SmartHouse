@@ -1,14 +1,9 @@
 package events;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-
-import config.Config;
 
 public class EventList {
 
@@ -89,7 +84,7 @@ public class EventList {
         //remove duplicates and older (e.g. 1,2,3,4,2 -> 3,4,2)
         boolean duplicates = false;
         for (int i = zone.size() - 1; i >= 0; i--) {
-            if (zone.get(i).compareID(e.getID())) {
+            if (zone.get(i).getID() == e.getID()) {
                 duplicates = true;
             }
                         
