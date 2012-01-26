@@ -5,6 +5,11 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+import java.util.Iterator;
+import java.util.LinkedList;
+>>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
 =======
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -28,8 +33,13 @@ public class EventList {
      * Time interval stored in the event list. 
      */
 <<<<<<< HEAD
+<<<<<<< HEAD
     private int pattern_interval = 10*1000;
     private int pattern_length = 7;
+=======
+    private int pattern_interval =  10*1000;
+    private int pattern_depth = 7;
+>>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
 =======
     private int pattern_interval =  10*1000;
     private int pattern_depth = 7;
@@ -45,8 +55,13 @@ public class EventList {
     
     public EventList() {
 <<<<<<< HEAD
+<<<<<<< HEAD
         events = new ArrayList<Event>(pattern_length);
         zone = new ArrayList<Event>(3);
+=======
+        events = new LinkedList<Event>();
+        zone = new LinkedList<Event>();
+>>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
 =======
         events = new LinkedList<Event>();
         zone = new LinkedList<Event>();
@@ -80,6 +95,7 @@ public class EventList {
             events.clear();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         if (events.size() >= pattern_length)
             events.remove(0);
     }
@@ -97,6 +113,8 @@ public class EventList {
         for (int i = zone.size() - 1; i >= 0; i--) {
             if (zone.get(i).compareID(e.getID())) {
 =======
+=======
+>>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
         if (events.size() >= pattern_depth)
             events.remove(0);
     }
@@ -121,6 +139,9 @@ public class EventList {
         boolean duplicates = false;
         for (int i = zone.size() - 1; i >= 0; i--) {
             if (zone.get(i).getID() == e.getID()) {
+<<<<<<< HEAD
+>>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
+=======
 >>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
                 duplicates = true;
             }
@@ -130,11 +151,17 @@ public class EventList {
         }
         zone.add(e);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
 
         //limit to 4 sensors
         while (zone.size() > 4)
             zone.remove(0);
+<<<<<<< HEAD
+>>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
+=======
 >>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
         
         if(zone.size() >= 2) {
@@ -160,6 +187,7 @@ public class EventList {
     }
     
 <<<<<<< HEAD
+<<<<<<< HEAD
     //TODO various get methods
     public Event[] getEvents() {
         Event[] array = new Event[events.size()];
@@ -175,6 +203,8 @@ public class EventList {
     }
     
 =======
+=======
+>>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
     /**
      * get events in event list, including detected zone events
      * @return
@@ -201,5 +231,8 @@ public class EventList {
         }
         return pattern;
     }
+<<<<<<< HEAD
+>>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
+=======
 >>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
 }
