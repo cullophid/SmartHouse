@@ -9,6 +9,7 @@ import config.Config;
 import core.KeyList;
 import java.util.LinkedList;
 import java.util.ArrayList;
+import events.*;
 
 public class DecisionTable{
     private HashMap<KeyList,Integer> decisionTable;
@@ -21,7 +22,7 @@ public class DecisionTable{
      */
     public DecisionTable(){
         connect2DB();
-        generateDecisionTable();
+        //generateDecisionTable();
             }
     /*
      * Connects to the database, and initiates the statement object to be used later
@@ -45,6 +46,7 @@ public class DecisionTable{
         }
  
     }
+    /*
     public void generateDecisionTable(){
 
         try{
@@ -72,21 +74,47 @@ public class DecisionTable{
             e.printStackTrace();
         }
     }
-    public void fillTable(int i, KeyList keys){
-       if(i==Config.getMarkovDepth()){
-            for(int sensor : sensors){
-                keys.add(i, sensor);        
-                for (int swtich : switches){
-                    // do stuff
+   */ 
+
+    public void generateDecisionTable(){
+        int lastevent = 0;
+        int val,id;
+        EventList eventlist = new EventList(); 
+        long time;
+        String type;
+        decisionTable = new HashMap<KeyList,Integer>();
+        KeyList templist;
+        HashMap<KeyList,Integer> denominator = new HashMap<KeyList,Integer>();   
+        ResultSet result = stmt.executeQuery("(select id,timestamp,'sensor' AS type, '0' AS status from sensor_events) union (select id,timestamp,'switch' AS type,status from switch_events) order by timestamp;"); 
+        while(result.next()){
+            id = result.getInt("id");
+            time = result.getTimestamp("timestamp").getTime();
+            type = result.getString("type");
+            if(type.equals("sensor")){
+                eventlist.add(new Event(id,time));
+                val = denominator.get(new KeyList(eventlist));
+                if (val == null){
+                    denominator.put(new KeyList(eventlist),1);
+                }
+                else{
+                    denominator.put(new KeyList(eventlist),val+1);
+                }       
+                lastevent = time;
+            }
+            else if(type.equals("switch")){
+                if(time<=lastevent+Config.patternInterval){
+                    templist = new KeyList(eventlist);
+                    templist.add(id);
+                    val = decisionTable.get(templist);
+                    if(val == null){
+                        decisionTable.put(templist,1);
+                    }
+                    else{
+                        decisionTable.put(templist,val+1);
+                    }
                 }
             }
-       } 
-       else {
-            for(int sensor : sensors){
-                keys.add(sensor);
-                fillTable(i++,keys); 
-           }
-       }
+        } 
     }
 
 }

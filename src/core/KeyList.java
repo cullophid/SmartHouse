@@ -1,12 +1,18 @@
 package core;
 import java.util.ArrayList;
+import events.*;
 public class KeyList{
     private ArrayList<Integer> keys;
     public KeyList(){}
+    public KeyList(EventList elist){
+        for(Event e : elist){
+            keys.add(e.getID());
+        }
+    }
     public int hashCode() {
         int hashcode=0;
        for(int i : keys){
-            hashcode += i*31;
+            hashcode = hashcode*31 +i;
        }       
        return hashcode;
     }

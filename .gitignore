@@ -1,3 +1,12 @@
 .class
 .jar
 .swp
+build/core/KeyList.class
+
+build/config/Config.class
+
+build/SmartHouse/SmartHouse.class
+
+build/config/Config.class
+
+build/core/DecisionTable.class
