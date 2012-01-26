@@ -8,6 +8,10 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
 =======
 
 >>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
@@ -29,7 +33,11 @@ public class EventList {
      */
     private int pattern_interval =  10*1000;
 <<<<<<< HEAD
+<<<<<<< HEAD
     private int pattern_length = 7;
+=======
+    private int pattern_depth = 7;
+>>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
 =======
     private int pattern_depth = 7;
 >>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
@@ -74,6 +82,7 @@ public class EventList {
             events.clear();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         if (events.size() >= pattern_length)
             events.remove(0);
     }
@@ -90,6 +99,8 @@ public class EventList {
         boolean duplicates = false;
         for (int i = zone.size() - 1; i >= 0; i--) {
             if (zone.get(i).compareID(e.getID())) {
+=======
+>>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
 =======
 >>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
         if (events.size() >= pattern_depth)
@@ -151,6 +162,7 @@ public class EventList {
     }
     
 <<<<<<< HEAD
+<<<<<<< HEAD
     //TODO various get methods
     public Event[] getEvents() {
         Event[] array = new Event[events.size()];
@@ -165,6 +177,8 @@ public class EventList {
         return array;
     }
     
+=======
+>>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
 =======
 >>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
     /**
