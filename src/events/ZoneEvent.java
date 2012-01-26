@@ -13,9 +13,12 @@ public class ZoneEvent extends Event {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         Arrays.sort(ids);
         this.ids = ids;
 =======
+=======
+>>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
 =======
 >>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
 =======
@@ -31,6 +34,9 @@ public class ZoneEvent extends Event {
         this.id = sum;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
+=======
 >>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
 =======
 >>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
@@ -54,6 +60,7 @@ public class ZoneEvent extends Event {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     
     @Override
     public boolean compareID(int idx) {
@@ -64,6 +71,9 @@ public class ZoneEvent extends Event {
         return false;
     }
     
+=======
+        
+>>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
 =======
         
 >>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
