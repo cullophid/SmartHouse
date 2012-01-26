@@ -27,10 +27,13 @@ public abstract class Event {
         return ts;
     }
     
+<<<<<<< HEAD
     public boolean compareID(int id) {
         return this.id == id;
     }
     
+=======
+>>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
     public boolean equals(Object o) {
         if (!(o instanceof Event)) {
             return false;

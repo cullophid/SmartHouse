@@ -8,7 +8,10 @@ import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
 import markov.MarkovTable;
+<<<<<<< HEAD
 import config.Config;
+=======
+>>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
 import ai.impl.Ai;
 
 public class SmartHouse{
@@ -31,7 +34,7 @@ public class SmartHouse{
      * Handles the input and output for the ai
      */
     public SmartHouse(){
-        Config config = new Config();
+        Config.loadConfig();
         try {
             Class.forName("com.mysql.jdbc.Driver");//load the mysql driver
             conn = DriverManager.getConnection("jdbc:mysql://localhost/kiiib?user=KIIIB&password=42");//connect to the database

@@ -10,8 +10,20 @@ public class ZoneEvent extends Event {
     
     public ZoneEvent(int ... ids) {
         super(0);
+<<<<<<< HEAD
         Arrays.sort(ids);
         this.ids = ids;
+=======
+        
+        Arrays.sort(ids);
+        this.ids = ids;
+        
+        int sum = 0;
+        for (int i : ids) 
+            sum = sum*256 + i;
+            
+        this.id = sum;
+>>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
     }
     
     public ZoneEvent(List<Event> zone) {
@@ -27,6 +39,7 @@ public class ZoneEvent extends Event {
     public int[] getIDs() {
         return ids;
     }
+<<<<<<< HEAD
     
     @Override
     public boolean compareID(int idx) {
@@ -37,6 +50,9 @@ public class ZoneEvent extends Event {
         return false;
     }
     
+=======
+        
+>>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
     public String toString() {
         return tsString() + " Zone event " + Arrays.toString(ids);
     }

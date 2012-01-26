@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
+<<<<<<< HEAD
+=======
+import java.util.Iterator;
+import java.util.LinkedList;
+>>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
 import java.util.List;
 
 import config.Config;
@@ -22,8 +27,13 @@ public class EventList {
     /**
      * Time interval stored in the event list. 
      */
+<<<<<<< HEAD
     private int pattern_interval = 10*1000;
     private int pattern_length = 7;
+=======
+    private int pattern_interval =  10*1000;
+    private int pattern_depth = 7;
+>>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
     
     public static void main(String[] args) {
         EventList list = new EventList();
@@ -34,8 +44,13 @@ public class EventList {
     }
     
     public EventList() {
+<<<<<<< HEAD
         events = new ArrayList<Event>(pattern_length);
         zone = new ArrayList<Event>(3);
+=======
+        events = new LinkedList<Event>();
+        zone = new LinkedList<Event>();
+>>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
     }
     
     public EventList(int zone_interval, int pattern_interval) {
@@ -64,6 +79,7 @@ public class EventList {
         if(events.size() > 0 && System.currentTimeMillis() - events.get(events.size()-1).getTS() > pattern_interval)
             events.clear();
 
+<<<<<<< HEAD
         if (events.size() >= pattern_length)
             events.remove(0);
     }
@@ -80,6 +96,32 @@ public class EventList {
         boolean duplicates = false;
         for (int i = zone.size() - 1; i >= 0; i--) {
             if (zone.get(i).compareID(e.getID())) {
+=======
+        if (events.size() >= pattern_depth)
+            events.remove(0);
+    }
+    
+    private int currentPatternDepth() {
+        int count = 0;
+        for (Event e : events)
+            if (e instanceof SensorEvent)
+                count++;
+        return count;
+    }
+    
+    private void determineZone(Event e) {
+        if (!(e instanceof SensorEvent))
+            return;
+        
+        //remove events more than zone_interval old
+        while(zone.size() > 0 && (e.getTS() - zone.get(0).getTS() > zone_interval))
+                zone.remove(0);
+                
+        //remove duplicates and older (e.g. 1,2,3,4,2 -> 3,4,2)
+        boolean duplicates = false;
+        for (int i = zone.size() - 1; i >= 0; i--) {
+            if (zone.get(i).getID() == e.getID()) {
+>>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
                 duplicates = true;
             }
                         
@@ -87,6 +129,13 @@ public class EventList {
                 zone.remove(i);
         }
         zone.add(e);
+<<<<<<< HEAD
+=======
+
+        //limit to 4 sensors
+        while (zone.size() > 4)
+            zone.remove(0);
+>>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
         
         if(zone.size() >= 2) {
             events.add(new ZoneEvent(zone));
@@ -110,6 +159,7 @@ public class EventList {
         add(new SwitchEvent(id, cmd));
     }
     
+<<<<<<< HEAD
     //TODO various get methods
     public Event[] getEvents() {
         Event[] array = new Event[events.size()];
@@ -124,4 +174,32 @@ public class EventList {
         return array;
     }
     
+=======
+    /**
+     * get events in event list, including detected zone events
+     * @return
+     */
+    public Event[] getEvents() {
+        return events.toArray(new Event[events.size()]);
+    }
+    
+    /**
+     * get only sensor and zone events
+     * @return
+     */
+    public Event[] getPattern() {
+        //TODO  
+        Event[] pattern = new Event[pattern_depth];
+        //if current pattern depth is less than pattern depth, fill missing with -1 
+        for (int i = 0; i < pattern_depth - currentPatternDepth(); i++) {
+            pattern[i] = new SensorEvent(-1);
+        }
+        
+        Iterator<Event> it = events.iterator();
+        for (int i = pattern_depth - currentPatternDepth(); i < pattern_depth; i++) {
+            pattern[i] = it.next();
+        }
+        return pattern;
+    }
+>>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
 }
