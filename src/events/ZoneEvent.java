@@ -36,7 +36,6 @@ public class ZoneEvent extends Event {
     public int[] getIDs() {
         return ids;
     }
-    
     @Override
     public boolean compareID(int idx) {
         for(int id : ids) {
