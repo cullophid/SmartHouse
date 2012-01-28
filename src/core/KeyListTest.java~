@@ -1,0 +1,8 @@
+package core;
+import core.KeyList;
+public class KeyListTest {
+    public static void main(String[] args){
+        KeyList k = new KeyList(new int[]{1,2,3,4});
+        System.out.println(k.get(1));
+    }
+}

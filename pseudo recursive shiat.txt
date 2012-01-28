@@ -1,0 +1,14 @@
+fill markov table
+
+fillTable(i,K[],SE[],SW[])
+    if (i==1)
+        for  se in SE[]
+            K[i] = se
+            for sw in SW[]
+                map<K[]+sw> = value
+            
+    else
+        for s in S[]
+            K[i] = s
+            fillTable(i-1,K[],SE[],SW[])
+    

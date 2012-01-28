@@ -4,31 +4,31 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.Statement;
+import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
-
-import timer.Sleeper;
-import timer.TimeoutEvent;
-import timer.TimeoutListener;
-import timer.Timer;
-
-import events.*;
-import markov.Correlation;
 import markov.MarkovTable;
+<<<<<<< HEAD
 import config.Config;
+=======
+>>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
 import ai.impl.Ai;
 
-public class SmartHouse implements TimeoutListener {
-
-    private static boolean debug = true;
+public class SmartHouse{
+	
     Connection conn = null;
     Statement stmt;
     Ai ai;
-    EventList events;
-    Correlation correlation;
-    Timer timer;
-    long t = 5000;
     
+    public static void main(String[] args) {        
+        Map<Integer, Boolean> lamps = new HashMap<Integer, Boolean>();
+        lamps.put(3, false);
+        lamps.put(7, false);
+        lamps.put(42, true);
+        for(int key : lamps.keySet()) {
+            System.out.println(key + "-->" + lamps.get(key));
+        }
+    }
     /*
      * Constructor for the class SmartHouse
      * Handles the input and output for the ai
@@ -41,15 +41,10 @@ public class SmartHouse implements TimeoutListener {
             stmt = conn.createStatement();
             MarkovTable onMarkov = new MarkovTable(true);
             MarkovTable offMarkov = new MarkovTable(false);
-//            onMarkov.generateMarkovTable();
-//            offMarkov.generateMarkovTable();
-//            onMarkov.printMarkovTable();
-//            offMarkov.printMarkovTable();
-            correlation = new Correlation();
-            correlation.generateCorrelation();
-            
-            events = new EventList();
-            timer = new Timer();
+            onMarkov.generateMarkovTable();
+            offMarkov.generateMarkovTable();
+            onMarkov.printMarkovTable();
+            offMarkov.printMarkovTable();
         }
         catch (SQLException se){
             System.out.println("SQLException: " + se.getMessage());
@@ -71,14 +66,8 @@ public class SmartHouse implements TimeoutListener {
      */
     public void sensorEvent(int sensorId){
         try{
-            System.out.println("Sensor "+sensorId+" fired!"); 
-            events.sensorEvent(sensorId);
-            if (!debug)
-                stmt.executeUpdate("INSERT INTO sensor_events VALUES("+sensorId+",NOW())");
-            
-            for (int sw : correlation.getSwitches(sensorId, 0.5f)) {
-                timer.updateTimeout(sw, t, this);
-            }
+            System.out.println("Sensor "+sensorId+" fired!");        
+            stmt.executeUpdate("INSERT INTO sensor_events VALUES("+sensorId+",NOW())");
         }
         catch(SQLException se){
             System.out.println("SQLException: " + se.getMessage());
@@ -92,17 +81,9 @@ public class SmartHouse implements TimeoutListener {
     public void switchEvent(int switchId, int status){
         try{
             System.out.println("Switch "+switchId+" turned "+status);
-//            System.out.println(events);
-            boolean cmd = (status == 1) ? true : false;
-            
-            if (cmd) {
-                ai.on(switchId);
-                timer.setTimeout(switchId, t, this);
-            } else {
-                ai.off(switchId);
-            }
-            if (!debug)
-                stmt.executeUpdate("INSERT INTO switch_events VALUES("+switchId+","+status+",NOW())");
+            stmt.executeUpdate("INSERT INTO switch_events VALUES("+switchId+","+status+",NOW())");
+
+    
         }
         catch(SQLException se){
             System.out.println("SQLException: " + se.getMessage());
@@ -122,10 +103,5 @@ public class SmartHouse implements TimeoutListener {
         switches.put(sensorId, b);
         
         return switches;
-    }
-
-    public void TimeoutEventOccurred(TimeoutEvent event) {
-        System.out.println("I should probably turn off the light now");
-        ai.off((Integer) event.getSource());
     }
 }
