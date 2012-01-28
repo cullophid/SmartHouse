@@ -40,6 +40,10 @@ public abstract class Event {
         return true;
     }
     
+    public int hashCode() {
+        return id ^ (int) ts;
+    }
+    
     /**
      * return timestamp as human readable string
      * @return

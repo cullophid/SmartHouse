@@ -1,6 +1,6 @@
 package config;
 public class Config{
-    private int markovDepth,dayIntervals;
+    private int markovDepth, dayIntervals;
     public Config(){
         markovDepth = 1;
         dayIntervals = 1;
