@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import config.Config;
 
 public class EventList {
 
@@ -25,6 +26,8 @@ public class EventList {
      */
     private int pattern_interval =  10*1000;
     private int pattern_length = 7;
+    private int pattern_depth = 7;
+    
     public static void main(String[] args) {
         EventList list = new EventList();
         list.sensorEvent(1);
