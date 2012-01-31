@@ -30,7 +30,7 @@ public class DecisionTable{
      **/
     public DecisionTable(){
         connect2DB();
-        generateDecisionTable();
+        //generateDecisionTable();
             }
     /**
      *
@@ -60,6 +60,7 @@ public class DecisionTable{
      * generates the decision table
      * @author Andreas Møller & David Emil Lemvigh
      * */
+    /*
     public void generateDecisionTable(){
         int lastevent = 0;
         int val,id;
@@ -99,6 +100,6 @@ public class DecisionTable{
                 }
             }
         } 
-    }
+    }*/
 
 }
