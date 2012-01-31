@@ -1,6 +1,8 @@
 package config;
 import java.io.*;
 import java.util.Scanner;
+
+
 public class Config{
     public static int patternLength = 4;
     public static int patternInterval = 10*1000;
