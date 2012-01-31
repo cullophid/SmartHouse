@@ -14,7 +14,7 @@ public class Config{
     public static int punishmentTimeout = 10*1000;
     public static float correlationCorrectionStep = .1f;
     public static boolean debug = true;
-    //hej Andreas
+    //hej David
     
     public static void main(String[] args) {
         Config.loadConfig();
