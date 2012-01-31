@@ -1,7 +1,7 @@
 package events;
 
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class ZoneEvent extends Event {
@@ -16,14 +16,14 @@ public class ZoneEvent extends Event {
         Arrays.sort(ids);
         this.ids = ids;
         
-        int sum = 0;
-        for (int i : ids) 
-            sum = sum*256 + i;
-            
-        this.id = sum;
+        this.id = getID(ids);
     }
     
     public ZoneEvent(List<Event> zone) {
+        this(zone, System.currentTimeMillis());
+    }
+    
+    public ZoneEvent(List<Event> zone, long ts) {
         super(0);
         
         ids = new int[zone.size()];
@@ -31,6 +31,17 @@ public class ZoneEvent extends Event {
             ids[i] = zone.get(i).getID();
         
         Arrays.sort(ids);
+
+        this.id = getID(ids);
+        this.ts = zone.get(zone.size()-1).getTS();
+    }
+    
+    private static int getID(int ...ids) {
+        int sum = 0;
+        for (int i : ids) 
+            sum = sum*256 + i;
+            
+        return sum;
     }
     
     public int[] getIDs() {
@@ -66,5 +77,31 @@ public class ZoneEvent extends Event {
                 return false;
         }
         return true;
+    }
+    
+    /**
+     * 
+     * @param id
+     * @return
+     */
+    public static List<Integer> getIDs (int id) {
+        LinkedList<Integer> ids = new LinkedList<Integer>();
+        while(id > 0) {
+            ids.addFirst(id % 256);
+            id /= 256;
+        }
+        
+        return ids;
+    }
+    
+    public static String getIDString(int id) {
+        if (id < 256)
+            return Integer.toString(id);
+        
+        StringBuffer sb = new StringBuffer();
+        for (int i : getIDs(id))
+            sb.append(i + ",");
+
+        return sb.substring(0, sb.length()-1);
     }
 }

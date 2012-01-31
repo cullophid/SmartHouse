@@ -26,8 +26,6 @@ public class MarkovTable {
             Class.forName("com.mysql.jdbc.Driver");//load the mysql driver
             conn = DriverManager.getConnection("jdbc:mysql://localhost/kiiib?user=KIIIB&password=42");//connect to the database
             stmt = conn.createStatement();
-           
-
         }
         catch (SQLException se){
             System.out.println("SQLException: " + se.getMessage());
