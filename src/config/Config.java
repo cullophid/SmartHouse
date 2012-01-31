@@ -2,12 +2,12 @@ package config;
 import java.io.*;
 import java.util.Scanner;
 public class Config{
-    public static int patternLength = 7;
+    public static int patternLength = 4;
     public static int patternInterval = 10*1000;
     public static int zoneInterval = 1000; 
     public static int correlationInterval = 7*1000;
     public static float probabilityThreshold = .5f;
-    public static boolean useSensorZones = true;
+    public static boolean useSensorZones = false;
     public static int defaultOnTime = 5000;
     public static int punishmentTimeout = 10*1000;
     public static float correlationCorrectionStep = .1f;

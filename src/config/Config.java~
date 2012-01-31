@@ -2,16 +2,17 @@ package config;
 import java.io.*;
 import java.util.Scanner;
 public class Config{
-    public static int patternLength = 7;
+    public static int patternLength = 4;
     public static int patternInterval = 10*1000;
     public static int zoneInterval = 1000; 
     public static int correlationInterval = 7*1000;
     public static float probabilityThreshold = .5f;
-    public static boolean useSensorZones = true;
+    public static boolean useSensorZones = false;
     public static int defaultOnTime = 5000;
     public static int punishmentTimeout = 10*1000;
     public static float correlationCorrectionStep = .1f;
     public static boolean debug = true;
+    //hej Andreas
     
     public static void main(String[] args) {
         Config.loadConfig();
@@ -32,14 +33,10 @@ public class Config{
                 out.write("probability_threshold "+probabilityThreshold+"\n");
                 out.write("use_sensor_zones "+useSensorZones+"\n");
                 out.write("zone_interval "+zoneInterval+"\n");
-<<<<<<< HEAD
 
-=======
                 out.write("correlation_interval " + correlationInterval+"\n");
->>>>>>> a4b1df2ebb94fa3d8dfea8fb9d43e3315ca2cd0c
                 out.close();
 
-                // HEJ DAVID!!!
             }
             else{
                 Scanner scan = new Scanner(f);
