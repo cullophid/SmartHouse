@@ -17,16 +17,26 @@ public class DecisionTable{
     private Connection conn;
     private ArrayList<Integer> sensors,switches;
     private LinkedList<Integer> eventBuffer; // holds the last n sensorevents, n = memoryDepth 
-    /*
+    /**
+     * temporary main method for testing puposes
+     * @author Andreas Møller & David Emil Lemvigh
+     **/
+    public static void main(String[] args){
+        DecisionTable dt = new DecisionTable();
+    }
+    /**
      * Class constructor
-     */
+     * @author Andreas Møller & David Emil Lemvigh
+     **/
     public DecisionTable(){
         connect2DB();
-        //generateDecisionTable();
+        generateDecisionTable();
             }
-    /*
+    /**
+     *
      * Connects to the database, and initiates the statement object to be used later
-     */
+     * @author Andreas Møller & David Emil Lemvigh
+     **/
     public void connect2DB(){
          try {
             Class.forName("com.mysql.jdbc.Driver");//load the mysql driver
@@ -46,37 +56,11 @@ public class DecisionTable{
         }
  
     }
-    /*
-    public void generateDecisionTable(){
-
-        try{
-
-            decisionTable = new HashMap<KeyList,Integer>();  
-            eventBuffer = new LinkedList<Integer>();
-            sensors = new ArrayList<Integer>();
-            switches = new ArrayList<Integer>();
-
-            // get list of sensors and switches
-            ResultSet result = stmt.executeQuery("SELECT DISTINCT id FROM sensor_events"); 
-            while(result.next()){
-                sensors.add(result.getInt("id"));
-            }
-            result = stmt.executeQuery("SELECT DISTINCT id FROM switch_events"); 
-            while(result.next()){
-                switches.add(result.getInt("id"));
-            }
-
-
-            fillTable(Config.getDepth(),new KeyList());
- 
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
-    }
-   */ 
-
-    public void generateDecisionTable(){
+    /**
+     * generates the decision table
+     * @author Andreas Møller & David Emil Lemvigh
+     * */
+    public void generateDecisionTables(){
         int lastevent = 0;
         int val,id;
         EventList eventlist = new EventList(); 

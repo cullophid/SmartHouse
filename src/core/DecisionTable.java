@@ -17,16 +17,26 @@ public class DecisionTable{
     private Connection conn;
     private ArrayList<Integer> sensors,switches;
     private LinkedList<Integer> eventBuffer; // holds the last n sensorevents, n = memoryDepth 
-    /*
+    /**
+     * temporary main method for testing puposes
+     * @author Andreas Møller & David Emil Lemvigh
+     **/
+    public static void main(String[] args){
+        DecisionTable dt = new DecisionTable();
+    }
+    /**
      * Class constructor
-     */
+     * @author Andreas Møller & David Emil Lemvigh
+     **/
     public DecisionTable(){
         connect2DB();
-        //generateDecisionTable();
+        generateDecisionTable();
             }
-    /*
+    /**
+     *
      * Connects to the database, and initiates the statement object to be used later
-     */
+     * @author Andreas Møller & David Emil Lemvigh
+     **/
     public void connect2DB(){
          try {
             Class.forName("com.mysql.jdbc.Driver");//load the mysql driver
@@ -46,7 +56,10 @@ public class DecisionTable{
         }
  
     }
-
+    /**
+     * generates the decision table
+     * @author Andreas Møller & David Emil Lemvigh
+     * */
     public void generateDecisionTable(){
         int lastevent = 0;
         int val,id;

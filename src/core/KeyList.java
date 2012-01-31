@@ -1,11 +1,14 @@
 package core;
 import java.util.ArrayList;
 import events.*;
+/**
+ * class keylist
+ * */
 public class KeyList{
     private ArrayList<Integer> keys;
     public KeyList(){}
     public KeyList(EventList elist){
-        for(Event e : elist){
+        for(Event e : elist.getPattern()){
             keys.add(e.getID());
         }
     }
