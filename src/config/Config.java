@@ -22,8 +22,10 @@ public class Config{
                 out.write("probability_threshold "+probabilityThreshold+"\n");
                 out.write("use_sensor_zones "+useSensorZones+"\n");
                 out.write("zone_interval "+zoneInterval+"\n");
+
                 out.close();
 
+                // HEJ DAVID!!!
             }
             else{
                 Scanner scan = new Scanner(f);
