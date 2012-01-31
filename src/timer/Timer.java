@@ -47,7 +47,7 @@ public class Timer implements TimeoutListener {
      * @param time
      */
     public void updateTimeout(int id, long time, TimeoutListener l) {
-       if (!timers.containsKey(id))
+       if (!timers.containsKey(id) || !timers.get(id).isAlive())
            return;
        
        if (timers.get(id).getEnd() < System.currentTimeMillis() + time)
@@ -56,6 +56,10 @@ public class Timer implements TimeoutListener {
     
     public void updateTimeout(int id, long time) {
         updateTimeout(id, time, listener);
+    }
+    
+    public void stop(int id) {
+        timers.get(id).interrupt();
     }
 
     @Override
