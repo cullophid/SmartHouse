@@ -49,10 +49,6 @@ public class SmartHouse implements TimeoutListener {
             stmt = conn.createStatement();
             MarkovTable onMarkov = new MarkovTable(true);
             MarkovTable offMarkov = new MarkovTable(false);
-//            onMarkov.generateMarkovTable();
-//            offMarkov.generateMarkovTable();
-//            onMarkov.printMarkovTable();
-//            offMarkov.printMarkovTable();
             correlation = new Correlation();
             
             events = new EventList();
