@@ -2,12 +2,22 @@ package config;
 import java.io.*;
 import java.util.Scanner;
 public class Config{
-    public static int patternLength = 1;
-    public static int patternInterval = 3;
-    public static double probabilityThreshold = 5.0;
+    public static int patternLength = 7;
+    public static int patternInterval = 10*1000;
+    public static int zoneInterval = 1000; 
+    public static int correlationInterval = 7*1000;
+    public static float probabilityThreshold = .5f;
     public static boolean useSensorZones = true;
-    public static int zoneInterval = 1; 
-       public static void loadConfig(){
+    public static int defaultOnTime = 5000;
+    public static int punishmentTimeout = 10*1000;
+    public static float correlationCorrectionStep = .1f;
+    public static boolean debug = true;
+    
+    public static void main(String[] args) {
+        Config.loadConfig();
+    }
+   
+    public static void loadConfig(){
         System.out.println("Loading Configurations");
         try{
             File f = new File("kiiib.properties");
@@ -22,6 +32,7 @@ public class Config{
                 out.write("probability_threshold "+probabilityThreshold+"\n");
                 out.write("use_sensor_zones "+useSensorZones+"\n");
                 out.write("zone_interval "+zoneInterval+"\n");
+                out.write("correlation_interval " + correlationInterval+"\n");
                 out.close();
 
             }
@@ -41,7 +52,7 @@ public class Config{
                         System.out.println("pattern_interval = "+patternInterval);
                     }
                     else if(token.equals("probability_threshold")){
-                        probabilityThreshold = Double.parseDouble(scan.next());
+                        probabilityThreshold = Float.parseFloat(scan.next());
                         scan.nextLine();
                         System.out.println("probablility_threshold = "+probabilityThreshold);
                     }
