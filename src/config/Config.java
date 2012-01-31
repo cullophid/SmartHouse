@@ -1,8 +1,10 @@
 package config;
 import java.io.*;
 import java.util.Scanner;
+
+
 public class Config{
-    public static int patternLength = 7;
+    public static int patternLength = 42;
     public static int patternInterval = 10*1000;
     public static int zoneInterval = 1000; 
     public static int correlationInterval = 7*1000;
