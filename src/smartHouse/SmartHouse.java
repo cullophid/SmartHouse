@@ -92,7 +92,9 @@ public class SmartHouse implements TimeoutListener {
             }
             for (int sw : correlation.getSwitches(sensorId, 0.5f)) {
                 if (!timeout.contains(sw)) {
-                    timer.updateTimeout(sw, onTime, this);
+                    float t = onTime * correlation.getCorrelation(sw, sensorId);
+                    System.out.printf("keep %d on (%d ms)\n", sw, (long) t);
+                    timer.updateTimeout(sw, (long) t, this);
                 }
             }
         }
