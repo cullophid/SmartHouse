@@ -8,11 +8,7 @@
   <property name="dist"  location="dist"/>
   <property name="lib" location="lib"/>
 <<<<<<< HEAD
-<<<<<<< HEAD
   <property name="sbt-class" location="${user.home}/Documents/KIIIB/simulator/code/target/scala_2.7.7/classes"/>
-=======
-  <property name="sbt-class" location="${user.home}/Dropbox/dtu/KIIIB/simulator/code/target/scala_2.7.7/classes"/>
->>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
 =======
   <property name="sbt-class" location="${user.home}/Dropbox/dtu/KIIIB/simulator/code/target/scala_2.7.7/classes"/>
 >>>>>>> fe34afac81b863f1ed4f4a02b278a4c13ff5b7f2
