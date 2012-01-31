@@ -32,6 +32,7 @@ public class SmartHouse implements TimeoutListener {
     List<Integer> timeout;
     int onTime;
     int punishmentTimeout;
+    Map<Integer, Boolean> switchStatus;
     Map<Integer, Integer> firstSensorAfterTimeout;
     
     
@@ -60,6 +61,7 @@ public class SmartHouse implements TimeoutListener {
             onTime = Config.defaultOnTime;
             punishmentTimeout = Config.punishmentTimeout;
             firstSensorAfterTimeout = new HashMap<Integer, Integer>();
+            switchStatus = new HashMap<Integer, Boolean>();
         }
         catch (SQLException se){
             System.out.println("SQLException: " + se.getMessage());
@@ -91,9 +93,9 @@ public class SmartHouse implements TimeoutListener {
                     firstSensorAfterTimeout.put(sw, sensorId);
             }
             for (int sw : correlation.getSwitches(sensorId, 0.5f)) {
-                if (!timeout.contains(sw)) {
+                if (isOn(sw) && !timeout.contains(sw)) {
                     float t = onTime * correlation.getCorrelation(sw, sensorId);
-                    System.out.printf("keep %d on (%d ms)\n", sw, (long) t);
+                    System.out.printf("keep switch %d on (%d ms)\n", sw, (long) t);
                     timer.updateTimeout(sw, (long) t, this);
                 }
             }
@@ -120,11 +122,11 @@ public class SmartHouse implements TimeoutListener {
                     if (firstSensorAfterTimeout.containsKey(switchId))
                         correlation.increaseCorrelation(switchId, firstSensorAfterTimeout.get(switchId));
                 }
-                ai.on(switchId);
+                on(switchId);
                 timer.setTimeout(switchId, onTime, this);
                 
             } else {
-                ai.off(switchId);
+                off(switchId);
             }
             if (!debug)
                 stmt.executeUpdate("INSERT INTO switch_events VALUES("+switchId+","+status+",NOW())");
@@ -156,9 +158,26 @@ public class SmartHouse implements TimeoutListener {
             correlation.reduceCorrelation(id, events.getLastEvent().getID());
             timeout.remove(event.getSource());
         } else {
-            ai.off(id);
+            off(id);
             timeout.add(id);
             timer.setTimeout(id, punishmentTimeout, this);
         }
+    }
+    
+    private void on(int id) {
+        ai.on(id);
+        switchStatus.put(id, true);
+    }
+    
+    private void off(int id) {
+        ai.off(id);
+        switchStatus.put(id, false);
+    }
+    
+    private boolean isOn(int id) {
+        if (switchStatus.containsKey(id))
+            return switchStatus.get(id);
+        
+        return false;
     }
 }
