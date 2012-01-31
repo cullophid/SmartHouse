@@ -1,0 +1,33 @@
+lastevent = 0
+map decisionTable
+map denominator
+que que
+
+for event in events
+do
+    if event = sensorevent
+    do
+        if event.time <= lastevent + patternInterval
+        do 
+            push event to que
+            remove tail from que
+        else
+            clear que
+        done
+        insert event into denominator
+        lastevent = event.time
+    else
+        if event.time <= lastevent + patternInterval
+        do
+            insert event into decisionTable
+        else
+            clear que
+        done
+    done
+done
+
+for entry in decisionTable
+do
+    extract sensorpattern
+    divide by matching denominator
+done
