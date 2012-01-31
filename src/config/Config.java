@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 
 public class Config{
-    public static int patternLength = 5;
+    public static int patternLength = 1;
     public static int patternInterval = 10*1000;
     public static int zoneInterval = 1000; 
-    public static int correlationInterval = 6*1000;
+    public static int correlationInterval = 7*1000;
     public static float probabilityThreshold = .5f;
     public static boolean useSensorZones = true;
     public static int defaultOnTime = 5000;
