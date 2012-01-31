@@ -46,35 +46,6 @@ public class DecisionTable{
         }
  
     }
-    /*
-    public void generateDecisionTable(){
-
-        try{
-
-            decisionTable = new HashMap<KeyList,Integer>();  
-            eventBuffer = new LinkedList<Integer>();
-            sensors = new ArrayList<Integer>();
-            switches = new ArrayList<Integer>();
-
-            // get list of sensors and switches
-            ResultSet result = stmt.executeQuery("SELECT DISTINCT id FROM sensor_events"); 
-            while(result.next()){
-                sensors.add(result.getInt("id"));
-            }
-            result = stmt.executeQuery("SELECT DISTINCT id FROM switch_events"); 
-            while(result.next()){
-                switches.add(result.getInt("id"));
-            }
-
-
-            fillTable(Config.getDepth(),new KeyList());
- 
-        }
-        catch(Exception e){
-            e.printStackTrace();
-        }
-    }
-   */ 
 
     public void generateDecisionTable(){
         int lastevent = 0;

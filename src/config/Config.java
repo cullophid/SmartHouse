@@ -4,7 +4,11 @@ import java.util.Scanner;
 
 
 public class Config{
+<<<<<<< HEAD
     public static int patternLength = 1;
+=======
+    public static int patternLength = 800;
+>>>>>>> 42d97cd798b8fd04c863b72583e180ea8a91dd21
     public static int patternInterval = 10*1000;
     public static int zoneInterval = 1000; 
     public static int correlationInterval = 7*1000;

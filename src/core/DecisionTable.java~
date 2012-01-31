@@ -91,7 +91,7 @@ public class DecisionTable{
             time = result.getTimestamp("timestamp").getTime();
             type = result.getString("type");
             if(type.equals("sensor")){
-                eventlist.add(new Event(id,time));
+                eventlist.add(new SensorEvent(id,time));
                 val = denominator.get(new KeyList(eventlist));
                 if (val == null){
                     denominator.put(new KeyList(eventlist),1);
