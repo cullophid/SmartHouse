@@ -6,8 +6,11 @@ import events.*;
  * */
 public class KeyList{
     private ArrayList<Integer> keys;
-    public KeyList(){}
+    public KeyList(){
+        keys = new ArrayList<Integer>();
+    }
     public KeyList(EventList elist){
+        keys = new ArrayList<Integer>();
         for(Event e : elist.getPattern()){
             keys.add(e.getID());
         }
@@ -48,4 +51,17 @@ public class KeyList{
     public int size(){
         return keys.size();
     }
+    public KeyList subList(int x, int y){
+        KeyList k = new KeyList();
+        for (int i = x;i<=y;i++){
+            k.add(keys.get(i));
+        }
+        return k;
+    }
+    public void printValues(){
+        for (int i : keys){
+            System.out.print(i+" ");
+        }
+    }
+
 }

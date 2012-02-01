@@ -69,7 +69,7 @@ public class EventList {
         if(events.size() > 0 && time - events.getLast().getTS() > pattern_interval)
             events.clear();
 
-        if (events.size() >= pattern_length)
+        while (events.size() >= pattern_length)
             events.removeFirst();
     }
         
