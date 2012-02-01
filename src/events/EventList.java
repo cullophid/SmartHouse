@@ -40,6 +40,7 @@ public class EventList {
         this.pattern_interval = Config.patternInterval;
         this.pattern_length = Config.patternLength;
         this.zone_interval = Config.zoneInterval;
+        this.useZones = Config.useZones;
     }
     
     public EventList(boolean useZones) {

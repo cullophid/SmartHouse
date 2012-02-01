@@ -31,7 +31,7 @@ public class DecisionTable{
         connect2DB();
         Config.loadConfig();
         generateBasicTables();
-        if(Config.useSensorZones)
+        if(Config.useZones)
             generateZoneTables();
         printTables();
     }
@@ -256,7 +256,7 @@ public class DecisionTable{
                 System.out.println("value: "+off.get(k)); 
             }
             System.out.println();
-            if(Config.useSensorZones){
+            if(Config.useZones){
                System.out.println("*********************************************"); 
             System.out.println("printing table zoneOn");
             System.out.println("*********************************************"); 
