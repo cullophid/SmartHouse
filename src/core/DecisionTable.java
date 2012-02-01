@@ -12,10 +12,9 @@ import java.util.ArrayList;
 import events.*;
 
 public class DecisionTable{
-    private HashMap<KeyList,Float> decisionTable;
+    private HashMap<KeyList,Float> on,off,temp;
     private Statement stmt;
     private Connection conn;
-    private ArrayList<Integer> sensors,switches;
     private LinkedList<Integer> eventBuffer; // holds the last n sensorevents, n = memoryDepth 
     /**
      * temporary main method for testing puposes
@@ -30,6 +29,7 @@ public class DecisionTable{
      **/
     public DecisionTable(){
         connect2DB();
+        Config.loadConfig();
         generateDecisionTable();
             }
     /**
@@ -68,12 +68,13 @@ public class DecisionTable{
             long lastevent = 0;
             int val,id;
             int i = 0;
-            EventList eventlist = new EventList(); 
+            EventList eventlist = new EventList(false); 
             long time;
             long start = System.currentTimeMillis();
             String type;
             KeyList keylist;
-            decisionTable = new HashMap<KeyList,Float>();
+            on = new HashMap<KeyList,Float>();
+            off = new HashMap<KeyList,Float>();
             HashMap<KeyList,Integer> denominator = new HashMap<KeyList,Integer>();   
             System.out.println("fetching data from db");
             ResultSet result = stmt.executeQuery("(select id,timestamp,'sensor' AS type, '0' AS status from sensor_events) union (select id,timestamp,'switch' AS type,status from switch_events) order by timestamp;"); 
@@ -97,16 +98,27 @@ public class DecisionTable{
                     lastevent = time;
                 }
                 else if(type.equals("switch")){
-                    if(time<=lastevent+Config.patternInterval){
-                        keylist = new KeyList(eventlist);
-                        keylist.add(id);
-                        if(decisionTable.containsKey(keylist)){
-                            decisionTable.put(keylist,decisionTable.get(keylist)+1);
-                        }
-                        else{
-                            decisionTable.put(keylist,1f);
-                        }
+                   temp = (result.getBoolean("status"))?on:off; 
+                    if(time>lastevent+Config.patternInterval){
+                        eventlist = new EventList();
                     }
+                    keylist = new KeyList(eventlist);
+                    keylist.add(id);
+
+                    if(temp.containsKey(keylist)){
+                        System.out.print("Key: ");
+                        keylist.printValues();
+                        System.out.println();
+                        temp.put(keylist,temp.get(keylist)+1);
+                    }
+                    else{
+                        temp.put(keylist,1f);
+                        System.out.print("Key: ");
+                        keylist.printValues();
+                        System.out.println();
+                    }
+                
+                 
                 }
             } 
             KeyList ksub;
@@ -114,17 +126,37 @@ public class DecisionTable{
             long runtime = end-start;
             System.out.println("rows : "+i);
             System.out.println("runtime = "+runtime);
-           
-             for(KeyList k : decisionTable.keySet()){
+          /* 
+             for(KeyList k : on.keySet()){
                 ksub = k.subList(0,k.size()-2);
-                decisionTable.put(k,decisionTable.get(k)/denominator.get(ksub));
+                on.put(k,on.get(k)/denominator.get(ksub));
             }
-            
-            for(KeyList k : decisionTable.keySet()){
+             for(KeyList k : off.keySet()){
+                ksub = k.subList(0,k.size()-2);
+                off.put(k,off.get(k)/denominator.get(ksub));
+            }
+ 
+            */
+            System.out.println("printing table on");
+            int switches = 0;
+            for(KeyList k : on.keySet()){
                 System.out.print("key: ");
                 k.printValues();
-                System.out.println("value: "+decisionTable.get(k)); 
+                System.out.println("value: "+on.get(k)); 
+                switches += on.get(k);
             }
+            System.out.println("total switch events : "+switches);
+
+            System.out.println("printing table off");
+            switches = 0;
+            for(KeyList k : off.keySet()){
+                System.out.print("key: ");
+                k.printValues();
+                System.out.println("value: "+off.get(k)); 
+                switches += off.get(k);
+            }
+            System.out.println("total switch events : "+switches);
+ 
         }
         catch (SQLException se){
             System.out.println("SQLException: " + se.getMessage());
