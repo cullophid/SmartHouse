@@ -24,6 +24,7 @@ public class EventList {
      */
     private int pattern_interval;
     private int pattern_length;
+    private boolean useZones = true;
     
     public static void main(String[] args) {
         EventList list = new EventList();
@@ -41,6 +42,11 @@ public class EventList {
         this.zone_interval = Config.zoneInterval;
     }
     
+    public EventList(boolean useZones) {
+        this();
+        this.useZones = useZones;
+    }
+    
     public EventList(int zone_interval, int pattern_interval, int pattern_length) {
         this();
         this.zone_interval = zone_interval;
@@ -55,7 +61,7 @@ public class EventList {
     public void add(Event e) {
         removeOld(e.getTS());
         
-        if(Config.useSensorZones && e instanceof SensorEvent)
+        if(useZones && e instanceof SensorEvent)
             determineZone(e);
         
         events.add(e);
