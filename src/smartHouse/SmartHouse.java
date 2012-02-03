@@ -1,5 +1,4 @@
 package smarthouse;
-//hopefully non conflicting test commit
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Connection;
@@ -17,7 +16,7 @@ import events.*;
 import markov.Correlation;
 import markov.MarkovTable;
 import config.Config;
-import core.DecisionTable;
+import core.ProbabilityTable;
 import ai.impl.Ai;
 
 public class SmartHouse implements TimeoutListener {
@@ -35,20 +34,27 @@ public class SmartHouse implements TimeoutListener {
     Map<Integer, Boolean> switchStatus;
     Map<Integer, Integer> firstSensorAfterTimeout;
     
+    public static void main(String[] args){
+        SmartHouse sh = new SmartHouse(); 
+    }
     
     /*
      * Constructor for the class SmartHouse
      * Handles the input and output for the ai
      */
     public SmartHouse(){
-        //Config.loadConfig();
+        Config.loadConfig();
         try {
             debug = Config.debug;
             Class.forName("com.mysql.jdbc.Driver");//load the mysql driver
             conn = DriverManager.getConnection("jdbc:mysql://localhost/kiiib?user=KIIIB&password=42");//connect to the database
             stmt = conn.createStatement();
-            MarkovTable onMarkov = new MarkovTable(true);
-            MarkovTable offMarkov = new MarkovTable(false);
+            //ProbabilityTable on = new ProbabilityTable("basic","on");
+            //ProbabilityTable off = new ProbabilityTable("basic","off");
+            if(Config.useZones){
+                //ProbabilityTable zoneOn = ProbabilityTable("zone","on");
+                //ProbabilityTable zoneOn = ProbabilityTable("zone","off");
+            }
             correlation = new Correlation();
             
             events = new EventList();
@@ -77,6 +83,7 @@ public class SmartHouse implements TimeoutListener {
    
     /*
      * Method called when a sensorevent occurs in the simulator
+     * @author Andreas møller & David Emil Lemvigh
      */
     public void sensorEvent(int sensorId){
         try{
@@ -105,6 +112,7 @@ public class SmartHouse implements TimeoutListener {
     }
     /*
      * Method called when a switch event occurs in the simulator
+     * @author Andreas Møller & David Emil Lemvigh
      */
     public void switchEvent(int switchId, int status){
         try{
@@ -137,16 +145,13 @@ public class SmartHouse implements TimeoutListener {
     
     private Map<Integer, Boolean> testMap = new HashMap<Integer, Boolean>();
     
-    public Map<Integer, Boolean> markovLookup(int sensorId) {
-        Map<Integer, Boolean> switches = new HashMap<Integer, Boolean>();
-                
-        boolean b = (testMap.containsKey(sensorId)) ? testMap.get(sensorId) : true;
-        testMap.put(sensorId, !b);
-        
-        switches.put(sensorId, b);
-        
-        return switches;
-    }
+    /*
+     * Method looks in probability table
+     */
+    public Map<Integer, Boolean> tableLookup(boolean on) {
+        Map<Integer, Boolean> result = new HashMap<Integer, Boolean>();
+        return null;
+            }
 
     public void TimeoutEventOccurred(TimeoutEvent event) {
         System.out.println("I should probably turn off the light now");
