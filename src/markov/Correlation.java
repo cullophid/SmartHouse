@@ -28,6 +28,7 @@ public class Correlation implements TimeoutListener {
     private Connection conn;
     private ResultSet result;
     private long correlation_interval = 7*1000;
+    private float correction;
     private Map<Integer, Map<Integer, Float>> correlation;
     
     public Correlation () {
@@ -46,6 +47,7 @@ public class Correlation implements TimeoutListener {
         catch (Exception e){
              e.printStackTrace();
         }
+        correction = Config.correlationCorrectionStep;
         generateCorrelation();
         getStoredCorrelations();
     }
@@ -233,12 +235,14 @@ public class Correlation implements TimeoutListener {
 
     public void increaseCorrelation(int sw, int se) {
         System.out.println("Increase correlation " + sw + "~" +se);
-        storeCorrelation(sw, se, Config.correlationCorrectionStep);
+        updateCorrelation(sw, se, correction);
+        storeCorrelation(sw, se, correction);
     }
 
     public void reduceCorrelation(int sw, int se) {
         System.out.println("Reduce correlation " + sw + "~" +se);
-        storeCorrelation(sw, se, -Config.correlationCorrectionStep);
+        updateCorrelation(sw, se, -correction);
+        storeCorrelation(sw, se, -correction);
     }
     
     public void getStoredCorrelations() {

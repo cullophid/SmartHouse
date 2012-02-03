@@ -19,6 +19,11 @@ public class ZoneEvent extends Event {
         this.id = getID(ids);
     }
     
+    public ZoneEvent(long ts, int ... ids) {
+        this(ids);
+        this.ts = ts;
+    }
+    
     public ZoneEvent(List<Event> zone) {
         this(zone, System.currentTimeMillis());
     }
@@ -35,6 +40,14 @@ public class ZoneEvent extends Event {
         this.id = getID(ids);
         this.ts = zone.get(zone.size()-1).getTS();
     }
+
+    public ZoneEvent(ZoneEvent e1, SensorEvent e2) {
+        super(0);
+    }
+    
+    public ZoneEvent(SensorEvent e1, SensorEvent e2) {
+        super(0);
+    }
     
     private static int getID(int ...ids) {
         int sum = 0;
@@ -47,6 +60,15 @@ public class ZoneEvent extends Event {
     public int[] getIDs() {
         return ids;
     }
+    
+    public void addID(int id) {
+        int[] tmp = new int[ids.length + 1];
+        tmp[0] = id;
+        System.arraycopy(ids, 0, tmp, 1, ids.length);
+        ids = tmp;
+        Arrays.sort(ids);
+    }
+    
     @Override
     public boolean compareID(int idx) {
         for(int id : ids) {
