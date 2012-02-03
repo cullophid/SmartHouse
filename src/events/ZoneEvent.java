@@ -13,9 +13,6 @@ public class ZoneEvent extends Event {
         Arrays.sort(ids);
         this.ids = ids;
         
-        Arrays.sort(ids);
-        this.ids = ids;
-        
         this.id = getID(ids);
     }
     
@@ -41,14 +38,6 @@ public class ZoneEvent extends Event {
         this.ts = zone.get(zone.size()-1).getTS();
     }
 
-    public ZoneEvent(ZoneEvent e1, SensorEvent e2) {
-        super(0);
-    }
-    
-    public ZoneEvent(SensorEvent e1, SensorEvent e2) {
-        super(0);
-    }
-    
     private static int getID(int ...ids) {
         int sum = 0;
         for (int i : ids) 
