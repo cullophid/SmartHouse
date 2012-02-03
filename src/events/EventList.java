@@ -11,7 +11,7 @@ import config.Config;
 public class EventList {
 
     private LinkedList<Event> events;
-    private LinkedList<Event> zone;
+//    private LinkedList<Event> zone;
     
     /**
      * Maximum interval between sensor events, for the event to be considered a zone event.
@@ -36,7 +36,7 @@ public class EventList {
     
     public EventList() {
         events = new LinkedList<Event>();
-        zone = new LinkedList<Event>();
+//        zone = new LinkedList<Event>();
         this.pattern_interval = Config.patternInterval;
         this.pattern_length = Config.patternLength;
         this.zone_interval = Config.zoneInterval;
@@ -64,8 +64,8 @@ public class EventList {
         
         if(useZones && e instanceof SensorEvent)
             determineZone(e);
-        
-        events.add(e);
+        else 
+            events.add(e);
     }
         
     /**
@@ -91,7 +91,32 @@ public class EventList {
     private void determineZone(Event e) {
         if (!(e instanceof SensorEvent))
             return;
-        
+        if (events.size() > 0 && events.getLast().getTS() + zone_interval > e.getTS()) {
+            Event last = events.getLast();
+            if (last instanceof ZoneEvent) {
+                boolean contains = false;
+                ZoneEvent z = (ZoneEvent) last;
+                for (int id : z.getIDs()) { 
+                    if (id == e.getID()) {
+                        contains = true;
+                        break;
+                    }
+                }
+                if (!contains) {
+                    z.addID(e.getID());
+                    return;
+                }
+                        
+            } else if (last instanceof SensorEvent){
+                if (last.getID() != e.getID()) {
+                    events.removeLast();
+                    events.addLast(new ZoneEvent(last.getTS(), last.getID(), e.getID()));
+                    return;
+                }
+            }
+        }
+        events.add(e);
+/*        
         //remove events more than zone_interval old
         while(zone.size() > 0 && (e.getTS() - zone.getFirst().getTS() > zone_interval))
                 zone.removeFirst();
@@ -114,7 +139,7 @@ public class EventList {
         
         if(zone.size() >= 2) {
             events.add(new ZoneEvent(zone, e.getTS()));
-        }
+        }*/
     }
     
     public String toString() {
