@@ -8,8 +8,10 @@
   <property name="dist"  location="dist"/>
   <property name="lib" location="lib"/>
   <property name="sbt-class" location="${user.home}/Documents/KIIIB/simulator/code/target/scala_2.7.7/classes"/>
-
+    
   <target name="init">
+      <echo message="${user.home}"/>
+      <echo message="${sbt-class}"/>
     <!-- Create the time stamp -->
     <tstamp/>
     <!-- Create the build directory structure used by compile -->

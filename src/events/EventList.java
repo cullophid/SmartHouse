@@ -40,6 +40,7 @@ public class EventList {
         this.pattern_interval = Config.patternInterval;
         this.pattern_length = Config.patternLength;
         this.zone_interval = Config.zoneInterval;
+        this.useZones = Config.useZones;
     }
     
     public EventList(boolean useZones) {
@@ -75,7 +76,7 @@ public class EventList {
         if(events.size() > 0 && time - events.getLast().getTS() > pattern_interval)
             events.clear();
 
-        if (events.size() >= pattern_length)
+        while (events.size() >= pattern_length)
             events.removeFirst();
     }
         

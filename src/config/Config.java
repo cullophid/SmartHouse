@@ -9,7 +9,7 @@ public class Config{
     public static int zoneInterval = 500; 
     public static int correlationInterval = 7*1000;
     public static float probabilityThreshold = .5f;
-    public static boolean useSensorZones = true;
+    public static boolean useZones = true;
     public static int defaultOnTime = 5000;
     public static int punishmentTimeout = 10*1000;
     public static float correlationCorrectionStep = .1f;
@@ -23,7 +23,7 @@ public class Config{
     public static void loadConfig(){
         System.out.println("Loading Configurations");
         try{
-            File f = new File("kiiib.properties");
+            File f = new File("kiiib.settings");
             if(!f.exists()){
                 System.out.println("could not find preferences file, generating a new one");
                 f.createNewFile();
@@ -33,7 +33,7 @@ public class Config{
                 out.write("pattern_interval "+patternInterval+"\n");
                 out.write("pattern_length "+patternLength+"\n");
                 out.write("probability_threshold "+probabilityThreshold+"\n");
-                out.write("use_sensor_zones "+useSensorZones+"\n");
+                out.write("use_zones "+useZones+"\n");
                 out.write("zone_interval "+zoneInterval+"\n");
                 out.write("correlation_interval " + correlationInterval+"\n");
                 out.close();
@@ -59,10 +59,10 @@ public class Config{
                         scan.nextLine();
                         System.out.println("probablility_threshold = "+probabilityThreshold);
                     }
-                    else if(token.equals("use_sensor_zones")){
-                        useSensorZones = Boolean.parseBoolean(scan.next());
+                    else if(token.equals("use_zones")){
+                        useZones = Boolean.parseBoolean(scan.next());
                         scan.nextLine();
-                        System.out.println("use_sensor_zones = "+useSensorZones);
+                        System.out.println("use_zones = "+useZones);
                     }
                     else if(token.equals("zone_interval")){
                         zoneInterval = Integer.parseInt(scan.next());
