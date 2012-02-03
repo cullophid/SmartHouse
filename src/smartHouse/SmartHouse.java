@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import timer.Sleeper;
 import timer.TimeoutEvent;
 import timer.TimeoutListener;
 import timer.Timer;
