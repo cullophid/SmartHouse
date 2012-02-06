@@ -13,10 +13,12 @@ public class ZoneEvent extends Event {
         Arrays.sort(ids);
         this.ids = ids;
         
-        Arrays.sort(ids);
-        this.ids = ids;
-        
         this.id = getID(ids);
+    }
+    
+    public ZoneEvent(long ts, int ... ids) {
+        this(ids);
+        this.ts = ts;
     }
     
     public ZoneEvent(List<Event> zone) {
@@ -35,7 +37,7 @@ public class ZoneEvent extends Event {
         this.id = getID(ids);
         this.ts = zone.get(zone.size()-1).getTS();
     }
-    
+
     private static int getID(int ...ids) {
         int sum = 0;
         for (int i : ids) 
@@ -47,6 +49,15 @@ public class ZoneEvent extends Event {
     public int[] getIDs() {
         return ids;
     }
+    
+    public void addID(int id) {
+        int[] tmp = new int[ids.length + 1];
+        tmp[0] = id;
+        System.arraycopy(ids, 0, tmp, 1, ids.length);
+        ids = tmp;
+        Arrays.sort(ids);
+    }
+    
     @Override
     public boolean compareID(int idx) {
         for(int id : ids) {

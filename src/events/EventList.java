@@ -1,10 +1,8 @@
 package events;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 
 import config.Config;
 
@@ -66,6 +64,9 @@ public class EventList {
             determineZone(e);
         else 
             events.add(e);
+
+        while (events.size() > pattern_length)
+            events.removeFirst();
     }
         
     /**
@@ -76,8 +77,6 @@ public class EventList {
         if(events.size() > 0 && time - events.getLast().getTS() > pattern_interval)
             events.clear();
 
-        while (events.size() >= pattern_length)
-            events.removeFirst();
     }
         
     private int currentPatternLength() {
@@ -89,8 +88,6 @@ public class EventList {
     }
     
     private void determineZone(Event e) {
-        if (!(e instanceof SensorEvent))
-            return;
         if (events.size() > 0 && events.getLast().getTS() + zone_interval > e.getTS()) {
             Event last = events.getLast();
             if (last instanceof ZoneEvent) {
@@ -116,30 +113,6 @@ public class EventList {
             }
         }
         events.add(e);
-/*        
-        //remove events more than zone_interval old
-        while(zone.size() > 0 && (e.getTS() - zone.getFirst().getTS() > zone_interval))
-                zone.removeFirst();
-                
-        //remove duplicates and older (e.g. 1,2,3,4,2 -> 3,4,2)
-        boolean duplicates = false;
-        for (int i = zone.size() - 1; i >= 0; i--) {
-            if (zone.get(i).getID() == e.getID()) {
-                duplicates = true;
-            }
-                        
-            if (duplicates)
-                zone.remove(i);
-        }
-        zone.add(e);
-
-        //limit to 4 sensors
-        while (zone.size() > 4)
-            zone.remove(0);
-        
-        if(zone.size() >= 2) {
-            events.add(new ZoneEvent(zone, e.getTS()));
-        }*/
     }
     
     public String toString() {

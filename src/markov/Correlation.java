@@ -1,4 +1,4 @@
-package core;
+package markov;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -235,14 +235,12 @@ public class Correlation implements TimeoutListener {
 
     public void increaseCorrelation(int sw, int se) {
         System.out.println("Increase correlation " + sw + "~" +se);
-        storeCorrelation(sw, se, Config.correlationCorrectionStep);
         updateCorrelation(sw, se, correction);
         storeCorrelation(sw, se, correction);
     }
 
     public void reduceCorrelation(int sw, int se) {
         System.out.println("Reduce correlation " + sw + "~" +se);
-        storeCorrelation(sw, se, -Config.correlationCorrectionStep);
         updateCorrelation(sw, se, -correction);
         storeCorrelation(sw, se, -correction);
     }
