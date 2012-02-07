@@ -28,3 +28,16 @@ __Identify Goals__
 * Non-project goals
   * experiemtns with (specific) new technology
   * personal development
+
+### writing a good introduction
+
+* what is the problem
+    - explain the context of the project and identify goals
+* what is the proposed solution?
+    - Analyse problems and present proposed solution
+* How do we evaluate the proposed solution?
+    - Present evaluation criteria for proposed solution
+    - define the method and scope of the project
+* What did we learn?
+    - Present a summary of the overall conclusions
+    - lure the reader into reading the rest of the report
