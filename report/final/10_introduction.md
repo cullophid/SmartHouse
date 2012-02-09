@@ -29,6 +29,19 @@ __Identify Goals__
   * experiemtns with (specific) new technology
   * personal development
 
+__short answers__
+
+* Project goals
+    * Create a home control system that relies on machine learning instead of programmability.
+* Non-functional requirements
+  * Usability, performance, flexibility, extensibility, simplicity, security...
+* Non-project goals
+    * examine the possibilities of a system with minimal knowledge about its operating environment.
+    * examine the possibilities of a system with minimal setup, and programming required
+
+
+
+
 ### writing a good introduction
 
 * what is the problem
@@ -41,4 +54,6 @@ __Identify Goals__
 * What did we learn?
     - Present a summary of the overall conclusions
     - lure the reader into reading the rest of the report
+
+
 
