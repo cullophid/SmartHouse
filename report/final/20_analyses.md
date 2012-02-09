@@ -11,3 +11,5 @@
 * analysis should be general
 	* Should apply regardless of whether implementation is in hardware/software and regardless of programming language
 
+### observations and analysis of behavioral patterns
+what assumptions can we make about the users, related to their behavioral patterns

@@ -29,6 +29,18 @@ __Identify Goals__
   * experiments with (specific) new technology
   * personal development
 
+### writing a good introduction
+
+* what is the problem
+    - explain the context of the project and identify goals
+* what is the proposed solution?
+    - Analyse problems and present proposed solution
+* How do we evaluate the proposed solution?
+    - Present evaluation criteria for proposed solution
+    - define the method and scope of the project
+* What did we learn?
+    - Present a summary of the overall conclusions
+    - lure the reader into reading the rest of the report
 
 We want to create an intelligent smarthouse system, with a minimal setup requirement, to control the lighting. A system which after switches and sensors are physically installed, doesn't require further setup or technical expertise from the user. The system shouldn't require any direct user interaction.
 
