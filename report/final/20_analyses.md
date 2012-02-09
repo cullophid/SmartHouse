@@ -1,4 +1,4 @@
-## Analyses
+## Analysis
 
 * Identify the major problems that must be addressed by the project
 	* Analyse project goals in the given context
