@@ -10,7 +10,7 @@
 	* new problems identified through the project
 	* outline the possible evolution curve of the software
 
-### writing godd conclusions
+### writing good conclusions
 
 *what was the problem?
     - Remid the reader of the context and project goals
