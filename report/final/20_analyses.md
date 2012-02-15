@@ -15,6 +15,7 @@
 what assumptions can we make about the users, related to their behavioral patterns
 
 
+
 The main element that separates KIIIB from other similar systems is that the system is autonomously attempting to mimic the users behavior.  In order to accomplish this the system must do three things.
 
 *  The system must gather data on the users, and their behavior in the house
@@ -22,8 +23,7 @@ The main element that separates KIIIB from other similar systems is that the sys
 * The system must actively monitor the users, and act according to the activation scheme.
 
 ### Gathering data on the users
-We have chosen to create some restrictions when it comes to gathering data on the users:
-
+We have chosen to create some restrictions when it comes to interaction with the user.
 1. We do not want a system that requires cameras to be put up in private homes
 	Visual analysis could provide more detailed information about the users, and their behavior, but we find this to be an unnecessary invasion of privacy. Even if the video data is not stored in the system, the presence of cameras will give many people the feeling of being watched in their own homes.
 2. We want to use as little hardware as possible.
@@ -33,6 +33,13 @@ We have chosen to create some restrictions when it comes to gathering data on th
 3. The system should not require any direct interaction from the users.
 	There has been a lot of change in software development the last few years, and on of the major focus areas has been on user interface design. The general theme is ease of use. You could say that the role of software is moving more towards being a servant, that a tool for the private user[^need-ref]. **elaborate on development in user interfaces**
 [^need-ref]: Reference needed!
+
+
+
+
+
+
+
 
 	
 
