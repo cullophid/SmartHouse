@@ -1,12 +1,26 @@
-import ai.impl.Ai;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import timer.TimeoutEvent;
+import timer.TimeoutListener;
+import timer.Timer;
+
+import events.*;
+import config.Config;
 import core.*;
 
-	public class SmartHouse implements TimeoutListener {
+public class SmartHouse implements TimeoutListener {
 
 	private static boolean debug = true;
 	Connection conn = null;
 	Statement stmt;
-	Ai ai;
+	AI ai;
 	EventList eventlist;
 	Correlation correlation;
 	Timer timer;
@@ -53,7 +67,7 @@ import core.*;
 	   }
 	}
 
-	public SmartHouse(Ai ai) {
+	public SmartHouse(AI ai) {
 		this();
 		this.ai = ai;
 	}
@@ -178,12 +192,12 @@ import core.*;
 	}
 
 	private void on(int id) {
-		//ai.on(id);
+		ai.on(id);
 		switchStatus.put(id, true);
 	}
 
 	private void off(int id) {
-		//ai.off(id);
+		ai.off(id);
 		switchStatus.put(id, false);
 	}
 
