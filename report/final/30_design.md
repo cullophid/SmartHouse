@@ -16,6 +16,8 @@ The simulator is implemented in scala, so an obvious choise would be to implemen
 
 The simulator is implemented in scala, and the AI is intended to be implemented in java. Since both languages compiles to byte code, little to no interfacing is needed. Simply include each project's class files, in the other project compilation class path is sufficient to compile and run the project. Scala and Java work seemlessly together, calling scala methods from java and vice verca. 
 
+@ given the amout of times the word "implemented" is used... this probably shouldnt be in the design section
+
 ### Event patterns
 
 One thing is knowing where the user is, another where the user is headed. By also looking at the preceding interval leading up to an event, it's possible to match that against previously observed patterns, to estimate where the user might be headed.
@@ -70,4 +72,6 @@ So to reiterate \\( P(sensor_i | switch_j , \Delta t) \\) is the probability tha
 [Correlation table, based on statistical data. > 40% in bold, 40-20% in italic.][ctable data] 
 
  As can be seen in the [correlation table][ctable data], most (but not all) the correlation probability between sensors and switches in the same room is above 40%. As to be expected in an appartment with rooms connected through a single hallway, the hallway sensors tend to some correlation to all switches (20-40% in this case), but the hallways sensors have lower correlation in the other rooms, than the sensors in those room.
+ 
+ 
 

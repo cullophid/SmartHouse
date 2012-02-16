@@ -89,6 +89,7 @@ public class EventList {
     
     private void determineZone(Event e) {
         if (events.size() > 0 && events.getLast().getTS() + zone_interval > e.getTS()) {
+
             Event last = events.getLast();
             if (last instanceof ZoneEvent) {
                 boolean contains = false;

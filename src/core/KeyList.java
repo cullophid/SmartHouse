@@ -63,5 +63,7 @@ public class KeyList{
             System.out.print(i+" ");
         }
     }
-
+    public ArrayList<Integer> getKeys(){
+        return keys;
+    }
 }
