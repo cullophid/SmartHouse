@@ -34,6 +34,4 @@ We have chosen to create some restrictions when it comes to gathering data on th
 	There has been a lot of change in software development the last few years, and on of the major focus areas has been on user interface design. The general theme is ease of use. You could say that the role of software is moving more towards being a servant, that a tool for the private user[^need-ref]. **elaborate on development in user interfaces**
 [^need-ref]: Reference needed!
 
-	
 
-	

@@ -28,18 +28,19 @@ In many cases to cover an entire room with sensors, the sensors end up overlappi
 
 [Take](#zoneimg) as an example, of three sensors which overlap a bit, and three paths past the sensors a, b and c. The paths b and c should only be observed as zone events by the system. While path a should look something like 1, zone 1 & 2, 2, zone 2 & 3, 3. depending on the cooldown of the sensors each event may be multiple times in the pattern.
 
-![Sensors with overlapping zones][Zone img]
-[Zone img]: img/zone.png
+![Sensors with overlapping zones][Zone Img]
+
+[Zone Img]: img/zone.png "Zone image"
 
 ### Switch and sensor correlation
 
 It is beneficial to get a sense of which sensors are near which switches. And we have a lot of statistical data too look at. When a user turns a which on, it most likely because there isn't light where the user intends to be in the immediate future. So it's possible to get an idea of which sensors are near a which, by looking at the interval shortly after a switch is turned on.
 
-@maybe talk about that is is less likely that a user will turn on a switch on, and then not enter that room
+TODO maybe talk about that is is less likely that a user will turn on a switch on, and then not enter that room
 
 When flicking a switch off, the user may be leaving the room, or just have entered the room to turn the switch off. Each of the two cases are just as likely as the other, but the sensor events in the interval leaving up to the off event is completely opposite. 
 
-@you could possebly look at the interval after it's turned off, and say there are less likely to be in the room, and then try to reduce the correlation for those sensors (NYI)
+TODO you could possebly look at the interval after it's turned off, and say there are less likely to be in the room, and then try to reduce the correlation for those sensors (NYI)
 
 Based on the statistical data it is possible to generate a table of probability that a sensor is triggered shortly after a switch is turned on, and by extension of that give a idea of wich sensors are in the same room as a switch
 
@@ -58,16 +59,4 @@ So to reiterate \\( P(sensor_i | switch_j , \Delta t) \\) is the probability tha
 [Correlation table][ctable]
 
 
-| Switches             || Sensors                                                                                       ||||||||||
-|  	 |                  | 20      | 21       | 22   | 23       | 24       | 25       | 26       | 27       | 28       | 29       |
-|                      || Hallway           || Living room              ||| Kitchen            || Bedroom            || WC       |
-|---:|:-----------------|:-------:|:--------:|:----:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|
-| 4  |	Hallway         | **0.4** | **0.67** | 0    | 0.2      | 0.13     | 0.07     | 0        | 0        | 0.07     | 0        |
-| 13 |	Living room     | *0.38*  | 0.19     | 0.12 | **0.47** | **0.42** | 0.04     | 0.04     | 0.08     | 0.08     | 0        |
-| 17 |	Kitchen         | *0.22*  | *0.28*   | 0    | 0.03     | 0.17     | **0.42** | **0.61** | 0.14     | 0.03     | 0.03     |
-| 18 |	Bedroom         | 0.1     | 0.13     | 0    | 0        | 0.03     | 0.03     | 0        | **0.57** | **0.63** | 0.03     |
-| 19 |	WC              | *0.31*  | *0.28*   | 0.06	| 0.09     | 0.08     | 0.06     | 0.01     | 0.07     | 0.05     | **0.75** |
-[Correlation table, based on statistical data. > 40% in bold, 40-20% in italic.][ctable data] 
-
- As can be seen in the [correlation table][ctable data], most (but not all) the correlation probability between sensors and switches in the same room is above 40%. As to be expected in an appartment with rooms connected through a single hallway, the hallway sensors tend to some correlation to all switches (20-40% in this case), but the hallways sensors have lower correlation in the other rooms, than the sensors in those room.
 
