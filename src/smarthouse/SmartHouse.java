@@ -18,7 +18,7 @@ import config.Config;
 import ai.impl.Ai;
 import core.*;
 
-	public class SmartHouse implements TimeoutListener {
+public class SmartHouse implements TimeoutListener {
 
 	private static boolean debug = true;
 	Connection conn = null;
@@ -195,12 +195,14 @@ import core.*;
 	}
 
 	private void on(int id) {
-		//ai.on(id);
+		System.out.println("Turning sensor "+id+" on");
+		ai.on(id);
 		switchStatus.put(id, true);
 	}
 
 	private void off(int id) {
-		//ai.off(id);
+		System.out.println("Turning sensor "+id+" off");
+		ai.off(id);
 		switchStatus.put(id, false);
 	}
 
