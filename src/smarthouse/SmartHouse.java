@@ -17,14 +17,15 @@ import events.*;
 import config.Config;
 import core.Correlation;
 //import core.ProbabilityTable;
-import ai.impl.Ai;
+//import ai.impl.Ai;
+//import ai.AiInterface;
 
 public class SmartHouse implements TimeoutListener {
 
     private static boolean debug = true;
     Connection conn = null;
     Statement stmt;
-    Ai ai;
+    AI ai;
     EventList events;
     Correlation correlation;
     Timer timer;
@@ -76,7 +77,7 @@ public class SmartHouse implements TimeoutListener {
        }
     }
     
-    public SmartHouse(Ai ai) {
+    public SmartHouse(AI ai) {
         this();
         this.ai = ai;
     }
