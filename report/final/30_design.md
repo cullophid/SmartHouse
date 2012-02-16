@@ -1,3 +1,4 @@
+
 ## Design
 
 * Develop the overall software architecture
@@ -57,6 +58,4 @@ So to reiterate \\( P(sensor_i | switch_j , \Delta t) \\) is the probability tha
 | \\(\vdots\\)          | \\(\vdots\\)                   | \\(\vdots\\)          | \\(\ddots\\) | \\(\vdots\\)                   |
 | switch m (\\(sw_m)\\) | \\(P(se_1 | sw_m, \Delta t)\\) | \\(P(se_2 | sw_m, \Delta t)\\) | ... | \\(P(se_n | sw_m, \Delta t)\\) |
 [Correlation table][ctable]
-
-
 
