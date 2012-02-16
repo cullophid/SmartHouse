@@ -1,5 +1,6 @@
 package core;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -31,6 +32,11 @@ public class Correlation implements TimeoutListener {
     private float correction;
     private Map<Integer, Map<Integer, Float>> correlation;
     
+    public static void main(String[] args) throws IOException {
+        System.out.println(System.currentTimeMillis());
+        System.in.read();
+    }
+    
     public Correlation () {
         correlation = new HashMap<Integer, Map<Integer, Float>>();
         try {
@@ -49,7 +55,7 @@ public class Correlation implements TimeoutListener {
         }
         correction = Config.correlationCorrectionStep;
         generateCorrelation();
-        getStoredCorrelations();
+//        getStoredCorrelations();
     }
     
     public float getCorrelation(int switchId, int sensorId) {
@@ -94,7 +100,6 @@ public class Correlation implements TimeoutListener {
     public void generateCorrelation() {
         
         try {
-//            Map<SwitchEvent, Set<Integer>> switch_events = new HashMap<SwitchEvent, Set<Integer>>();
             Map<SwitchEvent, EventList> switch_eventlist = new HashMap<SwitchEvent, EventList>();
             Map<Integer, Integer> switch_count = new HashMap<Integer, Integer>();
             Map<Integer, Map<Integer, Integer>> sensor_count = new HashMap<Integer, Map<Integer, Integer>>();
@@ -109,17 +114,10 @@ public class Correlation implements TimeoutListener {
                     boolean cmd = (result.getInt("status") == 1) ? true : false;
                     if (cmd) {
                         SwitchEvent s = new SwitchEvent(id, ts, cmd);
-//                        switch_events.put(s, new HashSet<Integer>());
                         switch_eventlist.put(s, new EventList(Config.zoneInterval, Config.correlationInterval, Integer.MAX_VALUE));
                         gc.addLast(s);
                     }
                 } else if (result.getString("type").equals("sensor")) {
-//                    for (SwitchEvent e : switch_events.keySet()) {
-//                        if (e.getTS() + correlation_interval > ts) {
-//                            switch_events.get(e).add(id);
-//                            
-//                        }
-//                    }
                     for (SwitchEvent e : switch_eventlist.keySet()) {
                         if (e.getTS() + correlation_interval > ts) {
                             switch_eventlist.get(e).add(new SensorEvent(id, ts));
@@ -130,14 +128,11 @@ public class Correlation implements TimeoutListener {
                 while(gc.size() > 0 && gc.getFirst().getTS() + correlation_interval < ts) {
                     SwitchEvent se = gc.getFirst();
                     incrementSwitchCount(switch_count, se.getID());
-//                    for (int sensor : switch_events.get(se))
-//                        incrementSensorCount(sensor_count, se.getID(), sensor);
                     
                     for (Event e : new HashSet<Event>(Arrays.asList(switch_eventlist.get(se).getEvents()))) {
                         incrementSensorCount(sensor_count, se.getID(), e.getID());
                     }
                     gc.removeFirst();
-//                    switch_events.remove(se);
                     switch_eventlist.remove(se);
                 }
                 

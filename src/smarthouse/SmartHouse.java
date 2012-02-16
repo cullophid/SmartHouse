@@ -15,7 +15,6 @@ import timer.Timer;
 
 import events.*;
 import config.Config;
-import core.Correlation;
 import ai.impl.Ai;
 import core.*;
 
@@ -211,4 +210,4 @@ import core.*;
 		
 		return false;
 	}
-	}
+}

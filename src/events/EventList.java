@@ -52,6 +52,8 @@ public class EventList {
         this.pattern_interval = pattern_interval;
         this.pattern_length = pattern_length;
     }
+        
+    
     
     /**
      * Add event 

@@ -5,5 +5,3 @@ latex input:        twocolumn
 latex footer:      appendix
 Base Header Level:    2 
 
-
-
