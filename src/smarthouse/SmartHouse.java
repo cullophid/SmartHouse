@@ -15,7 +15,6 @@ import timer.Timer;
 
 import events.*;
 import config.Config;
-import ai.impl.Ai;
 import core.*;
 
 public class SmartHouse implements TimeoutListener {
@@ -23,7 +22,7 @@ public class SmartHouse implements TimeoutListener {
 	private static boolean debug = true;
 	Connection conn = null;
 	Statement stmt;
-	Ai ai;
+	AI ai;
 	EventList eventlist;
 	Correlation correlation;
 	Timer timer;
@@ -70,7 +69,7 @@ public class SmartHouse implements TimeoutListener {
 	   }
 	}
 
-	public SmartHouse(Ai ai) {
+	public SmartHouse(AI ai) {
 		this();
 		this.ai = ai;
 	}

@@ -1,3 +1,4 @@
+
 ## Design
 
 * Develop the overall software architecture
@@ -59,20 +60,4 @@ So to reiterate \\( P(sensor_i | switch_j , \Delta t) \\) is the probability tha
 | \\(\vdots\\)          | \\(\vdots\\)                   | \\(\vdots\\)          | \\(\ddots\\) | \\(\vdots\\)                   |
 | switch m (\\(sw_m)\\) | \\(P(se_1 | sw_m, \Delta t)\\) | \\(P(se_2 | sw_m, \Delta t)\\) | ... | \\(P(se_n | sw_m, \Delta t)\\) |
 [Correlation table][ctable]
-
-
-| Switches             || Sensors                                                                                       ||||||||||
-|  	 |                  | 20      | 21       | 22   | 23       | 24       | 25       | 26       | 27       | 28       | 29       |
-|                      || Hallway           || Living room              ||| Kitchen            || Bedroom            || WC       |
-|---:|:-----------------|:-------:|:--------:|:----:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|
-| 4  |	Hallway         | **0.4** | **0.67** | 0    | 0.2      | 0.13     | 0.07     | 0        | 0        | 0.07     | 0        |
-| 13 |	Living room     | *0.38*  | 0.19     | 0.12 | **0.47** | **0.42** | 0.04     | 0.04     | 0.08     | 0.08     | 0        |
-| 17 |	Kitchen         | *0.22*  | *0.28*   | 0    | 0.03     | 0.17     | **0.42** | **0.61** | 0.14     | 0.03     | 0.03     |
-| 18 |	Bedroom         | 0.1     | 0.13     | 0    | 0        | 0.03     | 0.03     | 0        | **0.57** | **0.63** | 0.03     |
-| 19 |	WC              | *0.31*  | *0.28*   | 0.06	| 0.09     | 0.08     | 0.06     | 0.01     | 0.07     | 0.05     | **0.75** |
-[Correlation table, based on statistical data. > 40% in bold, 40-20% in italic.][ctable data] 
-
- As can be seen in the [correlation table][ctable data], most (but not all) the correlation probability between sensors and switches in the same room is above 40%. As to be expected in an appartment with rooms connected through a single hallway, the hallway sensors tend to some correlation to all switches (20-40% in this case), but the hallways sensors have lower correlation in the other rooms, than the sensors in those room.
- 
- 
 
