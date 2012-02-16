@@ -1,17 +1,15 @@
 package events;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 
 import config.Config;
 
 public class EventList {
 
     private LinkedList<Event> events;
-    private LinkedList<Event> zone;
+//    private LinkedList<Event> zone;
     
     /**
      * Maximum interval between sensor events, for the event to be considered a zone event.
@@ -36,7 +34,7 @@ public class EventList {
     
     public EventList() {
         events = new LinkedList<Event>();
-        zone = new LinkedList<Event>();
+//        zone = new LinkedList<Event>();
         this.pattern_interval = Config.patternInterval;
         this.pattern_length = Config.patternLength;
         this.zone_interval = Config.zoneInterval;
@@ -64,8 +62,11 @@ public class EventList {
         
         if(useZones && e instanceof SensorEvent)
             determineZone(e);
-        
-        events.add(e);
+        else 
+            events.add(e);
+
+        while (events.size() > pattern_length)
+            events.removeFirst();
     }
         
     /**
@@ -76,8 +77,6 @@ public class EventList {
         if(events.size() > 0 && time - events.getLast().getTS() > pattern_interval)
             events.clear();
 
-        while (events.size() >= pattern_length)
-            events.removeFirst();
     }
         
     private int currentPatternLength() {
@@ -89,32 +88,34 @@ public class EventList {
     }
     
     private void determineZone(Event e) {
-        if (!(e instanceof SensorEvent))
-            return;
-        
-        //remove events more than zone_interval old
-        while(zone.size() > 0 && (e.getTS() - zone.getFirst().getTS() > zone_interval))
-                zone.removeFirst();
-                
-        //remove duplicates and older (e.g. 1,2,3,4,2 -> 3,4,2)
-        boolean duplicates = false;
-        for (int i = zone.size() - 1; i >= 0; i--) {
-            if (zone.get(i).getID() == e.getID()) {
-                duplicates = true;
-            }
-                        
-            if (duplicates)
-                zone.remove(i);
-        }
-        zone.add(e);
+        if (events.size() > 0 && events.getLast().getTS() + zone_interval > e.getTS()) {
 
-        //limit to 4 sensors
-        while (zone.size() > 4)
-            zone.remove(0);
-        
-        if(zone.size() >= 2) {
-            events.add(new ZoneEvent(zone, e.getTS()));
+            Event last = events.getLast();
+            if (last instanceof ZoneEvent) {
+                boolean contains = false;
+                ZoneEvent z = (ZoneEvent) last;
+                for (int id : z.getIDs()) { 
+                    if (id == e.getID()) {
+                        contains = true;
+                        break;
+                    }
+                }
+                if (!contains) {
+                    z.addID(e.getID());
+                     System.out.println(z.getID());
+                    return;
+                }
+                        
+            } else if (last instanceof SensorEvent){
+                if (last.getID() != e.getID()) {
+                    events.removeLast();
+                    events.addLast(new ZoneEvent(last.getTS(), last.getID(), e.getID()));
+                    System.out.println(events.getLast().getID());
+                    return;
+                }
+            }
         }
+        events.add(e);
     }
     
     public String toString() {

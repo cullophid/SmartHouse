@@ -17,6 +17,8 @@ The simulator is implemented in scala, so an obvious choise would be to implemen
 
 The simulator is implemented in scala, and the AI is intended to be implemented in java. Since both languages compiles to byte code, little to no interfacing is needed. Simply include each project's class files, in the other project compilation class path is sufficient to compile and run the project. Scala and Java work seemlessly together, calling scala methods from java and vice verca. 
 
+@ given the amout of times the word "implemented" is used... this probably shouldnt be in the design section
+
 ### Event patterns
 
 One thing is knowing where the user is, another where the user is headed. By also looking at the preceding interval leading up to an event, it's possible to match that against previously observed patterns, to estimate where the user might be headed.
