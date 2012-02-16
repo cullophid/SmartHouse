@@ -168,12 +168,12 @@ public class SmartHouse implements TimeoutListener {
     }
     
     private void on(int id) {
-        //ai.on(id);
+        ai.on(id);
         switchStatus.put(id, true);
     }
     
     private void off(int id) {
-        //ai.off(id);
+        ai.off(id);
         switchStatus.put(id, false);
     }
     
