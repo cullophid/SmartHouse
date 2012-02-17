@@ -15,17 +15,15 @@ import timer.Timer;
 
 import events.*;
 import config.Config;
-import core.Correlation;
-import ai.impl.Ai;
 import core.*;
 
-	public class SmartHouse implements TimeoutListener {
+public class SmartHouse implements TimeoutListener {
 
 	private static boolean debug = true;
 	Connection conn = null;
 	Statement stmt;
-	Ai ai;
-	EventList eventlist;
+	AI ai;
+	EventList eventlist, zoneeventlist;
 	Correlation correlation;
 	Timer timer;
 	List<Integer> timeout;
@@ -52,6 +50,7 @@ import core.*;
 			decisionMatrix = new DecisionMatrix();
 			correlation = new Correlation();
 			
+			zoneeventlist = new EventList(true);
 			eventlist = new EventList();
 			timer = new Timer();
 			timeout = new ArrayList<Integer>(10);
@@ -59,6 +58,9 @@ import core.*;
 			punishmentTimeout = Config.punishmentTimeout;
 			firstSensorAfterTimeout = new HashMap<Integer, Integer>();
 			switchStatus = new HashMap<Integer, Boolean>();
+			for (int sw : decisionMatrix.switches){
+				switchStatus.put(sw,false);
+			}
 		}
 		catch (SQLException se){
 			System.out.println("SQLException: " + se.getMessage());
@@ -71,7 +73,7 @@ import core.*;
 	   }
 	}
 
-	public SmartHouse(Ai ai) {
+	public SmartHouse(AI ai) {
 		this();
 		this.ai = ai;
 	}
@@ -84,6 +86,7 @@ import core.*;
 		try{
 			System.out.println("Sensor "+sensorId+" fired!"); 
 			eventlist.sensorEvent(sensorId);
+			zoneeventlist.sensorEvent(sensorId);
 			if (!debug)
 				stmt.executeUpdate("INSERT INTO sensor_events VALUES("+sensorId+",NOW())");
 			
@@ -98,13 +101,13 @@ import core.*;
 					timer.updateTimeout(sw, (long) t, this);
 				}
 			}
-			matrixLookUp();
 		}
 		catch(SQLException se){
 			System.out.println("SQLException: " + se.getMessage());
 			System.out.println("SQLState: " + se.getSQLState());
 			System.out.println("VendorError: " + se.getErrorCode());
 		}
+		matrixLookUp();
 	}
 	/*
 	 * Method called when a switch event occurs in the simulator
@@ -145,7 +148,7 @@ import core.*;
 		System.out.println("I should probably turn off the light now");
 		int id = (Integer) event.getSource(); 
 		if (timeout.contains(id) && eventlist.getLastEvent() != null) {
-			correlation.reduceCorrelation(id, eventlist.getLastEvent().getID());
+			correlation.reduceCorrelation(id, eventlist.getLastEvent().getID());// adjust for zonevents aswell
 			timeout.remove(event.getSource());
 		} else {
 			off(id);
@@ -154,54 +157,62 @@ import core.*;
 		}
 	}
 	private void matrixLookUp(){
-		KeyList keylist;
-		int P;
-		float value = 0;
-		for (int sw : decisionMatrix.switches){
-			keylist = new KeyList(eventlist);
-			keylist.add(sw);
-			if(switchStatus.get(sw)){
-				if(decisionMatrix.off.containsKey(keylist)){
-					value = decisionMatrix.off.get(keylist);
+		try{
+			KeyList keylist;
+			int P;
+			float value = 0;
+			for (int sw : decisionMatrix.switches){
+				keylist = new KeyList(eventlist);
+				keylist.add(sw);
+				if(switchStatus.get(sw)){
+					if(decisionMatrix.off.containsKey(keylist)){
+						value = decisionMatrix.off.get(keylist);
+					}
+					if(Config.useZones){
+						keylist = new KeyList(zoneeventlist);
 
+						if(decisionMatrix.zoneOff.containsKey(keylist)){
+							value = Math.max(value,decisionMatrix.zoneOff.get(keylist));
+						}
+					} 
+					System.out.println("probability value : "+value);
+					if(value>Config.probabilityThreshold){
+						off(sw);
+					}
 				}
-				if(Config.useZones){
-					if(decisionMatrix.zoneOff.containsKey(keylist)){
-						value = Math.max(value,decisionMatrix.zoneOff.get(keylist));
+				else{
+					if(decisionMatrix.on.containsKey(keylist)){
+
+						value = decisionMatrix.on.get(keylist);
+					}
+					
+					if(Config.useZones){
+						if(decisionMatrix.zoneOn.containsKey(keylist)){
+							value = Math.max(value,decisionMatrix.zoneOn.get(keylist));
+						}
+					}
+					System.out.println("probability value for switch  "+sw+" : "+value);
+					if(value>Config.probabilityThreshold){
+						on(sw);
 					}
 		
-				} 
-				if(value>Config.probabilityThreshold){
-					off(sw);
 				}
-	
 			}
-			else{
-				if(decisionMatrix.on.containsKey(keylist)){
-
-					value = decisionMatrix.on.get(keylist);
-				}
-				
-				if(Config.useZones){
-					if(decisionMatrix.zoneOn.containsKey(keylist)){
-						value = Math.max(value,decisionMatrix.zoneOn.get(keylist));
-					}
-				}
-				if(value>Config.probabilityThreshold){
-					on(sw);
-				}
-	
-			}
+		}
+		catch(Exception e){
+			e.printStackTrace();
 		}
 	}
 
 	private void on(int id) {
-		//ai.on(id);
+		System.out.println("Turning switch "+id+" on");
+		ai.on(id);
 		switchStatus.put(id, true);
 	}
 
 	private void off(int id) {
-		//ai.off(id);
+		System.out.println("Turning switch "+id+" off");
+		ai.off(id);
 		switchStatus.put(id, false);
 	}
 
@@ -211,4 +222,4 @@ import core.*;
 		
 		return false;
 	}
-	}
+}
