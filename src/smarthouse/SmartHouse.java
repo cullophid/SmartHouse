@@ -57,6 +57,9 @@ public class SmartHouse implements TimeoutListener {
 			punishmentTimeout = Config.punishmentTimeout;
 			firstSensorAfterTimeout = new HashMap<Integer, Integer>();
 			switchStatus = new HashMap<Integer, Boolean>();
+			for (int sw : decisionMatrix.switches){
+				switchStatus.put(sw,false);
+			}
 		}
 		catch (SQLException se){
 			System.out.println("SQLException: " + se.getMessage());
@@ -96,13 +99,13 @@ public class SmartHouse implements TimeoutListener {
 					timer.updateTimeout(sw, (long) t, this);
 				}
 			}
-			matrixLookUp();
 		}
 		catch(SQLException se){
 			System.out.println("SQLException: " + se.getMessage());
 			System.out.println("SQLState: " + se.getSQLState());
 			System.out.println("VendorError: " + se.getErrorCode());
 		}
+		matrixLookUp();
 	}
 	/*
 	 * Method called when a switch event occurs in the simulator
@@ -152,55 +155,62 @@ public class SmartHouse implements TimeoutListener {
 		}
 	}
 	private void matrixLookUp(){
-		KeyList keylist;
-		int P;
-		float value = 0;
-		for (int sw : decisionMatrix.switches){
-			keylist = new KeyList(eventlist);
-			keylist.add(sw);
-			if(switchStatus.get(sw)){
-				if(decisionMatrix.off.containsKey(keylist)){
-					value = decisionMatrix.off.get(keylist);
+		try{
+			KeyList keylist;
+			int P;
+			float value = 0;
+			for (int sw : decisionMatrix.switches){
+				keylist = new KeyList(eventlist);
+				keylist.add(sw);
+				if(switchStatus.get(sw)){
+					if(decisionMatrix.off.containsKey(keylist)){
+						value = decisionMatrix.off.get(keylist);
 
-				}
-				if(Config.useZones){
-					if(decisionMatrix.zoneOff.containsKey(keylist)){
-						value = Math.max(value,decisionMatrix.zoneOff.get(keylist));
+					}
+					if(Config.useZones){
+						if(decisionMatrix.zoneOff.containsKey(keylist)){
+							value = Math.max(value,decisionMatrix.zoneOff.get(keylist));
+						}
+			
+					} 
+					System.out.println("probability value : "+value);
+					if(value>Config.probabilityThreshold){
+						off(sw);
 					}
 		
-				} 
-				if(value>Config.probabilityThreshold){
-					off(sw);
 				}
-	
-			}
-			else{
-				if(decisionMatrix.on.containsKey(keylist)){
+				else{
+					if(decisionMatrix.on.containsKey(keylist)){
 
-					value = decisionMatrix.on.get(keylist);
-				}
-				
-				if(Config.useZones){
-					if(decisionMatrix.zoneOn.containsKey(keylist)){
-						value = Math.max(value,decisionMatrix.zoneOn.get(keylist));
+						value = decisionMatrix.on.get(keylist);
 					}
+					
+					if(Config.useZones){
+						if(decisionMatrix.zoneOn.containsKey(keylist)){
+							value = Math.max(value,decisionMatrix.zoneOn.get(keylist));
+						}
+					}
+					System.out.println("probability value for switch  "+sw+" : "+value);
+					if(value>Config.probabilityThreshold){
+						on(sw);
+					}
+		
 				}
-				if(value>Config.probabilityThreshold){
-					on(sw);
-				}
-	
 			}
+		}
+		catch(Exception e){
+			e.printStackTrace();
 		}
 	}
 
 	private void on(int id) {
-		System.out.println("Turning sensor "+id+" on");
+		System.out.println("Turning switch "+id+" on");
 		ai.on(id);
 		switchStatus.put(id, true);
 	}
 
 	private void off(int id) {
-		System.out.println("Turning sensor "+id+" off");
+		System.out.println("Turning switch "+id+" off");
 		ai.off(id);
 		switchStatus.put(id, false);
 	}

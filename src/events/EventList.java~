@@ -52,6 +52,8 @@ public class EventList {
         this.pattern_interval = pattern_interval;
         this.pattern_length = pattern_length;
     }
+        
+    
     
     /**
      * Add event 
@@ -102,7 +104,6 @@ public class EventList {
                 }
                 if (!contains) {
                     z.addID(e.getID());
-                     System.out.println(z.getID());
                     return;
                 }
                         
@@ -110,7 +111,6 @@ public class EventList {
                 if (last.getID() != e.getID()) {
                     events.removeLast();
                     events.addLast(new ZoneEvent(last.getTS(), last.getID(), e.getID()));
-                    System.out.println(events.getLast().getID());
                     return;
                 }
             }
@@ -176,4 +176,14 @@ public class EventList {
         
         return null;
     }
+	public boolean containsZoneEvent(){
+		if(useZones){
+			for(Event e : events){
+				if(e.getID()>=256){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 }
