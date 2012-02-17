@@ -179,9 +179,8 @@ public class EventList {
 	public boolean containsZoneEvent(){
 		if(useZones){
 			for(Event e : events){
-				if(e.getID()>=256){
-					return true;
-				}
+				if (e instanceof ZoneEvent)
+				    return true;
 			}
 		}
 		return false;
