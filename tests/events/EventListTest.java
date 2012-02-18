@@ -2,20 +2,26 @@ package events;
 
 import static org.junit.Assert.*;
 
+import java.util.Arrays;
+
 import org.junit.Before;
 import org.junit.Test;
+
+import config.Config;
 
 public class EventListTest {
 
     EventList events;
     SensorEvent[] se;
     SwitchEvent[] sw;
+    ZoneEvent z1;
     
     @Before
     public void setUp() throws Exception {
-        events = new EventList();
+        events = new EventList(true);
         se = new SensorEvent[]{new SensorEvent(1), new SensorEvent(2), new SensorEvent(3)};
         sw = new SwitchEvent[]{new SwitchEvent(11, true), new SwitchEvent(12, false)};
+        z1 = new ZoneEvent(0L, 20, 21);
     }
 
     @Test
@@ -41,6 +47,14 @@ public class EventListTest {
     }
     
     @Test
+    public void testGetPatternZone() {
+        events.add(z1);
+        events.getPattern();
+        System.out.println(events);
+        System.out.println(events.getPattern()[6]);
+    }
+    
+    @Test
     public void testGetPattern() {
         for (Event actual : events.getPattern()) {
             assertEquals(-1, actual.getID());
@@ -50,8 +64,8 @@ public class EventListTest {
         events.add(se[0]);
         
         Event[] actuals = events.getPattern();
-        for (int i = 0; i < 7; i++) {
-            if (i < 4)
+        for (int i = 0; i < Config.patternLength; i++) {
+            if (i < Config.patternInterval - 3)
                 assertEquals(-1, actuals[i].getID());
             else
                 assertEquals(se[0], actuals[i]);                
@@ -65,14 +79,14 @@ public class EventListTest {
         for (Event actual : events.getPattern()) {
             assertEquals(se[0], actual);
         }
-        assertEquals(7, events.getPattern().length);
+        assertEquals(Config.patternInterval, events.getPattern().length);
     }
     
     @Test
     public void testCorrelationList() {
         
         se[0] = new SensorEvent(1, 123456781000L);
-        se[1] = new SensorEvent(2, 123456782000L);
+        se[1] = new SensorEvent(2, 123456781000L);
         se[2] = new SensorEvent(1, 123456789000L);
 
         events.add(se[0]);
@@ -87,10 +101,8 @@ public class EventListTest {
 //        System.out.println(actuals[0].getTS());
 //        System.out.println(actuals[1].getTS());
         
-        assertEquals(se[0], actuals[0]);
-        assertTrue(actuals[1] instanceof ZoneEvent);
-        assertEquals(se[1], actuals[2]);
-        assertEquals(se[2], actuals[3]);
+        assertTrue(actuals[0] instanceof ZoneEvent);
+        assertEquals(se[2], actuals[1]);
 
         
     }
