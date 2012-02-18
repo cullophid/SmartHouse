@@ -84,7 +84,7 @@ public class EventList {
     private int currentPatternLength() {
         int count = 0;
         for (Event e : events)
-            if (e instanceof SensorEvent)
+            if (e instanceof SensorEvent || e instanceof ZoneEvent)
                 count++;
         return count;
     }

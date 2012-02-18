@@ -5,17 +5,14 @@ import static org.junit.Assert.*;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.junit.Before;
 import org.junit.Test;
+
+import core.Correlation;
 
 public class CorrelationTest {
 
     Correlation correlation = new Correlation();
-    @Before
-    public void setUp() throws Exception {
-        
-    }
-
+    
     @Test
     public void test() {
 //        System.out.print("Switches: ");
