@@ -9,6 +9,25 @@
         * semantecs
 * The Design section should allow a skilled programmer to implement the system
 
+### Sensor data
+
+In order to train the system, some sensor data is needed, but how to obtain it? A couple of options are available:
+
+1.  Physical data, setting up wireles motion sensors and switches in a home, and collect the sensor data in a database. 
+    1a      A full installation, where the wireless switches are able to turn the light on and off, and by extension also the system.
+    1b      A placebo installation, where the wireless switches doesn't control the light, and merely collect training data.
+2.  Simulated data, sing a simulator to generate data.
+3.  Constructed data, manually or algorithmicly generated data.
+
+Looking only at the quality of the data, the best would be to setup an entire house with switches controlling the light, and motion sensors in every room. However installing the system into an existing home would be difficult. The motion sensors and wall socket switches would be fairly easy, but most homes have ceiling with wires in the walls. This means a complete installation of wireless switches would be difficult and costly. 
+A placebo solusion to the complete installation would be to have wireless wall socket switches next to all the actual switches. By have the users press the placebo switches and the actual switches when they use the light, it's possible to get the training data without having to permanently install the system into the home. It does come with the drawback that it will only be able to generate data for the untrained stage, since the system would not be able to manipulate the actual switches.
+
+People are not robots, and while we are creatures of habit, our movement patterns do not run like clockworks. No matter how well we would generate training data using simulators, algorithms or any other artificial method, there would always be a doubt on how close to actual human behavior it actually is.
+
+We chose to install a placebo system of wireless switches and sensors, to collect training data. This gives us the best quality training data, for the untrained stage of the system, without the expenses of installing operational wireless switches. 
+
+With the training data, we can then use a simulator to evaluate the training stage. In the training stage, there it doesn't take that much data, to evaluate that the system is learning properly. The data from the simulator is good enough to simulate simple movement patterns, to see which lights go on or off, as a simulated user moves from room to room. 
+
 ### Simulator / AI interface
 
 TODO the choise between java and scala
