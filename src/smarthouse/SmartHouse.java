@@ -23,7 +23,7 @@ public class SmartHouse implements TimeoutListener {
 	Connection conn = null;
 	Statement stmt;
 	AI ai;
-	EventList eventlist;
+	EventList eventlist,zoneeventlist;
 	Correlation correlation;
 	Timer timer;
 	List<Integer> timeout;
@@ -51,6 +51,7 @@ public class SmartHouse implements TimeoutListener {
 			correlation = new Correlation();
 			
 			eventlist = new EventList();
+			zoneeventlist = new EventList(true);
 			timer = new Timer();
 			timeout = new ArrayList<Integer>(10);
 			onTime = Config.defaultOnTime;
@@ -85,6 +86,8 @@ public class SmartHouse implements TimeoutListener {
 		try{
 			System.out.println("Sensor "+sensorId+" fired!"); 
 			eventlist.sensorEvent(sensorId);
+			zoneeventlist.sensorEvent(sensorId);
+
 			if (!debug)
 				stmt.executeUpdate("INSERT INTO sensor_events VALUES("+sensorId+",NOW())");
 			
@@ -146,7 +149,7 @@ public class SmartHouse implements TimeoutListener {
 		System.out.println("I should probably turn off the light now");
 		int id = (Integer) event.getSource(); 
 		if (timeout.contains(id) && eventlist.getLastEvent() != null) {
-			correlation.reduceCorrelation(id, eventlist.getLastEvent().getID());
+			correlation.reduceCorrelation(id, eventlist.getLastEvent().getID());// adjust for zoneeventlist
 			timeout.remove(event.getSource());
 		} else {
 			off(id);
@@ -165,17 +168,18 @@ public class SmartHouse implements TimeoutListener {
 				if(switchStatus.get(sw)){
 					if(decisionMatrix.off.containsKey(keylist)){
 						value = decisionMatrix.off.get(keylist);
-
 					}
-					if(Config.useZones){
-						if(decisionMatrix.zoneOff.containsKey(keylist)){
-							value = Math.max(value,decisionMatrix.zoneOff.get(keylist));
-						}
-			
-					} 
 					System.out.println("probability value : "+value);
 					if(value>Config.probabilityThreshold){
 						off(sw);
+					}
+					if(Config.useZones){
+						if(decisionMatrix.off.containsKey(keylist)){
+							keylist = new KeyList(zoneeventlist);
+							keylist.add(sw);
+							value = decisionMatrix.off.get(keylist);
+						}
+ 
 					}
 		
 				}
@@ -184,11 +188,13 @@ public class SmartHouse implements TimeoutListener {
 
 						value = decisionMatrix.on.get(keylist);
 					}
-					
 					if(Config.useZones){
-						if(decisionMatrix.zoneOn.containsKey(keylist)){
-							value = Math.max(value,decisionMatrix.zoneOn.get(keylist));
+						if(decisionMatrix.on.containsKey(keylist)){
+							keylist = new KeyList(zoneeventlist);
+							keylist.add(sw);
+							value = decisionMatrix.on.get(keylist);
 						}
+ 
 					}
 					System.out.println("probability value for switch  "+sw+" : "+value);
 					if(value>Config.probabilityThreshold){
