@@ -23,7 +23,7 @@ public class SmartHouse implements TimeoutListener {
 	Connection conn = null;
 	Statement stmt;
 	AI ai;
-	EventList eventlist, zoneeventlist;
+	EventList eventlist,zoneeventlist;
 	Correlation correlation;
 	Timer timer;
 	List<Integer> timeout;
@@ -50,8 +50,8 @@ public class SmartHouse implements TimeoutListener {
 			decisionMatrix = new DecisionMatrix();
 			correlation = new Correlation();
 			
-			zoneeventlist = new EventList(true);
 			eventlist = new EventList();
+			zoneeventlist = new EventList(true);
 			timer = new Timer();
 			timeout = new ArrayList<Integer>(10);
 			onTime = Config.defaultOnTime;
@@ -87,6 +87,7 @@ public class SmartHouse implements TimeoutListener {
 			System.out.println("Sensor "+sensorId+" fired!"); 
 			eventlist.sensorEvent(sensorId);
 			zoneeventlist.sensorEvent(sensorId);
+
 			if (!debug)
 				stmt.executeUpdate("INSERT INTO sensor_events VALUES("+sensorId+",NOW())");
 			
@@ -148,7 +149,7 @@ public class SmartHouse implements TimeoutListener {
 		System.out.println("I should probably turn off the light now");
 		int id = (Integer) event.getSource(); 
 		if (timeout.contains(id) && eventlist.getLastEvent() != null) {
-			correlation.reduceCorrelation(id, eventlist.getLastEvent().getID());// adjust for zonevents aswell
+			correlation.reduceCorrelation(id, eventlist.getLastEvent().getID());// adjust for zoneeventlist
 			timeout.remove(event.getSource());
 		} else {
 			off(id);
@@ -168,28 +169,32 @@ public class SmartHouse implements TimeoutListener {
 					if(decisionMatrix.off.containsKey(keylist)){
 						value = decisionMatrix.off.get(keylist);
 					}
-					if(Config.useZones){
-						keylist = new KeyList(zoneeventlist);
-
-						if(decisionMatrix.zoneOff.containsKey(keylist)){
-							value = Math.max(value,decisionMatrix.zoneOff.get(keylist));
-						}
-					} 
 					System.out.println("probability value : "+value);
 					if(value>Config.probabilityThreshold){
 						off(sw);
 					}
+					if(Config.useZones){
+						if(decisionMatrix.off.containsKey(keylist)){
+							keylist = new KeyList(zoneeventlist);
+							keylist.add(sw);
+							value = decisionMatrix.off.get(keylist);
+						}
+ 
+					}
+		
 				}
 				else{
 					if(decisionMatrix.on.containsKey(keylist)){
 
 						value = decisionMatrix.on.get(keylist);
 					}
-					
 					if(Config.useZones){
-						if(decisionMatrix.zoneOn.containsKey(keylist)){
-							value = Math.max(value,decisionMatrix.zoneOn.get(keylist));
+						if(decisionMatrix.on.containsKey(keylist)){
+							keylist = new KeyList(zoneeventlist);
+							keylist.add(sw);
+							value = decisionMatrix.on.get(keylist);
 						}
+ 
 					}
 					System.out.println("probability value for switch  "+sw+" : "+value);
 					if(value>Config.probabilityThreshold){
