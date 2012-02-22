@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import events.*;
 
 public class DecisionMatrix{
-    public HashMap<KeyList,Float> on,off,temp,zoneOn,zoneOff;
+    public HashMap<KeyList,Float> on,off;
     private Statement stmt;
     private Connection conn;
     private LinkedList<Integer> eventBuffer; // holds the last n sensorevents, n = memoryDepth 
@@ -79,6 +79,8 @@ public class DecisionMatrix{
     public void generateBasicMatrices(){
         System.out.println("generating basic matrices");
         try {
+			HashMap<KeyList,Float> temp;
+
 
             switches = new ArrayList<Integer>();
             sensors = new ArrayList<Integer>();
@@ -176,20 +178,22 @@ public class DecisionMatrix{
         
     }
     public void generateZoneMatrices(){
-     System.out.println("generating zone matrices");
+	System.out.println("generating zone matrices");
+
+		HashMap<KeyList,Float> temp,zoneOn,zoneOff;
+		zoneOn = new HashMap<KeyList,Float>();
+		zoneOff = new HashMap<KeyList,Float>();
+		long lastevent = 0;
+		int val,id;
+		int i = 0;
+		EventList eventlist = new EventList(true); 
+		long time;
+		long start = System.currentTimeMillis();
+		String type;
+		KeyList keylist;
+		HashMap<KeyList,Integer> denominator = new HashMap<KeyList,Integer>();   
         try {
-            long lastevent = 0;
-            int val,id;
-            int i = 0;
-            EventList eventlist = new EventList(true); 
-            long time;
-            long start = System.currentTimeMillis();
-            String type;
-            KeyList keylist;
-            zoneOn = new HashMap<KeyList,Float>();
-            zoneOff = new HashMap<KeyList,Float>();
-            HashMap<KeyList,Integer> denominator = new HashMap<KeyList,Integer>();   
-            System.out.println("fetching data from db");
+			System.out.println("fetching data from db");
             ResultSet result = stmt.executeQuery("(select id,timestamp,'sensor' AS type, '0' AS status from sensor_events) union (select id,timestamp,'switch' AS type,status from switch_events) order by timestamp;"); 
             System.out.println(" iterating resultset");
             while(result.next()){
@@ -211,7 +215,7 @@ public class DecisionMatrix{
                     lastevent = time;
                 }
                 else if(type.equals("switch")){
-                   temp = (result.getBoolean("status"))?zoneOn:zoneOff; 
+                   temp = (result.getBoolean("status"))?on:off; 
                     if(time>lastevent+Config.patternInterval){
                         eventlist = new EventList(true);
                         keylist = new KeyList(eventlist);
@@ -270,51 +274,27 @@ public class DecisionMatrix{
             
     }
     public  void printMatrices(){
-         System.out.println();
-            System.out.println("*********************************************"); 
-            System.out.println("printing matrix on");
-            System.out.println("*********************************************"); 
-            for(KeyList k : on.keySet()){
-                System.out.print("key: ");
-                k.printValues();
-                System.out.println("value: "+on.get(k)); 
-            }
-            System.out.println();
-            System.out.println();
-            System.out.println("*********************************************"); 
-            System.out.println("printing matrix off");
-            System.out.println("*********************************************"); 
+	System.out.println();
+		System.out.println("*********************************************"); 
+		System.out.println("printing matrix on");
+		System.out.println("*********************************************"); 
+		for(KeyList k : on.keySet()){
+			System.out.print("key: ");
+			k.printValues();
+			System.out.println("value: "+on.get(k)); 
+		}
+		System.out.println();
+		System.out.println();
+		System.out.println("*********************************************"); 
+		System.out.println("printing matrix off");
+		System.out.println("*********************************************"); 
 
-            for(KeyList k : off.keySet()){
-                System.out.print("key: ");
-                k.printValues();
-                System.out.println("value: "+off.get(k)); 
-            }
-            System.out.println();
-            if(Config.useZones){
-               System.out.println("*********************************************"); 
-            System.out.println("printing matrix zoneOn");
-            System.out.println("*********************************************"); 
-            for(KeyList k : zoneOn.keySet()){
-                System.out.print("key: ");
-                k.printValues();
-                System.out.println("value: "+zoneOn.get(k)); 
-            }
-            System.out.println();
-            System.out.println();
-            System.out.println("*********************************************"); 
-            System.out.println("printing matrix zoneOff");
-            System.out.println("*********************************************"); 
-
-            for(KeyList k : zoneOff.keySet()){
-                System.out.print("key: ");
-                k.printValues();
-                System.out.println("value: "+zoneOff.get(k)); 
-            }
-            System.out.println();
- 
-            } 
- 
-    }
+		for(KeyList k : off.keySet()){
+			System.out.print("key: ");
+			k.printValues();
+			System.out.println("value: "+off.get(k)); 
+		}
+		System.out.println();
+	} 
    
 }
