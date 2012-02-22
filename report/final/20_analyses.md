@@ -12,6 +12,51 @@
 * analysis should be general
 	* Should apply regardless of whether implementation is in hardware/software and regardless of programming language
 
+### Smart House Survey
+
+"If I have seen further it is by standing on the shoulders of giants" -- Isaac Newton
+
+The beginning of a good project, starts with a good survey of what already exists on in the field. What smart house solusions already exists, and what are their capabilities? What are the industry standarts, if any? This section won't be a exhaustive survey of all smart house solutions, but provide a representative selection of smart house solusions.
+
+First we're going to establish some classificasions of smart houses, to better compare the compare the different systems. All systems can contain switches, sensors and remote controlls, the difference is the functionally they provide, and how they operate.
+We distinguish between three types of systems:
+
+**Controllable houses**
+These are the simplest of the smart house solusions. Input devices like switches, remotes and sensors, can be setup to control output devices like appliance and dimmer switches, HVAC (Heating, Ventilation and Air Conditioning), etc. These solusion may also include macroes, e.g. where a single button may turn off all the lights in the home. 
+
+**Programmable houses**
+These solusions incorporate some degree of logical operations. They may be able to have scheduled task, e.g. turning down the thermostats when the users are at work. The behavoir in these systems have to be programmed by the manufaturer or the users, and if the user's needs change may have to be reprogrammed.
+
+**Intelligent houses**
+In these solusions some form of AI is able to control the home. They are capable of autonomously controlling the home, and are able to learn from the user's behavoir. 
+
+#### INSTEON
+
+Is targeted as at private homes, and is a controllable home solusion. Nodes in the network can communicate using either RF signals or home's existing electrical wiring. A standard array of devices are supported: 
+
+* Dimmers & switches 
+* HVAC
+* sprinklers
+* motion sensors
+* assorted bridge devices
+
+INSTEON does support external application to be run on PC connected through a bridge devices to the network, so it's technicly possible to make the system programmable or even intelligent. But no commercial products providing these fetures currently exists.
+
+#### Clipsal C-Bus
+
+Clipsal is targeted at large scale home controlled, install in such prominent buildings as the Sydney Opera house, Wembly Stadium and many more. Nodes communicatate over it's own separate wired connection, using the C-bus protocol. Each node has it's own microprocessor, which allows for distributed intelligence. Each node can also be individually programmed, and communicate over the shared bus. This allows unconventional devices like motors for stadium roofs and many other devices to be part of the network. Clipsal's C-bus is a programmable solution, which exels at being a scalable and flexible system. It can also be installed in a private home, but requiring it's own seperate wiring to be installed through out a home, can be a disadvantage compared to other systems. 
+
+#### LK IHC
+
+LK IHC is a programmable solution, targeted at private homes. It can be installed with a wired network, or wireless communication. 
+
+#### MIT House_n
+Intelligent
+#### A.H.R.I.
+Intelligent
+#### 
+
+
 ### observations and analysis of behavioral patterns
 what assumptions can we make about the users, related to their behavioral patterns
 
