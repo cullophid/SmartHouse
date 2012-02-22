@@ -51,13 +51,13 @@ Clipsal is targeted at large scale home controlled, install in such prominent bu
 
 #### LK IHC
 
-LK IHC is a programmable solution, targeted at private homes. It can be installed with a wired network, or wireless communication. 
+LK IHC is a programmable solution, targeted at private homes. It can be installed with a wired network, or wireless communication. This solusion tends to be build around simple switches, but with programmable scenarios, e.g. having a turn off all light button near the front door and the master bedroom. It is a modular system, where modules like wireless communication or alarms, can be added to the base installation. The plain vanilla implementation is a controllable system, the modules can provide programmable functionality to the system. LK IHC was per 2008 installed in nearly 30% of newly constructed building in denmark [^Mads og Sorens survey].
 
 #### MIT House_n
 Intelligent
+
 #### A.H.R.I.
 Intelligent
-#### 
 
 
 ### observations and analysis of behavioral patterns
@@ -82,8 +82,8 @@ In order for the system to learn how to mimic the users actions, it must first g
 
 We have chosen to create some restrictions when it comes to interaction with the user. From the start we decided that we do not want a system that requires cameras to be put up in private homes. Visual analysis could provide more detailed information about the users, and their behavior, but we find this to be an unnecessary invasion of privacy. Even if the video data is not stored in the system, the presence of cameras will give many people the feeling of being watched in their own homes. The second restriction that we want to impose is to use as little hardware as possible. There is two reasons for this:
 
-	1.  We want to keep the system as simple as possible from the consumers perspective. That means a system with as few components as possible.
-	2. Creating a system that analyses, and mimics user behavior will no matter how it is implemented have a lot of unknown variables, that are hard to predict. It will therefore be preferable to start out with a system that is stripped down to the bare necessaries, and then add components as the need for them arises.
+1. We want to keep the system as simple as possible from the consumers perspective. That means a system with as few components as possible.
+2. Creating a system that analyses, and mimics user behavior will no matter how it is implemented have a lot of unknown variables, that are hard to predict. It will therefore be preferable to start out with a system that is stripped down to the bare necessaries, and then add components as the need for them arises.
 
 The system should not require any direct interaction from the users. There has been a lot of change in software development the last few years, and on of the major focus areas has been on user interface design. The general theme is ease of use. You could say that the role of software is moving more towards being a servant, that a tool for the private user[^need-ref]. **elaborate on development in user interfaces**
 3. The system should not require any direct interaction from the users.
