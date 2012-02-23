@@ -19,6 +19,12 @@ _To err is human--and to blame it on a computer is even more so._ -- Robert Orbe
 * summarised output from the evaluation
 	*output should be explained
 	* provisional conclusions should be presented
+	
+
+![XKCD Correlation][correlation]
+
+[correlation]:img/correlation.png "Correlation"
+
 
 ### Correlation
 
