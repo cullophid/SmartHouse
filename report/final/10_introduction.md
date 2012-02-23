@@ -61,4 +61,3 @@ We want to create an intelligent smarthouse system, with a minimal setup require
 The system should be able to gradutally take over turning on and off the light. It should learn solely based on the user's normal behavoid, which patterns leads up to turning the light on or off, for how long should the light stay on. 
 
 Ideally this should lead to increased comfort for the users, by not having to manually control the light. Possebly also reduced energy consumption, by only having light on when the users need it. Also by being more active about turning light off where it isn't needed, where most users wouldn't bother to get up to turn it off.
-

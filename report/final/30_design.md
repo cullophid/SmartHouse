@@ -9,11 +9,18 @@
         * semantecs
 * The Design section should allow a skilled programmer to implement the system
 
+NOTES:
+the system has two steps.
+* first it analyzes collected user data. This is one way communication. The user acts and the system listens. this part is done, and have been tested. Training period. 
+*Now the system evolves by adjusting to the user. The System still collects data, as in step one, but itnow interacts with the house, and the user reacts to the system. The system evolves based on the reactions of the user. The system never stops evolving. 
+
+
+
 ### Sensor data
 
 In order to train the system, some sensor data is needed, but how to obtain it? A couple of options are available:
 
-1.  Physical data, setting up wireles motion sensors and switches in a home, and collect the sensor data in a database. 
+1.  Physical data, setting up wireless motion sensors and switches in a home, and collect the sensor data in a database. 
     1a      A full installation, where the wireless switches are able to turn the light on and off, and by extension also the system.
     1b      A placebo installation, where the wireless switches doesn't control the light, and merely collect training data.
 2.  Simulated data, sing a simulator to generate data.
@@ -50,10 +57,7 @@ In many cases to cover an entire room with sensors, the sensors end up overlappi
 
 [Take](#zoneimg) as an example, of three sensors which overlap a bit, and three paths past the sensors a, b and c. The paths b and c should only be observed as zone events by the system. While path a should look something like 1, zone 1 & 2, 2, zone 2 & 3, 3. depending on the cooldown of the sensors each event may be multiple times in the pattern.
 
-![Sensors with overlapping zones][Zone Img]
-
-[Zone Img]: img/zone.png "Zone image"
-
+![Sensors with overlapping zones](img/zone.png)
 ### Switch and sensor correlation
 
 It is beneficial to get a sense of which sensors are near which switches. And we have a lot of statistical data too look at. When a user turns a which on, it most likely because there isn't light where the user intends to be in the immediate future. So it's possible to get an idea of which sensors are near a which, by looking at the interval shortly after a switch is turned on.
