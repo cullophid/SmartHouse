@@ -25,3 +25,21 @@
 * What did we learn?
     -Present overall conclusions of the project
     - Outline ideas for future work
+    
+    
+## Awesome quotes
+
+lille liste af citater som godt kunne passe ind i rapporten
+
+
+_A lie told often enough becomes the truth._ -- Lenin
+
+_I am among those who think that science has great beauty. A scientist in his laboratory is not only a technician: he is also a child placed before natural phenomena which impress him like a fairy tale._ -- Marie Curie
+
+_Good judgment comes from experience, and experience comes from bad judgment._ -- Barry LePatner
+
+_Nothing can be so amusingly arrogant as a young man who has just discovered an old idea and thinks it is his own._ -- Sidney J. Harris
+
+_The more original a discovery, the more obvious it seems afterwards._ -- Arthur Koestler
+
+

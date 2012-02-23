@@ -1,6 +1,12 @@
 
 ## Evaluation
 
+_I have not failed. I've just found 10,000 ways that won't work._ -- Thomas A. Edison
+
+_Laughing at our mistakes can lengthen our own life. Laughing at someone else's can shorten it._ -- Cullen Hightower
+
+_To err is human--and to blame it on a computer is even more so._ -- Robert Orben
+
 * Evaluation should document that the goals have been achieved
 	* Functional requirements (i.e., testing)
 	* Non-functional requirements (e.g., performance)
