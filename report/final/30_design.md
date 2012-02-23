@@ -48,10 +48,13 @@ In many cases to cover an entire room with sensors, the sensors end up overlappi
 
 [Take](#zoneimg) as an example, of three sensors which overlap a bit, and three paths past the sensors a, b and c. The paths b and c should only be observed as zone events by the system. While path a should look something like 1, zone 1 & 2, 2, zone 2 & 3, 3. depending on the cooldown of the sensors each event may be multiple times in the pattern.
 
-![Sensors with overlapping zones](img/zone.png)
+![Sensors with overlapping zones][zoneimg]
+
+[zoneimg]: img/zone.png "Sensor zones"
+
 ### Switch and sensor correlation
 
-It is beneficial to get a sense of which sensors are near which switches. And we have a lot of statistical data too look at. When a user turns a which on, it most likely because there isn't light where the user intends to be in the immediate future. So it's possible to get an idea of which sensors are near a which, by looking at the interval shortly after a switch is turned on.
+It is beneficial to get a sense of which sensors are near which switches. And we have a lot of statistical data too look at. When a user turns a which on, it most likely because there isn't light where the user intends to be in the immediate future. So it is possible to get an idea of which sensors are near a which, by looking at the interval shortly after a switch is turned on.
 
 TODO maybe talk about that is is less likely that a user will turn on a switch on, and then not enter that room
 

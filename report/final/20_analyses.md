@@ -1,6 +1,14 @@
 
 ## Analysis
 
+QUOTES ON DATA:
+
+	“If you torture data long enough, it will confess!” -Ronald Coase 
+	
+		“Data is not information. Information is not knowledge. Knowledge is not understanding. Understanding is not wisdom.” - unknown source
+	
+	
+
 * present the word smarthouse
 * insert minisurvay.. (very superficial)
 
@@ -86,6 +94,16 @@ Finally we will make the assumption that the user only needs light in rooms wher
 
 
 ### BIIIB 
+
+VISION:
+
+### user interaction
+The system should not require any direct interaction from the users. There has been a lot of change in software development the last few years, and on of the major focus areas has been on user interface design. The general theme is ease of use. You could say that the role of software is moving more towards being a servant, that a tool for the private user[^need-ref]. **elaborate on development in user interfaces**
+3. The system should not require any direct interaction from the users.
+	There has been a lot of change in software development the last few years, and one of the major focus areas has been on user interface design. The general theme is ease of use. You could say that the role of software is moving more towards being a servant, that a tool for the private user [^need-ref]. **elaborate on development in user interfaces**
+[^need-ref]: Reference needed!
+
+
 The vision for our project is to create an intelligent home control system, that requires minimum configuration, and installation, while providing optimal power saving, and comfort. 
 One of the main problems with current home control solutions is that installing such a system is rather costly, and requires installation and configuration, which is rarely trivial. Some of the more advanced systems on the market, such as e.g. the LK IHC incorporates motion sensors, and timers in order to automatically turn on and off lights or various appliances. These systems will help the consumer save money over time, but they require  extensive configuration, or programming in order to function properly.
 Of all the before mentioned qualities mentioned in our vision for the system,  power saving is the most important. **insert data on power consumption of average household** This is an area where most modern home control systems falls short. Most systems are capable of providing only a modest reduction in power consumption, and some even increase the net consumption, by adding the cost of running the control system. We want our system to differ from others on this specific aspect. In our system, reducing power consumption is the number one priority.
@@ -97,7 +115,6 @@ Our approach to creating a house that is capable of predicting what the users wa
 * The system must analyze the data in order to build an action scheme on which it will base its actions
 * The system must be able control the house in real time, based on the action scheme.
 
-
 ### Gathering data on the users
 In order for the system to learn how to mimic the users actions, it must first gather information on how the user interacts with the house. The first question we must answer is: What data should we collect on our users?  In order for the system to effectively take over the users direct interactions with the house, we need to know two things. 
 
@@ -108,22 +125,30 @@ The first question can be answered by monitoring the users direct interactions w
 The second question is a lot more complex. We need to collect data that can help us determine if the conditions are right for performing a specific action. We could of cause quite literally look at the time the action is performed, and then use that as a trigger, but that requires that the users follow a very specific schedule.
 In order to get a more detailed picture of when an action is done, we must analyze it relative to what the user is doing at the time.  Since were focussing on lighting this can be done simply by tracking the users movements. Thereby we will determine when an action shall be done based on where the user is, and where he is heading.
 Perhaps the most obvious way of accomplishing this is by using cctv cameras. Using visual analysis is the most effective way of monitoring the user, as it will provide us with vast amounts of data on what the user is doing. By for example installing a fisheye camera in every room, and using motion tracking on the video data stream, we can determine exactly  where the user is, and what he is doing. While this is probably the solution that provides us with the most precise and detailed data, it does have one problem. Installing cameras in every room of the users house, is, in out opinion, an unnecessary  invasion of the users privacy. Even if the video data is not stored in the system, the presence of cameras will give many people the feeling of being watched in their own homes. 
-An other approach would be to use a beacon worn by the user that sends out a digital signal. The system could then use multilateration to pinpoint the exact location of the user. The bacon could be attached to the users keychain, incorporated into his cellphone, or our personal science fiction favorite injected under his skin. Like the camera approach this solution also has very high  precision in tracking the user through the house. However there is one issue that poses a big problem. Besides the point that the user might not always carry his keys or cellphone around, the main issue with this solution is scalability. By scalability we mean more specifically scalability of users. Even though we limited the system to one user for now, we want a system that can be scaled up to accommodate multiple users acting autonomously at the same time. Having to attach a beacon to every visitor coming into the house is gonna be an annoyance, and without it the house would not react to the visitor at all. The solution we chose is to use motion sensor. 
-
-We want to use as few hardware components as possible. There is two reasons for this:
+An other approach would be to use a beacon worn by the user that sends out a digital signal. The system could then use multilateration to pinpoint the exact location of the user. The bacon could be attached to the users keychain, incorporated into his cellphone, or our personal science fiction favorite injected under his skin. Like the camera approach this solution also has very high  precision in tracking the user through the house. However there is one issue that poses a big problem. Besides the point that the user might not always carry his keys or cellphone around, the main issue with this solution is scalability. By scalability we mean more specifically scalability of users. Even though we limited the system to one user for now, we want a system that can be scaled up to accommodate multiple users acting autonomously at the same time. Having to attach a beacon to every visitor coming into the house is gonna be an annoyance, and without it the house would not react to the visitor at all. 
+The solution we chose is to use motion sensors. While this solution does not provide nearly the same precision in determining the users location as using fish eye cameras or multilateration, motion sensors does come with a range of other advantages. Motion sensor is a very cheap solution, compared to installing cctv cameras, and will be far less invasive on the users privacy. The motion sensor solution will also work for any user in the house, and does not require the user to carry any beacon device like in the multilateration system.  The system could easily be expanded by several other types of sensors as well. An example of this could be to have pressure sensors in the furniture, so the system can determine if there is someone present, even if the motion sensors do not register them. There is several other examples of sensor technologies that could be incorporated in the system, and some of these will be discussed in the section Future work. For the moment we want to use as few hardware components as possible. There is two reasons for this:
 
 * We want to keep the system as simple as possible from the consumers perspective. That means a system with as few components as possible.
-* Creating a system that analyses, and mimics user behavior will no matter how it is implemented have a lot of unknown variables, that are hard to predict. It will therefore be preferable to start out with a system that is stripped down to the bare necessaries, and then add components as the need for them arises.
+* Creating a system that analyses, and mimics user behavior will no matter how it is implemented have a lot of unknown variables, that are hard to predict. It will therefore be preferable to start out with a system that is stripped down to the bare necessaries, and then add components as the need for them arises. 
 
+We have chosen not to inquire any information on the position of the motion sensors in the house. This means that the system does not know where each sensor is positioned, nor which other sensors are in the same room as it. This does make analyzing the data a lot more complicated, but we wanted to stick with the idea or minimizing the installation and configuration. This way the installation process can be boiled down to putting up the sensors, plugging in the system, and pressing "Start". 
 
-### user interaction
-The system should not require any direct interaction from the users. There has been a lot of change in software development the last few years, and on of the major focus areas has been on user interface design. The general theme is ease of use. You could say that the role of software is moving more towards being a servant, that a tool for the private user[^need-ref]. **elaborate on development in user interfaces**
-3. The system should not require any direct interaction from the users.
-	There has been a lot of change in software development the last few years, and one of the major focus areas has been on user interface design. The general theme is ease of use. You could say that the role of software is moving more towards being a servant, that a tool for the private user [^need-ref]. **elaborate on development in user interfaces**
-[^need-ref]: Reference needed!
+#### Storing the data
+Choosing to only monitor the light switches, and use motion sensors to track the user greatly simplifies the data collection.  Both the motion sensors and the switches generate events when they are triggered, and the system should simply store these events in a database. 
+An alternative to this is to have the system analyze the data live, which would eliminate the the need to store the event data. With this approach we do not have to store the events in the system, which over time could amount to a considerable amount of data. The problem is that if we should chose to modify the algorithms that analyze the data, we would effectively loose everything the system has learned so far. By storing the raw event data we can always recalculate a new action scheme based on the collected data. This solution leaves us with a lot more options later on.
+
 
 ### Analyzing the collected data
-Now that we have a lot of data on our users interactions with the house, we need to analyze the data in order for our systems AI to act on the collected data, or to be more specific: We need to create an action scheme, that the AI can use as a base for its decision making.
+
+
+Now that we have a lot of data on our users interactions with the house, we need to analyze the data in order for our systems AI to act on the collected data, or to be more specific: We need to create an action scheme, that the AI can use as a base for its decision making. The purpose of analyzing the data is to find which specific situations that requires the system to perform an action. Since the system does not know which sensors are located near which switches the system will have to learn these relations  based on the data collected. The simplest solution would simply be to have the system learn which switches and which sensors are located in the same room, and then create a "link" between these so that the motion sensors controls the light. This would result in what we have named the silvan[^silvan] system. The silvan system is simply having a motion sensor turn on the light when triggered, and then have a timer turn off the light if the sensor is not triggered for a set amount of time. 
+
+ [^silvan]: Danish DIY Hardware store chain. 
+
+
+
+
+
 
 ### Controlling the house
 The final task is to have the 
