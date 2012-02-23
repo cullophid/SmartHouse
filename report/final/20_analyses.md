@@ -17,7 +17,7 @@
 
 ### Smart House Survey
 
-"If I have seen further it is by standing on the shoulders of giants" -- Isaac Newton
+_If I have seen further, it is by standing on the shoulders of giants_ -- Isaac Newton
 
 The beginning of a good project, starts with a good survey of what already exists on in the field. What smart house solusions already exists, and what are their capabilities? What are the industry standarts, if any? This section won't be a exhaustive survey of all smart house solutions, but provide a representative selection of smart house solusions.
 
@@ -45,27 +45,30 @@ Is targeted as at private homes, and is a controllable home solusion. Nodes in t
 
 INSTEON does support external application to be run on PC connected through a bridge devices to the network, so it's technicly possible to make the system programmable or even intelligent. But no commercial products providing these fetures currently exists.
 
-[^http://www.insteon.net/]
+[#INSTEON]: INSTEON homepage http://www.insteon.net
 
 #### Clipsal C-Bus
 
 Clipsal is targeted at large scale home controlled, install in such prominent buildings as the Sydney Opera house, Wembly Stadium and many more. Nodes communicatate over it's own separate wired connection, using the C-bus protocol. Each node has it's own microprocessor, which allows for distributed intelligence. Each node can also be individually programmed, and communicate over the shared bus. This allows unconventional devices like motors for stadium roofs and many other devices to be part of the network. Clipsal's C-bus is a programmable solution, which exels at being a scalable and flexible system. It can also be installed in a private home, but requiring it's own seperate wiring to be installed through out a home, can be a disadvantage compared to other systems. 
 
-[^http://en.wikipedia.org/wiki/C-Bus_(protocol)]
+[#CBus]: wipedia article on the Clipsal C-Bus protocol http://en.wikipedia.org/wiki/C-Bus_(protocol)
 
 #### LK IHC
 
-LK IHC is a programmable solution, targeted at private homes. It can be installed with a wired network, or wireless communication. This solusion tends to be build around simple switches, but with programmable scenarios, e.g. having a turn off all light button near the front door and the master bedroom. It is a modular system, where modules like wireless communication or alarms, can be added to the base installation. The plain vanilla implementation is a controllable system, the modules can provide programmable functionality to the system. LK IHC was per 2008 installed in nearly 30% of newly constructed building in denmark [^Mads og Sorens survey].
+LK IHC is a programmable solution, targeted at private homes. It can be installed with a wired network, or wireless communication. This solusion tends to be build around simple switches, but with programmable scenarios, e.g. having a turn off all light button near the front door and the master bedroom. It is a modular system, where modules like wireless communication or alarms, can be added to the base installation. The plain vanilla implementation is a controllable system, the modules can provide programmable functionality to the system. LK IHC was per 2008 installed in nearly 30% of newly constructed building in denmark [#MSsurvey].
 
-[^http://www.lk.dk]
+[#LK IHC]: Lauritz Knudsens http://www.lk.dk
+ 
+[#MSsurvey]: Mads Ingwar and Soeren Kristian Jensen. IMM Smart House Project: a state of the art survey. [Cited April 2006]. 
+
+[#Gruber]: John Gruber.  Daring Fireball: Markdown. [Cited January 2006]. 
+  Available from <http://daringfireball.net/projects/markdown/>.
 
 #### MIT House_n
 
 The MIT House_n represent one of many smart environment, build by universities around the world. The smart environments are homes for one or more inhabitants, and are part of a living laboratory. The living lab part of House_n is called PlaceLab, and is a one-bedroom condominium, inhabited by volunteers for varying lengths of time. These homes are designed for multi-disciplinary studies, of people and their pattens and interactions with new technology and smart home environments. Being university run smart homes, the work comming out of these facilities tends to be proof of concepts. 
 
-[^http://architecture.mit.edu/house_n/placelab.html]
-
-TODO summery of the survey
+[#MIT House_n]: MIT House_n http://architecture.mit.edu/house_n/placelab.html
 
 The projects highlighted in this survey represent the solutions currently available or in development. There are many different controllable and programmable solusion commercially available, with INSTEON, Clipsal C-bus and LK IHC being some of the more widespread representative solusions. INSTEON being a simple controllable solusion, Clipsal C-bus and LK IHK are both programmable smart house solusions, but where LK IHC is designed for private homes, the Clipsal C-bus system is better suited for larger buildings. 
 

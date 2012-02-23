@@ -28,15 +28,6 @@ We chose to install a placebo system of wireless switches and sensors, to collec
 
 With the training data, we can then use a simulator to evaluate the training stage. In the training stage, there it doesn't take that much data, to evaluate that the system is learning properly. The data from the simulator is good enough to simulate simple movement patterns, to see which lights go on or off, as a simulated user moves from room to room. 
 
-### Simulator / AI interface
-
-TODO the choise between java and scala
-
-The simulator is implemented in scala, so an obvious choise would be to implement the AI in scala aswell. However initial fideling with the simulator in the initial stages of the project, showed that are programming speed was too slow to get any meaningful amount of work done. Scala works quite well with java, and being fairly experienced with java, we chose that language to implement the AI in, to increase our productivity. TODO horrible horrible description
-
-The simulator is implemented in scala, and the AI is intended to be implemented in java. Since both languages compiles to byte code, little to no interfacing is needed. Simply include each project's class files, in the other project compilation class path is sufficient to compile and run the project. Scala and Java work seemlessly together, calling scala methods from java and vice verca. 
-
-@ given the amout of times the word "implemented" is used... this probably shouldnt be in the design section
 
 ### Event patterns
 
