@@ -3,9 +3,9 @@
 
 QUOTES ON DATA:
 
-	“If you torture data long enough, it will confess!” -Ronald Coase 
+_If you torture data long enough, it will confess!_ -- Ronald Coase 
 	
-		“Data is not information. Information is not knowledge. Knowledge is not understanding. Understanding is not wisdom.” - unknown source
+_Data is not information. Information is not knowledge. Knowledge is not understanding. Understanding is not wisdom._ -- unknown source
 	
 	
 
