@@ -7,12 +7,18 @@
 * __Remember, the most important documentation of the implementation is comments in the code!__
 
 
+### Training data collection
+
+TODO Snak om hvor / hvordan vi har hængt sensorer op, med hensyn til dækning og zoner
+TODO brug af z-wave moduler
+TODO brug af z-wave api, SQL listener
+
+
+
+
 ### Simulator / AI interface
 
-The simulator is implemented in scala, so an obvious choise would be to implement the AI in scala aswell. However initial fideling with the simulator in the initial stages of the project, showed that are programming speed was too slow to get any meaningful amount of work done. Scala works quite well with java, and being fairly experienced with java, we chose that language to implement the AI in, to increase our productivity. TODO horrible horrible description
-
-The simulator is implemented in scala, and the AI is intended to be implemented in java. Since both languages compiles to byte code, little to no interfacing is needed. Simply include each project's class files, in the other project compilation class path is sufficient to compile and run the project. Scala and Java work seemlessly together, calling scala methods from java and vice verca. 
-
+We have a smart house simulator available, which will be extended with an AI module, implementing the features discussed in this report. The simulator is implemented in scala, so an obvious choise would be to implement the AI in scala aswell. However work with the simulator in the initial stages of the project, showed that our programming speed in scala was too slow to get any meaningful amount of work done. The scala language is build upon Java, and both languages compiles to bytecode in _.class_ files. A result of that is that Scala and Java interface very easily, and Scala code can invoke Java methods and vice versa. We chose to implement the AI in Java, working in a language we're well-versed in, to increase our productivity and quality of the code.
 
 ### Event patterns
 
@@ -23,13 +29,15 @@ EventList determines if the lastest event is part of the pattern, and determines
 
 The invariant of the EventList, is that after an event is added, the event list contains the current event patttern. This pattern can then be used to determine if any switches should be turned on or off.
 
-### Correlation correction
+### Correlation table
+
+#### Correlation correction
 
 When a switch is turned on, a timer is started for that switch. If a correlated sensor is triggered, it timer is extended. The duration is determined by the correlation between the sensor and the switch, higher correlation gives longer timeouts. If the switch is turned off, the timer is stopped. If the timer runsout a timeoutevent is triggered, and the light is turned off, and a new timer is started, to verify that no manual overrides occur. If the a manual override occurs (e.g. the user turns the switch on again, while the timer is running), the system is "punished". The system increases the timeout time, by increasing the correlation between the switch and the first sensor triggered after the switch was turned off. If no manual override occurs, the system was correct in turning off the light, and lowers the timeout time, by reducing the correlation between switch and the last seen sensor before the switch was turned off.
 
 These correlation corrections are stored in a separate table in the database. The correlation use for the timeout is based on both the statistical correlation, and these correlation corrections. The correlation corrections increase or reduce the correlation by 10 percent points. The system allows correlations higher than 100%, this gives the intended behavoir that a switch may have a longer timeout than what is default.
 
-### Correlation table generation
+#### Correlation statistical generation
 
 Correlation calculates the probability that a sensor is correlated a switch. It scans the database, and looks at the interval just after a switch is triggered. The sensors that triggered in the interval, are counted for that interval, in a way thay they're only counted once per switch event. If a multiple switch event are triggered in the same interval, the sensor events in the overlapping intervals should be counted for each of those switches. Having the number of times each switch is triggered, and each sensors triggeres with the given time interval, it's then calculated the probability that \\( sensor_i \\) is triggered, given that a \\( switch_j \\) was turned on atmost \\( \Delta t \\) ago. This gives the statistical correlation probability table. 
 
