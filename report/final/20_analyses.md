@@ -25,7 +25,7 @@ _Data is not information. Information is not knowledge. Knowledge is not underst
 
 ### Smart House Survey
 
-	"If I have seen further it is by standing on the shoulders of giants" -- Isaac Newton
+_"If I have seen further it is by standing on the shoulders of giants"_ -- Isaac Newton
 
 The beginning of a good project, starts with a good survey of what already exists on in the field. What smart house solutions already exists, and what are their capabilities? What are the industry standards, if any? This section won't be a exhaustive survey of all smart house solutions, but provide a representative selection of smart house solutions.
 
@@ -60,24 +60,21 @@ INSTEON does support external application to be run on PC connected through a br
 
 #### Clipsal C-Bus
 
-Clipsal is targeted at large scale home controlled, install in such prominent buildings as the Sydney Opera house, Wembly Stadium and many more. Nodes communicate over it's own separate wired connection, using the C-bus protocol. Each node has it's own microprocessor, which allows for distributed intelligence. Each node can also be individually programmed, and communicate over the shared bus. This allows unconventional devices like motors for stadium roofs and many other devices to be part of the network. Clipsal's C-bus is a programmable solution, which exels at being a scalable and flexible system. It can also be installed in a private home, but requiring it's own seperate wiring to be installed through out a home, can be a disadvantage compared to other systems. 
+Clipsal is targeted at large scale home controlled, install in such prominent buildings as the Sydney Opera house, Wembly Stadium and many more. Nodes communicate over it's own separate wired connection, using the C-bus protocol. Each node has it's own microprocessor, which allows for distributed intelligence. Each node can also be individually programmed, and communicate over the shared bus. This allows unconventional devices like motors for stadium roofs and many other devices to be part of the network. Clipsal's C-bus is a programmable solution, which exels at being a scalable and flexible system. It can also be installed in a private home, but requiring it's own seperate wiring to be installed through out a home, can be a disadvantage compared to other systems. [#CBus]
 
-[#CBus]: wipedia article on the Clipsal C-Bus protocol http://en.wikipedia.org/wiki/C-Bus_(protocol)
+[#CBus]: Wipedia article on the Clipsal C-Bus protocol http://en.wikipedia.org/wiki/C-Bus_(protocol)
 
 #### LK IHC
 
-LK IHC is a programmable solution, targeted at private homes. It can be installed with a wired network, or wireless communication. This solusion tends to be build around simple switches, but with programmable scenarios, e.g. having a turn off all light button near the front door and the master bedroom. It is a modular system, where modules like wireless communication or alarms, can be added to the base installation. The plain vanilla implementation is a controllable system, the modules can provide programmable functionality to the system. LK IHC was per 2008 installed in nearly 30% of newly constructed building in denmark [#MSsurvey].
+LK IHC is a programmable solution, targeted at private homes. It can be installed with a wired network, or wireless communication. This solusion tends to be build around simple switches, but with programmable scenarios, e.g. having a turn off all light button near the front door and the master bedroom. It is a modular system, where modules like wireless communication or alarms, can be added to the base installation. The plain vanilla implementation is a controllable system, the modules can provide programmable functionality to the system. LK IHC was per 2008 installed in nearly 30% of newly constructed building in denmark[#MSsurvey].[#LK IHC]
 
 [#LK IHC]: Lauritz Knudsens http://www.lk.dk
  
-[#MSsurvey]: Mads Ingwar and Soeren Kristian Jensen. IMM Smart House Project: a state of the art survey. [Cited April 2006]. 
-
-[#Gruber]: John Gruber.  Daring Fireball: Markdown. [Cited January 2006]. 
-  Available from <http://daringfireball.net/projects/markdown/>.
+[#MSsurvey]: Mads Ingwar and Soeren Kristian Jensen. IMM Smart House Project: a state of the art survey. 2008.
 
 #### MIT House_n
 
-The MIT House_n represent one of many smart environment, build by universities around the world. The smart environments are homes for one or more inhabitants, and are part of a living laboratory. The living lab part of House_n is called PlaceLab, and is a one-bedroom condominium, inhabited by volunteers for varying lengths of time. These homes are designed for multi-disciplinary studies, of people and their pattens and interactions with new technology and smart home environments. Being university run smart homes, the work comming out of these facilities tends to be proof of concepts. 
+The MIT House_n represent one of many smart environment, build by universities around the world. The smart environments are homes for one or more inhabitants, and are part of a living laboratory. The living lab part of House_n is called PlaceLab, and is a one-bedroom condominium, inhabited by volunteers for varying lengths of time. These homes are designed for multi-disciplinary studies, of people and their pattens and interactions with new technology and smart home environments. Being university run smart homes, the work comming out of these facilities tends to be proof of concepts. [#MIT House_n]
 
 [#MIT House_n]: MIT House_n http://architecture.mit.edu/house_n/placelab.html
 
@@ -140,7 +137,7 @@ An alternative to this is to have the system analyze the data live, which would 
 
 ### Analyzing the collected data
 
-	“If you torture data long enough, it will tell you what you want!” -Ronald Coase 
+_"If you torture data long enough, it will tell you what you want!"_ -- Ronald Coase 
 	
 Now that we have a lot of data on our users interactions with the house, we need to analyze the data in order for our systems AI to act on the collected data, or to be more specific: We need to create an action scheme, that the AI can use as a base for its decision making. The purpose of analyzing the data is to find which specific situations that requires the system to perform an action. Since the system does not know which sensors are located near which switches the system will have to learn these relations  based on the data collected. The simplest solution would simply be to have the system learn which switches and which sensors are located in the same room, and then create a "link" between these so that the motion sensors controls the light. This would result in what we have named the silvan[^silvan] system. The silvan system is simply having a motion sensor turn on the light when triggered, and then have a timer turn off the light if the sensor is not triggered for a set amount of time. The main problem with this kind of system is that if the user does not trigger a motion sensor regularly, the light will turn off when the user is still in the room. This is commonly a problem in a room like the living room where the user will likely spend an extended amount of time sitting still. This problem can be addressed by extending the lights timeout time, which brings us to the second problem. If the user is merely passing by a sensor, the light will still be turned on for its full duration. This greatly reduces the effectiveness of the system from a power saving point of view. A better solution is to attempt to identify the users behavior leading up to a switch event. Since we only use motions sensors to track the users movements, these sensor events will form the basis for our data analysis. We could simply look at what sensor was triggered right before a switch was activated, but this would result in a system much like the silvan system described above. If we instead look at a series of sensor events leading up to a switch event, we will get a much more complex picture of what the user is doing. Since the switches in the house is located in fixed positions around the house, these movement patterns should repeat them selves relatively often. The movement patterns that lead up to a switch being turned off, will most likely also differ from a pattern leading up to a switch being turned on, since the user will be either entering or exiting a room. Once we have analyzed the data and identified the movement patterns related to a switch event, we need to create an action scheme that the system can base its decision making on. That means we have to organize the analyzed data in a way so we can easily look up a specific pattern, an see whether it should trigger a switch action. Unlike the data collection analyzing the data does not have the same strict time constraints. Since the action scheme will be based on data collected over an extended period, the action scheme does not need to be updated too frequently. We have chosen to update the action scheme on a daily basis. This is a somewhat arbitrarily chosen time interval. We want the decisions of the system  to be backed by enough data, so that an hourly update will not be noticeable. At the same time we still want the system to be able to adjust it self to changes in the users behavior, which is problematic if the update only occurs once every month.
 
