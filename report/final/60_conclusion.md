@@ -31,9 +31,6 @@
 
 lille liste af citater som godt kunne passe ind i rapporten
 
-
-_A lie told often enough becomes the truth._ -- Lenin
-
 _I am among those who think that science has great beauty. A scientist in his laboratory is not only a technician: he is also a child placed before natural phenomena which impress him like a fairy tale._ -- Marie Curie
 
 _Good judgment comes from experience, and experience comes from bad judgment._ -- Barry LePatner
