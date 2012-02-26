@@ -440,7 +440,7 @@ Take (\autoref{zoneimg}) as an example, of three sensors which overlap a bit, an
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=502pt,height=296pt]{figures/zone.png}
+\includegraphics[keepaspectratio,width=\textwidth,height=0.75\textheight]{figures/zone.png}
 \caption{Sensors with overlapping zones}
 \label{zoneimg}
 \end{figure}
@@ -506,7 +506,7 @@ switch m ($sw_m)$&$P(se_1 | sw_m, \Delta t)$&$P(se_2 | sw_m, \Delta t)$&{\ldots}
 In order to collect training data, we installed wireless switches and PIR[\^{}pir] sensors in a home (\autoref{hellebaekgade}). The placebo switches were placed next to the normal switches controlling the light for each room, in all cases being the switch closest to the entrance. Each room have one or more PIR sensors, averaging 2 per room, with one lest in the restroom and an additional sensor in the living room. When placing the sensors, the system can obviouly only laern from behavoir in areas covered by sensors. So sensors should provide as close to full coverage as possible, with special emphasis on making sure the entrances are covered.
 
 [\^{}pir] Passive infrared sensors.
-\includegraphics[width=602pt,height=1102pt]{figures/hellebaekgade3.png}
+\includegraphics[keepaspectratio,width=\textwidth,height=0.75\textheight]{figures/hellebaekgade3.png}
 
 
 The wireless nodes we have available communicate using the Zensus Z-Wave protocol. We setup a mini PC with a Z-Wave serial device, and configured all PIR sensor and switches to send notifications to the PC, when they where activated. The PC ran a Z-Wave API, which we added a listener to, so that sensor and switch event was logged to a SQL database.
@@ -647,7 +647,7 @@ To received the timeout events the SmartHouse class implements TimeoutListener.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=459pt,height=185pt]{figures/correlation.png}
+\includegraphics[keepaspectratio,width=\textwidth,height=0.75\textheight]{figures/correlation.png}
 \caption{XKCD Correlation}
 \label{correlation}
 \end{figure}

@@ -23,7 +23,7 @@ _"To err is human--and to blame it on a computer is even more so."_ -- Robert Or
 
 ![XKCD Correlation][correlation]
 
-[correlation]:figures/correlation.png "Correlation" width=459px height=185px
+[correlation]:figures/correlation.png "Correlation"
 
 
 ## Correlation
@@ -47,7 +47,7 @@ Before evaluating the correlation probability table, some goals should be establ
 The [correlation table][ctable data] is based on collected data from the testing environment. The first criteria holds, that all sensors have the highest correlation with the switch in the room they're in.
 Most (but not all) the correlation probability between sensors and switches in the same room are above 40%. All correlations between for switches and sensors not in the same room are below 40%. Three sensors have correlations lower than 40% to the switch in the room they're in, and one of them as low as 12%. Two of the three sensors in the living room, not only have correlations below 40%, but correlations below those of sensors in the adjecent hallway. As can be seen in [the overview of the appartment](#Hellebaekgade), the sensors 22 and 25 are located in the far end of the rooms from the switch and doorway. Since the calculated correlation probabilities are based on the time interval right after the light is turned on, it makes sense that these sensor, relatively far away from the switches ends up with a lower correlation. 
 
-[Hellebaekgade]: figures/hellebaekgade3.png "Hellebaekgade image" width=602px height=1102px
+[Hellebaekgade]: figures/hellebaekgade3.png "Hellebaekgade image"
 
 
 Sensor 23 is a bit more interesting, since it located fairly close to the doorway. Having one of the authors of this thesis also being the guinea pig running around generating sensor data, gives a unique insight why some sensor patterns look the way they do. Sensor 24 is located by a desk, and 23 next to a sofa. So in this case different user activities triggeres different sensor, in this case sitting on the sofa and watch TV, or go the the desk and work. 
