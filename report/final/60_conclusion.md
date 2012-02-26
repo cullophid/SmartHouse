@@ -13,8 +13,8 @@
 
 ### writing good conclusions
 
-*what was the problem?
-    - Remid the reader of the context and project goals
+* What was the problem?
+    - Remind the reader of the context and project goals
 * What was the proposed solution?
     -Remind the reader of the proposed solution
         -what was done in the project
