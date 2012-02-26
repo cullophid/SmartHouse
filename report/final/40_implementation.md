@@ -9,8 +9,9 @@
 
 ### Training data collection
 
-In order to collect training data, we installed wireless switches and PIR sensors in a [home](#Hellebaekgade). The placebo switches were placed next to the normal switches controlling the light for each room, in all cases being the switch closest to the entrance. Each room have one or more PIR sensors, averaging 2 per room, with one lest in the restroom and an additional sensor in the living room. When placing the sensors, the system can obviouly only laern from behavoir in areas covered by sensors. So sensors should provide as close to full coverage as possible, with special emphasis on making sure the entrances are covered.
+In order to collect training data, we installed wireless switches and PIR[^pir] sensors in a [home](#Hellebaekgade). The placebo switches were placed next to the normal switches controlling the light for each room, in all cases being the switch closest to the entrance. Each room have one or more PIR sensors, averaging 2 per room, with one lest in the restroom and an additional sensor in the living room. When placing the sensors, the system can obviouly only laern from behavoir in areas covered by sensors. So sensors should provide as close to full coverage as possible, with special emphasis on making sure the entrances are covered.
 
+[^pir] Passive infrared sensors.
 ![Map of the testing environment with sensor and switch locations][Hellebaekgade]
 
 The wireless nodes we have available communicate using the Zensus Z-Wave protocol. We setup a mini PC with a Z-Wave serial device, and configured all PIR sensor and switches to send notifications to the PC, when they where activated. The PC ran a Z-Wave API, which we added a listener to, so that sensor and switch event was logged to a SQL database.
@@ -35,7 +36,7 @@ We have a smart house simulator available, which will be extended with an AI mod
 ### Decision table / matrix / markov / thingie...
 
 Antallet af gange den klasse har skiftet navn... I've lost count... 
-TODO Andy, you deal with it
+<TODO Andy, you deal with it>
 
 ### Event patterns
 
@@ -54,7 +55,7 @@ Correlation calculates the probability that a sensor is correlated a switch. It 
 
 To this the correlation confirmations in the database, is then added. Each row in the database table contains the accululated correlation correction for that switch / sensor pair. The correlation correction is simply added to the correlation based on the statistical data.
 
-The resulting correlation table is allowed to have probabilities above 100%, which is inteded as destribed in **TODO**
+The resulting correlation table is allowed to have probabilities above 100%, which is inteded as destribed in <TODO add reference>
 
 #### Correlation correction
 

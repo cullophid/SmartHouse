@@ -1,6 +1,8 @@
 
 ## Analysis
 
+<TODO TEST TEST TEST>
+
 QUOTES ON DATA:
 
 _If you torture data long enough, it will confess!_ -- Ronald Coase 
@@ -27,26 +29,35 @@ _Data is not information. Information is not knowledge. Knowledge is not underst
 
 _"If I have seen further it is by standing on the shoulders of giants"_ -- Isaac Newton
 
-The beginning of a good project, starts with a good survey of what already exists on in the field. What smart house solutions already exists, and what are their capabilities? What are the industry standards, if any? This section won't be a exhaustive survey of all smart house solutions, but provide a representative selection of smart house solutions.
+The beginning of any good project starts with a survey of what already exists in the field. Which smart house solutions already exist, and what are their capabilities? What are the industry standards, if any? This section will provide a representative selection of smart house solutions. However, it will not be an exhaustive survey of all smart house solutions.
 
-First we're going to establish some classifications of smart houses, to better compare the different systems. All systems can contain switches, sensors and remote controls, the difference is the functionally they provide, and how they operate.
-We distinguish between three types of systems:
+First we will establish some basic classifications of smart houses, to better compare the different systems. All systems can contain switches, sensors and remote controls, the difference is the functionally they provide, and how they operate.
 
-**Controllable houses**
+We distinguish between three types of systems, which are derived from the taxonomies presented in Boguslaw Pilich's Master Thesis [#Boguslaw] :
+
+[#Boguslaw]: Boguslaw Pilich. Engineering Smart Houses, DTU IMM MSc Thesis Nr. 49/2004
+
+
+#### Controllable houses
+
 These are the simplest of the smart house solutions. Input devices like switches, remotes and sensors, can be setup to control output devices like appliance and dimmer switches, HVAC (Heating, Ventilation and Air Conditioning), etc. These solution may also include macros, e.g. where a single button may turn off all the lights in the home. 
 
-**Programmable houses**
-These solutions incorporate some degree of logical operations. They may be able to have scheduled task, e.g. turning down the thermostats when the users are at work. The behavior in these systems have to be programmed by the manufacturer or the users, and if the user's needs change may have to be reprogrammed.
+#### Programmable houses
+These solutions incorporate some degree of logical operations, like having motions sensors not turn on the lights, if lux sensors are above a threshold. They may be able to have scheduled task, e.g. turning down the thermostats during stadard work-hours. The behavior of these systems have to be programmed by the manufacturer or the users. Consequetly, changes in user needs require the system to be reprogrammed.
 
-**Intelligent houses**
-In these solutions some form of artificial intelligence or AI is able to control the home. In computer science the term AI is used very loosely. I our case we will define an intelligent house, as a system that is capable of machine learning. That means that the system is capable of evolving behavioral patterns based on empirical data[^wikipedia-machine-learning].
+#### Intelligent houses
+In these solutions some form of artificial intelligence or AI is able to control the home. In computer science the term AI is used very loosely. I our case we will define an intelligent house, as a system that is capable of machine learning. That means that the system is capable of evolving behavioral patterns based on empirical data. [#wikipedia-machine-learning]
 
 
-[^wikipedia-machine-learning]:(http://en.wikipedia.org/wiki/Machine_learning)
+[#wikipedia-machine-learning]: Wikipedia article on machine learning. http://en.wikipedia.org/wiki/Machine_learning
 
-#### INSTEON
+The solutions presented, are some of the most widespread smart house solutions, and represent the three different types of systems: Controllable, Programmable and Intellight houses.
 
-Is targeted as at private homes, and is a controllable home solution. Nodes in the network can communicate using either RF signals or home's existing electrical wiring. A standard array of devices are supported: 
+<TODO hurtig conclusion om hver løsning, hvad synes vi om dem>
+
+**INSTEON**
+
+INSTEON is a controllable home control system, targeted at private homes. Nodes in the network can communicate using either RF signals or home's existing electrical wiring. A standard array of devices are supported: 
 
 * Dimmers & switches 
 * HVAC
@@ -54,31 +65,35 @@ Is targeted as at private homes, and is a controllable home solution. Nodes in t
 * motion sensors
 * assorted bridge devices
 
-INSTEON does support external application to be run on PC connected through a bridge devices to the network, so it's technically possible to make the system programmable or even intelligent. But no commercial products providing these features currently exists.
+INSTEON supports external application to be run on PC connected through a bridge devices to the network. By this logic it is  technically possible to make the system programmable or even intelligent. However no commercial products providing these features currently exists.
 
-[#INSTEON]: INSTEON homepage http://www.insteon.net
+[#INSTEON]: INSTEON. http://www.insteon.net
 
-#### Clipsal C-Bus
+INSTEON's solution is fairly widespread in the US, and is a successor to the Redoak X10 system, and is compatable with it's product, making it one o
 
-Clipsal is targeted at large scale home controlled, install in such prominent buildings as the Sydney Opera house, Wembly Stadium and many more. Nodes communicate over it's own separate wired connection, using the C-bus protocol. Each node has it's own microprocessor, which allows for distributed intelligence. Each node can also be individually programmed, and communicate over the shared bus. This allows unconventional devices like motors for stadium roofs and many other devices to be part of the network. Clipsal's C-bus is a programmable solution, which exels at being a scalable and flexible system. It can also be installed in a private home, but requiring it's own seperate wiring to be installed through out a home, can be a disadvantage compared to other systems. [#CBus]
+**Clipsal C-Bus**
 
-[#CBus]: Wipedia article on the Clipsal C-Bus protocol http://en.wikipedia.org/wiki/C-Bus_(protocol)
+Clipsal is targeted at large scale home control. The system is install in such prominent buildings as the Sydney Opera house, Wembly Stadium and many more. Nodes communicate over it's own separate wired network, using the C-bus protocol. Each node has it's own microprocessor, which allows for distributed intelligence. Each node can also be individually programmed, and communicate over the shared bus. This allows unconventional devices like motors for stadium roofs and many other devices to be part of the network. 
 
-#### LK IHC
+Clipsal's C-bus is a programmable solution, which exels at being a scalable and flexible system. It can also be installed in a private home. However, compared to other systems the rquirement of a separate wiring through-out a home can be a disadvantage. [#CBus]
 
-LK IHC is a programmable solution, targeted at private homes. It can be installed with a wired network, or wireless communication. This solusion tends to be build around simple switches, but with programmable scenarios, e.g. having a turn off all light button near the front door and the master bedroom. It is a modular system, where modules like wireless communication or alarms, can be added to the base installation. The plain vanilla implementation is a controllable system, the modules can provide programmable functionality to the system. LK IHC was per 2008 installed in nearly 30% of newly constructed building in denmark[#MSsurvey].[#LK IHC]
+[#CBus]: Wipedia article on the Clipsal C-Bus protocol. http://en.wikipedia.org/wiki/C-Bus_(protocol)
 
-[#LK IHC]: Lauritz Knudsens http://www.lk.dk
+**LK IHC**
+
+LK IHC is targeted at private homes. It can be installed with a wired network, or using wireless communication. This solusion tends to be build around simple switches, but with programmable scenarios, e.g. having a switch near the front door and the master bedroom that turns off all lights. It is a modular system, where modules like wireless communication or alarms, can be added to the base installation. The basic LK IHC installation is a controllable system. However, the modules can provide programmable functionality to the system, i.e. motion sensors normally control the lights, but if the alarm system is activated, the system calls 911. LK IHC was per 2008 installed in nearly 30% of newly constructed building in denmark.[#MSsurvey]  [#LK IHC]
+
+[#LK IHC]: Lauritz Knudsens. http://www.lk.dk
  
 [#MSsurvey]: Mads Ingwar and Soeren Kristian Jensen. IMM Smart House Project: a state of the art survey. 2008.
 
-#### MIT House_n
+**MIT House_n**
 
 The MIT House_n represent one of many smart environment, build by universities around the world. The smart environments are homes for one or more inhabitants, and are part of a living laboratory. The living lab part of House_n is called PlaceLab, and is a one-bedroom condominium, inhabited by volunteers for varying lengths of time. These homes are designed for multi-disciplinary studies, of people and their pattens and interactions with new technology and smart home environments. Being university run smart homes, the work comming out of these facilities tends to be proof of concepts. [#MIT House_n]
 
-[#MIT House_n]: MIT House_n http://architecture.mit.edu/house_n/placelab.html
+[#MIT House_n]: MIT House_n. http://architecture.mit.edu/house_n/placelab.html
 
-The projects highlighted in this survey represent the solutions currently available or in development. There are many different controllable and programmable solution commercially available, with INSTEON, Clipsal C-bus and LK IHC being some of the more widespread representative solutions. INSTEON being a simple controllable solution, Clipsal C-bus and LK IHK are both programmable smart house solutions, but where LK IHC is designed for private homes, the Clipsal C-bus system is better suited for larger buildings. 
+The projects shown in this survey represent the solutions currently available or in development. There are many different controllable and programmable solution commercially available, with INSTEON, Clipsal C-bus and LK IHC being some of the more widespread representative solutions. INSTEON being a simple controllable solution, Clipsal C-bus and LK IHK are both programmable smart house solutions, but where LK IHC is designed for private homes, the Clipsal C-bus system is better suited for larger buildings. 
 
 MIT's House_n in this survey represent that truly intelligent smart houses only exists in demonstration environments and as proofs of concept, and are not yet widely available on the commercial market.
 
@@ -144,9 +159,11 @@ Now that we have a lot of data on our users interactions with the house, we need
 [^silvan]: Danish building material retail-chain. 
 
 ### Controlling the house
-After we have collected the data and analyzed it the final task is to have the system control the house in real time using the action schemes created based on the analyzed data. The system must constantly monitor the user, and attempt to recognize  any of the patterns in the activation scheme.
+
+After we have collected the data and analyzed it the final task is to have the system control the house in real time using the action schemes created based on the analyzed data. The system must constantly monitor the user, and attempt to recognize any of the patterns in the activation scheme.
 
 ### Testing data
+
 **this must either be rewriteen to ba a conclusion on the analysis, or moved to an other section**
 In order to test and evaluate the implementation, we need some data to train the system. Ideally the implementation would complete early enough to not only collect data from the different stages of the system: untrained, learning and eventually stable stage. The untrained stage where the system is running, but it haven't yet collected enough data to make intelligent decisions. The learning stage where there's enough data to attempt to manipulate the switches of the home, which may or may not be correct, and the system will attempt to learn from it's successes or failures. And after the system has been in the learning stage, it should stabilize (assuming the users doesn't change their routines). Since the system should take over the control of the switches, the lack of new user input could potentially lead to unlearning correct behavior, returning to the learning stage.
 
