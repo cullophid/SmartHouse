@@ -58,17 +58,34 @@ __short answers__
 
 We want to create an intelligent smarthouse system, with a minimal setup requirement, to control the lighting. A system which after switches and sensors are physically installed, doesn't require further setup or technical expertise from the user. The system shouldn't require any direct user interaction.
 
-The system should be able to gradutally take over turning on and off the light. It should learn solely based on the user's normal behavoid, which patterns leads up to turning the light on or off, for how long should the light stay on. 
+The system should be able to gradually take over turning on and off the light. It should learn solely based on the user's normal behavior, which patterns leads up to turning the light on or off, for how long should the light stay on. 
 
-Ideally this should lead to increased comfort for the users, by not having to manually control the light. Possebly also reduced energy consumption, by only having light on when the users need it. Also by being more active about turning light off where it isn't needed, where most users wouldn't bother to get up to turn it off.
+Ideally this should lead to increased comfort for the users, by not having to manually control the light. Possibly also reduced energy consumption, by only having light on when the users need it. Also by being more active about turning light off where it isn't needed, where most users wouldn't bother to get up to turn it off.
 
-### System limitations, assumptions and project scope
+<this is not a finished product, but a proof of concept>
+<minimum installation and configuration>
+<minimum user interaction>
+<we want to collect real life data that we can analyze>
 
-Before we start to analyze what makes a good home control system we will outline which  limitations, we will impose on the system. Some of these limitations are born out of personal interest , and some are there to limit the scope of the project. 
+**user interaction**
+<find a way to include this section either here or in the analysis>
+The system should not require any direct interaction from the users. There has been a lot of change in software development the last few years, and on of the major focus areas has been on user interface design. The general theme is ease of use. You could say that the role of software is moving more towards being a servant, that a tool for the private user[^need-ref]. 
+<elaborate on development in user interfaces >
 
-To  limit the scope of the project, we focus on controlling the lighting.This means that we will not go into appliances or house features such as heating, ventilation, or hot water. These are all areas where the system will be equally beneficial . However, modifying the system to incorporate these elements, would not require any major changes to the fundamental design of the core system. It would rather  require a lot of  time consuming implementation work. 
+There has been a lot of change in software development the last few years, and one of the major focus areas has been on user interface design. The general theme is ease of use. You could say that the role of software is moving more towards being more a servant, than a tool for the private user [^need-ref]. elaborate on development in user interfaces [^need-ref]: Reference needed!
 
-We assume that people who have home control systems don't have windows . At the very least we will work under the assumption that the lighting conditions outside a room does not affect the conditions inside. A room with the lights turned on is light, and a room with the lights turned off is dark. This is simply to eliminate outside factors such as varying lighting conditions.Normally if there is enough natural lighting in a room, the user will not want the artificial light turned on. 
+
+
+
+### Project focus , assumptions and scope
+
+<change the tone of the section. define focus areas instead of limitations >
+
+Before we start to analyze what makes a good home control system we will outline which  limitations, we will impose on the system. Some of these limitations are born out of personal interest<bad formulation!> , and some are there to limit the scope of the project. 
+
+To  limit the scope of the project, we focus on controlling the lighting. This means that we will not go into appliances or house features such as heating, ventilation, or hot water. These are all areas where the system will be equally beneficial . However, modifying the system to incorporate these elements, would not require any major changes to the fundamental design of the core system. It would rather  require a lot of  time consuming implementation work. <BS we focus on lighting to get deeper>
+
+We assume that people who have home control systems don't have windows . At the very least we will work under the assumption that the lighting conditions outside a room does not affect the conditions inside. A room with the lights turned on is light, and a room with the lights turned off is dark. This is simply to eliminate outside factors such as varying lighting conditions.Normally if there is enough natural lighting in a room, the user will not want the artificial light turned on. <reevaluate>
 
 The people in the house is trapped in "Groundhog Day"[#ramis:1993][], or more precisely, Groundhog hour. We will assume that the users behavior and requirements does not change depending on date nor  time of day. 
 <TODO:Do we assume this.. or can we later explain that this assumption is unneccesarry!!???>
