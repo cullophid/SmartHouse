@@ -1,9 +1,9 @@
 
-## Introduction
+# Introduction
 
 this is the the intro baby
 
-### Scope
+## Scope
 
 __Define Context__
 
@@ -18,7 +18,7 @@ __Define Context__
   * what sub-problems will be considered
   * what sub-problems will _not_ be considered
 
-### Goals
+## Goals
 
 __Identify Goals__
 
@@ -43,7 +43,7 @@ __short answers__
 
 
 
-### writing a good introduction
+## writing a good introduction
 
 * what is the problem
     - explain the context of the project and identify goals
@@ -77,7 +77,7 @@ There has been a lot of change in software development the last few years, and o
 
 
 
-### Project focus , assumptions and scope
+## Project focus , assumptions and scope
 
 <change the tone of the section. define focus areas instead of limitations >
 

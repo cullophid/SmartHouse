@@ -80,7 +80,7 @@ public class SmartHouse implements TimeoutListener {
 
 	/*
 	 * Method called when a sensorevent occurs in the simulator
-	 * @author Andreas mÃ¸ller & David Emil Lemvigh
+	 * @author Andreas møller & David Emil Lemvigh
 	 */
 	public void sensorEvent(int sensorId){
 		try{
@@ -112,7 +112,7 @@ public class SmartHouse implements TimeoutListener {
 	}
 	/*
 	 * Method called when a switch event occurs in the simulator
-	 * @author Andreas MÃ¸ller & David Emil Lemvigh
+	 * @author Andreas Møller & David Emil Lemvigh
 	 */
 	public void switchEvent(int switchId, int status){
 		try{

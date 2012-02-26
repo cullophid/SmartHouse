@@ -19,7 +19,7 @@ public class DecisionMatrix{
     public ArrayList<Integer> switches,sensors;
     /**
      * temporary main method for testing puposes
-     * @author Andreas MÃ¸ller & David Emil Lemvigh
+     * @author Andreas Møller & David Emil Lemvigh
      **/
     public static void main(String[] args){
         Config.loadConfig();
@@ -27,7 +27,7 @@ public class DecisionMatrix{
     }
     /**
      * Class constructor
-     * @author Andreas MÃ¸ller & David Emil Lemvigh
+     * @author Andreas Møller & David Emil Lemvigh
      **/
     public DecisionMatrix(){
         connect2DB();
@@ -48,7 +48,7 @@ public class DecisionMatrix{
     /**
      *
      * Connects to the database, and initiates the statement object to be used later
-     * @author Andreas MÃ¸ller & David Emil Lemvigh
+     * @author Andreas Møller & David Emil Lemvigh
      **/
     public void connect2DB(){
          try {
@@ -74,7 +74,7 @@ public class DecisionMatrix{
     }
     /**
      * generates the basic tables on / off
-     * @author Andreas MÃ¸ller & David Emil Lemvigh
+     * @author Andreas Møller & David Emil Lemvigh
      * */
     public void generateBasicMatrices(){
         System.out.println("generating basic matrices");
