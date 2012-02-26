@@ -52,7 +52,7 @@ In many cases to cover an entire room with sensors, the sensors end up overlappi
 
 ![Sensors with overlapping zones][zoneimg]
 
-[zoneimg]: figures/zone.png "Sensor zones"
+[zoneimg]: figures/zone.png "Sensor zones" width=502px height=296px
 
 ## Switch and sensor correlation
 
