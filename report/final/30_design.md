@@ -12,7 +12,9 @@
 NOTES:
 the system has two steps.
 * first it analyzes collected user data. This is one way communication. The user acts and the system listens. this part is done, and have been tested. Training period. 
-*Now the system evolves by adjusting to the user. The System still collects data, as in step one, but itnow interacts with the house, and the user reacts to the system. The system evolves based on the reactions of the user. The system never stops evolving. 
+* Now the system evolves by adjusting to the user. The System still collects data, as in step one, but it now interacts with the house, and the user reacts to the system. The system evolves based on the reactions of the user. The system never stops evolving. 
+
+### theory
 
 
 
