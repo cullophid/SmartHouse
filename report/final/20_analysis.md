@@ -1,12 +1,12 @@
 
-## Analysis
+# Analysis
 
 The vision for our project is to create an intelligent home control system that requires minimum configuration and installation while providing optimal power saving, and comfort. 
 
 <fortsæt fra vision, og introduktion>
 
 
-### Smart House Survey
+## Smart House Survey
 
 _"If I have seen further it is by standing on the shoulders of giants"_ -- Isaac Newton
 
@@ -19,14 +19,14 @@ We distinguish between three types of systems, which are derived from the taxono
 [#Boguslaw]: Boguslaw Pilich. Engineering Smart Houses, DTU IMM MSc Thesis Nr. 49/2004
 
 
-#### Controllable houses
+### Controllable houses
 
 These are the simplest of the smart house solutions. Input devices like switches, remotes and sensors, can be setup to control output devices like appliance and dimmer switches, HVAC (Heating, Ventilation and Air Conditioning), etc. These solution may also include macros, e.g. where a single button may turn off all the lights in the home. 
 
-#### Programmable houses
+### Programmable houses
 These solutions incorporate some degree of logical operations, like having motions sensors not turn on the lights, if lux sensors are above a threshold. They may be able to have scheduled task, e.g. turning down the thermostats during stadard work-hours. The behavior of these systems have to be programmed by the manufacturer or the users. Consequetly, changes in user needs require the system to be reprogrammed.
 
-#### Intelligent houses
+### Intelligent houses
 In these solutions some form of artificial intelligence or AI is able to control the home. In computer science the term AI is used very loosely. I our case we will define an intelligent house, as a system that is capable of machine learning. That means that the system is capable of evolving behavioral patterns based on empirical data[#wikipedia-machine-learning]. Consequently, the system will over time adapt itself to changes in user needs.
 
 
@@ -96,7 +96,7 @@ MIT's House_n in this survey represent that truly intelligent smart houses only 
 One of the main problems with current home control solutions is that installing such a system is rather costly and requires installation and configuration, which is rarely trivial . Some of the more advanced systems on the market, such as the LK IHC, incorporate motion sensors and timers  that automatically turn on and off lights or various appliances. These systems will  save money over time, but they require  extensive configuration or programming in order to function properly.
 
 
-### BIIIB 
+## BIIIB 
 Of all the  qualities mentioned in our vision for the system,  power saving is the most important. **insert data on power consumption of average household** As seen in the survey above, this is an area where most modern home control systems falls short . Most systems are capable of providing only a modest reduction in power consumption, and some even increase the net consumption by adding the cost of running the control system. We want our system to differ from others on this specific aspect. In our system, reducing power consumption is the number one priority.
 
 We will accomplish this by creating a system that focuses on turning off all lights and appliances where they are not needed. <what are the alternatives? why do we want to focus on this?>There are several advantages to this approach, compared to attempting to reduce the power consumption of active appliances. The main advantage is that it provides the largest reduction in power consumption. Most people remember to turn off the light in the bathroom, when they leave it, but this is far less common for the kitchen, or dining room, and only the most environmentally conscious people would ever turn off the light in the living room when they got to the bathroom. This means that there is a lot of wasted energy in the normal household . 
@@ -121,7 +121,7 @@ Since the system bases its decisions on data gathered on the user, the system is
 
 
 
-### Gathering data on the users
+## Gathering data on the users
 To mimic user actions, the system  must first gather information on how the user interacts with the house. Therefore the first question we must answer is: What data should we collect on our users?  In order for the system to effectively take over the users direct interactions with the house, we need to know two things. 
 
 * What action needs to be done?
@@ -153,7 +153,7 @@ Choosing to only monitor the light switches and using motion sensors to track th
 An alternative to this is to have the system analyze the data live, which would eliminate the need to store the event data. With this approach we do not have to store the events in the system, which over time could amount to a considerable amount of data. The problem is that if we should choose to modify the algorithms that analyze the data, we would effectively loose everything the system has learned so far. By storing the raw event data we can always recalculate a new decision scheme based on the collected data. This solution leaves us with a lot more options later on. The collection of data must still happen in real time. Since it is very important that the events are recorded exactly when they happen, the system must not stall in this process.
 
 
-### Analyzing the collected data
+## Analyzing the collected data
 
 _“If you torture data long enough, it will tell you what you want!”_ -Ronald Coase Hvorfra
 	
@@ -180,11 +180,11 @@ Unlike data collection, analyzing the data does not have  strict time constraint
 
 [^silvan]: Danish building material retail-chain. 
 
-### Controlling the house
+## Controlling the house
 After we have collected and analyzed data the the final task is to have the system control the house in real time, using the decision scheme created from the analyzed data. The system must constantly monitor the user and attempt to match his movement pattern to those present in the decision scheme. As with data collection this has to happen in real time so the patterns are not corrupted.
 
 
-### Requirement specification
+## Requirement specification
 
 Based of the analysis above we can now form a requirement specification for the project.  The system shall collect data using motion sensors and by monitoring switches. This data should be stored as it is collected and without being manipulated. 
 
