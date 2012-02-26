@@ -1,5 +1,5 @@
 
-# Evaluation
+## Evaluation
 
 _"I have not failed. I've just found 10,000 ways that won't work."_ -- Thomas A. Edison
 
@@ -26,7 +26,7 @@ _"To err is human--and to blame it on a computer is even more so."_ -- Robert Or
 [correlation]:figures/correlation.png "Correlation"
 
 
-## Correlation
+### Correlation
 
 Before evaluating the correlation probability table, some goals should be established.
 

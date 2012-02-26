@@ -3,115 +3,25 @@ Author:            	Andreas Moller s042809, David Emil Lemvigh s042809
 Affiliation:       	IMM@DTU				
 latex input:       	thesis_header
 latex footer:      	thesis_footer
-Base Header Level:  2 
+Base Header Level:  1
 
-# Introduction
+## Introduction
 
-this is the the intro baby
-
-## Scope
-
-__Define Context__
-
-* Present the domain of the project
-  * From he general to the specific
-    * Distributed systems -> wireless -> ubiquitous computing
-    * Include references to demonstrate you know the domain
-* Identify important properties of the project domain
-  * What makes this project domain special?
-    * Why do we need to undertake this project
-* Define the scope of the project
-  * what sub-problems will be considered
-  * what sub-problems will _not_ be considered
-
-## Goals
-
-__Identify Goals__
-
-* Project goals
-  * What are the main problems that the project should solve?
-* Non-functional requirements
-  * Usability, performance, flexibility, extensibility, simplicity, security...
-* Non-project goals
-  * experiments with (specific) new technology
-  * personal development
-
-__short answers__
-
-* Project goals
-    * Create a home control system that relies on machine learning instead of programmability.
-* Non-functional requirements
-  * Usability, performance, flexibility, extensibility, simplicity, security...
-* Non-project goals
-    * examine the possibilities of a system with minimal knowledge about its operating environment.
-    * examine the possibilities of a system with minimal setup, and programming required
+In the recent years we have seen an increase in climate awareness. The subject is gaining more and more media coverage. A survey conducted from 2007 to 2008 by the international research organization Galllup[^gallup], shows that 82% of americans and 88% of europeans are very aware of the current climate issues we are facing such as global warming. In the same survey Gallup also concludes that 67% of americans and 59% europeans view global warming as a serious threat to them selves and their families[#gallup-2009][].
 
 
+[^gallup]: International research  organization famous for making polls. http://ww.gallup.com
+[#gallup-2009]: http://www.gallup.com/poll/124652/awareness-climate-change-threat-vary-region.aspx
 
 
-## writing a good introduction
-
-* what is the problem
-    - explain the context of the project and identify goals
-* what is the proposed solution?
-    - Analyse problems and present proposed solution
-* How do we evaluate the proposed solution?
-    - Present evaluation criteria for proposed solution
-    - define the method and scope of the project
-* What did we learn?
-    - Present a summary of the overall conclusions
-    - lure the reader into reading the rest of the report
-
-We want to create an intelligent smarthouse system, with a minimal setup requirement, to control the lighting. A system which after switches and sensors are physically installed, doesn't require further setup or technical expertise from the user. The system shouldn't require any direct user interaction.
-
-The system should be able to gradually take over turning on and off the light. It should learn solely based on the user's normal behavior, which patterns leads up to turning the light on or off, for how long should the light stay on. 
-
-Ideally this should lead to increased comfort for the users, by not having to manually control the light. Possibly also reduced energy consumption, by only having light on when the users need it. Also by being more active about turning light off where it isn't needed, where most users wouldn't bother to get up to turn it off.
-
-<this is not a finished product, but a proof of concept>
-<minimum installation and configuration>
-<minimum user interaction>
-<we want to collect real life data that we can analyze>
-
-**user interaction**
-<find a way to include this section either here or in the analysis>
-The system should not require any direct interaction from the users. There has been a lot of change in software development the last few years, and on of the major focus areas has been on user interface design. The general theme is ease of use. You could say that the role of software is moving more towards being a servant, that a tool for the private user[^need-ref]. 
-<elaborate on development in user interfaces >
-
-There has been a lot of change in software development the last few years, and one of the major focus areas has been on user interface design. The general theme is ease of use. You could say that the role of software is moving more towards being more a servant, than a tool for the private user [^need-ref]. elaborate on development in user interfaces [^need-ref]: Reference needed!
-
-
-
-
-## Project focus , assumptions and scope
-
-<change the tone of the section. define focus areas instead of limitations >
-
-Before we start to analyze what makes a good home control system we will outline which  limitations, we will impose on the system. Some of these limitations are born out of personal interest<bad formulation!> , and some are there to limit the scope of the project. 
-
-To  limit the scope of the project, we focus on controlling the lighting. This means that we will not go into appliances or house features such as heating, ventilation, or hot water. These are all areas where the system will be equally beneficial . However, modifying the system to incorporate these elements, would not require any major changes to the fundamental design of the core system. It would rather  require a lot of  time consuming implementation work. <BS we focus on lighting to get deeper>
-
-We assume that people who have home control systems don't have windows . At the very least we will work under the assumption that the lighting conditions outside a room does not affect the conditions inside. A room with the lights turned on is light, and a room with the lights turned off is dark. This is simply to eliminate outside factors such as varying lighting conditions.Normally if there is enough natural lighting in a room, the user will not want the artificial light turned on. <reevaluate>
-
-The people in the house is trapped in "Groundhog Day"[#ramis:1993][], or more precisely, Groundhog hour. We will assume that the users behavior and requirements does not change depending on date nor  time of day. 
-<TODO:Do we assume this.. or can we later explain that this assumption is unneccesarry!!???>
-
-Finally we will make the assumption that a user only needs light in rooms where he or she is present. In reality situations may arise where the user would want the light to stay on when leaving at room, e.g., if he has a birdcage or an aquarium in the room.
-
-<Only one user home!>
-
-
-
-
-
-# Analysis
+## Analysis
 
 The vision for our project is to create an intelligent home control system that requires minimum configuration and installation while providing optimal power saving, and comfort. 
 
 <fortsæt fra vision, og introduktion>
 
 
-## Smart House Survey
+### Smart House Survey
 
 _"If I have seen further it is by standing on the shoulders of giants"_ -- Isaac Newton
 
@@ -124,14 +34,14 @@ We distinguish between three types of systems, which are derived from the taxono
 [#Boguslaw]: Boguslaw Pilich. Engineering Smart Houses, DTU IMM MSc Thesis Nr. 49/2004
 
 
-### Controllable houses
+#### Controllable houses
 
 These are the simplest of the smart house solutions. Input devices like switches, remotes and sensors, can be setup to control output devices like appliance and dimmer switches, HVAC (Heating, Ventilation and Air Conditioning), etc. These solution may also include macros, e.g. where a single button may turn off all the lights in the home. 
 
-### Programmable houses
+#### Programmable houses
 These solutions incorporate some degree of logical operations, like having motions sensors not turn on the lights, if lux sensors are above a threshold. They may be able to have scheduled task, e.g. turning down the thermostats during stadard work-hours. The behavior of these systems have to be programmed by the manufacturer or the users. Consequetly, changes in user needs require the system to be reprogrammed.
 
-### Intelligent houses
+#### Intelligent houses
 In these solutions some form of artificial intelligence or AI is able to control the home. In computer science the term AI is used very loosely. I our case we will define an intelligent house, as a system that is capable of machine learning. That means that the system is capable of evolving behavioral patterns based on empirical data[#wikipedia-machine-learning]. Consequently, the system will over time adapt itself to changes in user needs.
 
 
@@ -201,7 +111,7 @@ MIT's House_n in this survey represent that truly intelligent smart houses only 
 One of the main problems with current home control solutions is that installing such a system is rather costly and requires installation and configuration, which is rarely trivial . Some of the more advanced systems on the market, such as the LK IHC, incorporate motion sensors and timers  that automatically turn on and off lights or various appliances. These systems will  save money over time, but they require  extensive configuration or programming in order to function properly.
 
 
-## BIIIB 
+### BIIIB 
 Of all the  qualities mentioned in our vision for the system,  power saving is the most important. **insert data on power consumption of average household** As seen in the survey above, this is an area where most modern home control systems falls short . Most systems are capable of providing only a modest reduction in power consumption, and some even increase the net consumption by adding the cost of running the control system. We want our system to differ from others on this specific aspect. In our system, reducing power consumption is the number one priority.
 
 We will accomplish this by creating a system that focuses on turning off all lights and appliances where they are not needed. <what are the alternatives? why do we want to focus on this?>There are several advantages to this approach, compared to attempting to reduce the power consumption of active appliances. The main advantage is that it provides the largest reduction in power consumption. Most people remember to turn off the light in the bathroom, when they leave it, but this is far less common for the kitchen, or dining room, and only the most environmentally conscious people would ever turn off the light in the living room when they got to the bathroom. This means that there is a lot of wasted energy in the normal household . 
@@ -226,7 +136,7 @@ Since the system bases its decisions on data gathered on the user, the system is
 
 
 
-## Gathering data on the users
+### Gathering data on the users
 To mimic user actions, the system  must first gather information on how the user interacts with the house. Therefore the first question we must answer is: What data should we collect on our users?  In order for the system to effectively take over the users direct interactions with the house, we need to know two things. 
 
 * What action needs to be done?
@@ -258,7 +168,7 @@ Choosing to only monitor the light switches and using motion sensors to track th
 An alternative to this is to have the system analyze the data live, which would eliminate the need to store the event data. With this approach we do not have to store the events in the system, which over time could amount to a considerable amount of data. The problem is that if we should choose to modify the algorithms that analyze the data, we would effectively loose everything the system has learned so far. By storing the raw event data we can always recalculate a new decision scheme based on the collected data. This solution leaves us with a lot more options later on. The collection of data must still happen in real time. Since it is very important that the events are recorded exactly when they happen, the system must not stall in this process.
 
 
-## Analyzing the collected data
+### Analyzing the collected data
 
 _“If you torture data long enough, it will tell you what you want!”_ -Ronald Coase Hvorfra
 	
@@ -285,11 +195,11 @@ Unlike data collection, analyzing the data does not have  strict time constraint
 
 [^silvan]: Danish building material retail-chain. 
 
-## Controlling the house
+### Controlling the house
 After we have collected and analyzed data the the final task is to have the system control the house in real time, using the decision scheme created from the analyzed data. The system must constantly monitor the user and attempt to match his movement pattern to those present in the decision scheme. As with data collection this has to happen in real time so the patterns are not corrupted.
 
 
-## Requirement specification
+### Requirement specification
 
 Based of the analysis above we can now form a requirement specification for the project.  The system shall collect data using motion sensors and by monitoring switches. This data should be stored as it is collected and without being manipulated. 
 
@@ -299,7 +209,7 @@ The system should first be in an unlearned stage. In this stage the system shoul
 
 
 
-# Design
+## Design
 
 * Develop the overall software architecture
     * Identify major system components
@@ -314,11 +224,11 @@ the system has two steps.
 * first it analyzes collected user data. This is one way communication. The user acts and the system listens. this part is done, and have been tested. Training period. 
 * Now the system evolves by adjusting to the user. The System still collects data, as in step one, but it now interacts with the house, and the user reacts to the system. The system evolves based on the reactions of the user. The system never stops evolving. 
 
-## theory
+### theory
 
 
 
-## Sensor data
+### Sensor data
 
 In order to train the system, some sensor data is needed, but how to obtain it? A couple of options are available:
 
@@ -338,13 +248,13 @@ We chose to install a placebo system of wireless switches and sensors, to collec
 With the training data, we can then use a simulator to evaluate the training stage. In the training stage, there it doesn't take that much data, to evaluate that the system is learning properly. The data from the simulator is good enough to simulate simple movement patterns, to see which lights go on or off, as a simulated user moves from room to room. 
 
 
-## Event patterns
+### Event patterns
 
 One thing is knowing where the user is, another where the user is headed. By also looking at the preceding interval leading up to an event, it's possible to match that against previously observed patterns, to estimate where the user might be headed.
 
 To determine these pattern we try to make some rules about what to look for. If too long time passes between event, the event are probably not part of the same movement pattern. But what is too long time? <TODO>
 
-## Zones
+### Zones
 
 In many cases to cover an entire room with sensors, the sensors end up overlapping in some areas. This overlapping can be used to increase the precision of the sensors. If two sensors triggers shortly after each other, then the user is in the zone where the two sensors overlap. In cases where multiple sensors triggers at the same time, it can be seen as one zone event.
 
@@ -354,7 +264,7 @@ In many cases to cover an entire room with sensors, the sensors end up overlappi
 
 [zoneimg]: figures/zone.png "Sensor zones"
 
-## Switch and sensor correlation
+### Switch and sensor correlation
 
 It is beneficial to get a sense of which sensors are near which switches. And we have a lot of statistical data too look at. When a user turns a which on, it most likely because there isn't light where the user intends to be in the immediate future. So it is possible to get an idea of which sensors are near a which, by looking at the interval shortly after a switch is turned on.
 
@@ -381,7 +291,7 @@ So to reiterate \\( P(sensor_i | switch_j , \Delta t) \\) is the probability tha
 [Correlation table][ctable]
 
 
-# Implementation
+## Implementation
 
 * Description of the system components
 * The implementation section should allow a skilled programmer to maintain the software
@@ -389,11 +299,12 @@ So to reiterate \\( P(sensor_i | switch_j , \Delta t) \\) is the probability tha
 * __Remember, the most important documentation of the implementation is comments in the code!__
 
 
-## Training data collection
+### Training data collection
 
-In order to collect training data, we installed wireless switches and PIR[^pir] sensors in a [home](#Hellebaekgade). The placebo switches were placed next to the normal switches controlling the light for each room, in all cases being the switch closest to the entrance. Each room have one or more PIR sensors, averaging 2 per room, with one lest in the restroom and an additional sensor in the living room. When placing the sensors, the system can obviouly only laern from behavoir in areas covered by sensors. So sensors should provide as close to full coverage as possible, with special emphasis on making sure the entrances are covered.
+In order to collect training data, we installed wireless switches and PIR sensors[^pir] in a [home](#Hellebaekgade). The placebo switches were placed next to the normal switches controlling the light for each room, in all cases being the switch closest to the entrance. Each room have one or more PIR sensors, averaging 2 per room, with one lest in the restroom and an additional sensor in the living room. When placing the sensors, the system can obviouly only laern from behavoir in areas covered by sensors. So sensors should provide as close to full coverage as possible, with special emphasis on making sure the entrances are covered.
 
-[^pir] Passive infrared sensors.
+[^pir]: Passive infrared sensors.
+
 ![Map of the testing environment with sensor and switch locations][Hellebaekgade]
 
 The wireless nodes we have available communicate using the Zensus Z-Wave protocol. We setup a mini PC with a Z-Wave serial device, and configured all PIR sensor and switches to send notifications to the PC, when they where activated. The PC ran a Z-Wave API, which we added a listener to, so that sensor and switch event was logged to a SQL database.
@@ -411,16 +322,18 @@ The wireless nodes we have available communicate using the Zensus Z-Wave protoco
 | status    | Boolean   |
 [Database table for switch events][sensor table]
 
-## Simulator / AI interface
+### Simulator / AI interface
 
 We have a smart house simulator available, which will be extended with an AI module, implementing the features discussed in this report. The simulator is implemented in scala, so an obvious choise would be to implement the AI in scala aswell. However work with the simulator in the initial stages of the project, showed that our programming speed in scala was too slow to get any meaningful amount of work done. The scala language is build upon Java, and both languages compiles to bytecode in _.class_ files. A result of that is that Scala and Java interface very easily, and Scala code can invoke Java methods and vice versa. We chose to implement the AI in Java, working in a language we're well-versed in, to increase our productivity and quality of the code.
+<TODO credit the guys who wrote the simulator>
 
-## Decision table / matrix / markov / thingie...
+### Decision Matrix
 
 Antallet af gange den klasse har skiftet navn... I've lost count... 
+				- svaret er 4
 <TODO Andy, you deal with it>
 
-## Event patterns
+### Event patterns
 
 To make lookups based on the lastest event pattern, each new sensor event needs to be a matched to see if it's part of a pattern.
 As each sensor and switch event is received by the system, a list of the most recent event pattern is maintained in an EventList. 
@@ -429,9 +342,9 @@ EventList determines if the lastest event is part of the pattern, and determines
 
 The invariant of the EventList, is that after an event is added, the event list contains the current event patttern. This pattern can then be used to determine if any switches should be turned on or off.
 
-## Correlation table
-
-### Correlation statistical generation
+### Correlation table
+<intro to the correlation table>
+#### Correlation statistical generation
 
 Correlation calculates the probability that a sensor is correlated a switch. It scans the database, and looks at the interval just after a switch is triggered. The sensors that triggered in the interval, are counted for that interval, in a way thay they're only counted once per switch event. If a multiple switch event are triggered in the same interval, the sensor events in the overlapping intervals should be counted for each of those switches. Having the number of times each switch is triggered, and each sensors triggeres with the given time interval, it's then calculated the probability that \\( sensor_i \\) is triggered, given that a \\( switch_j \\) was turned on atmost \\( \Delta t \\) ago. This gives the statistical correlation probability table. 
 
@@ -439,20 +352,20 @@ To this the correlation confirmations in the database, is then added. Each row i
 
 The resulting correlation table is allowed to have probabilities above 100%, which is inteded as destribed in <TODO add reference>
 
-### Correlation correction
+#### Correlation correction
 
 When a switch is turned on, a timer is started for that switch. If a correlated sensor is triggered, it timer is extended. The duration is determined by the correlation between the sensor and the switch, higher correlation gives longer timeouts. If the switch is turned off, the timer is stopped. If the timer runsout a timeoutevent is triggered, and the light is turned off, and a new timer is started, to verify that no manual overrides occur. If the a manual override occurs (e.g. the user turns the switch on again, while the timer is running), the system is "punished". The system increases the timeout time, by increasing the correlation between the switch and the first sensor triggered after the switch was turned off. If no manual override occurs, the system was correct in turning off the light, and lowers the timeout time, by reducing the correlation between switch and the last seen sensor before the switch was turned off.
 
 These correlation corrections are stored in a separate table in the database. The correlation use for the timeout is based on both the statistical correlation, and these correlation corrections. The correlation corrections increase or reduce the correlation by 10 percent points. The system allows correlations higher than 100%, this gives the intended behavoir that a switch may have a longer timeout than what is default.
 
-## Timers and timeout
+### Timers and timeout
 
 Timers are implemented in the Timer and Sleeper class. Sleeper is a fairly simple class, it sleeps starts a new thread, sleeps for a given time, then fires a timeout event to a given timeout listener. Timer simply holds a map, where each switch can set a timeout. Timer creates a sleeper object, and puts in the map. The sleepers can then easily be monitored and interrupted if needed. 
 
 To received the timeout events the SmartHouse class implements TimeoutListener. 
 
 
-# Evaluation
+## Evaluation
 
 _"I have not failed. I've just found 10,000 ways that won't work."_ -- Thomas A. Edison
 
@@ -479,7 +392,7 @@ _"To err is human--and to blame it on a computer is even more so."_ -- Robert Or
 [correlation]:figures/correlation.png "Correlation"
 
 
-## Correlation
+### Correlation
 
 Before evaluating the correlation probability table, some goals should be established.
 
@@ -508,7 +421,7 @@ Sensor 23 is a bit more interesting, since it located fairly close to the doorwa
 One thing to note is, these are the probabilities based solely on the statistical data, and that correlation corretions would be added onto this schema. So it doesn't perfectly reflect the room / switch + sensor correlations on it's own, though it gives a close approximation
 
 
-# Conclusion
+## Conclusion
 
 * summarises all the result of the project
 	* what was the problem?
@@ -520,7 +433,7 @@ One thing to note is, these are the probabilities based solely on the statistica
 	* new problems identified through the project
 	* outline the possible evolution curve of the software
 
-## writing good conclusions
+### writing good conclusions
 
 * What was the problem?
     - Remind the reader of the context and project goals
@@ -536,7 +449,7 @@ One thing to note is, these are the probabilities based solely on the statistica
     - Outline ideas for future work
     
     
-## Awesome quotes
+### Awesome quotes
 
 lille liste af citater som godt kunne passe ind i rapporten
 

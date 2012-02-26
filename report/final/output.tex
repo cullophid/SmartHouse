@@ -5,162 +5,8 @@
 \chapter{Introduction}
 \label{introduction}
 
-this is the the intro baby
-
-\section{Scope}
-\label{scope}
-
-\textbf{Define Context}
-
-\begin{itemize}
-\item Present the domain of the project
-
-\item From he general to the specific
-
-\begin{itemize}
-\item Distributed systems -$>$ wireless -$>$ ubiquitous computing
-
-\item Include references to demonstrate you know the domain
-
-\end{itemize}
-
-\item Identify important properties of the project domain
-
-\item What makes this project domain special?
-
-\begin{itemize}
-\item Why do we need to undertake this project
-
-\end{itemize}
-
-\item Define the scope of the project
-
-\item what sub-problems will be considered
-
-\item what sub-problems will \emph{not} be considered
-
-\end{itemize}
-
-\section{Goals}
-\label{goals}
-
-\textbf{Identify Goals}
-
-\begin{itemize}
-\item Project goals
-
-\item What are the main problems that the project should solve?
-
-\item Non-functional requirements
-
-\item Usability, performance, flexibility, extensibility, simplicity, security{\ldots}
-
-\item Non-project goals
-
-\item experiments with (specific) new technology
-
-\item personal development
-
-\end{itemize}
-
-\textbf{short answers}
-
-\begin{itemize}
-\item Project goals
-
-\begin{itemize}
-\item Create a home control system that relies on machine learning instead of programmability.
-
-\end{itemize}
-
-\item Non-functional requirements
-
-\item Usability, performance, flexibility, extensibility, simplicity, security{\ldots}
-
-\item Non-project goals
-
-\begin{itemize}
-\item examine the possibilities of a system with minimal knowledge about its operating environment.
-
-\item examine the possibilities of a system with minimal setup, and programming required
-
-\end{itemize}
-
-\end{itemize}
-
-\section{writing a good introduction}
-\label{writingagoodintroduction}
-
-\begin{itemize}
-\item what is the problem
-
-\begin{itemize}
-\item explain the context of the project and identify goals
-
-\end{itemize}
-
-\item what is the proposed solution?
-
-\begin{itemize}
-\item Analyse problems and present proposed solution
-
-\end{itemize}
-
-\item How do we evaluate the proposed solution?
-
-\begin{itemize}
-\item Present evaluation criteria for proposed solution
-
-\item define the method and scope of the project
-
-\end{itemize}
-
-\item What did we learn?
-
-\begin{itemize}
-\item Present a summary of the overall conclusions
-
-\item lure the reader into reading the rest of the report
-
-\end{itemize}
-
-\end{itemize}
-
-We want to create an intelligent smarthouse system, with a minimal setup requirement, to control the lighting. A system which after switches and sensors are physically installed, doesn't require further setup or technical expertise from the user. The system shouldn't require any direct user interaction.
-
-The system should be able to gradually take over turning on and off the light. It should learn solely based on the user's normal behavior, which patterns leads up to turning the light on or off, for how long should the light stay on. 
-
-Ideally this should lead to increased comfort for the users, by not having to manually control the light. Possibly also reduced energy consumption, by only having light on when the users need it. Also by being more active about turning light off where it isn't needed, where most users wouldn't bother to get up to turn it off.
-
-$<$this is not a finished product, but a proof of concept$>$
-
-
-
-
-\textbf{user interaction}
-
-The system should not require any direct interaction from the users. There has been a lot of change in software development the last few years, and on of the major focus areas has been on user interface design. The general theme is ease of use. You could say that the role of software is moving more towards being a servant, that a tool for the private user[\^{}need-ref].
-
-
-There has been a lot of change in software development the last few years, and one of the major focus areas has been on user interface design. The general theme is ease of use. You could say that the role of software is moving more towards being more a servant, than a tool for the private user [\^{}need-ref]. elaborate on development in user interfaces [\^{}need-ref]: Reference needed!
-
-\section{Project focus , assumptions and scope}
-\label{projectfocusassumptionsandscope}
-
-$<$change the tone of the section. define focus areas instead of limitations $>$
-
-Before we start to analyze what makes a good home control system we will outline which limitations, we will impose on the system. Some of these limitations are born out of personal interest$<$bad formulation!$>$ , and some are there to limit the scope of the project. 
-
-To limit the scope of the project, we focus on controlling the lighting. This means that we will not go into appliances or house features such as heating, ventilation, or hot water. These are all areas where the system will be equally beneficial . However, modifying the system to incorporate these elements, would not require any major changes to the fundamental design of the core system. It would rather require a lot of time consuming implementation work. 
-
-We assume that people who have home control systems don't have windows . At the very least we will work under the assumption that the lighting conditions outside a room does not affect the conditions inside. A room with the lights turned on is light, and a room with the lights turned off is dark. This is simply to eliminate outside factors such as varying lighting conditions.Normally if there is enough natural lighting in a room, the user will not want the artificial light turned on. 
-
-The people in the house is trapped in ``Groundhog Day''~\citep{ramis:1993}, or more precisely, Groundhog hour. We will assume that the users behavior and requirements does not change depending on date nor time of day.
-$<$TODO:Do we assume this.. or can we later explain that this assumption is unneccesarry!!???$>$
-
-Finally we will make the assumption that a user only needs light in rooms where he or she is present. In reality situations may arise where the user would want the light to stay on when leaving at room, e.g., if he has a birdcage or an aquarium in the room.
-
-$<$Only one user home!$>$
+In the recent years we have seen an increase in climate awareness. The subject is gaining more and more media coverage. A survey conducted from 2007 to 2008 by the international research organization Galllup\footnote{International research organization famous for making polls. http:/\slash ww.gallup.com
+~\citep{gallup-2009}: http:/\slash www.gallup.com\slash poll\slash 124652\slash awareness-climate-change-threat-vary-region.aspx}, shows that 82\% of americans and 88\% of europeans are very aware of the current climate issues we are facing such as global warming. In the same survey Gallup also concludes that 67\% of americans and 59\% europeans view global warming as a serious threat to them selves and their families~\citep{gallup-2009}.
 
 \chapter{Analysis}
 \label{analysis}
@@ -503,10 +349,15 @@ switch m ($sw_m)$&$P(se_1 | sw_m, \Delta t)$&$P(se_2 | sw_m, \Delta t)$&{\ldots}
 \section{Training data collection}
 \label{trainingdatacollection}
 
-In order to collect training data, we installed wireless switches and PIR[\^{}pir] sensors in a home (\autoref{hellebaekgade}). The placebo switches were placed next to the normal switches controlling the light for each room, in all cases being the switch closest to the entrance. Each room have one or more PIR sensors, averaging 2 per room, with one lest in the restroom and an additional sensor in the living room. When placing the sensors, the system can obviouly only laern from behavoir in areas covered by sensors. So sensors should provide as close to full coverage as possible, with special emphasis on making sure the entrances are covered.
+In order to collect training data, we installed wireless switches and PIR sensors\footnote{Passive infrared sensors.} in a home (\autoref{hellebaekgade}). The placebo switches were placed next to the normal switches controlling the light for each room, in all cases being the switch closest to the entrance. Each room have one or more PIR sensors, averaging 2 per room, with one lest in the restroom and an additional sensor in the living room. When placing the sensors, the system can obviouly only laern from behavoir in areas covered by sensors. So sensors should provide as close to full coverage as possible, with special emphasis on making sure the entrances are covered.
 
-[\^{}pir] Passive infrared sensors.
+\begin{figure}[htbp]
+\centering
 \includegraphics[keepaspectratio,width=\textwidth,height=0.75\textheight]{figures/hellebaekgade3.png}
+\caption{Map of the testing environment with sensor and switch locations}
+\label{hellebaekgade}
+\end{figure}
+
 
 
 The wireless nodes we have available communicate using the Zensus Z-Wave protocol. We setup a mini PC with a Z-Wave serial device, and configured all PIR sensor and switches to send notifications to the PC, when they where activated. The PC ran a Z-Wave API, which we added a listener to, so that sensor and switch event was logged to a SQL database.
@@ -557,10 +408,12 @@ status&Boolean\\
 
 We have a smart house simulator available, which will be extended with an AI module, implementing the features discussed in this report. The simulator is implemented in scala, so an obvious choise would be to implement the AI in scala aswell. However work with the simulator in the initial stages of the project, showed that our programming speed in scala was too slow to get any meaningful amount of work done. The scala language is build upon Java, and both languages compiles to bytecode in \emph{.class} files. A result of that is that Scala and Java interface very easily, and Scala code can invoke Java methods and vice versa. We chose to implement the AI in Java, working in a language we're well-versed in, to increase our productivity and quality of the code.
 
-\section{Decision table \slash  matrix \slash  markov \slash  thingie{\ldots}}
-\label{decisiontablematrixmarkovthingie}
+
+\section{Decision Matrix}
+\label{decisionmatrix}
 
 Antallet af gange den klasse har skiftet navn{\ldots} I've lost count{\ldots}
+ - svaret er 4
 $<$TODO Andy, you deal with it$>$
 
 \section{Event patterns}
@@ -575,6 +428,8 @@ The invariant of the EventList, is that after an event is added, the event list 
 
 \section{Correlation table}
 \label{correlationtable}
+
+
 
 \subsection{Correlation statistical generation}
 \label{correlationstatisticalgeneration}

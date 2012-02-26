@@ -1,12 +1,8 @@
 
-# Analysis
+## Analysis
 
-The vision for our project is to create an intelligent home control system that requires minimum configuration and installation while providing optimal power saving, and comfort. 
-
-<fortsæt fra vision, og introduktion>
-
-
-## Smart House Survey
+The vision for our project is to create an intelligent home control system that requires minimum configuration and installation while providing optimal power saving, and comfort. In order to accomplish this we must first clearly define what problems a good intelligent home control system must be able to solve.
+### Smart House Survey
 
 _"If I have seen further it is by standing on the shoulders of giants"_ -- Isaac Newton
 
@@ -19,20 +15,20 @@ We distinguish between three types of systems, which are derived from the taxono
 [#Boguslaw]: Boguslaw Pilich. Engineering Smart Houses, DTU IMM MSc Thesis Nr. 49/2004
 
 
-### Controllable houses
+#### Controllable houses
 
 These are the simplest of the smart house solutions. Input devices like switches, remotes and sensors, can be setup to control output devices like appliance and dimmer switches, HVAC (Heating, Ventilation and Air Conditioning), etc. These solution may also include macros, e.g. where a single button may turn off all the lights in the home. 
 
-### Programmable houses
+#### Programmable houses
 These solutions incorporate some degree of logical operations, like having motions sensors not turn on the lights, if lux sensors are above a threshold. They may be able to have scheduled task, e.g. turning down the thermostats during stadard work-hours. The behavior of these systems have to be programmed by the manufacturer or the users. Consequetly, changes in user needs require the system to be reprogrammed.
 
-### Intelligent houses
+#### Intelligent houses
 In these solutions some form of artificial intelligence or AI is able to control the home. In computer science the term AI is used very loosely. I our case we will define an intelligent house, as a system that is capable of machine learning. That means that the system is capable of evolving behavioral patterns based on empirical data[#wikipedia-machine-learning]. Consequently, the system will over time adapt itself to changes in user needs.
 
 
 [#wikipedia-machine-learning]: Wikipedia article on machine learning. http://en.wikipedia.org/wiki/Machine_learning
 
-The solutions presented, are some of the most widespread smart house solutions, and represent the three different types of systems: Controllable, Programmable and Intellight houses.
+The solutions presented, are some of the most widespread smart house solutions, and represents the three different types of systems: Controllable, Programmable and Intellight houses.
 
 <TODO hurtig conclusion om hver løsning, hvad synes vi om dem>
 
@@ -50,7 +46,7 @@ INSTEON supports external application to be run on PC connected through a bridge
 
 [#INSTEON]: INSTEON. http://www.insteon.net
 
-INSTEON's solution is fairly widespread in the US, and is a successor to the Redoak X10 system, and is compatable with it's product. It represents what a commercial controllable smart house is capable. It's functionaly very simplistic, but being able to communicate using the home electrical wiring, makes it a very non-intrusive system to install in an existing home. 
+INSTEON's solution is fairly widespread in the US, and is a successor to the Redoak X10 system, and is compatable with it's product. It represents what a commercial controllable smart house is capable of. It's functionaly very simplistic, but being able to communicate using the home electrical wiring, makes it a very non-intrusive system to install in an existing home. 
 
 <TODO en lidt bedre konklusion>
 
@@ -96,14 +92,14 @@ MIT's House_n in this survey represent that truly intelligent smart houses only 
 One of the main problems with current home control solutions is that installing such a system is rather costly and requires installation and configuration, which is rarely trivial . Some of the more advanced systems on the market, such as the LK IHC, incorporate motion sensors and timers  that automatically turn on and off lights or various appliances. These systems will  save money over time, but they require  extensive configuration or programming in order to function properly.
 
 
-## BIIIB 
-Of all the  qualities mentioned in our vision for the system,  power saving is the most important. **insert data on power consumption of average household** As seen in the survey above, this is an area where most modern home control systems falls short . Most systems are capable of providing only a modest reduction in power consumption, and some even increase the net consumption by adding the cost of running the control system. We want our system to differ from others on this specific aspect. In our system, reducing power consumption is the number one priority.
+### BIIIB 
+Of all the  qualities mentioned in our vision for the system,  power saving is the most important. As seen in the survey above, this is an area where most modern home control systems falls short . Most systems are capable of providing only a modest reduction in power consumption, and some even increase the net consumption by adding the cost of running the control system. We want our system to differ from others on this specific aspect. In our system, reducing power consumption is the number one priority.
 
-We will accomplish this by creating a system that focuses on turning off all lights and appliances where they are not needed. <what are the alternatives? why do we want to focus on this?>There are several advantages to this approach, compared to attempting to reduce the power consumption of active appliances. The main advantage is that it provides the largest reduction in power consumption. Most people remember to turn off the light in the bathroom, when they leave it, but this is far less common for the kitchen, or dining room, and only the most environmentally conscious people would ever turn off the light in the living room when they got to the bathroom. This means that there is a lot of wasted energy in the normal household . 
+We will accomplish this by creating a system that focuses on turning off all lights and appliances where they are not needed. There are several advantages to this approach, compared to attempting to reduce the power consumption of active appliances. The main advantage is that it provides the largest reduction in power consumption. Most people remember to turn off the light in the bathroom, when they leave it, but this is far less common for the kitchen, or dining room, and only the most environmentally conscious people would ever turn off the light in the living room when they got to the bathroom. This means that there is a lot of wasted energy in the normal household . 
 
-An other advantage  is that it incorporates perfectly with all other power reducing technologies. Bying appliances that use less energy will still give you the same percentage of power reduction as in a normal house. 
+An other advantage  is that it incorporates perfectly with all other power reducing technologies. Buying appliances that use less energy will still give you the same percentage of power reduction as in a normal house. 
 
-This system will also eliminate the common problem of standby mode on many appliances such as tvs or stereos by having the appliance only  in standby mode, when the user is likely to turn it on. The rest of the time the appliance is simply turned off.
+This system will also eliminate the common problem of standby mode on many appliances such as TVs or stereos by having the appliance only  in standby mode, when the user is likely to turn it on. The rest of the time the appliance is simply turned off.
 
 Our approach to creating a house that is capable of predicting what the users want it to do, is to learn from what the user does and  mimic these actions at the right times. To accomplice this, the system must do three things:
 
@@ -111,17 +107,8 @@ Our approach to creating a house that is capable of predicting what the users wa
 * The system must analyze the data in order to build a decision scheme on which it will base its actions
 * The system must be able control the house in real time, based on the decision scheme.
 
-Since the system bases its decisions on data gathered on the user, the system is essentially trying to mimic useractions at the right times. The system will have three stages :
-<must the stages be introduced now? can they wait till the design section>
-* The untrained stage where the system is running, but it hasn't yet collected enough data to make intelligent decisions. 
 
-* The learning stage where there's enough data to attempt to manipulate the switches of the home. We call this the learning stage, because it provides us with a unique opportunity for the system to learn from the user. If the system makes a mistake and the user corrects it, e.g., the system turns off the lights and the user turns it back on, we can use that interaction to train our system further. In this case we can see it as the user punishing the system for making a mistake. The system will then adjust its decision scheme.  
-
-* After the system has been in the learning stage, it will enter its final stage, which we call the evolution stage. Here the system constantly updates its decision scheme with new data both from monitoring the user, and from being punished for its mistakes. In this stage there is a symbioses between the user and the system where the system reacts to the user and vice versa. <Som jeg forstår dette, så adskiller det sig ikke fra learning stage. Tekstmæssigt er forskellen, at her er det også brugeren, der ændrer opførsel. Men det har vel ikke noget med systemets udvikling at gøre. - men sandsynligt.>
-
-
-
-## Gathering data on the users
+### Gathering data on the users
 To mimic user actions, the system  must first gather information on how the user interacts with the house. Therefore the first question we must answer is: What data should we collect on our users?  In order for the system to effectively take over the users direct interactions with the house, we need to know two things. 
 
 * What action needs to be done?
@@ -153,7 +140,7 @@ Choosing to only monitor the light switches and using motion sensors to track th
 An alternative to this is to have the system analyze the data live, which would eliminate the need to store the event data. With this approach we do not have to store the events in the system, which over time could amount to a considerable amount of data. The problem is that if we should choose to modify the algorithms that analyze the data, we would effectively loose everything the system has learned so far. By storing the raw event data we can always recalculate a new decision scheme based on the collected data. This solution leaves us with a lot more options later on. The collection of data must still happen in real time. Since it is very important that the events are recorded exactly when they happen, the system must not stall in this process.
 
 
-## Analyzing the collected data
+### Analyzing the collected data
 
 _“If you torture data long enough, it will tell you what you want!”_ -Ronald Coase Hvorfra
 	
@@ -171,8 +158,6 @@ A better solution is to attempt to identify the users behavior leading up to a s
 
 If we instead look at a series of sensor events leading up to a switch event, we will get a much more complex picture of what the user is doing. Since the switches in the house are located in fixed positions around the house, these movement patterns should repeat themselves relatively often. The movement patterns that lead up to a switch being turned off, will most likely also differ from a pattern leading up to a switch being turned on, since the user will be either entering or exiting a room. Once we have analyzed the data and identified the movement patterns related to a switch event, we need to create a decision scheme that the system can base its decision making on. That means we have to organize the analyzed data in a way so we easily can look up a specific pattern, and see whether it should trigger a switch action.
  
- 
-At first the system will need to gather enough data to make a solid analysis (the untrained stage). The length of this period will vary depending on how the data is analyzed. 
 Unlike data collection, analyzing the data does not have  strict time constraints. Since the decision scheme will be based on data collected over an extended period of time, the system will not benefit from having the decision scheme updated in real time.  As a result the time constraints on analyzing the data will be quite loose, and should not pose as a restriction on the system. 
 <reevalueate!>
 
@@ -180,16 +165,14 @@ Unlike data collection, analyzing the data does not have  strict time constraint
 
 [^silvan]: Danish building material retail-chain. 
 
-## Controlling the house
+### Controlling the house
 After we have collected and analyzed data the the final task is to have the system control the house in real time, using the decision scheme created from the analyzed data. The system must constantly monitor the user and attempt to match his movement pattern to those present in the decision scheme. As with data collection this has to happen in real time so the patterns are not corrupted.
 
 
-## Requirement specification
+### Requirement specification
 
 Based of the analysis above we can now form a requirement specification for the project.  The system shall collect data using motion sensors and by monitoring switches. This data should be stored as it is collected and without being manipulated. 
-
-The system should first be in an unlearned stage. In this stage the system should use the collected data to analyze the users movement patterns, leading up to a switch event, in order to create a decision scheme that can help the system mimic the actions of the user . The system should then enter a learning stage, where the system attempts to interact with the switches and learns from the users reactions. <shall we remove references to the stages? when does it change state?> Finally the system should enter, and stay in, an evolution stage, where the system constantly learns both from the actions and reactions of the user. 
-<Svært at se, hvad forskellen mellem lærings og evolutionsfasen er. Ud over at systemet konsekvent bliver klogere og klogere? >
+<add more stuff>
 
 
 

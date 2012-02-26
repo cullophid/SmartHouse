@@ -1,5 +1,5 @@
 
-# Conclusion
+## Conclusion
 
 * summarises all the result of the project
 	* what was the problem?
@@ -11,7 +11,7 @@
 	* new problems identified through the project
 	* outline the possible evolution curve of the software
 
-## writing good conclusions
+### writing good conclusions
 
 * What was the problem?
     - Remind the reader of the context and project goals
@@ -27,7 +27,7 @@
     - Outline ideas for future work
     
     
-## Awesome quotes
+### Awesome quotes
 
 lille liste af citater som godt kunne passe ind i rapporten
 

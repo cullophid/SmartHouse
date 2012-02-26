@@ -1,5 +1,5 @@
 
-# Design
+## Design
 
 * Develop the overall software architecture
     * Identify major system components
@@ -14,11 +14,22 @@ the system has two steps.
 * first it analyzes collected user data. This is one way communication. The user acts and the system listens. this part is done, and have been tested. Training period. 
 * Now the system evolves by adjusting to the user. The System still collects data, as in step one, but it now interacts with the house, and the user reacts to the system. The system evolves based on the reactions of the user. The system never stops evolving. 
 
-## theory
+### theory
 
 
 
-## Sensor data
+### Sensor data
+<moved here from analysis>
+Since the system bases its decisions on data gathered on the user, the system is essentially trying to mimic useractions at the right times. The system will have three stages :
+<must the stages be introduced now? can they wait till the design section>
+* The untrained stage where the system is running, but it hasn't yet collected enough data to make intelligent decisions. 
+
+* The learning stage where there's enough data to attempt to manipulate the switches of the home. We call this the learning stage, because it provides us with a unique opportunity for the system to learn from the user. If the system makes a mistake and the user corrects it, e.g., the system turns off the lights and the user turns it back on, we can use that interaction to train our system further. In this case we can see it as the user punishing the system for making a mistake. The system will then adjust its decision scheme.  
+
+* After the system has been in the learning stage, it will enter its final stage, which we call the evolution stage. Here the system constantly updates its decision scheme with new data both from monitoring the user, and from being punished for its mistakes. In this stage there is a symbioses between the user and the system where the system reacts to the user and vice versa. <Som jeg forstår dette, så adskiller det sig ikke fra learning stage. Tekstmæssigt er forskellen, at her er det også brugeren, der ændrer opførsel. Men det har vel ikke noget med systemets udvikling at gøre. - men sandsynligt.>
+
+
+
 
 In order to train the system, some sensor data is needed, but how to obtain it? A couple of options are available:
 
@@ -38,13 +49,13 @@ We chose to install a placebo system of wireless switches and sensors, to collec
 With the training data, we can then use a simulator to evaluate the training stage. In the training stage, there it doesn't take that much data, to evaluate that the system is learning properly. The data from the simulator is good enough to simulate simple movement patterns, to see which lights go on or off, as a simulated user moves from room to room. 
 
 
-## Event patterns
+### Event patterns
 
 One thing is knowing where the user is, another where the user is headed. By also looking at the preceding interval leading up to an event, it's possible to match that against previously observed patterns, to estimate where the user might be headed.
 
 To determine these pattern we try to make some rules about what to look for. If too long time passes between event, the event are probably not part of the same movement pattern. But what is too long time? <TODO>
 
-## Zones
+### Zones
 
 In many cases to cover an entire room with sensors, the sensors end up overlapping in some areas. This overlapping can be used to increase the precision of the sensors. If two sensors triggers shortly after each other, then the user is in the zone where the two sensors overlap. In cases where multiple sensors triggers at the same time, it can be seen as one zone event.
 
@@ -54,7 +65,7 @@ In many cases to cover an entire room with sensors, the sensors end up overlappi
 
 [zoneimg]: figures/zone.png "Sensor zones"
 
-## Switch and sensor correlation
+### Switch and sensor correlation
 
 It is beneficial to get a sense of which sensors are near which switches. And we have a lot of statistical data too look at. When a user turns a which on, it most likely because there isn't light where the user intends to be in the immediate future. So it is possible to get an idea of which sensors are near a which, by looking at the interval shortly after a switch is turned on.
 
