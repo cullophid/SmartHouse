@@ -32,10 +32,12 @@ The wireless nodes we have available communicate using the Zensus Z-Wave protoco
 ## Simulator / AI interface
 
 We have a smart house simulator available, which will be extended with an AI module, implementing the features discussed in this report. The simulator is implemented in scala, so an obvious choise would be to implement the AI in scala aswell. However work with the simulator in the initial stages of the project, showed that our programming speed in scala was too slow to get any meaningful amount of work done. The scala language is build upon Java, and both languages compiles to bytecode in _.class_ files. A result of that is that Scala and Java interface very easily, and Scala code can invoke Java methods and vice versa. We chose to implement the AI in Java, working in a language we're well-versed in, to increase our productivity and quality of the code.
+<TODO credit the guys who wrote the simulator>
 
-## Decision table / matrix / markov / thingie...
+## Decision Matrix
 
 Antallet af gange den klasse har skiftet navn... I've lost count... 
+				- svaret er 4
 <TODO Andy, you deal with it>
 
 ## Event patterns
@@ -48,7 +50,7 @@ EventList determines if the lastest event is part of the pattern, and determines
 The invariant of the EventList, is that after an event is added, the event list contains the current event patttern. This pattern can then be used to determine if any switches should be turned on or off.
 
 ## Correlation table
-
+<intro to the correlation table>
 ### Correlation statistical generation
 
 Correlation calculates the probability that a sensor is correlated a switch. It scans the database, and looks at the interval just after a switch is triggered. The sensors that triggered in the interval, are counted for that interval, in a way thay they're only counted once per switch event. If a multiple switch event are triggered in the same interval, the sensor events in the overlapping intervals should be counted for each of those switches. Having the number of times each switch is triggered, and each sensors triggeres with the given time interval, it's then calculated the probability that \\( sensor_i \\) is triggered, given that a \\( switch_j \\) was turned on atmost \\( \Delta t \\) ago. This gives the statistical correlation probability table. 
