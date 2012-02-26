@@ -61,3 +61,22 @@ We want to create an intelligent smarthouse system, with a minimal setup require
 The system should be able to gradutally take over turning on and off the light. It should learn solely based on the user's normal behavoid, which patterns leads up to turning the light on or off, for how long should the light stay on. 
 
 Ideally this should lead to increased comfort for the users, by not having to manually control the light. Possebly also reduced energy consumption, by only having light on when the users need it. Also by being more active about turning light off where it isn't needed, where most users wouldn't bother to get up to turn it off.
+
+### System limitations, assumptions and project scope
+
+Before we start to analyze what makes a good home control system we will outline which  limitations, we will impose on the system. Some of these limitations are born out of personal interest , and some are there to limit the scope of the project. 
+
+To  limit the scope of the project, we focus on controlling the lighting.This means that we will not go into appliances or house features such as heating, ventilation, or hot water. These are all areas where the system will be equally beneficial . However, modifying the system to incorporate these elements, would not require any major changes to the fundamental design of the core system. It would rather  require a lot of  time consuming implementation work. 
+
+We assume that people who have home control systems don't have windows . At the very least we will work under the assumption that the lighting conditions outside a room does not affect the conditions inside. A room with the lights turned on is light, and a room with the lights turned off is dark. This is simply to eliminate outside factors such as varying lighting conditions.Normally if there is enough natural lighting in a room, the user will not want the artificial light turned on. 
+
+The people in the house is trapped in "Groundhog Day"[#ramis:1993][], or more precisely, Groundhog hour. We will assume that the users behavior and requirements does not change depending on date nor  time of day. 
+<TODO:Do we assume this.. or can we later explain that this assumption is unneccesarry!!???>
+
+Finally we will make the assumption that a user only needs light in rooms where he or she is present. In reality situations may arise where the user would want the light to stay on when leaving at room, e.g., if he has a birdcage or an aquarium in the room.
+
+<Only one user home!>
+
+
+
+
