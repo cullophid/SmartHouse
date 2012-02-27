@@ -58,6 +58,10 @@ In many cases to cover an entire room with sensors, the sensors end up overlappi
 
 [zoneimg]: figures/zone.png "Sensor zones"
 
+### Confidence
+
+
+
 ### Switch and sensor correlation
 
 It is beneficial to get a sense of which sensors are near which switches. And we have a lot of statistical data too look at. When a user turns a which on, it's most likely because there isn't light where the user intends to be in the immediate future. So it is possible to get an idea of which sensors are near a which, by looking at the interval shortly after a switch is turned on.
@@ -85,8 +89,5 @@ So to reiterate \\( P(sensor_i | switch_j , \Delta t) \\) is the probability tha
 [Correlation table][ctable]
 
 ### Correlation based timeout
-
-
-### Confidence
 
 
