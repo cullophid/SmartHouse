@@ -22,7 +22,7 @@ public class DecisionMatrix{
     public ArrayList<Integer> switches,sensors;
     /**
      * temporary main method for testing puposes
-     * @author Andreas M�ller & David Emil Lemvigh
+     * @author Andreas
      **/
     public static void main(String[] args){
         Config.loadConfig();
@@ -46,9 +46,8 @@ public class DecisionMatrix{
         printMatrices();
     }
     /**
-     *
      * Connects to the database, and initiates the statement object to be used later
-     * @author Andreas M�ller & David Emil Lemvigh
+     * @author Andreas
      **/
     public void connect2DB(){
          try {
@@ -74,7 +73,7 @@ public class DecisionMatrix{
     }
     /**
      * generates the basic tables on / off
-     * @author Andreas M�ller & David Emil Lemvigh
+     * @author Andreas
      * */
     public void generateBasicMatrices(){
         System.out.println("generating basic matrices");
