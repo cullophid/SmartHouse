@@ -35,6 +35,9 @@ The wireless nodes we have available communicate using the Zensus Z-Wave protoco
 We have a smart house simulator available, which will be extended with an AI module, implementing the features discussed in this report. The simulator is implemented in scala, so an obvious choise would be to implement the AI in scala aswell. However work with the simulator in the initial stages of the project, showed that our programming speed in scala was too slow to get any meaningful amount of work done. The scala language is build upon Java, and both languages compiles to bytecode in _.class_ files. A result of that is that Scala and Java interface very easily, and Scala code can invoke Java methods and vice versa. We chose to implement the AI in Java, working in a language we're well-versed in, to increase our productivity and quality of the code.
 <TODO credit the guys who wrote the simulator>
 
+
+### Configuration
+<describe the config interface>
 ### Decision Matrix
 
 Antallet af gange den klasse har skiftet navn... I've lost count... 
