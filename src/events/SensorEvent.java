@@ -1,5 +1,8 @@
 package events;
 
+/**
+ * @author David
+ */
 public class SensorEvent extends Event {
 
     public SensorEvent(int id, long ts) {

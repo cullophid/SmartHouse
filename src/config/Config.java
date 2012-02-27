@@ -2,7 +2,9 @@ package config;
 import java.io.*;
 import java.util.Scanner;
 
-
+/**
+ * @author Andreas
+ */
 public class Config{
     public static int patternLength = 7;
     public static int patternInterval = 10*1000;

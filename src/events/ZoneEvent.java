@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * @author David
+ */
 public class ZoneEvent extends Event {
 
     protected int[] ids;

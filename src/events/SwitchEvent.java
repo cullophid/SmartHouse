@@ -1,5 +1,8 @@
 package events;
 
+/**
+ * @author David
+ */
 public class SwitchEvent extends Event {
     
     protected boolean cmd;

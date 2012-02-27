@@ -2,6 +2,9 @@ package timer;
 
 import javax.swing.event.EventListenerList;
 
+/**
+ * @author David
+ */
 public class Sleeper extends Thread {
     
     private int id;

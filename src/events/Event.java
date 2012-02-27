@@ -3,6 +3,9 @@ package events;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * @author David
+ */
 public abstract class Event {
 
     private static SimpleDateFormat sdm = new SimpleDateFormat("[HH:mm:ss]");

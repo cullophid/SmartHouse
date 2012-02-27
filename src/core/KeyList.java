@@ -2,7 +2,7 @@ package core;
 import java.util.ArrayList;
 import events.*;
 /**
- * class keylist
+ * @author Andreas
  * */
 public class KeyList{
     private ArrayList<Integer> keys;
