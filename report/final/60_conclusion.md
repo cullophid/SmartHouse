@@ -1,5 +1,5 @@
 
-# Conclusion
+## Conclusion
 
 * summarises all the result of the project
 	* what was the problem?
@@ -11,7 +11,7 @@
 	* new problems identified through the project
 	* outline the possible evolution curve of the software
 
-## writing good conclusions
+### writing good conclusions
 
 * What was the problem?
     - Remind the reader of the context and project goals
@@ -27,14 +27,14 @@
     - Outline ideas for future work
     
     
-## Future work
+### Future work
 
-### Switch and sensor correlation
+#### Switch and sensor correlation
 
 We base our statistical correlation table on the assumption, that a user will most likely turn on the light where he is, and look at the interval just after a switch is turned on. A way to augment that analysis, is by flipping the assumption on it's head, that the user will most likely turn off the light where he isn't. The user is most likely not going to be where the lights are off, so any sensors activated when the lights are off, are most likely not in the same room as the switch.  
     
     
-## Awesome quotes
+### Awesome quotes
 
 lille liste af citater som godt kunne passe ind i rapporten
 
