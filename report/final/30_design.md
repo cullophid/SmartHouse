@@ -35,8 +35,6 @@ We want to determine the series of sensor events, or pattern, that leads up to a
 
 With the idea of an event pattern, we can look at what patterns lead up to a switch event. And by extension of that analysis, when we observe an event pattern, we can determine the probability that it would lead to a switch event. 
 
-To determine these pattern we try to make some rules about what to look for. If too long time passes between event, the event are probably not part of the same movement pattern. But what is too long time? <TODO><god dont let me wait in suspence... how long? HOW LONG???!!!>
-
 ### Zones
 
 In many cases to cover an entire room with sensors, the sensors end up overlapping in some areas. These overlaps can be used to increase the precision of the sensors. If two sensors triggers shortly after each other, then the user is in the zone where the two sensors overlap. In cases where multiple sensors triggers at the same time, it can be seen as one zone event.
@@ -47,9 +45,13 @@ In many cases to cover an entire room with sensors, the sensors end up overlappi
 
 [zoneimg]: figures/zone.png "Sensor zones"
 
+### Decision matrix
+
+<TODO makov chains, decision matrix>
+
 ### Confidence
 
-<snak om confidence intervaller>
+A key stage of the system, is when does it go from the learning stage to the evolution stage? When is the system confident enough to take over control of the home. In the "placebo" setup the system couldn't enter the evolution stage, since it couldn't control the lights. Therefor this functionality wasn't implemented, but is still key feature of the system, and should be discussed in this report. There are two main metrics we believe should determine
 
 ### Switch and sensor correlation
 
