@@ -1,0 +1,315 @@
+Loading Configurations
+pattern_interval = 10000
+pattern_length = 2
+probablility_threshold = 0.5
+use_zones = true
+zone_interval = 500
+Trying to connect to the database
+connection established
+generating basic matrices
+fetching data from db
+ iterating resultset
+rows : 45772
+runtime = 1924
+basic 89/78 (111)
+generating zone matrices
+fetching data from db
+ iterating resultset
+rows : 45772
+runtime = 822
+zone 147/120 (928)
+switches
+18
+13
+19
+17
+4
+sensors
+24
+23
+20
+21
+27
+28
+22
+25
+26
+29
+
+*********************************************
+printing matrix on
+*********************************************
+key: 5141 5405 19 value: 1.0
+key: 5400 5912 4 value: 2.0
+key: 23 5141 4 value: 1.0
+key: 20 27 19 value: 0.0062111802
+key: 5141 28 18 value: 1.0
+key: 5143 21 19 value: 2.0
+key: 6940 5141 19 value: 1.0
+key: 20 27 17 value: 0.0062111802
+key: 20 27 18 value: 0.0062111802
+key: 21 23 13 value: 0.0034602077
+key: 25 5403 17 value: 1.0
+key: 23 5141 17 value: 1.0
+key: 23 5141 19 value: 2.0
+key: 5141 21 19 value: 1.0
+key: 6426 21 19 value: 1.0
+key: 27 25 17 value: 0.018867925
+key: 21 5143 13 value: 1.0
+key: 21 5405 19 value: 1.0
+key: 5145 21 18 value: 1.0
+key: 21 6169 17 value: 1.0
+key: 20 26 19 value: 0.024390243
+key: 5143 20 18 value: 1.0
+key: 26 25 17 value: 0.0015015015
+key: 25 25 17 value: 0.003699137
+key: 25 25 19 value: 0.0012330456
+key: 5141 20 17 value: 1.0
+key: -1 21 4 value: 0.008
+key: 28 5141 19 value: 2.0
+key: 5399 24 13 value: 1.0
+key: 5141 5141 13 value: 1.0
+key: -1 20 19 value: 0.005586592
+key: 27 5141 19 value: 3.0
+key: 23 25 17 value: 0.01724138
+key: 27 21 19 value: 0.007518797
+key: 28 5141 13 value: 2.0
+key: 5398 20 19 value: 1.0
+key: 5141 26 19 value: 1.0
+key: -1 28 19 value: 8.6132647E-4
+key: 29 21 19 value: 0.009433962
+key: 21 25 17 value: 0.023255814
+key: -1 5143 13 value: 1.0
+key: 20 25 17 value: 0.05147059
+key: -1 20 4 value: 0.005586592
+key: 5141 5141 19 value: 1.0
+key: 24 25 17 value: 0.012345679
+key: 27 5403 13 value: 1.0
+key: 21 5144 19 value: 1.0
+key: 23 24 4 value: 0.0016260162
+key: 20 5141 4 value: 1.0
+key: 5399 25 17 value: 1.0
+key: 28 27 18 value: 0.0022988506
+key: 21 24 19 value: 0.0033898305
+key: 21 5403 17 value: 1.0
+key: 27 20 19 value: 0.019417476
+key: 27 6940 18 value: 1.0
+key: 5403 25 17 value: 1.0
+key: -1 27 18 value: 0.0017513135
+key: 21 24 13 value: 0.0033898305
+key: 20 24 13 value: 0.007561437
+key: 23 24 18 value: 8.130081E-4
+key: 20 24 19 value: 0.0018903592
+key: 20 24 4 value: 0.0018903592
+key: -1 5141 19 value: 1.0
+key: 5141 25 17 value: 1.0
+key: 27 28 19 value: 0.0021413276
+key: 25 5145 19 value: 1.0
+key: 22 5141 19 value: 1.0
+key: 27 28 18 value: 0.009635975
+key: 29 29 19 value: 0.006006006
+key: 22 23 13 value: 6.1500614E-4
+key: 21 5147 19 value: 1.0
+key: 25 20 19 value: 0.00952381
+key: 29 23 19 value: 0.027777778
+key: 21 5147 17 value: 1.0
+key: 24 23 13 value: 0.0016542597
+key: 6427 27 17 value: 1.0
+key: 5141 5401 17 value: 1.0
+key: 23 26 17 value: 0.023809524
+key: 5404 20 18 value: 1.0
+key: 21 27 13 value: 0.005952381
+key: 21 27 17 value: 0.011904762
+key: 20 23 13 value: 0.0013888889
+key: 5144 21 19 value: 1.0
+key: 5141 24 13 value: 1.0
+key: 5144 21 18 value: 1.0
+key: 21 27 19 value: 0.005952381
+key: 29 28 18 value: 0.09090909
+key: 25 21 17 value: 0.012987013
+key: 21 5401 17 value: 1.0
+key: 26 21 19 value: 0.018867925
+key: 25 21 19 value: 0.008658009
+key: 29 28 19 value: 0.09090909
+key: 25 21 18 value: 0.0043290043
+key: 26 21 17 value: 0.028301887
+key: 23 5144 13 value: 2.0
+key: 28 5403 19 value: 1.0
+key: 28 21 4 value: 0.0053475937
+key: 21 21 17 value: 0.0026954177
+key: 24 21 19 value: 0.004347826
+key: 20 20 4 value: 0.002994012
+key: 5403 28 19 value: 1.0
+key: 25 26 17 value: 0.0013850415
+key: 5400 25 17 value: 1.0
+key: 25 26 19 value: 0.0013850415
+key: 21 28 19 value: 0.006849315
+key: 5141 23 13 value: 1.0
+key: 23 21 19 value: 0.011019284
+key: 21 28 18 value: 0.006849315
+key: 23 21 18 value: 0.002754821
+key: 28 21 19 value: 0.0053475937
+key: 28 6940 19 value: 1.0
+key: 23 21 13 value: 0.002754821
+key: 20 20 19 value: 0.017964073
+key: 21 5149 19 value: 1.0
+key: 21 5917 19 value: 1.0
+key: 20 29 19 value: 0.013888889
+key: 20 7197 19 value: 1.0
+key: 5403 20 19 value: 1.0
+key: 21 20 17 value: 0.0020222447
+key: 21 5141 4 value: 1.0
+key: 21 20 18 value: 0.0010111224
+key: 24 20 19 value: 0.0034246575
+key: 24 20 13 value: 0.0017123288
+key: 21 20 19 value: 0.01718908
+key: 20 21 4 value: 0.0045871558
+key: 22 29 19 value: 0.035714287
+key: 20 21 13 value: 0.005733945
+key: 23 20 13 value: 0.008445946
+key: -1 -1 18 value: 0.25
+key: 22 20 19 value: 0.022727273
+key: 21 29 19 value: 0.05
+key: 23 20 18 value: 0.0016891892
+key: 27 27 17 value: 9.578544E-4
+key: 23 20 17 value: 0.0016891892
+key: 27 27 18 value: 9.578544E-4
+key: 23 20 19 value: 0.0033783785
+key: 22 20 13 value: 0.011363637
+key: 27 27 13 value: 9.578544E-4
+key: 20 21 17 value: 0.0011467889
+key: 20 21 18 value: 0.0011467889
+key: 21 20 4 value: 0.0020222447
+key: 20 21 19 value: 0.020642202
+key: 21 5141 19 value: 1.0
+key: -1 -1 13 value: 0.05
+key: 20 28 18 value: 0.02586207
+key: 24 20 4 value: 0.0017123288
+key: -1 -1 4 value: 0.05
+
+
+*********************************************
+printing matrix off
+*********************************************
+key: 5143 21 4 value: 1.0
+key: 24 27 18 value: 0.029411765
+key: 5144 24 18 value: 1.0
+key: 20 27 19 value: 0.01863354
+key: 5147 28 18 value: 1.0
+key: 27 24 4 value: 0.015384615
+key: 6940 5141 13 value: 1.0
+key: 5141 21 19 value: 1.0
+key: 26 5912 17 value: 1.0
+key: 5912 25 17 value: 1.0
+key: -1 21 19 value: 0.008
+key: 5144 5399 4 value: 2.0
+key: 23 22 17 value: 5.428882E-4
+key: 26 25 17 value: 0.0015015015
+key: 23 5655 17 value: 1.0
+key: 21 5143 19 value: 1.0
+key: 5141 20 19 value: 2.0
+key: 25 25 19 value: 0.0012330456
+key: 28 5141 19 value: 2.0
+key: 28 5141 18 value: 1.0
+key: -1 20 19 value: 0.005586592
+key: 23 25 17 value: 0.01724138
+key: 27 5141 19 value: 2.0
+key: 27 21 19 value: 0.007518797
+key: -1 28 18 value: 0.0025839794
+key: 26 26 17 value: 0.0012180269
+key: 29 21 19 value: 0.028301887
+key: 29 5141 19 value: 1.0
+key: 20 25 17 value: 0.007352941
+key: -1 5143 13 value: 2.0
+key: 6940 28 18 value: 1.0
+key: 21 5660 18 value: 1.0
+key: 27 23 19 value: 0.016129032
+key: 5146 5143 19 value: 1.0
+key: 6426 6426 17 value: 1.0
+key: 28 27 18 value: 0.004597701
+key: 21 24 19 value: 0.0033898305
+key: 27 20 19 value: 0.009708738
+key: 27 6940 18 value: 2.0
+key: -1 27 18 value: 0.0017513135
+key: 20 24 13 value: 0.0018903592
+key: 29 20 19 value: 0.024390243
+key: 23 24 17 value: 8.130081E-4
+key: 23 24 18 value: 8.130081E-4
+key: 20 5141 19 value: 1.0
+key: 28 27 13 value: 0.0022988506
+key: 20 24 19 value: 0.0018903592
+key: 21 24 4 value: 0.0033898305
+key: 5143 5148 19 value: 1.0
+key: 24 24 18 value: 4.5724737E-4
+key: 24 23 18 value: 8.271299E-4
+key: -1 5141 19 value: 2.0
+key: 24 23 17 value: 8.271299E-4
+key: 24 5141 19 value: 1.0
+key: 28 28 18 value: 8.6956524E-4
+key: 27 28 19 value: 0.0010706638
+key: 5141 25 17 value: 1.0
+key: 27 28 18 value: 0.0021413276
+key: 29 29 19 value: 0.003003003
+key: 20 22 19 value: 0.01369863
+key: 25 20 17 value: 0.00952381
+key: 6426 5141 19 value: 1.0
+key: 21 5147 19 value: 1.0
+key: 24 23 13 value: 0.0016542597
+key: -1 26 17 value: 0.005076142
+key: 20 23 4 value: 0.0013888889
+key: 6940 27 13 value: 1.0
+key: 5141 24 4 value: 1.0
+key: 20 23 13 value: 0.004166667
+key: 20 23 18 value: 0.0013888889
+key: 5914 6426 17 value: 1.0
+key: 25 21 17 value: 0.012987013
+key: 28 22 18 value: 0.035714287
+key: 5144 5400 19 value: 1.0
+key: 26 21 17 value: 0.018867925
+key: 24 21 18 value: 0.004347826
+key: 21 21 18 value: 0.0026954177
+key: 20 20 4 value: 0.005988024
+key: 21 21 19 value: 0.0053908355
+key: 6426 26 17 value: 1.0
+key: 25 26 17 value: 0.002770083
+key: 22 28 18 value: 0.035714287
+key: 5912 21 4 value: 1.0
+key: 5916 5141 19 value: 1.0
+key: 23 21 19 value: 0.002754821
+key: 24 21 4 value: 0.004347826
+key: 20 20 19 value: 0.011976048
+key: 21 21 4 value: 0.0026954177
+key: 23 21 13 value: 0.002754821
+key: -1 24 13 value: 3.3512065E-4
+key: 23 21 4 value: 0.008264462
+key: 24 5143 13 value: 1.0
+key: 21 20 17 value: 0.0010111224
+key: 20 5916 13 value: 1.0
+key: 21 20 18 value: 0.003033367
+key: 23 28 13 value: 0.022222223
+key: 24 20 13 value: 0.0034246575
+key: 21 20 19 value: 0.012133468
+key: 20 21 4 value: 0.003440367
+key: -1 -1 19 value: 0.15
+key: 20 21 13 value: 0.0022935779
+key: -1 -1 18 value: 0.45
+key: 23 20 13 value: 0.0033783785
+key: 5144 23 18 value: 1.0
+key: 27 27 18 value: 0.0019157088
+key: 27 27 13 value: 9.578544E-4
+key: 28 20 19 value: 0.0067114094
+key: 20 21 17 value: 0.0011467889
+key: -1 23 18 value: 0.0015540016
+key: 5141 6171 18 value: 1.0
+key: 21 20 4 value: 0.003033367
+key: 20 21 19 value: 0.01146789
+key: 21 5141 19 value: 2.0
+key: -1 -1 13 value: 0.05
+key: 20 28 17 value: 0.00862069
+key: 21 5148 18 value: 1.0
+key: 20 28 19 value: 0.00862069
+key: 20 28 18 value: 0.01724138
+key: 24 20 4 value: 0.0034246575
+key: 26 5405 19 value: 1.0
+
+
