@@ -162,7 +162,6 @@ Unlike data collection, analyzing the data does not have  strict time constraint
 
 <the house should react to the user, and the user to the house>
 
-
 ### Controlling the house
 After we have collected and analyzed data the the final task is to have the system control the house in real time, using the decision scheme created from the analyzed data. The system must constantly monitor the user and attempt to match his movement pattern to those present in the decision scheme. As with data collection this has to happen in real time so the patterns are not corrupted.
 
