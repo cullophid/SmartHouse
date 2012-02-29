@@ -14,12 +14,17 @@ NOTES:
 <intro to design section>
 
 ### theory
+_Stand back! Im going to try science!_ -Randal Munroe
+
+<machine learning>
 <conditional probability>
 
 
 ### Training the system 
 <entire section will probably need to be rewritten>
 <moved here from analysis>
+
+Since were basing our solution on machine learning
 Since the system bases its decisions on data gathered on the user, the system is essentially trying to mimic user actions at the right times. The system will have three stages :
 * The untrained stage where the system is running, but it hasn't yet collected enough data to make intelligent decisions. 
 
