@@ -1,11 +1,7 @@
 
 ## Evaluation
 
-_"I have not failed. I've just found 10,000 ways that won't work."_ -- Thomas A. Edison
-
-_"Laughing at our mistakes can lengthen our own life. Laughing at someone else's can shorten it."_ -- Cullen Hightower
-
-_"To err is human--and to blame it on a computer is even more so."_ -- Robert Orben
+_"If it compiles, it is good; if it boots up, it is perfect."_ -- Linus Torvalds
 
 * Evaluation should document that the goals have been achieved
 	* Functional requirements (i.e., testing)
@@ -25,6 +21,10 @@ _"To err is human--and to blame it on a computer is even more so."_ -- Robert Or
 
 [correlation]:figures/correlation.png "Correlation"
 
+
+### Software testing
+
+For the relative simple and predictable module EventList, we have done some white-box testing, using JUnit tests. Making sure it correctly detect zones,that pattern ordering is preserved, and old event are purged when new events are added according to the pattern length and interval parameters. The more complex modules DecisionMatrix and Correlation are tested and evaluated based on the gathered user data.
 
 ### Decision matrix
 
@@ -55,10 +55,10 @@ With zones enabled, the system looks at the event patterns both with and without
 
 ### Correlation
 
-Before evaluating the correlation probability table, some goals should be established.
+In this section we are going to evaluate how well correlation, based on the generated user data, matches to the actual setup. Is the system able to get accurate estimates of which sensors and switches are in the same room. We are also going to evaluate how well the correlation based timeout would work, with or without correlation corrections. Prior to looking at the actual data, we want to state some resoanable goals we want the system to achieve for the correlation probabilities:
 
-* A sensor should have the highest correlation to the switch in the room it's in.
-* Ideally some threshold exists, so that all correlations above the threshold are in the same room, and all other correlations are below the threshold.
+1. A sensor should have the highest correlation to the switch in the room it is in.
+2. Some correlation threshold should exist, so that sensors and switches in the same room are above the threshold, and those not in the same room are below the threshold.
 
 | Switches             || Sensors                                                                                       ||||||||||
 |  	 |                  | 20      | 21       | 22   | 23       | 24       | 25       | 26       | 27       | 28       | 29       |
@@ -71,13 +71,20 @@ Before evaluating the correlation probability table, some goals should be establ
 | 19 |	WC              | *0.29*  | *0.29*   | 0.06	| 0.09     | 0.08     | 0.06     | 0        | 0.07     | 0.03     | **0.75** |
 [Correlation table, based on statistical data. > 40% in bold, 40-20% in italic.][ctable data] 
 
-The [correlation table][ctable data] is based on collected data from the testing environment. The first criteria holds, that all sensors have the highest correlation with the switch in the room they're in.
-Most (but not all) the correlation probability between sensors and switches in the same room are above 40%. All correlations between for switches and sensors not in the same room are below 40%. Three sensors have correlations lower than 40% to the switch in the room they're in, and one of them as low as 12%. Two of the three sensors in the living room, not only have correlations below 40%, but correlations below those of sensors in the adjecent hallway. As can be seen in [the overview of the appartment](#Hellebaekgade), the sensors 22 and 25 are located in the far end of the rooms from the switch and doorway. Since the calculated correlation probabilities are based on the time interval right after the light is turned on, it makes sense that these sensor, relatively far away from the switches ends up with a lower correlation. 
+The [correlation table][ctable data] is based on collected data from the testing environment. The first criteria holds, that all sensors have the highest correlation with the switch in the room they are in. 
+The send criteria does not hold for all correlations. Most correlation probability for sensors and switches in the same room are above 40%. All correlations for switches and sensors not in the same room are below 40%. But three sensors have correlations lower than 40% to the switch in the room they are in, and one of them as low as 12%. In the living room, two sensors not only have correlations below 40%, but correlations below those of sensors in the adjecent hallway. 
+
+As can be seen in [the overview of the appartment](#Hellebaekgade), the sensors 22 and 25 are located in the far end of the rooms from the switch and doorway. Since the calculated correlation probabilities are based on the time interval just after the light is turned on, it makes sense that these sensor, being relatively far away from the switches ends up with a lower correlation. 
 
 [Hellebaekgade]: figures/hellebaekgade3.png "Hellebaekgade image"
 
+Sensor 23 is positioned to monitor the sofa in front of the TV, and the data suggest that it only detect the user if he go to the sofa immediately after he enters the room. So not all sensors neccesarily trigger in a room, depending on what the user decides to do in the room. 
 
-Sensor 23 is a bit more interesting, since it located fairly close to the doorway. Having one of the authors of this thesis also being the guinea pig running around generating sensor data, gives a unique insight why some sensor patterns look the way they do. Sensor 24 is located by a desk, and 23 next to a sofa. So in this case different user activities triggeres different sensor, in this case sitting on the sofa and watch TV, or go the the desk and work. 
+So in this case, the correlation still gives an excelent estimate of which switches and sensors are in the same room, by looking switch each sensor has the highest correlation probability too. 
 
-One thing to note is, these are the probabilities based solely on the statistical data, and that correlation corretions would be added onto this schema. So it doesn't perfectly reflect the room / switch + sensor correlations on it's own, though it gives a close approximation
+One thing to note is, these are the probabilities based solely on the statistical data, and that correlation corretions would be added onto this schema. So it is not a perfect reflect of which sensors are in the same room each switch, on it is own. But it does gives a good approximation.
+
+#### Correlation based timeout
+
+The implemented functionality of the correlation table, is to determine the timeout when a switch is turned on.
 

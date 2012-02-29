@@ -69,6 +69,14 @@ When a switch is turned on, a timer is started for that switch. If a correlated 
 
 These correlation corrections are stored in a separate table in the database. The correlation use for the timeout is based on both the statistical correlation, and these correlation corrections. The correlation corrections increase or reduce the correlation by 10 percent points. The system allows correlations higher than 100%, this gives the intended behavoir that a switch may have a longer timeout than what is default.
 
+| correlation_confirmation ||
+|-------------|-------------|
+| switch      | Integer     |
+| sensor      | Integer     |
+| correlation | Float       |
+[Database table for correlation corrections][corr corr table]
+
+
 ### Timers and timeout
 
 Timers are implemented in the Timer and Sleeper class. Sleeper is a fairly simple class, it sleeps starts a new thread, sleeps for a given time, then fires a timeout event to a given timeout listener. Timer simply holds a map, where each switch can set a timeout. Timer creates a sleeper object, and puts in the map. The sleepers can then easily be monitored and interrupted if needed. 
