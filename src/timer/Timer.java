@@ -6,6 +6,9 @@ import java.util.Map;
 
 import javax.swing.event.EventListenerList;
 
+/**
+ * @author David
+ */
 public class Timer implements TimeoutListener {
     
 

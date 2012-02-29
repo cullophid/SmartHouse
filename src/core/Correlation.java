@@ -22,7 +22,9 @@ import config.Config;
 
 import events.*;
 
-
+/**
+ * @author David
+ */
 public class Correlation implements TimeoutListener {
 
     private Statement stmt;

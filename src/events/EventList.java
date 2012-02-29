@@ -6,6 +6,9 @@ import java.util.LinkedList;
 
 import config.Config;
 
+/**
+ * @author David
+ */
 public class EventList {
 
     private LinkedList<Event> events;
