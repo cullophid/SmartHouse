@@ -81,6 +81,8 @@ With the idea of an event pattern, we can look at what patterns lead up to a swi
 <entire section will probably need to be rewritten>
 <moved here from analysis>
 
+When training the system, it will analyse the sensor data and look at all occured event patterns. It will count the number of times each event pattern has been observed, as well as the number of times each event pattern has led to a switch being turned on or off respectively. Based on the number of times each event pattern has been observed, and has led to a switch event, the probability... <TODO write more>
+
 
 ### Zones
 
@@ -92,6 +94,7 @@ In many cases to cover an entire room with sensors, the sensors end up overlappi
 
 [zoneimg]: figures/zone.png "Sensor zones"
 
+Zones can also provide augment the system in other ways, than just increasing the precision of the motion sensors. When a user enters an area where sensors overlap, it might not be important which of them fires first. Without zone events, the path c would trigger either sensor 2 or 3 first, and these would be considered two distinct event patterns by the system. By looking at is as the same zone event no matter which sensor fired first, the system would be able to learn the intended behavior for path c faster by looking at is a zone event.
 
 ### Confidence
 

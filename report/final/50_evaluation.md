@@ -86,5 +86,5 @@ One thing to note is, these are the probabilities based solely on the statistica
 
 #### Correlation based timeout
 
-The implemented functionality of the correlation table, is to determine the timeout when a switch is turned on.
+The implemented functionality of the correlation table, is to determine the timeout when a switch is turned on. So how well is the correlation table able to keep the light on where it's needed? Different areas should have different timeouts, but the most important for the system is to have long timeouts in areas where the user is likely to be still for extended periods of time, while still wanting the light to remain on. The most obvious area would be the sofa, 
 
