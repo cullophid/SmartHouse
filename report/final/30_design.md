@@ -23,7 +23,7 @@ NOTES:
 Since the system bases its decisions on data gathered on the user, the system is essentially trying to mimic user actions at the right times. The system will have three stages :
 * The untrained stage where the system is running, but it hasn't yet collected enough data to make intelligent decisions. 
 
-* The learning stage where there's enough data to attempt to manipulate the switches of the home. We call this the learning stage, because it provides us with a unique opportunity for the system to learn from the user. If the system makes a mistake and the user corrects it, e.g., the system turns off the lights and the user turns it back on, we can use that interaction to train our system further. In this case we can see it as the user punishing the system for making a mistake. The system will then adjust its decision scheme.  
+* The learning stage where there's enough data to attempt to manipulate the switches of the home. We call this the learning stage, because it provides us with a unique opportunity for the system to learn from the user. If the system makes a mistake and the user corrects it, e.g., the system turns off the lights and the user turns it back on, we can use that interaction to train our system further. In this case we can see it as the user punishing the system for making a mistake. The system will then adjust its decision scheme. 
 
 * After the system has been in the learning stage, it will enter its final stage, which we call the evolution stage. Here the system constantly updates its decision scheme with new data both from monitoring the user, and from being punished for its mistakes. In this stage there is a symbioses between the user and the system where the system reacts to the user and vice versa. <Som jeg forstår dette, så adskiller det sig ikke fra learning stage. Tekstmæssigt er forskellen, at her er det også brugeren, der ændrer opførsel. Men det har vel ikke noget med systemets udvikling at gøre. - men sandsynligt.>
 
@@ -45,13 +45,21 @@ In many cases to cover an entire room with sensors, the sensors end up overlappi
 
 [zoneimg]: figures/zone.png "Sensor zones"
 
-### Decision matrix
+### Decision scheme
 
 <TODO makov chains, decision matrix>
 
 ### Confidence
 
-A key stage of the system, is when does it go from the learning stage to the evolution stage? When is the system confident enough to take over control of the home. In the "placebo" setup the system couldn't enter the evolution stage, since it couldn't control the lights. Therefor this functionality wasn't implemented, but is still key feature of the system, and should be discussed in this report. There are two main metrics we believe should determine
+A key transition of the system, is when does it go from the untrained stage to the learning stage? When is the system confident enough to take over control of the home. In the "placebo" setup, the system couldn't enter the learning stage, since it couldn't control the lights. Therefor this functionality wasn't implemented, but is still key feature of the system, and should be discussed in this report. 
+
+There are two main metrics we believe should determine when the system is confident enough:
+The system should start attempting to control the home, once it is confident enough, to act upon the decision schemes it has learned. But the system needs to have some quantifiable metric to determine it's confidence, before it start to take over control of the home:
+
+1.  The probability in the decision scheme must be above some threshold. \\(P(switch_i | pattern_j) > \varphi \\)
+2.  The specific \\(pattern_j\\) must have occurred atleast some number of times.
+
+Exactly what the threshold should be, is up to speculation and could be determined through experimentation, once the system in ready to enter the learning stage. The second rule is to make sure, the system doesn't start acting based on patterns only observed once. 
 
 ### Switch and sensor correlation
 
