@@ -7,15 +7,13 @@
 * __Remember, the most important documentation of the implementation is comments in the code!__
 
 ### The physical setup
-In order to collect real life data to train the system, we needed to create a hardware implementation of part of the system. We chose David Lemvighs appartment as a test area, since we needed a location that 
-
-### Training data collection
-
-<more information on z-wave>
+	<more information on z-wave>
 <more information on zwapi>
 <insert pictures from the installation>
 
-In order to collect training data, we installed wireless switches and PIR sensors[^pir] in a [home](#Hellebaekgade). The placebo switches were placed next to the normal switches controlling the light for each room, in all cases being the switch closest to the entrance. Each room have one or more PIR sensors, averaging 2 per room, with one lest in the restroom and an additional sensor in the living room. When placing the sensors, the system can obviouly only laern from behavoir in areas covered by sensors. So sensors should provide as close to full coverage as possible, with special emphasis on making sure the entrances are covered.
+In order to collect training data, we installed wireless switches and PIR sensors[^pir] in a [home](#Hellebaekgade). The placebo switches were placed next to the normal switches controlling the light for each room, in all cases being the switch closest to the entrance. We installed a total of 10 motion sensors and 5 switches throughout the apartment, that collected data non stop for a period of two weeks.
+
+Each room have one or more PIR sensors, averaging 2 per room, with one lest in the restroom and an additional sensor in the living room. When placing the sensors, the system can obviously only learn from behavior in areas covered by sensors. So sensors should provide as close to full coverage as possible, with special emphasis on making sure the entrances are covered. 
 
 [^pir]: Passive infrared sensors.
 
