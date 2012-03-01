@@ -36,12 +36,17 @@ The wireless nodes we have available communicate using the Zensys Z-Wave protoco
 
 ### Simulator / AI interface
 
-We have a smart house simulator available, which will be extended with an AI module, implementing the features discussed in this report. The simulator is implemented in scala, so an obvious choise would be to implement the AI in scala aswell. However work with the simulator in the initial stages of the project, showed that our programming speed in scala was too slow to get any meaningful amount of work done. The scala language is build upon Java, and both languages compiles to bytecode in _.class_ files. A result of that is that Scala and Java interface very easily, and Scala code can invoke Java methods and vice versa. We chose to implement the AI in Java, working in a language we're well-versed in, to increase our productivity and quality of the code.
+To test the system we have a smart house simulator available, which we extended with an AI module, implementing the features discussed in this report. The simulator is implemented in scala, but we chose to implement the AI module in Java. Since both languages compiles to byte code Scala and Java interface very easily, and Scala code can invoke Java methods and vice versa. We chose to implement the AI in Java, to work in a language we're well-versed in, to increase our productivity and quality of the code. 
+
+With the simulator we are able the test the system in the active learning stage of the system. The system have all the data gathered from the passive learning stage, and we are able to see how the system would behave in the beginning of the active learning stage. As stated in the analysis, simulated user data will never be as good a actual user data, and we will not place significant weight on learning based on the simulator. But with the simulator we can see if the system is acting and reacting as expected in the active learning stage.
+
+With the simulator well be able to evaluate how able the system is able to act based on the decision table, turning the light on and off as the user moves around the house. We'll be able to see if the system is correctly turning off the light based on the correlation table.
 <TODO credit the guys who wrote the simulator>
 
-
 ### Configuration
-<describe the config interface>
+
+The system has a number of configuration parameters, that should be tweaked through experimentation. The system is able to access the parameters from global variables. The Config class creates a .settings file to load and saves these parameters. This makes it easy to load, change, import and export settings.
+
 ### Decision Matrix
 
 Antallet af gange den klasse har skiftet navn... I've lost count... 
@@ -50,12 +55,20 @@ Antallet af gange den klasse har skiftet navn... I've lost count...
 
 ### Event patterns
 
-To make lookups based on the lastest event pattern, each new sensor event needs to be a matched to see if it's part of a pattern.
-As each sensor and switch event is received by the system, a list of the most recent event pattern is maintained in an EventList. 
+To make lookups based on the observed event pattern, each new sensor eventis matched to see if it is part of a pattern. 
+As each sensor and switch event is received by the system, a list of the most recent event pattern is maintained in an EventList. EventList is basicly a queue of sensor events, a FIFO list with a max length. If the list is a max capacity when a new event is added, the list is subsequently dequeued. The pattern interval rule is maintained by looking that last event in the queue, when a new event is added. If the last event is more than pattern interval old compared to the new event, the queue is cleared before the new event is queued.
+    
+    EventList add(event):
+    queue events
+    if events.tail.time + pattern_interval < event.time
+    do
+        events.clear
+    fi
+    events.add(event)
+    
+If zone detection is enabled, EventList first checks if the last event is less than zone interval old compared to the new event. If a zone is detected, the last event in the list is replaced with a zone event.
 
-EventList determines if the lastest event is part of the pattern, and determines if a zone event has occured (if set to use zone events). 
-
-The invariant of the EventList, is that after an event is added, the event list contains the current event patttern. This pattern can then be used to determine if any switches should be turned on or off.
+The EventList is used to make lookups in the decision matrix, which takes a fixed length array of sensor IDs as key. When looking up patterns shorter than the configured pattern length, the pattern is prefixed with _-1_ IDs, to maintain the fixed length.
 
 ### Correlation table
 <intro to the correlation table>
