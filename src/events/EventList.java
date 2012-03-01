@@ -48,7 +48,7 @@ public class EventList {
         this();
         this.useZones = useZones;
     }
-    
+        
     public EventList(int zone_interval, int pattern_interval, int pattern_length) {
         this();
         this.zone_interval = zone_interval;

@@ -22,6 +22,7 @@ public class ZoneEvent extends Event {
     public ZoneEvent(long ts, int ... ids) {
         this(ids);
         this.ts = ts;
+        this.id = getID(ids);
     }
     
     public ZoneEvent(List<Event> zone) {
@@ -59,6 +60,7 @@ public class ZoneEvent extends Event {
         System.arraycopy(ids, 0, tmp, 1, ids.length);
         ids = tmp;
         Arrays.sort(ids);
+        this.id = getID(ids);
     }
     
     @Override

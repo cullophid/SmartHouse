@@ -35,15 +35,14 @@ public class Correlation implements TimeoutListener {
     private Map<Integer, Map<Integer, Float>> correlation;
     
     public static void main(String[] args) throws IOException {
-        System.out.println(System.currentTimeMillis());
-        System.in.read();
+        System.out.println(new Correlation());
     }
     
     public Correlation () {
         correlation = new HashMap<Integer, Map<Integer, Float>>();
         try {
             Class.forName("com.mysql.jdbc.Driver");//load the mysql driver
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/kiiib?user=KIIIB&password=42");//connect to the database
+            conn = DriverManager.getConnection(Config.DB);//connect to the database
             stmt = conn.createStatement();
         }
         catch (SQLException se){
@@ -108,7 +107,6 @@ public class Correlation implements TimeoutListener {
             LinkedList<SwitchEvent> gc = new LinkedList<SwitchEvent>();
             
             result = stmt.executeQuery("(select id,timestamp,'sensor' AS type, '0' AS status from sensor_events) union (select id,timestamp,'switch' AS type,status from switch_events) order by timestamp;");
-            int i = 0;
             while(result.next()) {
                 int id = result.getInt("id");
                 long ts = result.getTimestamp("timestamp").getTime();
@@ -146,18 +144,24 @@ public class Correlation implements TimeoutListener {
                     correlation.put(sw, map);
                 }
             }
+            int i = 0;
             while(gc.size() > 0) {
                 SwitchEvent se = gc.getFirst();
                 incrementSwitchCount(switch_count, se.getID());
-//                for (int sensor : switch_events.get(se))
-//                    incrementSensorCount(sensor_count, se.getID(), sensor);
+                
                 for (Event e : new HashSet<Event>(Arrays.asList(switch_eventlist.get(se).getEvents()))) {
                     incrementSensorCount(sensor_count, se.getID(), e.getID());
                 }
                 gc.removeFirst();
-//                switch_events.remove(se);
                 switch_eventlist.remove(se);
             }            
+            for(int sw : sensor_count.keySet()) {
+                Map<Integer, Float> map = new HashMap<Integer, Float>();
+                for (int se : sensor_count.get(sw).keySet()) {
+                    map.put(se, (float) sensor_count.get(sw).get(se) / switch_count.get(sw)); 
+                }
+                correlation.put(sw, map);
+            }
         } catch (SQLException se){
             se.printStackTrace();
             System.out.println("SQLException: " + se.getMessage());

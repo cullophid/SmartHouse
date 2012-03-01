@@ -6,16 +6,53 @@ import java.util.Scanner;
  * @author Andreas
  */
 public class Config{
-    public static int patternLength = 7;
+    
+    /**
+     * database 
+     */
+    public static String DB = "jdbc:mysql://localhost/kiiib_dev?user=KIIIB&password=42";
+    /**
+     * pattern length for markov chains
+     */
+    public static int patternLength = 2;
+    /**
+     * maximum time interval in ms, for events to count as a pattern
+     */
     public static int patternInterval = 10*1000;
+    /**
+     * maximum time interval in ms, for events to count as a zone event
+     */
     public static int zoneInterval = 500; 
+    /**
+     * the interval after an on event, that sensor events is considered to be correlated to the switch
+     */
     public static int correlationInterval = 7*1000;
+    /**
+     * minimum correlation probability for a sensor to extend the timeout of a switch 
+     */
     public static float probabilityThreshold = .5f;
+    /**
+     * should the system detect zone events
+     */
     public static boolean useZones = true;
+    /**
+     * base timeout for all switches in ms
+     */
     public static int defaultOnTime = 5000;
+    /**
+     * the interval after a switch is turned off based on timeout, that the system considers a on event a punishment
+     */
     public static int punishmentTimeout = 10*1000;
+    /**
+     * the correlation correction when the system is punished
+     */
     public static float correlationCorrectionStep = .1f;
-    public static boolean debug = true;
+    /**
+     * flag for when the system is in debug mode
+     * used toggle debug output
+     * also toggles simulator logging motion and switch event to database (doesn't log in debug mode)
+     */
+    public static boolean debug = false;
     //hej David
     
     public static void main(String[] args) {
