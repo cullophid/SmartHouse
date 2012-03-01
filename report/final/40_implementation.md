@@ -139,8 +139,8 @@ Timers are implemented in the Timer and Sleeper class. Sleeper is a fairly simpl
 
 To received the timeout events the SmartHouse class implements TimeoutListener. 
 
-[bedroom]: figures/bedroom.jpg "A PIR motion sensor installed on location in hellebækgade" width="300px"
-[livingroom]: figures/livingroom.jpg "A "placebo" switch installed on location in hellebækgade" width="300px"
-[bathroom]: figures/bathroom.jpg "A PIR motion sensor installed on location in hellebækgade" width="300px"
-[switch]: figures/switch.jpg "A "placebo" switch installed on location in hellebækgade" width="300px"
+[bedroom]: figures/bedroom.JPG "A PIR motion sensor installed on location in hellebækgade" width="300px"
+[livingroom]: figures/livingroom.JPG "A "placebo" switch installed on location in hellebækgade" width="300px"
+[bathroom]: figures/bathroom.JPG "A PIR motion sensor installed on location in hellebækgade" width="300px"
+[switch]: figures/switch.JPG "A "placebo" switch installed on location in hellebækgade" width="300px"
 
