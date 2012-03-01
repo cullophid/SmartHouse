@@ -1,30 +1,27 @@
-
+<add explanation of config>
 ## Design
 
 In this chapter we will describe the design process, and discuss the major decisions we have made in regard to the system design. Since the system is research minded, and since the purpose of the project is to analyze the possibilities of developing an intelligent home control system using machine learning technology, we had to make some adjustments to the development process. The traditional waterfall model[^waterfallmodel] for software development dictates that after finishing the project analysis, we would start designing how the system should handle the problems found in the analysis, along with the system architecture. Finally we would then implement the designed solution. With this project we were however faced with an additional challenge. When using machine learning you generally end up with a system that does not have an intuitive execution flow. This means that it can be almost impossible to predict the execution outcome because of the vast amounts of data that form basis for the systems decision making. This means that we have no way of verifying the validity of our proposed solution before implementing the system, or at least parts of it. Therefore we decided to approach the project by using incremental development instead[^incremental-development]. <perhaps describe incremental development>
 
 In order to successfully apply this development model we must first divide the project into smaller parts, that can be implemented with each cycle. This design approach also inspired our final system design. Just like the development had several phases, where each phase had to be concluded in order to activate the next, the system will have similarly <huh?> have different stages of operations. These stages are determined by the amount of data the system have collected on the user.
 
-The system will have three different stages of operation. 
+The system will have two different stages of operation. 
 
-* In **The untrained stage**, the system is running, but it has not yet collected enough data to make intelligent decisions. 
+* In **The passive learning stage**, the system is running, but it has not yet collected enough data to make intelligent decisions. This stage is called the passive learning stage because the system is training it self by  
 
-* The system enters **The learning stage** when there's enough data to attempt to manipulate the switches in the house. We call this the learning stage, because it provides us with a unique opportunity for the system to learn from the user. If the system makes a mistake and the user corrects it, e.g., the system turns off the lights and the user turns it back on, we can use that interaction to train our system further. In this case we can see it as the user punishing the system for making a mistake. The system will then adjust its decision scheme. 
+* The system enters **the active learning stage** when there's enough data to attempt to manipulate the switches in the house. We call this the active learning stage, because the system now actively attempts to interact with the house's swithes . If the system makes a mistake and the user corrects it, e.g., the system turns off the lights and the user turns it back on, we can use that interaction to train our system further. In this case we can see it as the user punishing the system for making a mistake. The system will then adjust its decision scheme.  This way the system will actively initiate a learning sequence. The system will remain in this stage indefinitely, and will continue to train it self using both passive and active learning. 
 
-* After the system has been in the learning stage, it will enter its final stage, which we call **The evolution stage**. Here the system constantly updates its decision scheme with new data both from monitoring the user, and from being punished for its mistakes. In this stage there is a symbioses between the user and the system where the system reacts to the user and vice versa. <rename evolution stage, and specify the differences>
+By using incremental development we are able to design and implement the system one stage at a time, and evaluate the passive part of the system before designing the active part.
 
-Each stage the system enters is based on the information the system as acquired in the previous stage. Thereby in the evolution stage we can attempt to address some of the shortcomings that are present int the previous stage. Because of this approach we were able to design, implement and evaluate each stage of the system, before continuing to the next.
-
-In this chapter we will discuss the different stages of the system, the problems that are presint in each stage, and the solutions designed to solve these problems. 
+In this chapter we will discuss the different stages of the system, the problems that are present in each stage, and the solutions designed to solve these problems. 
 
 In the section "Theory" we will present the mathematical and statistical theory, that forms the basis for our machine learning algorithms.
  
-In the untrained stage the system simply stores all sensor and switch events generated by the system, ordered by time of occurrence. This data collection is very simple, and will not be discussed in this chapter. In the chapter "Implementation" this process will be discussed further.<rephrase>
+This data collection in the system is very simple, and will not be discussed in this chapter. In the chapter "Implementation" this process will be described in detail.<rephrase>
 
-In the sections "Event pattern", "Training the system" and "Zones"we will discuss how the system analyses the collected user data in the learning stage. We will also provide a brief evaluation of the system in this stage, which will form the basis for the design of the final  evolution stage.
+The section "The passive learning stage" consists of three subsections. In the sections "Event pattern" and "Decision table" we will discuss how the system analyses the passively collected data. As discussed in the chapter "Analysis" using motion sensors can reduce the precision, and reliability of the collected data.In the subsection "Zones" we will discuss our approach to solve these problems. We will also provide a brief evaluation of the system in this stage, which will form the basis for the design of the active learning stage.
 
- In the final sections and "Switch and sensor correlation" we will discuss the processes at work in the final stage of the system. 
-
+In the section "The active learning stage" we will discuss the additional processes that are present in this stage. These processes are made in response to the  problems we have identified in the evaluation of the passive learning stage.
 
 ### Theory
 
@@ -35,9 +32,9 @@ In the core of our system lies a series of machine learning algorithms. In this 
 #### Machine learning
 The purpose of machine learning is to have the system evolve behaviors based on empirical data, rather than programming a specific behavioral pattern.  By using the supplied data as examples of relationships between data events, the system can recognize complex patterns, and make intelligent decisions based on the data analyzed[# wiki-machinelearning]. 
 
-  With **supervised learning**[^supervised-learning] the system is give labeled data consisting of examples of correct behavior. Because of both the human factor, and the imperfection of the motion sensors, the system will generate a certain amount of invalid data called noise. The algorithm will have to distinguish between what is proper training examples and what is noise.
+With **supervised learning**[^supervised-learning] the system is give labeled data consisting of examples of correct behavior. Because of both the human factor, and the imperfection of the motion sensors, the system will generate a certain amount of invalid data called noise. The algorithm will have to distinguish between what is proper training examples and what is noise.
   
-  In **Active learning**... 
+**Active learning** is a form of supervised learning where the learner (the computer) prompts the user for information. In this form of learning the system initiates the interaction with the user, and trains it self based on the users response. This is especially useful if the system is generally well trained, but lacks training in specific areas. 
   
 #### Markov chains
 
@@ -59,7 +56,7 @@ By arranging these values in a matrix you can create a lookup table for future r
 
 Each cell in the table represents the probability of entering the state represented by the cells row, assuming the system is currently in the state represented by the cells column.
 
-#### Markov chains of order m 
+#### Markov chains with memory 
 
 One of the most iconic features of Markov chains is the fact that they are memoryless. The probability of entering a new state is only based on the current state of the system. The states prior to the current have no effect on this probability. With "Markov chains of order m"  the system has memory of the last m steps in the chain, and these affect the probability of entering future states. 
 This probability can be written as: 
@@ -68,21 +65,110 @@ Now the probabilities are calculated based on the pattern of steps made through 
 
 Since our probabilities are calculated based on collected data, we will not have to perform any complex statistical calculations.
 
-### The learning stage
+### The passive learning stage
 
-When training the system, it will analyze the sensor data and look at all occurred event patterns. It will count the number of times each event pattern has been observed, as well as the number of times each event pattern has led to a switch being turned on or off respectively. Based on the number of times each event pattern has been observed, and has led to a switch event, the probability... <TODO write more>
+In the passive learning stage the system monitors the user and trains it self based on his actions. In this stage the system does not interact actively with the house
 
 #### Event patterns
-
+<add reference to markov chains!!!!> <ULTRA IMPORTANT ANDREAS!>
+<use the phrase sensor pattern>
+<pattern interval>
 We want to be able to trigger the switches, based on more than just where the user is right now. We want to be able to look at where the user is coming from, and try to predict where the light needs to be turned on or off. So the light is already on when the user enters a room, and is turned off where it isn't needed. 
 
-We want to determine the series of sensor events, or pattern, that leads up to a user turning the lights on or off, e.g. which sensors are triggered when a user goes from the couch to the restroom. If a series of sensor events, are less than some time interval apart, we consider them to be part of a event pattern. The time interval needs to be long enough, that a user moving around normally is seen as a continuous event pattern, and not broken into fragments. The time interval also needs to be short enough, that different user action, is seen as separate event patterns. For instance, a user going the kitchen to get a snack, and then returns to the living room, should ideally be seen as two separate event patterns.
+We want to determine the series of sensor events, or pattern, that leads up to a user turning the lights on or off, e.g. which sensors are triggered when a user goes from the couch to the restroom. If a series of sensor events, are less than some time interval apart, we consider them to be part of an event pattern. The time interval needs to be long enough, that a user moving around normally is seen as a continuous event pattern, and not broken into fragments. The time interval also needs to be short enough, that different user action, is seen as separate event patterns. For instance, a user going the kitchen to get a snack, and then returns to the living room, should ideally be seen as two separate event patterns.
 
 With the idea of an event pattern, we can look at what patterns lead up to a switch event. And by extension of that analysis, when we observe an event pattern, we can determine the probability that it would lead to a switch event. 
 
 
 #### Decision Table
-In the core of the intelligent system lies the decision table. This is the product of the machine learning algorithm. The decision table is designed to be an efficient lookup table that the system can use as as a decision scheme for its artificial intelligence.
+In the core of the intelligent system lies the decision table. This is the product of the machine learning algorithm. The decision table is designed to be an efficient lookup table that the system can use as a decision scheme for its artificial intelligence. 
+
+The algorithm for training the system in this stage is based on the concepts of passive supervised learning, since the user generates concrete examples for the system to follow. The data are labeled by type of event (sensor, switch), and the switch events are further divided into "on" and "off" events. These labels help the system determine how to analyze each pattern of events.
+
+The decision table is designed as a Markov matrix, but we need the system to be able to handle Markov chains with memory, since we are tracking patterns, instead of single events. This effects the design of the Markov matrix.
+
+Lets start by looking at the simple system with a pattern of length 1. Here we can simply use the Markov matrix described in the theory section. 
+
+| switches \ sensors | sensor 1 | sensor 2 | sensor 3 | 
+| :-----: | :-----: | :-----: | :-----: | :-----: | 
+| switch 1| \\(P(switch 1 | sensor 1)\\) |\\(P(switch 1 | sensor 2)\\) |\\(P(switch 1 | sensor 3)\\) | 
+| switch 2| \\(P(switch 2 | sensor 1)\\) |\\(P(switch 2 | sensor 2)\\) |\\(P(switch 2 | sensor 3)\\) |
+| switch 3|  \\(P(switch 3 | sensor 1)\\) |\\(P(switch 3 | sensor 2)\\) |\\(P(switch 3 | sensor 3)\\) |
+
+For each set of sensor and switch events, the table above holds the probability of the switch event occurring, given that the sensor event has just occurred. This table acts as a relation table between the sensors and switches, in a system based on traditional Markov chains. In our system this means the pattern length is 1.
+
+When we expand the Markov matrix to handle chains with memory, the matrix becomes more complicated.  In the table above the number of cells is given by the number of sensors in the system multiplied by the number of switches in the system:
+\\[\#switches \cdot \#sensors\\]
+When we add a sensor event to the eventlist the number of cells in the matrix is multiplied by the number of switches again. This results in the general formula:
+<alternativ formulering: When we increase the pattern length of the eventlist, the number of cells in the matrix multiplied by the number of switches.>
+
+\\[ \#switches  \cdot \#sensors^{pattern length} \\]
+
+As a result of this we see that for each event we add to the eventlist the matrix must be expanded by a new dimension. Thus a pattern length of n results in an n-dimensional matrix. 
+
+As mentioned above we cannot at this moment determine what is the optimal pattern length, and therefore we must develop a system design that is flexible enough so that we can change the pattern length. This means that the decision table must be of n dimensions.
+<insert figure>
+
+One advantage is that, since we are only interested in the users behavior related to his interaction with the wall switches, we only need to handle the patterns where the last event is a switch event. We must now go though our database, and for each switch event we must extract an eventlist consisting of that event and the n-1 sensor events preceding it. The decision matrix will consist of the number of times a pattern has occurred in the collected data. This value is then divided by the number of occurrences of the eventlist without the switch events. Thereby the value of each cell in the matrix will be classified as the number of times a pattern has been observed divide by the number of times the pattern excluding the switch event has been observed.
+<insert figure>
+
+This value can also be interpreted as the probability that a specific switch event will occur after observing the pattern of sensor events. 
+
+
+
+The system must also be able to handle patterns that are shorter than the maximum length, in case the pattern leading up to a switch event is smaller than the maximum pattern length. This could for example occur if the interval between two events have been too long. 
+
+The algorithm that handles the table generation looks as follows:
+
+	GenerateDecisionTable(events[]);
+	lastevent = 0
+	map decision_table
+	map denominator
+	queue eventlist
+	
+	for event in events
+	do
+	    if event is sensorevent
+	    do
+	        if event.time <= lastevent + pattern_interval
+	        do 
+	            push event to eventlist
+	            if eventlist.length > pattern_length
+	            	remove tail from eventlist
+	        else
+	            clear eventlist
+	            push event to eventlist
+	        done
+	        insert event into denominator
+	        lastevent = event.time
+	    else if event is switchevent
+	    do
+	        if event.time <= lastevent + pattern_interval
+	        do
+	            insert event into decision_table
+	        else
+	            clear eventlist
+	            add event to eventlist
+	        done
+	    done
+	done
+	
+	for entry in decision_table
+	do
+	    extract eventlist
+	    divide by matching denominator
+	done
+	
+First the algorithm creates two maps: decision_table and denominator. The decison_table will, as the name suggests, hold the decision table. The denominator maps is used to keep track of the number of times each pattern of sensor events occur. This is used as the denominator when finding the probability in the decision table.  The eventlist always contains the last n events in the system, unless the time between events exceeds the value stored in pattern_interval. The algorithm now runs through the collected data in chronological order. 
+
+If the current event is a sensor event, this is added to the eventlist, assuming that the time since the last event has occurred has not exceeded the pattern interval.	The eventlist is now used to navigate through the n dimensional matrix denominator, and increase the occurrence of the pattern by 1.
+
+If the current event is a switch event, this is added to decision table	in the same fashion as with the denominator matrix. Since we are not interested in patterns that contains more than one switch even, the eventlist is now emptied.
+
+Finally each value in the decision table is divided by the corresponding value in the denominator tables. This is done by extracting the eventlist from the decision table and using it to navigate the denominator matrix. 
+
+The entire algorithm is run both for "on" and "off" switch event. This results in two separate tables, one for turning the lights on, and on for turning them off.
+
 
 #### Zones
 <add the other benefit>
@@ -96,7 +182,18 @@ In many cases to cover an entire room with sensors, the sensors end up overlappi
 
 Zones can also provide augment the system in other ways, than just increasing the precision of the motion sensors. When a user enters an area where sensors overlap, it might not be important which of them fires first. Without zone events, the path c would trigger either sensor 2 or 3 first, and these would be considered two distinct event patterns by the system. By looking at is as the same zone event no matter which sensor fired first, the system would be able to learn the intended behavior for path c faster by looking at is a zone event.
 
-### The evolution stage
+### The active learning stage
+
+A key element of the system, is the transition from the passive learning stage to the active learning stage. 
+
+There are two main metrics we believe should determine when the system is confident enough:
+The system should start attempting to control the home, once it is confident enough, to act upon the decision schemes it has learned. But the system needs to have some quantifiable metric to determine its confidence, before it start to take over control of the home:
+
+1.  The probability in the decision scheme must be above a certain threshold. \\(P(switch_i | pattern_j) > \varphi \\)
+2.  The specific \\(pattern_j\\) must have occurred at least a certain number of times.
+
+Exactly what the threshold should be, is up to speculation and could be determined through experimentation, once the system in ready to enter the learning stage. The second rule is to make sure, the system doesn't start acting based on patterns only observed once.
+<we have to do better than this!>
 
 #### Switch and sensor correlation
 
@@ -134,17 +231,9 @@ We wanted to make a situation where no matter what happens the light is eventual
 
 The problem with a timeout based solution, is people sitting still. Most people have experience controllable or programmable smarthouse solutions, where motion sensors keep the light on for some amount of time. And it tend to work great in spaces where people are passing through, hallways, carports, et cetera. But in places where people some times sit still, be it working or relaxing, motion sensors won't be triggered, and user end up having to get up or wave their arms to keep the lights on. So we allow the system to keep the light on for longer duration in some areas, based on which sensors are triggered, and also a way for the system to learn where these areas are. As already stated the base timeout is based on the correlation, which means sensors close to the switch will keep the light on longer. A common scenario in a home would be a user laying on a couch watching TV. So we want the system to be able to keep the lights on longer, if it detects that the user is on the couch. If a timer runs out, the system turns the switch off, and if the user immediately turns it back on again, the system takes that as a punishment for it's behavior. The system reacts by increasing the timeout those sensors have to the switch. Adversely if a timer runs out, and the user doesn't take any action, it assumes it's behavior was correct, and decreases the timeout.
 
-#### Confidence
 
-A key transition of the system, is when does it go from the untrained stage to the learning stage? When is the system confident enough to take over control of the home. In the "placebo" setup, the system couldn't enter the learning stage, since it couldn't control the lights. Therefor this functionality wasn't implemented, but is still key feature of the system, and should be discussed in this report. 
 
-There are two main metrics we believe should determine when the system is confident enough:
-The system should start attempting to control the home, once it is confident enough, to act upon the decision schemes it has learned. But the system needs to have some quantifiable metric to determine it's confidence, before it start to take over control of the home:
-
-1.  The probability in the decision scheme must be above some threshold. \\(P(switch_i | pattern_j) > \varphi \\)
-2.  The specific \\(pattern_j\\) must have occurred at least some number of times.
-
-Exactly what the threshold should be, is up to speculation and could be determined through experimentation, once the system in ready to enter the learning stage. The second rule is to make sure, the system doesn't start acting based on patterns only observed once.
+### Running the system
 
 
 
