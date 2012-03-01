@@ -9,7 +9,7 @@ The system will have two different stages of operation.
 
 * In **The passive learning stage**, the system is running, but it has not yet collected enough data to make intelligent decisions. This stage is called the passive learning stage because the system is training it self by  
 
-* The system enters **the active learning stage** when there's enough data to attempt to manipulate the switches in the house. We call this the active learning stage, because the system now actively attempts to interact with the house's swithes . If the system makes a mistake and the user corrects it, e.g., the system turns off the lights and the user turns it back on, we can use that interaction to train our system further. In this case we can see it as the user punishing the system for making a mistake. The system will then adjust its decision scheme.  This way the system will actively initiate a learning sequence. The system will remain in this stage indefinitely, and will continue to train it self using both passive and active learning. 
+* The system enters **the active learning stage** when there's enough data to attempt to manipulate the switches in the house. We call this the active learning stage, because the system now actively attempts to interact with the house's switches . If the system makes a mistake and the user corrects it, e.g., the system turns off the lights and the user turns it back on, we can use that interaction to train our system further. In this case we can see it as the user punishing the system for making a mistake. The system will then adjust its decision scheme.  This way the system will actively initiate a learning sequence. The system will remain in this stage indefinitely, and will continue to train it self using both passive and active learning. 
 
 By using incremental development we are able to design and implement the system one stage at a time, and evaluate the passive part of the system before designing the active part.
 
@@ -25,7 +25,7 @@ In the section "The active learning stage" we will discuss the additional proces
 
 ### Theory
 
-_"Stand back! Im going to try science!"_ -Randal Munroe
+_"Stand back! I'm going to try science!"_ -Randal Munroe
 
 In the core of our system lies a series of machine learning algorithms. In this section we will explain some of the basic concepts of machine learning, along with the statistical theory that it is based on.
 
@@ -73,7 +73,7 @@ In the passive learning stage the system monitors the user and trains it self ba
 <add reference to markov chains!!!!> <ULTRA IMPORTANT ANDREAS!>
 <use the phrase sensor pattern>
 <pattern interval>
-We want to be able to trigger the switches, based on more than just where the user is right now. We want to be able to look at where the user is coming from, and try to predict where the light needs to be turned on or off. So the light is already on when the user enters a room, and is turned off where it isn't needed. 
+We want to be able to trigger the switches, based on more than just where the user is right now. We want to be able to look at where the user is coming from, and try to predict where the light needs to be turned on or off. So the light is already on when the user enters a room, and is turned off where it's not needed. 
 
 We want to determine the series of sensor events, or pattern, that leads up to a user turning the lights on or off, e.g. which sensors are triggered when a user goes from the couch to the restroom. If a series of sensor events, are less than some time interval apart, we consider them to be part of an event pattern. The time interval needs to be long enough, that a user moving around normally is seen as a continuous event pattern, and not broken into fragments. The time interval also needs to be short enough, that different user action, is seen as separate event patterns. For instance, a user going the kitchen to get a snack, and then returns to the living room, should ideally be seen as two separate event patterns.
 
@@ -172,15 +172,17 @@ The entire algorithm is run both for "on" and "off" switch event. This results i
 
 #### Zones
 <add the other benefit>
-In many cases to cover an entire room with sensors, the sensors end up overlapping in some areas. These overlaps can be used to increase the precision of the sensors. If two sensors triggers shortly after each other, then the user is in the zone where the two sensors overlap. In cases where multiple sensors triggers at the same time, it can be seen as one zone event.
+In order for motion sensors to cover an entire room, the sensors tends to end up overlapping. These overlaps can be used to increase the precision of the sensors. If two sensors triggers shortly after each other, the user must be in the overlapping area between the two sensors. In cases where multiple sensors triggers at the same time, it can instead be seen as a single zone event.
 
-[Take](#zoneimg) as an example, of three sensors which overlap a bit, and three paths past the sensors a, b and c. The paths b and c should only be observed as zone events by the system. While a path should look something like 1, zone 1 & 2, 2, zone 2 & 3, 3. depending on the cooldown of the sensors each event may be multiple times in the pattern.
+[Take](#zoneimg) as an example, three sensors (1, 2 and 3) with overlap, and three paths the user could take (_A_, _B_ and _C_). The paths _B_ and _C_ should only be observed as zone events by the system. Path _A_ should be detected as the event pattern [1, zone 1 & 2, 2, zone 2 & 3, 3].
 
 ![Sensors with overlapping zones][zoneimg]
 
 [zoneimg]: figures/zone.png "Sensor zones"
 
-Zones can also provide augment the system in other ways, than just increasing the precision of the motion sensors. When a user enters an area where sensors overlap, it might not be important which of them fires first. Without zone events, the path c would trigger either sensor 2 or 3 first, and these would be considered two distinct event patterns by the system. By looking at is as the same zone event no matter which sensor fired first, the system would be able to learn the intended behavior for path c faster by looking at is a zone event.
+Zones can also augment the system by removing ambiguity when a user enters an area where sensors over lap. For path c without zone events, it's uncertain if sensor 2 or 3 would detect the user first, and these would be considered distinct event patterns by the system. With zone detection, the pattern will look the same to the system no matter which sensor fired first, and as a result the system would be able to learn the intended behavior for path c faster. 
+
+Zones allow the system to determine the user's position more precisely, and to learn faster by removing ambiguity in some cases.
 
 ### The active learning stage
 
