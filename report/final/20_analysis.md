@@ -68,7 +68,6 @@ House_n represent one of many smart environment, build by universities around th
 
 Like the Clipsal system, the nodes of House_n have distributed intelligence, and uses Hidden Markov Models to learn from user behavior. The system is also able to relay data gathered by the system, to PDA's or smartphones carried by the inhabitants of the house. 
 The intelligence of House_n comes from the work of each team of master students working on the project. Each project explores different aspects of machine learning. The exact intellion gence implementation of House_n is dependant on the currently ongoing projects [#House_n ongoing]
-[#House_n ongoing]: http://architecture.mit.edu/house_n/projects.html
 
 The projects shown in this survey represent the solutions currently available or in development. There are many different controllable and programmable solution commercially available, with INSTEON, Clipsal C-bus and LK IHC being some of the more widespread representative solutions. INSTEON being a simple controllable solution, Clipsal C-bus and LK IHK are both programmable smart house solutions, but where LK IHC is designed for private homes, the Clipsal C-bus system is better suited for larger buildings. 
 
@@ -188,6 +187,8 @@ Based of the analysis above we can now form a requirement specification for the 
 [#LK IHC]: Lauritz Knudsens. http://www.lk.dk
  
 [#MSsurvey]: Mads Ingwar and Soeren Kristian Jensen. IMM Smart House Project: a state of the art survey. 2008.
+
+[#House_n ongoing]: http://architecture.mit.edu/house_n/projects.html
 
 [^placebosystem]: A system where the sensors and switches have no actual effect on the house, but are merely there to collect data.
 

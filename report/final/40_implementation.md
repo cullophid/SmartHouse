@@ -40,7 +40,8 @@ We setup a mini PC with a Z-Wave serial device, and configured all PIR sensor an
 [Database table for switch events][sensor table]
 
 ### Simulator / AI interface
-To test the system we have a smart house simulator available, which we extended with an AI module, implementing the features discussed in this report. The simulator is implemented in scala, but we chose to implement the AI module in Java. Since both languages compiles to byte code Scala and Java interface very easily, and Scala code can invoke Java methods and vice versa. We chose to implement the AI in Java, to work in a language we're well-versed in, to increase our productivity and quality of the code. 
+
+To test the system we have a smart house simulator available, which was developed by a team of DTU students as part of a [bachelor thesis][#scalasim]. We extended the simulator with an AI module, implementing the features discussed in this report. The simulator is implemented in scala, but we chose to implement the AI module in Java. Since both languages compiles to byte code Scala and Java interface very easily, and Scala code can invoke Java methods and vice versa. We chose to implement the AI in Java, to work in a language we're well-versed in, to increase our productivity and quality of the code. 
 
 With the simulator we are able the test the system in the active learning stage of the system. The system have all the data gathered from the passive learning stage, and we are able to see how the system would behave in the beginning of the active learning stage. As stated in the analysis, simulated user data will never be as good a actual user data, and we will not place significant weight on learning based on the simulator. But with the simulator we can see if the system is acting and reacting as expected in the active learning stage.
 
@@ -48,7 +49,7 @@ With the simulator well be able to evaluate how able the system is able to act b
 <TODO credit the guys who wrote the simulator>
 
 ### Configuration
-<<<<<<< HEAD
+
 The config class in created as a simple static class that uses a file reader to load a config file stored on the hard drive. The config class initially holds the default values for the system, which are overwritten with the values from the config file.
 If no config file is present on the system, the config class generates a file based on the default values. After loading the config file, the other classes in the system, can then access the static fields of the class. These values are never altered after initially loading the config file.
 
@@ -110,10 +111,12 @@ Once the data is returned from the database the system iterates through the resu
 
 
 ### Correlation table
-<intro to the correlation table>
+
+The correlation table is based on both statistical data from the passive learning stage, as well as corrections and punishments from the active learning stage. First the statistical correlation is calculated, and then the corrections are added ontop of that.
+
 #### Correlation statistical generation
 
-Correlation calculates the probability that a sensor is correlated a switch. It scans the database, and looks at the interval just after a switch is triggered. The sensors that triggered in the interval, are counted for that interval, in a way thay they're only counted once per switch event. If a multiple switch event are triggered in the same interval, the sensor events in the overlapping intervals should be counted for each of those switches. Having the number of times each switch is triggered, and each sensors triggeres with the given time interval, it's then calculated the probability that \\( sensor_i \\) is triggered, given that a \\( switch_j \\) was turned on atmost \\( \Delta t \\) ago. This gives the statistical correlation probability table. 
+The Correlation calculates the probability that a sensor is correlated a switch. It scans the database, and looks at the interval just after a switch is triggered. The sensors that triggered in the interval, are counted for that interval, in a way thay they're only counted once per switch event. If a multiple switch event are triggered in the same interval, the sensor events in the overlapping intervals should be counted for each of those switches. Having the number of times each switch is triggered, and each sensors triggeres with the given time interval, it's then calculated the probability that \\( sensor_i \\) is triggered, given that a \\( switch_j \\) was turned on atmost \\( \Delta t \\) ago. This gives the statistical correlation probability table. 
 
 To this the correlation confirmations in the database, is then added. Each row in the database table contains the accululated correlation correction for that switch / sensor pair. The correlation correction is simply added to the correlation based on the statistical data.
 
@@ -143,4 +146,6 @@ To received the timeout events the SmartHouse class implements TimeoutListener.
 [livingroom]: figures/livingroom.JPG "A "placebo" switch installed on location in hellebækgade" width="300px"
 [bathroom]: figures/bathroom.JPG "A PIR motion sensor installed on location in hellebækgade" width="300px"
 [switch]: figures/switch.JPG "A "placebo" switch installed on location in hellebækgade" width="300px"
+[#scalasim]: Sune Keller and Martin Skytte Kristensen. Simulation and visualization of intellight light control system. Bachelor thesis 2010.
+Mads Ingwar and Soeren Kristian Jensen. IMM Smart House Project: a state of the art survey. 2008.
 

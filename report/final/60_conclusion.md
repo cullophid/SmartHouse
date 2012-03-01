@@ -37,20 +37,12 @@ The next phase of development for the project would be to get ready for the lear
 
 We base our statistical correlation table on the assumption, that a user will most likely turn on the light where he is, and look at the interval just after a switch is turned on. A way to augment that analysis, is by flipping the assumption on it's head, that the user will most likely turn off the light where he isn't. The user is most likely not going to be where the lights are off, so any sensors activated when the lights are off, are most likely not in the same room as the switch. 
 
-#### 
+#### Decision matrix persistency
 
-if new event patterns match old patterns, the by all means use both. And if the differ, user mainly new data
-    
-### Awesome quotes
+The more user data the system has about a event pattern in the decision matrix, the more confident the system can be in the correctness of that decision. But the system should also be able to adapt to changes in user behavior. 
 
-lille liste af citater som godt kunne passe ind i rapporten
+To be able to best react changes, the system should only keep the most recent data. But this would drasicly reduce the systems confidence in the decision matrix. 
 
-_I am among those who think that science has great beauty. A scientist in his laboratory is not only a technician: he is also a child placed before natural phenomena which impress him like a fairy tale._ -- Marie Curie
+En måde at fikse problemet på er at tillade system at bruge gammel data, så længe at det stemmer overens med de seneste observationer
+A way to fix this problem would be to allow the system to use old data, as long as the user patterns doesn't appear to have changed. If the system observes that the user's behavior starts to differ from the old behavior, the system could the stop using old data. This could 
 
-_Good judgment comes from experience, and experience comes from bad judgment._ -- Barry LePatner
-
-_Nothing can be so amusingly arrogant as a young man who has just discovered an old idea and thinks it is his own._ -- Sidney J. Harris
-
-_The more original a discovery, the more obvious it seems afterwards._ -- Arthur Koestler
-
-o
