@@ -81,6 +81,17 @@ If zone detection is enabled, EventList first checks if the last event is less t
 
 The EventList is used to make lookups in the decision matrix, which takes a fixed length array of sensor IDs as key. When looking up patterns shorter than the configured pattern length, the pattern is prefixed with _-1_ IDs, to maintain the fixed length.
 
+#### Zone events
+
+Zone events are represented as en extension of sensor events, with a list off all the sensors that are part of the zone event. In order to look up zone events in the decision matrix, each zone also has a single integer id representation. The id is calculated from the sorted list sensor.
+    
+    getID()
+    sum = 0
+    for sensor in zone
+        sum = sum*256 + sensor.id
+    return sum
+    
+For zone events based on at most 4 sensors, with id values less than 256, this function generates unique and compareable ids.
 
 ### Decision Matrix and KeyList
 The Decision Matrix is the class that holds the decision table. The class consists of the two matrices "on" and "off"  which are the two decision tables.Instead of implementing the matrices as multidimensional arrays we have chosen to use hash-maps were the key is an array of length n. There are two main advantages to using hash maps instead of multidimensional arrays. The first advantage of this is that the lookup time is much faster in a hashmap, than an n-dimensional array. This is especially true when the amount of data in the system increases, and when increasing the number of dimension, i.e. increasing the pattern length. Secondly the multidimensional array would be much larger since it would have to allocate space for every possible pattern instead of just the ones extrapolated from the collected data.
@@ -132,3 +143,4 @@ To received the timeout events the SmartHouse class implements TimeoutListener.
 [livingroom]: figures/livingroom.jpg "A "placebo" switch installed on location in hellebækgade" width="300px"
 [bathroom]: figures/bathroom.jpg "A PIR motion sensor installed on location in hellebækgade" width="300px"
 [switch]: figures/switch.jpg "A "placebo" switch installed on location in hellebækgade" width="300px"
+
