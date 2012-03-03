@@ -25,7 +25,7 @@ _"If it compiles, it is good; if it boots up, it is perfect."_ -- Linus Torvalds
 ### Software testing
 
 The implementation have been tested using a combination of white box and black box testing. 
-
+<TODO bedre intro>
 
 #### White box testing 
 
@@ -78,32 +78,25 @@ The correlation table produced the expected results.
 
 ### Passive learning data
 
-In this section we're going evaluate how much the system have been able to learn, based on the data collected from the passive learning stage.
+In this section we're going evaluate how much the system have been able to learn, based on the data collected from the passive learning stage. During the passive learning stage 45.628 sensor events was recorded, 194 switch on events and 152 off events. 
+
+<TODO hvorfor er der flere on end off events?>
 
 #### Decision matrix
 
-A bit of sensor meta data:
-
-45.628 sensor events
-346 switch events, 194 on and 152 off. The observant reader might wonder why there are a lot more off commands than on commands? The short answer is the user's may have forgotten to press the placebo switches from time to time.
-
-
-<TODO 111 also being the theoretical maximum of unique patterns, for a home with 10 sensors
-1  : no sensors, just switch
-10 : single sensor events then switch event
-100 (10*10) : two sensor events then switch event
-I'm slightly impressed>
+<TODO we run decision matrix for multiple configuratiosn, to test which configurations is going to produce the best results>
 
 | Settings                      || Unique observed patterns                     |||
 | Pattern length | Zones enabled | Movement patterns | On patterns | Off patterns |
 |:--------------:|:-------------:|:-----------------:|:-----------:|:------------:|
-| 2              | No            | 111               | 89          | 72           |
-| 2              | Yes           | 928               | 147         | 120          |
-| 3              | No            | 910               | 142         | 117          |
+| 2              | No            | 111               | 85          | 78           |
+| 2              | Yes           | 1271              | 143         | 120          |
+| 3              | No            | 909               | 138         | 115          |
 | 3              | Yes           | 4097              | 225         | 171          |
+| 7              | Yes           | 18006             | 317         | 211          |
 [Statistics about the Decision matrix][dtable metadata]
 
-With zones enabled, the system looks at the event patterns both with and without zone. Which is why there are more observed on patterns, than actual on commands, when the pattern length is longer than three and zone detection is on. 
+With zones enabled, the system looks at the event patterns both with and without zone. Which is why the system, in some configurations, have detected more than one On pattern for every On event.
 
 <TODO vi skal nok lige snakke lidt om hvad vi kan og vil konkludere baseret paa decision matrix>
 

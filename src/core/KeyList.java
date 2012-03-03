@@ -60,7 +60,7 @@ public class KeyList{
     }
     public void printValues(){
         for (int i : keys){
-            System.out.print(i+" ");
+            System.out.print(ZoneEvent.getIDString(i) + " ");
         }
     }
     public ArrayList<Integer> getKeys(){
@@ -69,7 +69,7 @@ public class KeyList{
 	public String toString(){
 		String returnstr = "";
 		for (int i : keys){
-			returnstr = returnstr+i+" ";
+			returnstr = returnstr+ZoneEvent.getIDString(i)+" ";
 		}
 		return returnstr;
 	}

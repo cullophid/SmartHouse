@@ -18,7 +18,7 @@ import events.*;
  * @author Andreas
  */
 public class DecisionMatrix{
-    public HashMap<KeyList,Float> on,off;    
+    public HashMap<KeyList,Float> on, off;    
     private Statement stmt;
     private Connection conn;
     private LinkedList<Integer> eventBuffer; // holds the last n sensorevents, n = memoryDepth 
@@ -174,12 +174,10 @@ public class DecisionMatrix{
             System.out.println("VendorError: " + se.getErrorCode());
  
         }
-	
-        
-        
     }
+
     public void generateZoneMatrices(){
-	System.out.println("generating zone matrices");
+        System.out.println("generating zone matrices");
 
 		HashMap<KeyList,Float> temp,zoneOn,zoneOff;
 		zoneOn = new HashMap<KeyList,Float>();
@@ -206,26 +204,22 @@ public class DecisionMatrix{
                 if(type.equals("sensor")){
                     eventlist.add(new SensorEvent(id,time));
                     keylist = new KeyList(eventlist);
-                    if (denominator.containsKey(keylist)){
+                    if (denominator.containsKey(keylist)) {
                         denominator.put(keylist,denominator.get(keylist)+1);
-
-                    }
-                    else{
+                    } else{
                         denominator.put(keylist,1);
                     }       
                     lastevent = time;
                 }
-                else if(type.equals("switch")){
-                   temp = (result.getBoolean("status"))?zoneOn:zoneOff; 
+                else if (type.equals("switch")) {
+                   temp = (result.getBoolean("status")) ? zoneOn : zoneOff; 
                     if(time>lastevent+Config.patternInterval){
                         eventlist = new EventList(true);
                         keylist = new KeyList(eventlist);
                         if (denominator.containsKey(keylist)){
                             denominator.put(keylist,denominator.get(keylist)+1);
-                        }
-                        else{
+                        } else {
                             denominator.put(keylist,1);
-
                         }
                     }
 					if(eventlist.containsZoneEvent()){
@@ -239,8 +233,6 @@ public class DecisionMatrix{
 							temp.put(keylist,1f);
 						}
 					}
-                
-                 
                 }
             } 
             KeyList ksub;
@@ -248,7 +240,7 @@ public class DecisionMatrix{
             long runtime = end-start;
             System.out.println("rows : "+i);
             System.out.println("runtime = "+runtime);
-             for(KeyList k : zoneOn.keySet()){
+            for(KeyList k : zoneOn.keySet()){
                 ksub = k.subList(0,k.size()-2);
                 zoneOn.put(k,zoneOn.get(k)/denominator.get(ksub));
             }

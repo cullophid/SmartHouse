@@ -53,7 +53,6 @@ public class Config{
      * also toggles simulator logging motion and switch event to database (doesn't log in debug mode)
      */
     public static boolean debug = false;
-    //hej David
     
     public static void main(String[] args) {
         Config.loadConfig();
@@ -69,12 +68,21 @@ public class Config{
                 FileWriter fstream = new FileWriter(f);
                 BufferedWriter out = new BufferedWriter(fstream);
                 out.write("#automatically generated preferences file\n#delete to return to default settings\n");
-                out.write("pattern_interval "+patternInterval+"\n");
-                out.write("pattern_length "+patternLength+"\n");
-                out.write("probability_threshold "+probabilityThreshold+"\n");
-                out.write("use_zones "+useZones+"\n");
-                out.write("zone_interval "+zoneInterval+"\n");
+                out.write("DB " + DB +"\n");
+                
+                out.write("pattern_interval " + patternInterval + "\n");
+                out.write("pattern_length " + patternLength + "\n");
+                
+                out.write("use_zones " + useZones + "\n");
+                out.write("zone_interval " + zoneInterval + "\n");
+
+                out.write("probability_threshold " + probabilityThreshold + "\n");
                 out.write("correlation_interval " + correlationInterval+"\n");
+                out.write("correlation_correction " + correlationCorrectionStep +"\n");
+                out.write("default_on_time " + defaultOnTime +"\n");
+                out.write("punishment_timeout " + punishmentTimeout +"\n");
+
+                out.write("debug " + debug +"\n");
                 out.close();
 
             }
@@ -85,32 +93,49 @@ public class Config{
                     token = scan.next(); 
                     if(token.equals("pattern_length")){
                         patternLength = Integer.parseInt(scan.next());
-                        scan.nextLine();
                         System.out.println("pattern_length = "+patternLength);
                     }
                     else if(token.equals("pattern_interval")){
                         patternInterval = Integer.parseInt(scan.next());
-                        scan.nextLine();
                         System.out.println("pattern_interval = "+patternInterval);
-                    }
-                    else if(token.equals("probability_threshold")){
-                        probabilityThreshold = Float.parseFloat(scan.next());
-                        scan.nextLine();
-                        System.out.println("probablility_threshold = "+probabilityThreshold);
                     }
                     else if(token.equals("use_zones")){
                         useZones = Boolean.parseBoolean(scan.next());
-                        scan.nextLine();
                         System.out.println("use_zones = "+useZones);
                     }
                     else if(token.equals("zone_interval")){
                         zoneInterval = Integer.parseInt(scan.next());
-                        scan.nextLine();
                         System.out.println("zone_interval = "+zoneInterval);
                     }
-                    else {
-                        scan.nextLine();
+                    else if(token.equals("probability_threshold")){
+                        probabilityThreshold = Float.parseFloat(scan.next());
+                        System.out.println("probablility_threshold = "+probabilityThreshold);
                     }
+                    else if(token.equals("correlation_interval")){
+                        correlationInterval = Integer.parseInt(scan.next());
+                        System.out.println("correlation_interval = " + correlationInterval);
+                    }
+                    else if(token.equals("correlation_correction")){
+                        correlationCorrectionStep = Float.parseFloat(scan.next());
+                        System.out.println("correlation_correction = " + correlationCorrectionStep);
+                    }
+                    else if(token.equals("default_on_time")){
+                        defaultOnTime = Integer.parseInt(scan.next());
+                        System.out.println("default_on_time = " + defaultOnTime);
+                    }
+                    else if(token.equals("punishment_timeout")){
+                        punishmentTimeout = Integer.parseInt(scan.next());
+                        System.out.println("punishment_timeout = " + punishmentTimeout);
+                    }
+                    else if(token.equals("DB")){
+                        DB = scan.next();
+                        System.out.println("Database = " + DB);
+                    }
+                    else if(token.equals("debug")){
+                        debug = Boolean.parseBoolean(scan.next());
+                        System.out.println("debug = " + debug);
+                    }
+                    scan.nextLine();
 
                 }
             }

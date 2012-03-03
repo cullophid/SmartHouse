@@ -63,6 +63,10 @@ public class ZoneEvent extends Event {
         this.id = getID(ids);
     }
     
+
+    /**
+     * overrides the super class method compareID, to compare idx to all the ids in the zone event
+     */
     @Override
     public boolean compareID(int idx) {
         for(int id : ids) {
@@ -71,8 +75,7 @@ public class ZoneEvent extends Event {
         }
         return false;
     }
-    
-        
+
     public String toString() {
         return tsString() + " Zone event " + Arrays.toString(ids);
     }
@@ -114,10 +117,11 @@ public class ZoneEvent extends Event {
         if (id < 256)
             return Integer.toString(id);
         
-        StringBuffer sb = new StringBuffer();
+        StringBuffer sb = new StringBuffer("[");
         for (int i : getIDs(id))
             sb.append(i + ",");
-
-        return sb.substring(0, sb.length()-1);
+        sb.setCharAt(sb.length()-1, ']');
+        
+        return sb.toString();
     }
 }

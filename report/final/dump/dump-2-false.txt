@@ -1,17 +1,23 @@
 Loading Configurations
+Database = jdbc:mysql://localhost/kiiib?user=KIIIB&password=42
 pattern_interval = 10000
 pattern_length = 2
-probablility_threshold = 0.5
 use_zones = false
 zone_interval = 500
+probablility_threshold = 0.5
+correlation_interval = 7000
+correlation_correction = 0.1
+default_on_time = 5000
+punishment_timeout = 10000
+debug = false
 Trying to connect to the database
 connection established
 generating basic matrices
 fetching data from db
  iterating resultset
 rows : 45772
-runtime = 1650
-basic 89/78 (111)
+runtime = 1768
+basic 85/78 (111)
 switches
 18
 13
@@ -35,175 +41,171 @@ printing matrix on
 *********************************************
 key: 27 28 19 value: 0.0021413276
 key: 27 28 18 value: 0.009635975
-key: 20 27 19 value: 0.0062111802
+key: 20 27 19 value: 0.006369427
 key: 29 29 19 value: 0.006006006
-key: 20 27 17 value: 0.0062111802
-key: 22 23 13 value: 6.1500614E-4
-key: 20 27 18 value: 0.0062111802
-key: 21 23 13 value: 0.0034602077
+key: 20 27 17 value: 0.006369427
+key: 22 23 13 value: 6.1349693E-4
+key: 20 27 18 value: 0.006369427
+key: 21 23 13 value: 0.0034722222
 key: 29 23 19 value: 0.027777778
-key: 25 20 19 value: 0.00952381
-key: 24 23 13 value: 0.0016542597
-key: 23 26 17 value: 0.023809524
+key: 25 20 19 value: 0.009433962
+key: 24 23 13 value: 0.0016393443
+key: 23 26 17 value: 0.022727273
 key: 27 25 17 value: 0.018867925
-key: 21 27 13 value: 0.005952381
-key: 21 27 17 value: 0.011904762
-key: 20 23 13 value: 0.0013888889
-key: 21 27 19 value: 0.005952381
-key: 29 28 18 value: 0.09090909
-key: 20 26 19 value: 0.024390243
-key: 25 21 17 value: 0.012987013
-key: 26 21 19 value: 0.018867925
-key: 26 25 17 value: 0.0015015015
-key: 29 28 19 value: 0.09090909
-key: 25 21 19 value: 0.008658009
-key: 25 21 18 value: 0.0043290043
-key: 25 25 17 value: 0.003699137
-key: 25 25 19 value: 0.0012330456
-key: 26 21 17 value: 0.028301887
-key: -1 21 4 value: 0.008
-key: 28 21 4 value: 0.0053475937
-key: 24 21 19 value: 0.004347826
+key: 21 27 13 value: 0.0058479533
+key: 21 27 17 value: 0.0116959065
+key: 20 23 13 value: 0.0014064697
+key: 21 27 19 value: 0.0058479533
+key: 29 28 18 value: 0.07692308
+key: 25 21 17 value: 0.012711864
+key: 26 21 19 value: 0.009708738
+key: 26 25 17 value: 0.0014880953
+key: 29 28 19 value: 0.07692308
+key: 25 21 19 value: 0.012711864
+key: 25 21 18 value: 0.004237288
+key: 25 25 17 value: 0.0037037036
+key: 25 25 19 value: 0.001234568
+key: 26 21 17 value: 0.029126214
+key: -1 21 4 value: 0.0078125
+key: 28 21 4 value: 0.005524862
+key: 24 21 19 value: 0.0044444446
 key: 21 21 17 value: 0.0026954177
-key: 20 20 4 value: 0.002994012
-key: 25 26 17 value: 0.0013850415
-key: 25 26 19 value: 0.0013850415
-key: -1 20 19 value: 0.005586592
-key: 21 28 19 value: 0.006849315
-key: 21 28 18 value: 0.006849315
-key: 23 21 19 value: 0.011019284
-key: 23 25 17 value: 0.01724138
-key: 27 21 19 value: 0.007518797
-key: 23 21 18 value: 0.002754821
-key: 28 21 19 value: 0.0053475937
-key: -1 28 19 value: 8.6132647E-4
-key: 29 21 19 value: 0.009433962
-key: 20 20 19 value: 0.017964073
-key: 21 25 17 value: 0.023255814
-key: 23 21 13 value: 0.002754821
-key: 20 25 17 value: 0.05147059
-key: -1 20 4 value: 0.005586592
-key: 20 29 19 value: 0.013888889
+key: 20 20 4 value: 0.0029239766
+key: 25 26 17 value: 0.0013831259
+key: 25 26 19 value: 0.0013831259
+key: -1 20 19 value: 0.0056497175
+key: 21 28 19 value: 0.006802721
+key: 21 28 18 value: 0.006802721
+key: 23 21 19 value: 0.011049724
+key: 23 25 17 value: 0.016949153
+key: 27 21 19 value: 0.007751938
+key: 23 21 18 value: 0.002762431
+key: 28 21 19 value: 0.005524862
+key: -1 28 19 value: 8.5984526E-4
+key: 29 21 19 value: 0.009615385
+key: 20 20 19 value: 0.023391813
+key: 21 25 17 value: 0.023584906
+key: 20 25 17 value: 0.052238807
+key: -1 20 4 value: 0.0056497175
+key: 20 29 19 value: 0.014705882
 key: 24 25 17 value: 0.012345679
-key: 21 20 17 value: 0.0020222447
-key: 23 24 4 value: 0.0016260162
-key: 21 20 18 value: 0.0010111224
-key: 24 20 19 value: 0.0034246575
-key: 24 20 13 value: 0.0017123288
-key: 20 21 4 value: 0.0045871558
-key: 21 20 19 value: 0.01718908
+key: 21 21 13 value: 0.0026954177
+key: 21 20 17 value: 0.002051282
+key: 23 24 4 value: 0.0016233766
+key: 21 20 18 value: 0.001025641
+key: 24 20 19 value: 0.0033840947
+key: 20 21 4 value: 0.0056369784
+key: 21 20 19 value: 0.015384615
 key: 22 29 19 value: 0.035714287
 key: -1 -1 18 value: 0.25
-key: 23 20 13 value: 0.008445946
-key: 20 21 13 value: 0.005733945
-key: 28 27 18 value: 0.0022988506
-key: 22 20 19 value: 0.022727273
-key: 21 24 19 value: 0.0033898305
-key: 23 20 18 value: 0.0016891892
-key: 21 29 19 value: 0.05
-key: 23 20 17 value: 0.0016891892
-key: 27 27 17 value: 9.578544E-4
-key: 27 20 19 value: 0.019417476
-key: 27 27 18 value: 9.578544E-4
-key: 23 20 19 value: 0.0033783785
-key: 27 27 13 value: 9.578544E-4
-key: 22 20 13 value: 0.011363637
-key: 21 24 13 value: 0.0033898305
-key: -1 27 18 value: 0.0017513135
-key: 20 24 13 value: 0.007561437
-key: 23 24 18 value: 8.130081E-4
-key: 20 21 17 value: 0.0011467889
-key: 20 21 18 value: 0.0011467889
-key: 20 21 19 value: 0.020642202
-key: 21 20 4 value: 0.0020222447
-key: 20 24 19 value: 0.0018903592
+key: 23 20 13 value: 0.00681431
+key: 20 21 13 value: 0.0056369784
+key: 28 27 18 value: 0.0022805016
+key: 22 20 19 value: 0.02173913
+key: 23 20 18 value: 0.0017035775
+key: 21 29 19 value: 0.046728972
+key: 23 20 17 value: 0.0017035775
+key: 27 27 17 value: 9.5510983E-4
+key: 27 27 18 value: 9.5510983E-4
+key: 27 20 19 value: 0.01904762
+key: 23 20 19 value: 0.003407155
+key: 27 27 13 value: 9.5510983E-4
+key: 22 20 13 value: 0.010869565
+key: -1 27 18 value: 0.0017636684
+key: 20 24 13 value: 0.013333334
+key: 23 24 18 value: 8.116883E-4
+key: 20 21 17 value: 0.0011273957
+key: 20 21 18 value: 0.0011273957
+key: 20 21 19 value: 0.022547914
+key: 21 20 4 value: 0.001025641
+key: 20 24 19 value: 0.0019047619
 key: -1 -1 13 value: 0.05
-key: 20 24 4 value: 0.0018903592
-key: 20 28 18 value: 0.02586207
-key: 24 20 4 value: 0.0017123288
+key: 20 24 4 value: 0.0019047619
+key: 20 28 18 value: 0.025641026
+key: 24 20 4 value: 0.0016920473
 key: -1 -1 4 value: 0.05
 
 
 *********************************************
 printing matrix off
 *********************************************
-key: 24 23 18 value: 8.271299E-4
-key: 24 23 17 value: 8.271299E-4
-key: 28 28 18 value: 8.6956524E-4
-key: 24 27 18 value: 0.029411765
+key: 24 23 18 value: 8.1967213E-4
+key: 24 23 17 value: 8.1967213E-4
+key: 28 28 18 value: 8.756567E-4
+key: 24 27 18 value: 0.03125
 key: 27 28 19 value: 0.0010706638
+key: 22 23 17 value: 6.1349693E-4
 key: 27 28 18 value: 0.0021413276
-key: 20 27 19 value: 0.01863354
+key: 20 27 19 value: 0.012738854
 key: 20 22 19 value: 0.01369863
 key: 29 29 19 value: 0.003003003
-key: 27 24 4 value: 0.015384615
-key: 25 20 17 value: 0.00952381
-key: 24 23 13 value: 0.0016542597
-key: -1 26 17 value: 0.005076142
-key: 20 23 4 value: 0.0013888889
-key: 20 23 13 value: 0.004166667
-key: -1 21 19 value: 0.008
-key: 20 23 18 value: 0.0013888889
+key: 27 24 4 value: 0.015873017
+key: 25 20 17 value: 0.009433962
+key: 24 23 13 value: 0.0016393443
+key: -1 26 17 value: 0.0051282053
+key: 20 23 4 value: 0.0014064697
+key: 20 23 13 value: 0.004219409
+key: -1 21 19 value: 0.0078125
+key: 20 23 18 value: 0.0014064697
 key: 28 22 18 value: 0.035714287
-key: 23 22 17 value: 5.428882E-4
-key: 25 21 17 value: 0.012987013
-key: 26 25 17 value: 0.0015015015
-key: 25 25 19 value: 0.0012330456
-key: 26 21 17 value: 0.018867925
+key: 25 21 17 value: 0.008474576
+key: 25 21 19 value: 0.004237288
+key: 26 25 17 value: 0.0014880953
+key: 25 25 17 value: 0.001234568
+key: 26 21 17 value: 0.019417476
+key: 24 21 19 value: 0.0044444446
 key: 21 21 18 value: 0.0026954177
-key: 24 21 18 value: 0.004347826
+key: 24 21 18 value: 0.0044444446
 key: 21 21 19 value: 0.0053908355
-key: 20 20 4 value: 0.005988024
-key: 22 28 18 value: 0.035714287
-key: 25 26 17 value: 0.002770083
-key: -1 20 19 value: 0.005586592
-key: 23 21 19 value: 0.002754821
-key: 23 25 17 value: 0.01724138
-key: 27 21 19 value: 0.007518797
-key: 24 21 4 value: 0.004347826
-key: -1 28 18 value: 0.0025839794
-key: 26 26 17 value: 0.0012180269
-key: 29 21 19 value: 0.028301887
-key: 23 21 13 value: 0.002754821
+key: 20 20 4 value: 0.0058479533
+key: 22 28 18 value: 0.03448276
+key: 25 26 17 value: 0.0027662518
+key: -1 20 19 value: 0.0056497175
+key: 23 21 19 value: 0.002762431
+key: 23 25 17 value: 0.016949153
+key: 27 21 19 value: 0.015503876
+key: 24 21 4 value: 0.0044444446
+key: -1 28 18 value: 0.0025795356
+key: 26 26 17 value: 0.001216545
+key: 29 21 19 value: 0.028846154
+key: 23 21 13 value: 0.002762431
 key: 21 21 4 value: 0.0026954177
-key: 20 20 19 value: 0.011976048
-key: 20 25 17 value: 0.007352941
-key: -1 24 13 value: 3.3512065E-4
-key: 23 21 4 value: 0.008264462
-key: 21 20 17 value: 0.0010111224
-key: 21 20 18 value: 0.003033367
+key: 20 20 19 value: 0.0116959065
+key: 20 25 17 value: 0.0074626864
+key: -1 24 13 value: 3.351768E-4
+key: 23 21 4 value: 0.008287293
+key: 21 20 17 value: 0.001025641
+key: 21 20 18 value: 0.003076923
 key: 27 23 19 value: 0.016129032
-key: 23 28 13 value: 0.022222223
-key: 24 20 13 value: 0.0034246575
-key: 20 21 4 value: 0.003440367
-key: 21 20 19 value: 0.012133468
+key: 23 28 13 value: 0.022727273
+key: 24 20 13 value: 0.0033840947
+key: 20 21 4 value: 0.003382187
+key: 21 20 19 value: 0.013333334
 key: -1 -1 19 value: 0.15
-key: 23 20 13 value: 0.0033783785
+key: 23 20 13 value: 0.003407155
 key: -1 -1 18 value: 0.45
-key: 20 21 13 value: 0.0022935779
-key: 28 27 18 value: 0.004597701
-key: 21 24 19 value: 0.0033898305
-key: 27 20 19 value: 0.009708738
-key: 27 27 18 value: 0.0019157088
-key: 27 27 13 value: 9.578544E-4
-key: -1 27 18 value: 0.0017513135
-key: 29 20 19 value: 0.024390243
-key: 20 24 13 value: 0.0018903592
-key: 23 24 17 value: 8.130081E-4
-key: 28 20 19 value: 0.0067114094
-key: 23 24 18 value: 8.130081E-4
-key: 20 21 17 value: 0.0011467889
-key: -1 23 18 value: 0.0015540016
-key: 28 27 13 value: 0.0022988506
-key: 20 21 19 value: 0.01146789
-key: 21 20 4 value: 0.003033367
-key: 20 24 19 value: 0.0018903592
+key: 20 21 13 value: 0.0022547913
+key: 28 27 18 value: 0.0045610033
+key: 27 20 19 value: 0.00952381
+key: 27 27 18 value: 0.0019102197
+key: 27 27 13 value: 9.5510983E-4
+key: -1 27 18 value: 0.0017636684
+key: 29 20 19 value: 0.023255814
+key: 20 24 13 value: 0.0019047619
+key: 23 24 17 value: 8.116883E-4
+key: 28 20 19 value: 0.013245033
+key: 23 24 18 value: 8.116883E-4
+key: 20 21 17 value: 0.0011273957
+key: -1 23 18 value: 0.0015564202
+key: 28 27 13 value: 0.0022805016
+key: 20 21 19 value: 0.010146561
+key: 21 20 4 value: 0.003076923
+key: 20 24 19 value: 0.0019047619
 key: -1 -1 13 value: 0.05
-key: 20 28 17 value: 0.00862069
-key: 20 28 19 value: 0.00862069
-key: 21 24 4 value: 0.0033898305
-key: 20 28 18 value: 0.01724138
-key: 24 24 18 value: 4.5724737E-4
-key: 24 20 4 value: 0.0034246575
+key: 20 28 17 value: 0.008547009
+key: 21 24 4 value: 0.003322259
+key: 20 28 18 value: 0.017094018
+key: 24 24 18 value: 4.5798032E-4
+key: 24 20 4 value: 0.0033840947
 
 

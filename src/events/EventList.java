@@ -25,19 +25,10 @@ public class EventList {
      */
     private int pattern_interval;
     private int pattern_length;
-    private boolean useZones = true;
-    
-    public static void main(String[] args) {
-        EventList list = new EventList();
-        list.sensorEvent(1);
-        list.sensorEvent(2);
-        list.sensorEvent(3);
-        System.out.println(list);
-    }
-    
+    private boolean useZones;
+        
     public EventList() {
         events = new LinkedList<Event>();
-//        zone = new LinkedList<Event>();
         this.pattern_interval = Config.patternInterval;
         this.pattern_length = Config.patternLength;
         this.zone_interval = Config.zoneInterval;
@@ -51,6 +42,11 @@ public class EventList {
         
     public EventList(int zone_interval, int pattern_interval, int pattern_length) {
         this();
+        if (zone_interval <= 0) {
+            useZones = false;
+        } else {
+            useZones = true;
+        }
         this.zone_interval = zone_interval;
         this.pattern_interval = pattern_interval;
         this.pattern_length = pattern_length;
