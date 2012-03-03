@@ -78,27 +78,32 @@ The correlation table produced the expected results.
 
 ### Passive learning data
 
-In this section we're going evaluate how much the system have been able to learn, based on the data collected from the passive learning stage. During the passive learning stage 45.628 sensor events was recorded, 194 switch on events and 152 off events. 
+This section is going to evaluate how much the system have been able to learn, based on the data collected from the passive learning stage. In total 45.628 sensor events and 346 switch events was recorded. This is a very high sensor event to switch event ration, slight above 130 sensor events per switch event.
 
-<TODO hvorfor er der flere on end off events?>
+Of the 346 switch events, 194 was On events and 152 was Off events. If all switch event in a continuous period was recorded, the discrepency between on and off events would be atmost the number of actual switches. This could be due to lost Z-Wave messages, users forgetting to pressing the placebo switches. The system isn't dependant on the correct ordering of switch events, i.e. that On events are eventually always followed by an Off event, and vice versa. 
+
+The discrepency between On and Off events, are an indicator that data have been lost, the system should still be able to learn based on the user data. The system will obviously not be able to learn based on the lost switch events. Assuming only switch events are lost, the missing switch events will also impact the system by having an increased sensor to switch event ratio, lowering the probabilities in the decision matrix.
+
+The Correlation table isn't based on the entire data set of sensor events, but merely the interval after each On event. Therefor the sensor to switch event ratio for the Correlation table, isn't necesarily affected by missing switch events. 
 
 #### Decision matrix
 
-<TODO we run decision matrix for multiple configuratiosn, to test which configurations is going to produce the best results>
+In order to better evaluate the Decision Matrix, it have been run on the training several times, with different pattern lengths, with and without zone detection. The evaluation will look upon the advantages and disadvantages the different configurations, and 
 
 | Settings                      || Unique observed patterns                     |||
 | Pattern length | Zones enabled | Movement patterns | On patterns | Off patterns |
 |:--------------:|:-------------:|:-----------------:|:-----------:|:------------:|
-| 2              | No            | 111               | 85          | 78           |
-| 2              | Yes           | 1271              | 143         | 120          |
-| 3              | No            | 909               | 138         | 115          |
-| 3              | Yes           | 4097              | 225         | 171          |
-| 7              | Yes           | 18006             | 317         | 211          |
+| 2              | No            | 111               | 90          | 78           |
+| 2              | Yes           | 1.168             | 149         | 121          |
+| 3              | No            | 910               | 142         | 116          |
+| 3              | Yes           | 3.870             | 227         | 173          |
+| 7              | Yes           | 12.967            | 322         | 215          |
 [Statistics about the Decision matrix][dtable metadata]
 
-With zones enabled, the system looks at the event patterns both with and without zone. Which is why the system, in some configurations, have detected more than one On pattern for every On event.
+With zones enabled, the system looks at the event patterns leading up to each switch event, with and without zone detection. Detecting up to two switch patterns for every switch event, in some configurations there are more total switch patterns detected than actual switch events.
 
 <TODO vi skal nok lige snakke lidt om hvad vi kan og vil konkludere baseret paa decision matrix>
+<TODO snippets from different configurations>
 
 #### Correlation
 

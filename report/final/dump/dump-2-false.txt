@@ -16,8 +16,8 @@ generating basic matrices
 fetching data from db
  iterating resultset
 rows : 45772
-runtime = 1768
-basic 85/78 (111)
+runtime = 1814
+basic 90/78 (111)
 switches
 18
 13
@@ -39,173 +39,178 @@ sensors
 *********************************************
 printing matrix on
 *********************************************
-key: 27 28 19 value: 0.0021413276
-key: 27 28 18 value: 0.009635975
-key: 20 27 19 value: 0.006369427
-key: 29 29 19 value: 0.006006006
-key: 20 27 17 value: 0.006369427
-key: 22 23 13 value: 6.1349693E-4
-key: 20 27 18 value: 0.006369427
-key: 21 23 13 value: 0.0034722222
-key: 29 23 19 value: 0.027777778
-key: 25 20 19 value: 0.009433962
-key: 24 23 13 value: 0.0016393443
-key: 23 26 17 value: 0.022727273
-key: 27 25 17 value: 0.018867925
-key: 21 27 13 value: 0.0058479533
-key: 21 27 17 value: 0.0116959065
-key: 20 23 13 value: 0.0014064697
-key: 21 27 19 value: 0.0058479533
-key: 29 28 18 value: 0.07692308
-key: 25 21 17 value: 0.012711864
-key: 26 21 19 value: 0.009708738
-key: 26 25 17 value: 0.0014880953
-key: 29 28 19 value: 0.07692308
-key: 25 21 19 value: 0.012711864
-key: 25 21 18 value: 0.004237288
-key: 25 25 17 value: 0.0037037036
-key: 25 25 19 value: 0.001234568
-key: 26 21 17 value: 0.029126214
-key: -1 21 4 value: 0.0078125
-key: 28 21 4 value: 0.005524862
-key: 24 21 19 value: 0.0044444446
-key: 21 21 17 value: 0.0026954177
-key: 20 20 4 value: 0.0029239766
-key: 25 26 17 value: 0.0013831259
-key: 25 26 19 value: 0.0013831259
-key: -1 20 19 value: 0.0056497175
-key: 21 28 19 value: 0.006802721
-key: 21 28 18 value: 0.006802721
-key: 23 21 19 value: 0.011049724
-key: 23 25 17 value: 0.016949153
-key: 27 21 19 value: 0.007751938
-key: 23 21 18 value: 0.002762431
-key: 28 21 19 value: 0.005524862
-key: -1 28 19 value: 8.5984526E-4
-key: 29 21 19 value: 0.009615385
-key: 20 20 19 value: 0.023391813
-key: 21 25 17 value: 0.023584906
-key: 20 25 17 value: 0.052238807
-key: -1 20 4 value: 0.0056497175
-key: 20 29 19 value: 0.014705882
-key: 24 25 17 value: 0.012345679
-key: 21 21 13 value: 0.0026954177
-key: 21 20 17 value: 0.002051282
-key: 23 24 4 value: 0.0016233766
-key: 21 20 18 value: 0.001025641
-key: 24 20 19 value: 0.0033840947
-key: 20 21 4 value: 0.0056369784
-key: 21 20 19 value: 0.015384615
-key: 22 29 19 value: 0.035714287
-key: -1 -1 18 value: 0.25
-key: 23 20 13 value: 0.00681431
-key: 20 21 13 value: 0.0056369784
-key: 28 27 18 value: 0.0022805016
-key: 22 20 19 value: 0.02173913
-key: 23 20 18 value: 0.0017035775
-key: 21 29 19 value: 0.046728972
-key: 23 20 17 value: 0.0017035775
-key: 27 27 17 value: 9.5510983E-4
-key: 27 27 18 value: 9.5510983E-4
-key: 27 20 19 value: 0.01904762
-key: 23 20 19 value: 0.003407155
-key: 27 27 13 value: 9.5510983E-4
-key: 22 20 13 value: 0.010869565
-key: -1 27 18 value: 0.0017636684
-key: 20 24 13 value: 0.013333334
-key: 23 24 18 value: 8.116883E-4
-key: 20 21 17 value: 0.0011273957
-key: 20 21 18 value: 0.0011273957
-key: 20 21 19 value: 0.022547914
-key: 21 20 4 value: 0.001025641
-key: 20 24 19 value: 0.0019047619
-key: -1 -1 13 value: 0.05
-key: 20 24 4 value: 0.0019047619
-key: 20 28 18 value: 0.025641026
-key: 24 20 4 value: 0.0016920473
-key: -1 -1 4 value: 0.05
+count: 934 key: 27 28 19 value: 0.0010706638
+count: 934 key: 27 28 18 value: 0.009635975
+count: 161 key: 20 27 19 value: 0.0062111802
+count: 666 key: 29 29 19 value: 0.006006006
+count: 161 key: 20 27 17 value: 0.0062111802
+count: 1626 key: 22 23 13 value: 6.1500614E-4
+count: 161 key: 20 27 18 value: 0.0062111802
+count: 289 key: 21 23 13 value: 0.0034602077
+count: 36 key: 29 23 19 value: 0.027777778
+count: 105 key: 25 20 19 value: 0.00952381
+count: 1209 key: 24 23 13 value: 0.0016542597
+count: 42 key: 23 26 17 value: 0.023809524
+count: 53 key: 27 25 17 value: 0.018867925
+count: 168 key: 21 27 13 value: 0.005952381
+count: 168 key: 21 27 17 value: 0.011904762
+count: 720 key: 20 23 13 value: 0.0013888889
+count: 168 key: 21 27 19 value: 0.005952381
+count: 11 key: 29 28 18 value: 0.09090909
+count: 41 key: 20 26 19 value: 0.024390243
+count: 231 key: 25 21 17 value: 0.012987013
+count: 106 key: 26 21 19 value: 0.018867925
+count: 666 key: 26 25 17 value: 0.0015015015
+count: 11 key: 29 28 19 value: 0.09090909
+count: 231 key: 25 21 19 value: 0.008658009
+count: 231 key: 25 21 18 value: 0.0043290043
+count: 811 key: 25 25 17 value: 0.003699137
+count: 811 key: 25 25 19 value: 0.0012330456
+count: 106 key: 26 21 17 value: 0.028301887
+count: 125 key: -1 21 4 value: 0.008
+count: 187 key: 28 21 4 value: 0.0053475937
+count: 230 key: 24 21 19 value: 0.004347826
+count: 371 key: 21 21 17 value: 0.0026954177
+count: 334 key: 20 20 4 value: 0.002994012
+count: 722 key: 25 26 17 value: 0.0013850415
+count: 722 key: 25 26 19 value: 0.0013850415
+count: 179 key: -1 20 19 value: 0.005586592
+count: 146 key: 21 28 19 value: 0.006849315
+count: 146 key: 21 28 18 value: 0.006849315
+count: 363 key: 23 21 19 value: 0.011019284
+count: 58 key: 23 25 17 value: 0.01724138
+count: 133 key: 27 21 19 value: 0.007518797
+count: 363 key: 23 21 18 value: 0.002754821
+count: 187 key: 28 21 19 value: 0.0053475937
+count: 1161 key: -1 28 19 value: 8.6132647E-4
+count: 106 key: 29 21 19 value: 0.009433962
+count: 334 key: 20 20 19 value: 0.017964073
+count: 215 key: 21 25 17 value: 0.023255814
+count: 363 key: 23 21 13 value: 0.002754821
+count: 136 key: 20 25 17 value: 0.05147059
+count: 179 key: -1 20 4 value: 0.005586592
+count: 72 key: 20 29 19 value: 0.013888889
+count: 81 key: 24 25 17 value: 0.012345679
+count: 989 key: 21 20 17 value: 0.0020222447
+count: 1230 key: 23 24 4 value: 0.0016260162
+count: 989 key: 21 20 18 value: 0.0010111224
+count: 584 key: 24 20 19 value: 0.0034246575
+count: 584 key: 24 20 13 value: 0.0017123288
+count: 872 key: 20 21 4 value: 0.0045871558
+count: 989 key: 21 20 19 value: 0.01718908
+count: 28 key: 22 29 19 value: 0.035714287
+count: 20 key: -1 -1 18 value: 0.25
+count: 592 key: 23 20 13 value: 0.008445946
+count: 872 key: 20 21 13 value: 0.005733945
+count: 870 key: 28 27 18 value: 0.0022988506
+count: 88 key: 22 20 19 value: 0.022727273
+count: 295 key: 21 24 19 value: 0.0033898305
+count: 592 key: 23 20 18 value: 0.0016891892
+count: 100 key: 21 29 19 value: 0.05
+count: 592 key: 23 20 17 value: 0.0016891892
+count: 870 key: 28 27 19 value: 0.0011494253
+count: 1044 key: 27 27 17 value: 9.578544E-4
+count: 103 key: 27 20 19 value: 0.019417476
+count: 1044 key: 27 27 18 value: 9.578544E-4
+count: 592 key: 23 20 19 value: 0.0033783785
+count: 1044 key: 27 27 13 value: 9.578544E-4
+count: 88 key: 22 20 13 value: 0.011363637
+count: 295 key: 21 24 13 value: 0.0033898305
+count: 571 key: -1 27 18 value: 0.0017513135
+count: 529 key: 20 24 13 value: 0.007561437
+count: 1230 key: 23 24 18 value: 8.130081E-4
+count: 872 key: 20 21 17 value: 0.0011467889
+count: 872 key: 20 21 18 value: 0.0011467889
+count: 872 key: 20 21 19 value: 0.020642202
+count: 989 key: 21 20 4 value: 0.0020222447
+count: 529 key: 20 24 19 value: 0.0018903592
+count: 20 key: -1 -1 13 value: 0.05
+count: 529 key: 20 24 4 value: 0.0018903592
+count: 116 key: 20 28 18 value: 0.02586207
+count: 584 key: 24 20 4 value: 0.0017123288
+count: 20 key: -1 -1 4 value: 0.05
 
 
 *********************************************
 printing matrix off
 *********************************************
-key: 24 23 18 value: 8.1967213E-4
-key: 24 23 17 value: 8.1967213E-4
-key: 28 28 18 value: 8.756567E-4
-key: 24 27 18 value: 0.03125
-key: 27 28 19 value: 0.0010706638
-key: 22 23 17 value: 6.1349693E-4
-key: 27 28 18 value: 0.0021413276
-key: 20 27 19 value: 0.012738854
-key: 20 22 19 value: 0.01369863
-key: 29 29 19 value: 0.003003003
-key: 27 24 4 value: 0.015873017
-key: 25 20 17 value: 0.009433962
-key: 24 23 13 value: 0.0016393443
-key: -1 26 17 value: 0.0051282053
-key: 20 23 4 value: 0.0014064697
-key: 20 23 13 value: 0.004219409
-key: -1 21 19 value: 0.0078125
-key: 20 23 18 value: 0.0014064697
-key: 28 22 18 value: 0.035714287
-key: 25 21 17 value: 0.008474576
-key: 25 21 19 value: 0.004237288
-key: 26 25 17 value: 0.0014880953
-key: 25 25 17 value: 0.001234568
-key: 26 21 17 value: 0.019417476
-key: 24 21 19 value: 0.0044444446
-key: 21 21 18 value: 0.0026954177
-key: 24 21 18 value: 0.0044444446
-key: 21 21 19 value: 0.0053908355
-key: 20 20 4 value: 0.0058479533
-key: 22 28 18 value: 0.03448276
-key: 25 26 17 value: 0.0027662518
-key: -1 20 19 value: 0.0056497175
-key: 23 21 19 value: 0.002762431
-key: 23 25 17 value: 0.016949153
-key: 27 21 19 value: 0.015503876
-key: 24 21 4 value: 0.0044444446
-key: -1 28 18 value: 0.0025795356
-key: 26 26 17 value: 0.001216545
-key: 29 21 19 value: 0.028846154
-key: 23 21 13 value: 0.002762431
-key: 21 21 4 value: 0.0026954177
-key: 20 20 19 value: 0.0116959065
-key: 20 25 17 value: 0.0074626864
-key: -1 24 13 value: 3.351768E-4
-key: 23 21 4 value: 0.008287293
-key: 21 20 17 value: 0.001025641
-key: 21 20 18 value: 0.003076923
-key: 27 23 19 value: 0.016129032
-key: 23 28 13 value: 0.022727273
-key: 24 20 13 value: 0.0033840947
-key: 20 21 4 value: 0.003382187
-key: 21 20 19 value: 0.013333334
-key: -1 -1 19 value: 0.15
-key: 23 20 13 value: 0.003407155
-key: -1 -1 18 value: 0.45
-key: 20 21 13 value: 0.0022547913
-key: 28 27 18 value: 0.0045610033
-key: 27 20 19 value: 0.00952381
-key: 27 27 18 value: 0.0019102197
-key: 27 27 13 value: 9.5510983E-4
-key: -1 27 18 value: 0.0017636684
-key: 29 20 19 value: 0.023255814
-key: 20 24 13 value: 0.0019047619
-key: 23 24 17 value: 8.116883E-4
-key: 28 20 19 value: 0.013245033
-key: 23 24 18 value: 8.116883E-4
-key: 20 21 17 value: 0.0011273957
-key: -1 23 18 value: 0.0015564202
-key: 28 27 13 value: 0.0022805016
-key: 20 21 19 value: 0.010146561
-key: 21 20 4 value: 0.003076923
-key: 20 24 19 value: 0.0019047619
-key: -1 -1 13 value: 0.05
-key: 20 28 17 value: 0.008547009
-key: 21 24 4 value: 0.003322259
-key: 20 28 18 value: 0.017094018
-key: 24 24 18 value: 4.5798032E-4
-key: 24 20 4 value: 0.0033840947
+count: 1209 key: 24 23 18 value: 8.271299E-4
+count: 1209 key: 24 23 17 value: 8.271299E-4
+count: 1150 key: 28 28 18 value: 8.6956524E-4
+count: 68 key: 24 27 18 value: 0.029411765
+count: 934 key: 27 28 19 value: 0.0010706638
+count: 934 key: 27 28 18 value: 0.0021413276
+count: 161 key: 20 27 19 value: 0.01863354
+count: 73 key: 20 22 19 value: 0.01369863
+count: 666 key: 29 29 19 value: 0.003003003
+count: 65 key: 27 24 4 value: 0.015384615
+count: 105 key: 25 20 17 value: 0.00952381
+count: 1209 key: 24 23 13 value: 0.0016542597
+count: 197 key: -1 26 17 value: 0.005076142
+count: 720 key: 20 23 4 value: 0.0013888889
+count: 720 key: 20 23 13 value: 0.004166667
+count: 125 key: -1 21 19 value: 0.008
+count: 720 key: 20 23 18 value: 0.0013888889
+count: 28 key: 28 22 18 value: 0.035714287
+count: 1842 key: 23 22 17 value: 5.428882E-4
+count: 231 key: 25 21 17 value: 0.008658009
+count: 666 key: 26 25 17 value: 0.0015015015
+count: 811 key: 25 25 19 value: 0.0012330456
+count: 106 key: 26 21 17 value: 0.018867925
+count: 371 key: 21 21 18 value: 0.0026954177
+count: 230 key: 24 21 18 value: 0.004347826
+count: 371 key: 21 21 19 value: 0.0053908355
+count: 334 key: 20 20 4 value: 0.005988024
+count: 28 key: 22 28 18 value: 0.035714287
+count: 722 key: 25 26 17 value: 0.002770083
+count: 179 key: -1 20 19 value: 0.005586592
+count: 363 key: 23 21 19 value: 0.002754821
+count: 58 key: 23 25 17 value: 0.01724138
+count: 133 key: 27 21 19 value: 0.007518797
+count: 230 key: 24 21 4 value: 0.004347826
+count: 1161 key: -1 28 18 value: 0.0025839794
+count: 821 key: 26 26 17 value: 0.0012180269
+count: 106 key: 29 21 19 value: 0.028301887
+count: 363 key: 23 21 13 value: 0.002754821
+count: 371 key: 21 21 4 value: 0.0026954177
+count: 334 key: 20 20 19 value: 0.011976048
+count: 136 key: 20 25 17 value: 0.014705882
+count: 5968 key: -1 24 13 value: 3.3512065E-4
+count: 363 key: 23 21 4 value: 0.008264462
+count: 989 key: 21 20 17 value: 0.0010111224
+count: 989 key: 21 20 18 value: 0.003033367
+count: 62 key: 27 23 19 value: 0.016129032
+count: 45 key: 23 28 13 value: 0.022222223
+count: 584 key: 24 20 13 value: 0.0034246575
+count: 872 key: 20 21 4 value: 0.003440367
+count: 989 key: 21 20 19 value: 0.012133468
+count: 20 key: -1 -1 19 value: 0.15
+count: 592 key: 23 20 13 value: 0.0033783785
+count: 20 key: -1 -1 18 value: 0.45
+count: 872 key: 20 21 13 value: 0.0022935779
+count: 870 key: 28 27 18 value: 0.004597701
+count: 295 key: 21 24 19 value: 0.0033898305
+count: 103 key: 27 20 19 value: 0.009708738
+count: 1044 key: 27 27 18 value: 0.0019157088
+count: 1044 key: 27 27 13 value: 9.578544E-4
+count: 571 key: -1 27 18 value: 0.0017513135
+count: 41 key: 29 20 19 value: 0.024390243
+count: 529 key: 20 24 13 value: 0.0018903592
+count: 1230 key: 23 24 17 value: 8.130081E-4
+count: 149 key: 28 20 19 value: 0.0067114094
+count: 1230 key: 23 24 18 value: 8.130081E-4
+count: 872 key: 20 21 17 value: 0.0011467889
+count: 2574 key: -1 23 18 value: 0.0015540016
+count: 870 key: 28 27 13 value: 0.0022988506
+count: 872 key: 20 21 19 value: 0.01146789
+count: 989 key: 21 20 4 value: 0.003033367
+count: 529 key: 20 24 19 value: 0.0018903592
+count: 20 key: -1 -1 13 value: 0.05
+count: 116 key: 20 28 17 value: 0.00862069
+count: 116 key: 20 28 19 value: 0.00862069
+count: 295 key: 21 24 4 value: 0.0033898305
+count: 116 key: 20 28 18 value: 0.01724138
+count: 4374 key: 24 24 18 value: 4.5724737E-4
+count: 584 key: 24 20 4 value: 0.0034246575
 
 
