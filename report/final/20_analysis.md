@@ -1,7 +1,19 @@
-
+	
 ## Analysis
+
+
 <Mark weiser>
 <smart environments>
+
+<Present the concept of iterations... developing - implementing - training - evaluating>
+
+The first task in any project is to analyze the problem at hand.  Before attempting to design an intelligent home control system, we must first clearly define what features we want in the system.
+
+In this chapter we will discuss the issues we must address when designing an intelligent home control system. With each problem discusses we will briefly present our solution strategy, and discuss relevant alternatives.
+
+We will start out with a small representative survey of existing systems, both available on the commercial market, and in development.
+
+We will then, in relation to the findings in the survey, discuss both the problems we have found with the existing solutions, and those that arise when developing a solution based on machine learning.
 
 ### Smart House Survey
 
@@ -81,7 +93,7 @@ One of the main problems with current home control solutions is that installing 
 
 ### BIIIB 
 
-Of all the  qualities mentioned in our vision for the system,  power saving is the most important. As seen in the survey above, this is an area where most modern home control systems falls short . Most systems are capable of providing only a modest reduction in power consumption, and some even increase the net consumption by adding the cost of running the control system. We want our system to differ from others on this specific aspect. In our system, reducing power consumption is the number one priority.
+Of all the  qualities mentioned in our vision for the system,  power saving is the most important. As seen in the survey above, this is an area where most modern home control systems falls short . Most systems are capable of providing only a modest reduction in power consumption, and some even increase the net consumption by adding the cost of running the control system. We want our system to differ from others on this specific aspect. In our system, reducing power consumption is the number one priority.<rewrite>
 
 We want the users interactions with the system, to be as simple and familiar as possible. The user should only interact with the system through the wall mounted switches that are already present in all normal houses. 
 
