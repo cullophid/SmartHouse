@@ -5,25 +5,51 @@
 \chapter{Introduction}
 \label{introduction}
 
-In the recent years we have seen an increase in climate awareness. The subject is gaining more and more media coverage. A survey conducted from 2007 to 2008 by the international research organization Galllup\footnote{International research organization famous for making polls. http:/\slash ww.gallup.com}, shows that 82\% of americans and 88\% of europeans are very aware of the current climate issues we are facing such as global warming. In the same survey Gallup also concludes that 67\% of americans and 59\% europeans view global warming as a serious threat to them selves and their families~\citep[gallup--2009]{gallup-2009}. With the rise of concern with the general public, the demand for sustainable solutions increases. We are already seeing a vast amount of companies spending a considerable amount of money to be classified as ``green''. Companies such as Amazon are spending millions of dollars on sustainable buildings, in order to maintain an image as an environmentally conscious company. 
+In the recent years we have seen an increase in climate awareness. Environmental issues such as global warming, are widely debated both on a political and personal level, and the subject is gaining increased media coverage. A survey conducted from 2007 to 2008 by the international research organization Galllup\footnote{International research organization famous for their large scale international polls. http:/\slash ww.gallup.com} shows that 82\% of americans and 88\% of europeans are very aware of the current climate issues we are facing~\citep[gallup--2009]{gallup-2009}. In the same survey Gallup also concludes, that 67\% of americans and 59\% europeans view global warming as a serious threat to them selves and their families. With the rise of concern with the general public, the demand for sustainable solutions increases. We are already seeing a large number of companies, spending a considerable amount of money to be classified as environmentally conscious. Companies such as Amazon are spending millions of dollars on sustainable buildings, in order to maintain an image as an environmentally conscious company. 
 
-In the residential sector the environmental awareness equally present, but the ``green wave'' has not had nearly the same impact. This is however not due to lack of potential. According to the United States Energy Information Administration\footnote{http:/\slash www.eia.gov\slash }, the residential constituted 22\% of the total energy consumption in the US~\citep[eia--2011]{eia-2011}. The main problem in this sector is financial. Improving your residence to be more environmentally friendly is costly, and though most improvement generally pay for them selves over time, the return of investment will often take several years. This problem is not nearly as big in the business sector where the gain in public image can be very valuable, and may even be worth the investment in it self.
+In the residential sector the environmental awareness id equally present, but the so called ``green wave''[\^{}green wave] has not had nearly the same commercial impact. This is however not due to lack of potential. According to the United States Energy Information Administration\footnote{http:/\slash www.eia.gov\slash 
+[\^{}smart-environments]: ref needed
+~\citep{gallup-2009}: http:/\slash www.gallup.com\slash poll\slash 124652\slash awareness-climate-change-threat-vary-region.aspx}, the residential sector constituted 22\% of the total energy consumption in the US~\citep[eia--2011]{eia-2011}. The main problem in this sector is financial. Improving your residence to be more environmentally friendly is costly, and though most improvements generally pay for them selves over time, the return of investment will often take several years. This problem is not nearly as big in the business sector, where the gain in public image can be very valuable, and may even be worth the investment in it self. In the residential sector, however, the financial benefits of installing environmentally friendly technology solely come from the reduction in energy consumption.
 
-The purpose of this thesis is to explore the possibilities of developing a low cost intelligent home control system, capable of reducing the power consumption in normal households. The product of this thesis will not be an implemented functional home control system, but instead a research paper, and proof of concept, on the possibilities of using machine learning algorithms to develop an advanced artificial intelligence, capable of controlling a house hold, and reducing power consumption. 
+There is a lot of focus on saving energy by changing habits, such as remembering to turn off the light on the bathroom, or not using the standby feature on many appliances. All these initiatives certainly help, but if we want to make a significant reduction in our energy consumption we need smart environments[\^{}smart-envirionments], that are capable of micro managing our energy use. 
 
-There is a lot of focus on saving energy by changing habits such as remembering to turn off the light on the bathroom, or switching off appliances on standby. All these initiatives certainly help, but if we want to make a significant reduction in our energy consumption we need smart environments, that are capable of micro managing our energy use. 
+The idea of smart environments is a product of the concept ubiquitous computing[\^{}ubiquitous computing], a term invented by the late computer scientist Mark Weiser[\^{}weiser]. Weisier coined the term while working as chief technologist at the Xerox Palo Alto Research Center (PARC)[\^{}parc]. Ubiquitous computing proposes a new paradigm in human-computer interaction, where the role of the computer is to serve the users, rather than act as a tool that requires direct interaction. Smart environments fulfill this role, by monitoring its users, and acting on their behalf, without the need of their active participance. It is described by Mark Weiser as:
 
-\section{Project scope}
-\label{projectscope}
+\emph{``a physical world that is richly and invisibly interwoven with sensors, actuators, displays, and computational elements, embedded seamlessly in the everyday objects of our lives, and connected through a continuous network''} -Mark Weiser
 
+The concept of smart environments originated in 1988, but in the recent years we have seen a large development in this field. This in mainly due to the development in computing power, and availability of embedded systems, which lies at the heart of the smart environments.
 
+The purpose of this thesis is to explore the possibilities of developing a low cost intelligent home control system, capable of reducing the power consumption in normal households. This control system will be based on the core concepts of smart environments. The thesis will serve as a research paper on the possibilities of using machine learning[\^{}machine-learning] algorithms to develop an advanced artificial intelligence, capable of controlling a house hold, and reducing power consumption. We have created a prototype of a smart environment, that serves as a proof of concept, and can be used as the basis for further development. The final product shows the power of ubiquity computing, as a means of reducing energy consumption in the normal household.
 
+The thesis will focus solely on lighting control in the smart environment. This allows us to focus on the integration of machine learning, rather than adding a large array of functionality. The advantage of focussing on lighting compared to other aspects, is that we are provided instant visual feedback when manipulating the environment.This will prove very useful for development and testing purposes. The core concepts of controlling the light will be similar to many of the other task that can be handled by a smart environment, therefore the solutions developed as a result of the work done in this thesis, will be transferable to other areas, such as heating regulation, air-conditioning, etc.
+
+The thesis is structured as follows:
+
+In the chapter ``Analysis'' we will identify and analyze the problems and issues, related to developing an intelligent home control system. This involves analyzing existing solutions and technologies related to the technological field of smart environments.
+
+In the chapter ``Design'' we will discuss our solutions to the problems identified in the analysis. We will also briefly present the development process, and how this have affected the final product. This chapter will also hold a theory section, where we will discuss the most important technologies we have used, along with the mathematical theory that forms the basis for our solution.
+
+The ``Implementation'' chapter examines the transition from a software blueprint to working code. In the chapter, we will in detail describe the problems we had to solve when coding the system.
+
+Finally we will evaluate the results of our research in the chapter ``Evaluation''. The chapter will both evaluate our solution and contain a description of the software tests we have performed on the system.
 
 \chapter{Analysis}
 \label{analysis}
 
+The first task in any project is to analyze the problem at hand. Before attempting to design an intelligent home control system, we must first which problems that may arise when developing a system like this. These problems may be related to the general field of home control systems, or they may be arise with the introduction of machine learning. In this chapter we will also clearly define what features we want in the system, and what features we do not want. Some features will also be excluded to avoid spreading the focus of the project too thin. Features ignored with the purpose of limiting the project scope will be discussed in the section ``Future work'' in the ``Conclusion'' chapter.
 
+The project contains a large element of unpredictability, as a result of incorporating machine learning based on real life data. As a result the development process will be a repeating cycle where one iteration will look as follows:
 
+\[Development \rightarrow Training \rightarrow Evaluation\]
+
+Some of the problems discussed in this section may not be intuitive, as some of them we were unable to predict before the end of the first development cycle.
+This concept of development cycles will be discussed further in the ``Design'' Chapter.
+
+With each problem discussed in this chapter we will briefly present our solution strategy, and discuss relevant alternatives.
+
+We will start out with a small representative survey of existing systems, both available on the commercial market, and in development.
+
+We will then, in relation to the findings in the survey, discuss both the problems we have found with the existing solutions, and those related to developing a smart environment based on machine learning.
 
 \section{Smart House Survey}
 \label{smarthousesurvey}
@@ -103,7 +129,6 @@ House\_n represent one of many smart environment, build by universities around t
 
 Like the Clipsal system, the nodes of House\_n have distributed intelligence, and uses Hidden Markov Models to learn from user behavior. The system is also able to relay data gathered by the system, to PDA's or smartphones carried by the inhabitants of the house.
 The intelligence of House\_n comes from the work of each team of master students working on the project. Each project explores different aspects of machine learning. The exact intellion gence implementation of House\_n is dependant on the currently ongoing projects ~\citep{House_n ongoing}
-~\citep{House_n ongoing}: http:/\slash architecture.mit.edu\slash house\_n\slash projects.html
 
 The projects shown in this survey represent the solutions currently available or in development. There are many different controllable and programmable solution commercially available, with INSTEON, Clipsal C-bus and LK IHC being some of the more widespread representative solutions. INSTEON being a simple controllable solution, Clipsal C-bus and LK IHK are both programmable smart house solutions, but where LK IHC is designed for private homes, the Clipsal C-bus system is better suited for larger buildings. 
 
@@ -233,6 +258,8 @@ After we have collected and analyzed data the the final task is to have the syst
 
 Based of the analysis above we can now form a requirement specification for the project. The system shall collect data using motion sensors and by monitoring switches. This data should be stored as it is collected and without being manipulated.
 
+
+\emph{The best computer is a quiet, invisible servant.} -Mark Weiser
 
 In this chapter we will describe the design process, and discuss the major decisions we have made in regard to the system design. Since the system is research minded, and since the purpose of the project is to analyze the possibilities of developing an intelligent home control system using machine learning technology, we had to make some adjustments to the development process. The traditional waterfall model[\^{}waterfallmodel] for software development dictates that after finishing the project analysis, we would start designing how the system should handle the problems found in the analysis, along with the system architecture. Finally we would then implement the designed solution. With this project we were however faced with an additional challenge. When using machine learning you generally end up with a system that does not have an intuitive execution flow. This means that it can be almost impossible to predict the execution outcome because of the vast amounts of data that form basis for the systems decision making. This means that we have no way of verifying the validity of our proposed solution before implementing the system, or at least parts of it. Therefore we decided to approach the project by using incremental development instead[\^{}incremental-development]. 
 
@@ -561,13 +588,13 @@ The sensor setup consisted of three sensors in the living room, two sensors in t
 
 The wireless nodes we have available communicate using the Zensys Z-Wave protocol[\^{}z-wave]. This protocol was chosen because we already prior to this project had designed and implemented a z-wave API[\^{}api] in java. This greatly reduced the time and effort needed to setup and implement the data collection system.
 
-\includegraphics[keepaspectratio,width=300pt,height=0.75\textheight]{figures/bedroom.jpg}
+\includegraphics[keepaspectratio,width=300pt,height=0.75\textheight]{figures/bedroom.JPG}
 
-\includegraphics[keepaspectratio,width=300pt,height=0.75\textheight]{figures/livingroom.jpg}
+\includegraphics[keepaspectratio,width=300pt,height=0.75\textheight]{figures/livingroom.JPG}
 
-\includegraphics[keepaspectratio,width=300pt,height=0.75\textheight]{figures/bathroom.jpg}
+\includegraphics[keepaspectratio,width=300pt,height=0.75\textheight]{figures/bathroom.JPG}
 
-\includegraphics[keepaspectratio,width=300pt,height=0.75\textheight]{figures/switch.jpg}
+\includegraphics[keepaspectratio,width=300pt,height=0.75\textheight]{figures/switch.JPG}
 
 
 We setup a mini PC with a Z-Wave serial device, and configured all PIR sensor and switches to send notifications to the PC, when they where activated. The PC ran a Z-Wave API, which we added a listener to, so that sensor and switch event was logged to an SQL database.
@@ -616,7 +643,7 @@ status&Boolean\\
 \section{Simulator \slash  AI interface}
 \label{simulatoraiinterface}
 
-To test the system we have a smart house simulator available, which we extended with an AI module, implementing the features discussed in this report. The simulator is implemented in scala, but we chose to implement the AI module in Java. Since both languages compile to byte code Scala and Java interface very easily, and Scala code can invoke Java methods and vice versa. We chose to implement the AI in Java, to work in a language we're well-versed in, to increase our productivity and quality of the code. 
+To test the system we have a smart house simulator available, which was developed by a team of DTU students as part of a ~\citep[bachelor thesis]{scalasim}. We extended the simulator with an AI module, implementing the features discussed in this report. The simulator is implemented in scala, but we chose to implement the AI module in Java. Since both languages compiles to byte code Scala and Java interface very easily, and Scala code can invoke Java methods and vice versa. We chose to implement the AI in Java, to work in a language we're well-versed in, to increase our productivity and quality of the code. 
 
 With the simulator we are able the test the system in the active learning stage of the system. The system has all the data gathered from the passive learning stage, and we are able to see how the system would behave in the beginning of the active learning stage. As stated in the analysis, simulated user data will never be as good a actual user data, and we will not place significant weight on learning based on the simulator. But with the simulator we can see if the system is acting and reacting as expected in the active learning stage.
 
@@ -664,6 +691,22 @@ If zone detection is enabled, EventList first checks if the last event is less t
 
 The EventList is used to make lookups in the decision matrix, which takes a fixed length array of sensor IDs as key. When looking up patterns shorter than the configured pattern length, the pattern is prefixed with \emph{--1} IDs, to maintain the fixed length.
 
+\subsection{Zone events}
+\label{zoneevents}
+
+Zone events are represented as en extension of sensor events, with a list off all the sensors that are part of the zone event. In order to look up zone events in the decision matrix, each zone also has a single integer id representation. The id is calculated from the sorted list sensor.
+
+\begin{verbatim}
+getID()
+sum = 0
+for sensor in zone
+    sum = sum*256 + sensor.id
+return sum
+\end{verbatim}
+
+
+For zone events based on at most 4 sensors, with id values less than 256, this function generates unique and compareable ids.
+
 \section{Decision Matrix and KeyList}
 \label{decisionmatrixandkeylist}
 
@@ -684,12 +727,12 @@ If the use\_zones option is enabled in the config file, the Decision matrix will
 \section{Correlation table}
 \label{correlationtable}
 
-
+The correlation table is based on both statistical data from the passive learning stage, as well as corrections and punishments from the active learning stage. First the statistical correlation is calculated, and then the corrections are added ontop of that.
 
 \subsection{Correlation statistical generation}
 \label{correlationstatisticalgeneration}
 
-Correlation calculates the probability that a sensor is correlated a switch. It scans the database, and looks at the interval just after a switch is triggered. The sensors that triggered in the interval, are counted for that interval, in a way thay they're only counted once per switch event. If a multiple switch event are triggered in the same interval, the sensor events in the overlapping intervals should be counted for each of those switches. Having the number of times each switch is triggered, and each sensors triggeres with the given time interval, it's then calculated the probability that $ sensor_i $ is triggered, given that a $ switch_j $ was turned on atmost $ \Delta t $ ago. This gives the statistical correlation probability table. 
+The Correlation calculates the probability that a sensor is correlated a switch. It scans the database, and looks at the interval just after a switch is triggered. The sensors that triggered in the interval, are counted for that interval, in a way thay they're only counted once per switch event. If a multiple switch event are triggered in the same interval, the sensor events in the overlapping intervals should be counted for each of those switches. Having the number of times each switch is triggered, and each sensors triggeres with the given time interval, it's then calculated the probability that $ sensor_i $ is triggered, given that a $ switch_j $ was turned on atmost $ \Delta t $ ago. This gives the statistical correlation probability table. 
 
 To this the correlation confirmations in the database, is then added. Each row in the database table contains the accululated correlation correction for that switch \slash  sensor pair. The correlation correction is simply added to the correlation based on the statistical data.
 
@@ -784,21 +827,212 @@ To received the timeout events the SmartHouse class implements TimeoutListener.
 \section{Software testing}
 \label{softwaretesting}
 
-For the relative simple and predictable module EventList, we have done some white-box testing, using JUnit tests. Making sure it correctly detect zones,that pattern ordering is preserved, and old event are purged when new events are added according to the pattern length and interval parameters. The more complex modules DecisionMatrix and Correlation are tested and evaluated based on the gathered user data.
+The implementation have been tested using a combination of white box and black box testing.
 
-\section{Decision matrix}
+
+\subsection{White box testing}
+\label{whiteboxtesting}
+
+We have used JUnit tests to implement the white box testing. The relative simple Event classes, EventList and KeyList have been tested in this way. 
+
+\subsection{Black box testing}
+\label{blackboxtesting}
+
+The more complex classes DecisionMatrix and Correlation are tested using black box testing, and are based on data generated by the simulator. The testing setup for the black box test black box test, consists of 6 sensors (1,2,3,7,8,9) and 3 switches (4,5,6). A simulated takes various paths to generate a representative sample of event patterns.
+
+\begin{table}[htbp]
+\begin{minipage}{\linewidth}
+\setlength{\tymax}{0.5\linewidth}
+\centering
+\small
+\caption{Event patterns used for black box testing}
+\label{bboxdata}
+\begin{tabulary}{\textwidth}{@{}clc@{}} \toprule
+Index&Description&Event sequence\\
+\midrule
+1&Path \emph{A}, switch 4 on, sensor 9&[1, 1\&2, 2\&3, 3, 4 on, 9]\\
+2&Path \emph{B} then turns switch 5 off&[1\&2, 5 off]\\
+3&Path \emph{B} without using any switches&[1\&2]\\
+4&Path \emph{C}, switch 6 on, sensor 7&[2\&3, 6 on, 7]\\
+5&Path \emph{C} without using any switches&[2\&3]\\
+6&Path \emph{C}, switch 6 on, sensor 8&[2\&3, 6 on, 8]\\
+
+\bottomrule
+
+\end{tabulary}
+\end{minipage}
+\end{table}
+
+
+Based on these simple event pattens, an accurate expected output can be determined for both the DecisionMatrix and Correlation. The expected output for the DecisionMatrix is based on the number of times each event pattern has been seen, and the number of times they have led to a switch event. Only patterns which leads to switch events are listed.
+
+\begin{table}[htbp]
+\begin{minipage}{\linewidth}
+\setlength{\tymax}{0.5\linewidth}
+\centering
+\small
+\caption{DecisionMatrix's expected output}
+\label{matrixexpected}
+\begin{tabulary}{\textwidth}{@{}ccccc@{}} \toprule
+Description&Sensor pattern&Switch&State&Probability\\
+\midrule
+\multicolumn{5}{c}{without zone events}\\
+Path \emph{A}&[1, 1, 2, 2, 3]&4&on&1\\
+Path \emph{B}&[1, 2]&5&off&0.5\\
+Path \emph{C}&[2, 3]&6&on&0.67\\
+\multicolumn{5}{c}{with zone events}\\
+Path \emph{A}&[1, 1\&2, 2\&3]&4&on&1\\
+Path \emph{B}&[1, 2]&5&off&0.5\\
+Path \emph{C}&[2, 3]&6&on&0.67\\
+
+\bottomrule
+
+\end{tabulary}
+\end{minipage}
+\end{table}
+
+
+Testing of the DecisionMatrix releaved what at first looked like an error. The probability for Path \emph{C} without zones had a probability of 100\%, but with zones had the expected probability of 67\%. Investigation revealed the cause was test case 5, where sensor 2 and 3 was triggered in the opposite order as test case 4 and 6. So while this error at first glace looked like a bug, is actually a feature, and one of the very reasons zone events were implemented. All other probabilities in the DecisionMatrix was as expected.
+
+For the correlation table, the output is determined only by test cases where switches are turned on (1, 4 and 6). The expected output is:
+
+\begin{table}[htbp]
+\begin{minipage}{\linewidth}
+\setlength{\tymax}{0.5\linewidth}
+\centering
+\small
+\caption{Correlation table's expected output}
+\label{correxpected}
+\begin{tabulary}{\textwidth}{@{}cccc@{}} \toprule
+switches&\multicolumn{3}{c}{sensors}\\
+&7&8&9\\
+\midrule
+4&0&0&1\\
+6&0.5&0.5&0\\
+
+\bottomrule
+
+\end{tabulary}
+\end{minipage}
+\end{table}
+
+
+The correlation table produced the expected results.
+$<$TODO correlation doesn't work yet$>$
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[keepaspectratio,width=\textwidth,height=0.75\textheight]{figures/zone2.png}
+\caption{Overview of the simple setup used for black box testing the DecisionMatrix and Correlation}
+\label{zonetest}
+\end{figure}
+
+
+
+\section{Passive learning data}
+\label{passivelearningdata}
+
+This section is going to evaluate how much the system have been able to learn, based on the data collected from the passive learning stage. In total 45.628 sensor events and 346 switch events was recorded. This is a very high sensor event to switch event ration, slight above 130 sensor events per switch event.
+
+Of the 346 switch events, 194 was On events and 152 was Off events. If all switch event in a continuous period was recorded, the discrepency between on and off events would be atmost the number of actual switches. This could be due to lost Z-Wave messages, users forgetting to pressing the placebo switches. The system isn't dependant on the correct ordering of switch events, i.e. that On events are eventually always followed by an Off event, and vice versa. 
+
+The discrepency between On and Off events, are an indicator that data have been lost, the system should still be able to learn based on the user data. The system will obviously not be able to learn based on the lost switch events. Assuming only switch events are lost, the missing switch events will also impact the system by having an increased sensor to switch event ratio, lowering the probabilities in the decision matrix.
+
+The Correlation table isn't based on the entire data set of sensor events, but merely the interval after each On event. Therefor the sensor to switch event ratio for the Correlation table, isn't necesarily affected by missing switch events. 
+
+\subsection{Decision matrix}
 \label{decisionmatrix}
 
-A bit of sensor meta data:
+With the expectancy that the probabilitites are going to be relatively low, for each switch pattern, the evaluation of Decision Matrix will look at patterns detected more than how high or low the probability should be. The Decision Matrix will be evaluated for different configurations, to see which advantages or disadvantages each configuration has.
 
-45.628 sensor events
-346 switch events, 194 on and 152 off. The observant reader might wonder why there are a lot more off commands than on commands? The short answer is the user's may have forgotten to press the placebo switches from time to time.
+\begin{table}[htbp]
+\begin{minipage}{\linewidth}
+\setlength{\tymax}{0.5\linewidth}
+\centering
+\small
+\caption{Decision matrix, patterns detected atleast 5 times, pattern length 2, without zone detection}
+\label{decision2false}
+\begin{tabulary}{\textwidth}{@{}ccl@{}} \toprule
+Pattern&Probability&Description\\
+\midrule
+20 21 13 on&0.57\%&Moving in the hallway, and turning on the light in the Living room\\
+27 28 18 on&0.75\%&Moving in the bedroom, and turning on the light\\
+20 20 19 on&2.38\%&Moving in the hallway and turning on the light in the restroom\\
+20 21 19 on&2.17\%&\\
+21 20 19 on&1.70\%&\\
+21 25 17 on&3.26\%&Moving from the hallway into the kitchen and turning on the light\\
+20 25 17 on&5.76\%&\\
+20 20 19 off&1.49\%&Moving in the hallway turning off the light in the restroom\\
+21 20 19 off&1.2\%&\\
+20 21 19 off&1.14\%&\\
 
-$<$TODO 111 also being the theoretical maximum of unique patterns, for a home with 10 sensors
-1 : no sensors, just switch
-10 : single sensor events then switch event
-100 (10*10) : two sensor events then switch event
-I'm slightly impressed$>$
+\bottomrule
+
+\end{tabulary}
+\end{minipage}
+\end{table}
+
+
+With pattern length two, most of the patterns, above the confidence limit, only contain sensor event from a single room (from here on refered to as single room patterns). With the probabilities being as low as they are, it means the single room patterns get triggered a lot, without the light being switched on or off. This means if the system were to act based on these single room patterns, it would mostly likely turn the lights on and off, while the user were still in the room.
+
+There are only two pattern where sensor events are from different room (from here on refered to as multi room patterns): [20, 25 -$>$ 17 on] and [21, 25 -$>$ 17 on]. These two patterns occur when the user moves from the hallway and into the kitchen, and then turns on the light in the kitchen. These two multi room patterns, not only sound reasonable, but also have the highest probabilies of all the patterns above the confidence limit. 
+
+With pattern length two, and zone detection enabled, no event patterns with zones (from here on referd to as zone patterns) are seen leading to switch events 5 times or more. So for pattern length two, adding zones detection doesn't give any patterns above the confidence limit, for our data set. While zone events can reduce the ambiguity and allow the system to learn faster, physical motion sensors tends to have a cooldown. Cooldown means it takes some time, after the sensor has detected motion, before it will detect motion again. A result of this is that zone events are less likely to be detected. Two sensors might overlap, but if time between the two sensors are triggered are longer than the zone detection interval. The cooldown then cause the two sensors to keep firing sensor events too far apart to be detected as zone events. 
+
+\begin{table}[htbp]
+\begin{minipage}{\linewidth}
+\setlength{\tymax}{0.5\linewidth}
+\centering
+\small
+\caption{Decision matrix, patterns detected atleast 5 times, pattern length 3, without zone detection}
+\label{decision3false}
+\begin{tabulary}{\textwidth}{@{}ccl@{}} \toprule
+Pattern&Probability&Description\\
+\midrule
+27 27 28 18 on&1.86\%&Moving in the bedroom, and turning on the light\\
+20 21 20 19 on&2.35\%&Moving in the hallway, and turning on the light in the restroom\\
+21 20 21 19 on&2.03\%\\
+29 21 20 19 off&10.2\%&Moving from the restroom to the hallway, turning off the light in the restroom\\
+21 20 21 19 off&2.36\%&Moving in the hallway, turning off the light in the restroom\\
+
+\bottomrule
+
+\end{tabulary}
+\end{minipage}
+\end{table}
+
+
+When the pattern length is increased to three, fewer distinct switch patterns above the confidence limit are detected. Just as when the pattern length was two, the majority of the patterns are single room patterns. There is one multi room pattern: [29, 21, 10 -$>$ 19 off] where the user leaves the restroom, enters the hallway and turns off the light to the restroom. Like the other two multi room patterns, this pattern sounds reasonable, and have a relatively high probility of just over 10\%.
+
+Again adding zone detection doesn't prododuce any zone patterns above the confidence threshold .
+
+\begin{table}[htbp]
+\begin{minipage}{\linewidth}
+\setlength{\tymax}{0.5\linewidth}
+\centering
+\small
+\caption{Decision matrix, patterns detected atleast 3 times, pattern length 4, without zone detection}
+\label{decision4false}
+\begin{tabulary}{\textwidth}{@{}ccl@{}} \toprule
+Pattern&Probability&Description\\
+\midrule
+28 27 21 20 19on&8.33\%&Moving from the bedroom to the hallway, turning on the light in the restroom\\
+29 29 21 20 19 off&11.11\%&Moving from the restroom the the hallway, turning off the light in the restroom\\
+--1 21 20 21 19 off&9.38\%&Moving in the hallway, turning off the light in the restroom\\
+
+\bottomrule
+
+\end{tabulary}
+\end{minipage}
+\end{table}
+
+
+Increasing the pattern length to 4, no patterns were above the confidence limit of 5, so these patterns have only been see 3 or more times. This matrix have an interesting multi room pattern [28, 27, 21, 20 -$>$ 19 on], where the user moves from the bedroom to the hallway, and then turn on the light to the restroom. While a plausable pattern, it isn't a pattern that can be guaranteed to always happen. 
+
+The previous multi room patterns were pattern that would close to always be correct, turning on the light when entering the kitchen, and turning off the light when leaving the restroom. But going from the bedroom to the hallways, is not a guarantee that the user needs light on in the restroom.
+
+
+In order to better evaluate the Decision Matrix, it have been run on the training several times, with different pattern lengths, with and without zone detection. The evaluation will look upon the advantages and disadvantages the different configurations, and 
 
 \begin{table}[htbp]
 \begin{minipage}{\linewidth}
@@ -811,10 +1045,12 @@ I'm slightly impressed$>$
 \multicolumn{2}{c}{Settings}&\multicolumn{3}{c}{Unique observed patterns}\\
 Pattern length&Zones enabled&Movement patterns&On patterns&Off patterns\\
 \midrule
-2&No&111&89&72\\
-2&Yes&928&147&120\\
-3&No&910&142&117\\
-3&Yes&4097&225&171\\
+2&No&111&90&78\\
+2&Yes&1.168&149&121\\
+3&No&910&142&116\\
+3&Yes&3.870&227&173\\
+4&No&3.614&169&121\\
+7&Yes&12.967&322&215\\
 
 \bottomrule
 
@@ -823,11 +1059,16 @@ Pattern length&Zones enabled&Movement patterns&On patterns&Off patterns\\
 \end{table}
 
 
-With zones enabled, the system looks at the event patterns both with and without zone. Which is why there are more observed on patterns, than actual on commands, when the pattern length is longer than three and zone detection is on. 
+With zones enabled, the system looks at the event patterns leading up to each switch event, with and without zone detection. Detecting up to two switch patterns for every switch event, in some configurations there are more total switch patterns detected than actual switch events. A complete dump of all patterns detected by the Decision Matrix for each configuration is included in the appendix.
+
+With a 130 to 1 sensor to switch event ratio, the probabilities for each event pattern leading to a switch event is very low. This isn't necesarily a problem, it may just mean the probability threshold, for the system to be confident enough to manipulate switches, needs to be equally low. 
+
+A lot of the On \slash  Off patterns detected by the Decision Matrix have only been observed once. We're going to set the confindence threshold so that a pattern must have lead to an On or Off event atleast 5 times, and then analyse the correctness of the patterns observed 
 
 
 
-\section{Correlation}
+
+\subsection{Correlation}
 \label{correlation}
 
 In this section we are going to evaluate how well correlation, based on the generated user data, matches to the actual setup. Is the system able to get accurate estimates of which sensors and switches are in the same room. We are also going to evaluate how well the correlation based timeout would work, with or without correlation corrections. Prior to looking at the actual data, we want to state some resoanable goals we want the system to achieve for the correlation probabilities:
@@ -878,7 +1119,9 @@ One thing to note is, these are the probabilities based solely on the statistica
 \subsection{Correlation based timeout}
 \label{correlationbasedtimeout}
 
-The implemented functionality of the correlation table, is to determine the timeout for each switch. How well is the correlation table able to keep the light on where it's needed. Different areas should have different timeouts, but most important is for the system to have long timeouts in areas where the user is likely to be still for extended periods of time, while still wanting the light to remain on. The most obvious area would be the sofa, where a user is likely to be for hours. Based on the statistical correlation alone, the system would have one of the lowest timeouts when the user is detected in the sofa, where it should be the highest. However in the evolution stage the correlation correction comes into effect. Every time the system incorrectly turns off the light, and the user turns it on again, the system is punished and increases the correlation, and by extension the timeout. As a result of this, the system will gradually increase the timeout until it no longer turns off the light, while the user is watching TV.
+The implemented functionality of the correlation table, is to determine the timeout for each switch. How well is the correlation table able to keep the light on where it's needed. Different areas should have different timeouts, but most important is for the system to have long timeouts in areas where the user is likely to be still for extended periods of time, while still wanting the light to remain on. The most obvious area would be the sofa, where a user is likely to be for hours. Based on passive learning data, the system would have one of the lowest timeouts when the user is detected in the sofa, where it should be the highest. 
+
+However with active learning the correlation correction comes into effect. Every time the system incorrectly turns off the light, and the user turns it on again, the system is punished and increases the correlation, and by extension the timeout. As a result of this, the system will gradually increase the timeout until it no longer turns off the light, while the user is watching TV.
 
 \chapter{Conclusion}
 \label{conclusion}
@@ -955,33 +1198,25 @@ The next phase of development for the project would be to get ready for the lear
 
 We base our statistical correlation table on the assumption, that a user will most likely turn on the light where he is, and look at the interval just after a switch is turned on. A way to augment that analysis, is by flipping the assumption on it's head, that the user will most likely turn off the light where he isn't. The user is most likely not going to be where the lights are off, so any sensors activated when the lights are off, are most likely not in the same room as the switch. 
 
-\#\#\#\# 
+\subsection{Decision matrix persistency}
+\label{decisionmatrixpersistency}
 
-if new event patterns match old patterns, the by all means use both. And if the differ, user mainly new data
+The longer back in time the system looks for user data, the more likely it is too see each pattern multiple times. The more times the system sees a given pattern, the more confident the system can be in the probabilities for that pattern. However the system should also be able to react to changes in user behavior, so there is a limit to how long back in time the system should look. 
 
-\section{Awesome quotes}
-\label{awesomequotes}
+To be able to best react changes, the system should only keep the most recent data. But this would drasicly reduce the systems confidence in the decision matrix. A static way to solve the problem would be to always look a fixed period of time back, attempting to strike a balance between the systems confidence and ability to react.
 
-lille liste af citater som godt kunne passe ind i rapporten
+A dynamic way to solve the problem would be to compare the most recent patterns to the old patterns. As long as there is a resonably low discrepency, the system can keep using old data. And if the discrepency gets too big, the system base it decisions purely on recent data, to better react to the changes in user behavior.
 
-\emph{I am among those who think that science has great beauty. A scientist in his laboratory is not only a technician: he is also a child placed before natural phenomena which impress him like a fairy tale.} -- Marie Curie
+\subsection{Only looking at patterns when moving between rooms}
+\label{onlylookingatpatternswhenmovingbetweenrooms}
 
-\emph{Good judgment comes from experience, and experience comes from bad judgment.} -- Barry LePatner
-
-\emph{Nothing can be so amusingly arrogant as a young man who has just discovered an old idea and thinks it is his own.} -- Sidney J. Harris
-
-\emph{The more original a discovery, the more obvious it seems afterwards.} -- Arthur Koestler
-
-o
+The system could use the statistical correlation table to only look at event patterns where the user moves between two different room.
 
 \begin{thebibliography}{0}
 
-\bibitem{gallup-2009}
-http:/\slash www.gallup.com\slash poll\slash 124652\slash awareness-climate-change-threat-vary-region.aspx
-
-
 \bibitem{eia-2011}
 http:/\slash 205.254.135.24\slash totalenergy\slash data\slash annual\slash showtext.cfm?t=ptb0201a
+[\^{}green-wave]: The ``Green Wave'' is a term used to refer to the spread of environmental considerations in business and political decision making.
 
 
 \bibitem{Boguslaw}
@@ -1010,6 +1245,10 @@ Lauritz Knudsens. http:/\slash www.lk.dk
 
 \bibitem{MIT House_n}
 MIT House\_n. http:/\slash architecture.mit.edu\slash house\_n\slash placelab.html
+
+
+\bibitem{House_n ongoing}
+http:/\slash architecture.mit.edu\slash house\_n\slash projects.html
 
 
 \end{thebibliography}

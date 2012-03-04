@@ -23,7 +23,7 @@ _"If it compiles, it is good; if it boots up, it is perfect."_ -- Linus Torvalds
 
 ### Software testing
 
-The implementation have been unit and integration tested. The simple modules Eve
+The implementation has been unit and integration tested. The simple modules Eve
 <TODO bedre intro, evt. opdel som unit, integration og system testing>
 
 #### Unit testing 

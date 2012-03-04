@@ -22,9 +22,7 @@ The wireless nodes we have available communicate using the Zensys Z-Wave protoco
 ![Sensor installed int the bath room][bathroom]
 ![Switch installed int the living room][switch]
 
-
-<insert images>
-We setup a mini PC with a Z-Wave serial device, and configured all PIR sensor and switches to send notifications to the PC, when they where activated. The PC ran a Z-Wave API, which we added a listener to, so that sensor and switch event was logged to a SQL database.
+We setup a mini PC with a Z-Wave serial device, and configured all PIR sensor and switches to send notifications to the PC, when they where activated. The PC ran a Z-Wave API, which we added a listener to, so that sensor and switch event was logged to an SQL database.
 
 | sensor_events        ||
 |-----------|-----------|
@@ -41,30 +39,26 @@ We setup a mini PC with a Z-Wave serial device, and configured all PIR sensor an
 
 ### Simulator / AI interface
 <<<<<<< HEAD
-We have a smart house simulator available, which will be extended with an AI module, implementing the features discussed in this report. The simulator is implemented in scala, so an obvious choise would be to implement the AI in scala aswell. However work with the simulator in the initial stages of the project, showed that our programming speed in scala was too slow to get any meaningful amount of work done. The scala language is build upon Java, and both languages compiles to bytecode in _.class_ files. A result of that is that Scala and Java interface very easily, and Scala code can invoke Java methods and vice versa. We chose to implement the AI in Java, working in a language we're well-versed in, to increase our productivity and quality of the code.
-<TODO credit the guys who wrote the simulator>
+To test the system we have a smart house simulator available, which we extended with an AI module, implementing the features discussed in this report. The simulator is implemented in scala, but we chose to implement the AI module in Java. Since both languages compile to byte code Scala and Java interface very easily, and Scala code can invoke Java methods and vice versa. We chose to implement the AI in Java, to work in a language we're well-versed in, to increase our productivity and quality of the code. 
 =======
 
-To test the system we have a smart house simulator available, which we extended with an AI module, implementing the features discussed in this report. The simulator is implemented in scala, but we chose to implement the AI module in Java. Since both languages compiles to byte code Scala and Java interface very easily, and Scala code can invoke Java methods and vice versa. We chose to implement the AI in Java, to work in a language we're well-versed in, to increase our productivity and quality of the code. 
+To test the system we have a smart house simulator available, which was developed by a team of DTU students as part of a [bachelor thesis][#scalasim]. We extended the simulator with an AI module, implementing the features discussed in this report. The simulator is implemented in scala, but we chose to implement the AI module in Java. Since both languages compiles to byte code Scala and Java interface very easily, and Scala code can invoke Java methods and vice versa. We chose to implement the AI in Java, to work in a language we're well-versed in, to increase our productivity and quality of the code. 
+>>>>>>> 475c0f4a85e3411dc72eef19943e458632a9bffa
 
-With the simulator we are able the test the system in the active learning stage of the system. The system have all the data gathered from the passive learning stage, and we are able to see how the system would behave in the beginning of the active learning stage. As stated in the analysis, simulated user data will never be as good a actual user data, and we will not place significant weight on learning based on the simulator. But with the simulator we can see if the system is acting and reacting as expected in the active learning stage.
->>>>>>> c576e6062e06e5af329f4378cd01048558d584a5
+With the simulator we are able the test the system in the active learning stage of the system. The system has all the data gathered from the passive learning stage, and we are able to see how the system would behave in the beginning of the active learning stage. As stated in the analysis, simulated user data will never be as good a actual user data, and we will not place significant weight on learning based on the simulator. But with the simulator we can see if the system is acting and reacting as expected in the active learning stage.
 
 With the simulator well be able to evaluate how able the system is able to act based on the decision table, turning the light on and off as the user moves around the house. We'll be able to see if the system is correctly turning off the light based on the correlation table.
 <TODO credit the guys who wrote the simulator>
 
 ### Configuration
 <<<<<<< HEAD
+=======
+
+>>>>>>> 475c0f4a85e3411dc72eef19943e458632a9bffa
 The config class in created as a simple static class that uses a file reader to load a config file stored on the hard drive. The config class initially holds the default values for the system, which are overwritten with the values from the config file.
 If no config file is present on the system, the config class generates a file based on the default values. After loading the config file, the other classes in the system, can then access the static fields of the class. These values are never altered after initially loading the config file.
 
 A typical config file could look like this:
-=======
-
-The system has a number of configuration parameters, that should be tweaked through experimentation. The system is able to access the parameters from global variables. The Config class creates a .settings file to load and saves these parameters. This makes it easy to load, change, import and export settings.
-
-### Decision Matrix
->>>>>>> c576e6062e06e5af329f4378cd01048558d584a5
 
 	#automatically generated preferences file
 	#delete to return to default settings
@@ -79,7 +73,7 @@ The system has a number of configuration parameters, that should be tweaked thro
 ### Event patterns
 
 To make lookups based on the observed event pattern, each new sensor eventis matched to see if it is part of a pattern. 
-As each sensor and switch event is received by the system, a list of the most recent event pattern is maintained in an EventList. EventList is basicly a queue of sensor events, a FIFO list with a max length. If the list is a max capacity when a new event is added, the list is subsequently dequeued. The pattern interval rule is maintained by looking that last event in the queue, when a new event is added. If the last event is more than pattern interval old compared to the new event, the queue is cleared before the new event is queued.
+As each sensor and switch event is received by the system, a list of the most recent event pattern is maintained in an EventList. EventList is basically a queue of sensor events, a FIFO list with a max length. If the list is a max capacity when a new event is added, the list is subsequently dequeued. The pattern interval rule is maintained by looking that last event in the queue, when a new event is added. If the last event is more than pattern interval old compared to the new event, the queue is cleared before the new event is queued.
     
     EventList add(event):
     queue events
@@ -93,6 +87,17 @@ If zone detection is enabled, EventList first checks if the last event is less t
 
 The EventList is used to make lookups in the decision matrix, which takes a fixed length array of sensor IDs as key. When looking up patterns shorter than the configured pattern length, the pattern is prefixed with _-1_ IDs, to maintain the fixed length.
 
+#### Zone events
+
+Zone events are represented as en extension of sensor events, with a list off all the sensors that are part of the zone event. In order to look up zone events in the decision matrix, each zone also has a single integer id representation. The id is calculated from the sorted list sensor.
+    
+    getID()
+    sum = 0
+    for sensor in zone
+        sum = sum*256 + sensor.id
+    return sum
+    
+For zone events based on at most 4 sensors, with id values less than 256, this function generates unique and compareable ids.
 
 ### Decision Matrix and KeyList
 The Decision Matrix is the class that holds the decision table. The class consists of the two matrices "on" and "off"  which are the two decision tables.Instead of implementing the matrices as multidimensional arrays we have chosen to use hash-maps were the key is an array of length n. There are two main advantages to using hash maps instead of multidimensional arrays. The first advantage of this is that the lookup time is much faster in a hashmap, than an n-dimensional array. This is especially true when the amount of data in the system increases, and when increasing the number of dimension, i.e. increasing the pattern length. Secondly the multidimensional array would be much larger since it would have to allocate space for every possible pattern instead of just the ones extrapolated from the collected data.
@@ -111,10 +116,12 @@ Once the data is returned from the database the system iterates through the resu
 
 
 ### Correlation table
-<intro to the correlation table>
+
+The correlation table is based on both statistical data from the passive learning stage, as well as corrections and punishments from the active learning stage. First the statistical correlation is calculated, and then the corrections are added ontop of that.
+
 #### Correlation statistical generation
 
-Correlation calculates the probability that a sensor is correlated a switch. It scans the database, and looks at the interval just after a switch is triggered. The sensors that triggered in the interval, are counted for that interval, in a way thay they're only counted once per switch event. If a multiple switch event are triggered in the same interval, the sensor events in the overlapping intervals should be counted for each of those switches. Having the number of times each switch is triggered, and each sensors triggeres with the given time interval, it's then calculated the probability that \\( sensor_i \\) is triggered, given that a \\( switch_j \\) was turned on atmost \\( \Delta t \\) ago. This gives the statistical correlation probability table. 
+The Correlation calculates the probability that a sensor is correlated a switch. It scans the database, and looks at the interval just after a switch is triggered. The sensors that triggered in the interval, are counted for that interval, in a way thay they're only counted once per switch event. If a multiple switch event are triggered in the same interval, the sensor events in the overlapping intervals should be counted for each of those switches. Having the number of times each switch is triggered, and each sensors triggeres with the given time interval, it's then calculated the probability that \\( sensor_i \\) is triggered, given that a \\( switch_j \\) was turned on atmost \\( \Delta t \\) ago. This gives the statistical correlation probability table. 
 
 To this the correlation confirmations in the database, is then added. Each row in the database table contains the accululated correlation correction for that switch / sensor pair. The correlation correction is simply added to the correlation based on the statistical data.
 
@@ -140,7 +147,10 @@ Timers are implemented in the Timer and Sleeper class. Sleeper is a fairly simpl
 
 To received the timeout events the SmartHouse class implements TimeoutListener. 
 
-[bedroom]: figures/bedroom.jpg "A PIR motion sensor installed on location in hellebækgade" width="300px"
-[livingroom]: figures/livingroom.jpg "A "placebo" switch installed on location in hellebækgade" width="300px"
-[bathroom]: figures/bathroom.jpg "A PIR motion sensor installed on location in hellebækgade" width="300px"
-[switch]: figures/switch.jpg "A "placebo" switch installed on location in hellebækgade" width="300px"
+[bedroom]: figures/bedroom.JPG "A PIR motion sensor installed on location in hellebækgade" width="300px"
+[livingroom]: figures/livingroom.JPG "A "placebo" switch installed on location in hellebækgade" width="300px"
+[bathroom]: figures/bathroom.JPG "A PIR motion sensor installed on location in hellebækgade" width="300px"
+[switch]: figures/switch.JPG "A "placebo" switch installed on location in hellebækgade" width="300px"
+[#scalasim]: Sune Keller and Martin Skytte Kristensen. Simulation and visualization of intellight light control system. Bachelor thesis 2010.
+Mads Ingwar and Soeren Kristian Jensen. IMM Smart House Project: a state of the art survey. 2008.
+
