@@ -60,6 +60,14 @@ LK IHC was per 2008 installed in nearly 30% of newly constructed building in den
 
 While the programmable logic controller provides an extended list of possibilities, programming the PLC requires a great deal of technical expertise. 
 
+**Zensus Z-Wave**
+
+Zensus develops a wireless communication standard for communication between nodes in smart environments. Z-Wave is a protocol, like C-Bus is for the Clipsal system. Zensus only produce the communication hardware, and other companies then produce the actual smart house products. Companies who produce devices for the system, have to get them certified by Zensus to ensure all Z-Wave certified can communicate with each other. This means there is no single supplier of Z-Wave products, and products from different suppliers are freely interchangeable. Some companies sell complete smarthouse solutions based on the Z-Wave, with switches, sensors and remotes. Like the Clipsal system,  Z-Wave devices can have distributed logic. Danfoss produces thermostats which can control the temperature based a schedule and ignore turn off the heating if windows are opened. Depending on the products added to a Z-Wave system, the system can be controllable or programmable.
+
+The hardware we've had available for this thesis was Z-Wave switches, sensors and USB-dongles. This allowed us to make a setup where the a PC could send and receive messages to a Z-Wave network. This allows us to create an Intelligent smart environment, based on Z-Wave hardware. 
+
+The devices in a Z-Wave system are freely interchangeable, allowing a user to tailor the system to specific needs. Based on commercially available products, a Z-Wave system can be build to be controllable or programmable. There aren't any commercially available products to make Z-Wave an intelligent system.
+
 **MIT House_n**
 
 House_n differs from the previous systems, as it is not a finished implementation, but a framework for a research projects. There are not any widespread commercially available intelligent smart house solution on the market, or at least that satisfies our classification of intelligent. 
