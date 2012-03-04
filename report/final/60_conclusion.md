@@ -39,10 +39,13 @@ We base our statistical correlation table on the assumption, that a user will mo
 
 #### Decision matrix persistency
 
-The more user data the system has about a event pattern in the decision matrix, the more confident the system can be in the correctness of that decision. But the system should also be able to adapt to changes in user behavior. 
+The longer back in time the system looks for user data, the more likely it is too see each pattern multiple times. The more times the system sees a given pattern, the more confident the system can be in the probabilities for that pattern. However the system should also be able to react to changes in user behavior, so there is a limit to how long back in time the system should look. 
 
-To be able to best react changes, the system should only keep the most recent data. But this would drasicly reduce the systems confidence in the decision matrix. 
+To be able to best react changes, the system should only keep the most recent data. But this would drasicly reduce the systems confidence in the decision matrix. A static way to solve the problem would be to always look a fixed period of time back, attempting to strike a balance between the systems confidence and ability to react.
 
-En måde at fikse problemet på er at tillade system at bruge gammel data, så længe at det stemmer overens med de seneste observationer
-A way to fix this problem would be to allow the system to use old data, as long as the user patterns doesn't appear to have changed. If the system observes that the user's behavior starts to differ from the old behavior, the system could the stop using old data. This could 
+A dynamic way to solve the problem would be to compare the most recent patterns to the old patterns. As long as there is a resonably low discrepency, the system can keep using old data. And if the discrepency gets too big, the system base it decisions purely on recent data, to better react to the changes in user behavior.
+
+#### Only looking at patterns when moving between rooms
+
+The system could use the statistical correlation table to only look at event patterns where the user moves between two different room.
 

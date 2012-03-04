@@ -48,11 +48,12 @@ The more complex classes DecisionMatrix and Correlation are tested using black b
 Based on these simple event pattens, an accurate expected output can be determined for both the DecisionMatrix and Correlation. The expected output for the DecisionMatrix is based on the number of times each event pattern has been seen, and the number of times they have led to a switch event. Only patterns which leads to switch events are listed.
 
 | Description | Sensor pattern | Switch | State | Probability |
-| without zone events ||||
+|:-----------:|:--------------:|:------:|:-----:|:-----------:|
+| without zone events |||||
 | Path _A_ | [1, 1, 2, 2, 3] | 4 | on | 1 |
 | Path _B_ | [1, 2] | 5 | off | 0.5 |
 | Path _C_ | [2, 3] | 6 | on | 0.67 |
-| with zone events ||||
+| with zone events |||||
 | Path _A_ | [1, 1&2, 2&3] | 4 | on | 1 |
 | Path _B_ | [1, 2] | 5 | off | 0.5 |
 | Path _C_ | [2, 3] | 6 | on | 0.67 |
@@ -88,6 +89,53 @@ The Correlation table isn't based on the entire data set of sensor events, but m
 
 #### Decision matrix
 
+With the expectancy that the probabilitites are going to be relatively low, for each switch pattern, the evaluation of Decision Matrix will look at patterns detected more than how high or low the probability should be. The Decision Matrix will be evaluated for different configurations, to see which advantages or disadvantages each configuration has.
+
+| Pattern | Probability | Description |
+|:-------:|:-----------:|:------------|
+| 20 21 13 on | 0.57% | Moving in the hallway, and turning on the light in the Living room |
+| 27 28 18 on | 0.75% | Moving in the bedroom, and turning on the light |
+| 20 20 19 on | 2.38% | Moving in the hallway and turning on the light in the restroom |
+| 20 21 19 on | 2.17% | |
+| 21 20 19 on | 1.70% | |
+| 21 25 17 on | 3.26% | Moving from the hallway into the kitchen and turning on the light |
+| 20 25 17 on | 5.76% | |
+| 20 20 19 off | 1.49% | Moving in the hallway turning off the light in the restroom |
+| 21 20 19 off | 1.2% | |
+| 20 21 19 off | 1.14% | |
+[Decision matrix, patterns detected atleast 5 times, pattern length 2, without zone detection][decision2false]
+
+With pattern length two, most of the patterns, above the confidence limit, only contain sensor event from a single room (from here on refered to as single room patterns). With the probabilities being as low as they are, it means the single room patterns get triggered a lot, without the light being switched on or off. This means if the system were to act based on these single room patterns, it would mostly likely turn the lights on and off, while the user were still in the room.
+
+There are only two pattern where sensor events are from different room (from here on refered to as multi room patterns): [20, 25 -> 17 on] and [21, 25 -> 17 on]. These two patterns occur when the user moves from the hallway and into the kitchen, and then turns on the light in the kitchen. These two multi room patterns, not only sound reasonable, but also have the highest probabilies of all the patterns above the confidence limit. 
+
+With pattern length two, and zone detection enabled, no event patterns with zones (from here on referd to as zone patterns) are seen leading to switch events 5 times or more. So for pattern length two, adding zones detection doesn't give any patterns above the confidence limit, for our data set. While zone events can reduce the ambiguity and allow the system to learn faster, physical motion sensors tends to have a cooldown. Cooldown means it takes some time, after the sensor has detected motion, before it will detect motion again. A result of this is that zone events are less likely to be detected. Two sensors might overlap, but if time between the two sensors are triggered are longer than the zone detection interval. The cooldown then cause the two sensors to keep firing sensor events too far apart to be detected as zone events.  
+
+| Pattern | Probability | Description |
+|:-------:|:-----------:|:------------|
+| 27 27 28 18 on | 1.86% | Moving in the bedroom, and turning on the light |
+| 20 21 20 19 on | 2.35% | Moving in the hallway, and turning on the light in the restroom |
+| 21 20 21 19 on | 2.03% | 
+| 29 21 20 19 off | 10.2% | Moving from the restroom to the hallway, turning off the light in the restroom |
+| 21 20 21 19 off | 2.36% | Moving in the hallway, turning off the light in the restroom |
+[Decision matrix, patterns detected atleast 5 times, pattern length 3, without zone detection][decision3false]
+
+When the pattern length is increased to three, fewer distinct switch patterns above the confidence limit are detected. Just as when the pattern length was two, the majority of the patterns are single room patterns. There is one multi room pattern: [29, 21, 10 -> 19 off] where the user leaves the restroom, enters the hallway and turns off the light to the restroom. Like the other two multi room patterns, this pattern sounds reasonable, and have a relatively high probility of just over 10%.
+
+Again adding zone detection doesn't prododuce any zone patterns above the confidence threshold .
+
+| Pattern | Probability | Description |
+|:-------:|:-----------:|:------------|
+| 28 27 21 20 19on | 8.33% | Moving from the bedroom to the hallway, turning on the light in the restroom |
+| 29 29 21 20 19 off | 11.11% | Moving from the restroom the the hallway, turning off the light in the restroom |
+| -1 21 20 21 19 off | 9.38% | Moving in the hallway, turning off the light in the restroom |
+[Decision matrix, patterns detected atleast 3 times, pattern length 4, without zone detection][decision4false]
+
+Increasing the pattern length to 4, no patterns were above the confidence limit of 5, so these patterns have only been see 3 or more times. This matrix have an interesting multi room pattern [28, 27, 21, 20 -> 19 on], where the user moves from the bedroom to the hallway, and then turn on the light to the restroom. While a plausable pattern, it isn't a pattern that can be guaranteed to always happen. 
+
+The previous multi room patterns were pattern that would close to always be correct, turning on the light when entering the kitchen, and turning off the light when leaving the restroom. But going from the bedroom to the hallways, is not a guarantee that the user needs light on in the restroom.
+
+<TODO move decision matrix meta data up>
 In order to better evaluate the Decision Matrix, it have been run on the training several times, with different pattern lengths, with and without zone detection. The evaluation will look upon the advantages and disadvantages the different configurations, and 
 
 | Settings                      || Unique observed patterns                     |||
@@ -97,10 +145,15 @@ In order to better evaluate the Decision Matrix, it have been run on the trainin
 | 2              | Yes           | 1.168             | 149         | 121          |
 | 3              | No            | 910               | 142         | 116          |
 | 3              | Yes           | 3.870             | 227         | 173          |
+| 4              | No            | 3.614             | 169         | 121          |
 | 7              | Yes           | 12.967            | 322         | 215          |
 [Statistics about the Decision matrix][dtable metadata]
 
-With zones enabled, the system looks at the event patterns leading up to each switch event, with and without zone detection. Detecting up to two switch patterns for every switch event, in some configurations there are more total switch patterns detected than actual switch events.
+With zones enabled, the system looks at the event patterns leading up to each switch event, with and without zone detection. Detecting up to two switch patterns for every switch event, in some configurations there are more total switch patterns detected than actual switch events. A complete dump of all patterns detected by the Decision Matrix for each configuration is included in the appendix.
+
+With a 130 to 1 sensor to switch event ratio, the probabilities for each event pattern leading to a switch event is very low. This isn't necesarily a problem, it may just mean the probability threshold, for the system to be confident enough to manipulate switches, needs to be equally low. 
+
+A lot of the On / Off patterns detected by the Decision Matrix have only been observed once. We're going to set the confindence threshold so that a pattern must have lead to an On or Off event atleast 5 times, and then analyse the correctness of the patterns observed 
 
 <TODO vi skal nok lige snakke lidt om hvad vi kan og vil konkludere baseret paa decision matrix>
 <TODO snippets from different configurations>
@@ -138,6 +191,8 @@ One thing to note is, these are the probabilities based solely on the statistica
 
 #### Correlation based timeout
 
-The implemented functionality of the correlation table, is to determine the timeout for each switch. How well is the correlation table able to keep the light on where it's needed. Different areas should have different timeouts, but most important is for the system to have long timeouts in areas where the user is likely to be still for extended periods of time, while still wanting the light to remain on. The most obvious area would be the sofa, where a user is likely to be for hours. Based on the statistical correlation alone, the system would have one of the lowest timeouts when the user is detected in the sofa, where it should be the highest. However in the evolution stage the correlation correction comes into effect. Every time the system incorrectly turns off the light, and the user turns it on again, the system is punished and increases the correlation, and by extension the timeout. As a result of this, the system will gradually increase the timeout until it no longer turns off the light, while the user is watching TV.
+The implemented functionality of the correlation table, is to determine the timeout for each switch. How well is the correlation table able to keep the light on where it's needed. Different areas should have different timeouts, but most important is for the system to have long timeouts in areas where the user is likely to be still for extended periods of time, while still wanting the light to remain on. The most obvious area would be the sofa, where a user is likely to be for hours. Based on passive learning data, the system would have one of the lowest timeouts when the user is detected in the sofa, where it should be the highest. 
+
+However with active learning the correlation correction comes into effect. Every time the system incorrectly turns off the light, and the user turns it on again, the system is punished and increases the correlation, and by extension the timeout. As a result of this, the system will gradually increase the timeout until it no longer turns off the light, while the user is watching TV.
 
 
