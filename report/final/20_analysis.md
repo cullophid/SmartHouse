@@ -1,19 +1,22 @@
 	
 ## Analysis
 
+The first task in any project is to analyze the problem at hand.  Before attempting to design an intelligent home control system, we must first identify which problems that may arise when developing a system like this. These problems may be related to the general field of home control systems, or they may be arise with the introduction of machine learning. In this chapter we will also clearly define what features we want in the system, and what features we do not want. Some features will also be excluded to avoid spreading the focus of the project too thin. Features ignored with the purpose of limiting the project scope will be discussed in the section "Future work" in the "Conclusion" chapter.
 
-<Mark weiser>
-<smart environments>
+The project contains a large element of unpredictability, as a result of incorporating machine learning based on real life data. As a result the development process will be a repeating cycle where one iteration will look as follows:
 
-<Present the concept of iterations... developing - implementing - training - evaluating>
+\\[Development \rightarrow Training \rightarrow Evaluation\\]
 
-The first task in any project is to analyze the problem at hand.  Before attempting to design an intelligent home control system, we must first clearly define what features we want in the system.
+First the system is developed, then the system must be trained based on collected data, and finally we can evaluate on our solution. This cycle will then continue through out the development phase.
+	
+Some of the problems discussed in this section may not be intuitive, as some of them we were unable to predict before the end of the first development cycle.
+This concept of development cycles will be discussed further in the "Design" Chapter.
 
-In this chapter we will discuss the issues we must address when designing an intelligent home control system. With each problem discusses we will briefly present our solution strategy, and discuss relevant alternatives.
+With each problem discussed in this chapter we will briefly present our solution strategy, and discuss relevant alternatives.
 
 We will start out with a small representative survey of existing systems, both available on the commercial market, and in development.
 
-We will then, in relation to the findings in the survey, discuss both the problems we have found with the existing solutions, and those that arise when developing a solution based on machine learning.
+We will then, in relation to the findings in the survey, discuss both the problems we have found with the existing solutions, and those related to developing a smart environment based on machine learning.
 
 ### Smart House Survey
 
@@ -21,23 +24,18 @@ _"If I have seen further it is by standing on the shoulders of giants"_ -- Isaac
 
 The beginning of any good project starts with a survey of what already exists. 
 
-In the following section we present a short survey of what already exists in the field of smart environments. We evaluate the existing home control solutions and their capabilities and review the industry standards. This section is intended as a representative selection of smart environments and thus will not contain an exhaustive survey of all existing solutions on the market.
+In the following section we present a short survey of what already exists in the field of home control systems and smart environments. We evaluate the existing solutions and their capabilities, and review the industry standards. This section is intended as a representative selection of smart environments, and thus will not contain an exhaustive survey of all existing solutions on the market. First we will establish some basic classifications of smart houses, to better compare the different systems. All systems can contain switches, sensors and remote controls, the difference is the functionally they provide, and how they operate. We classify the smart environments into three categories, Controllable, Programmable and Intelligent. These categories are based on the taxonomy presented in Boguslaw Pilich's Master Thesis and we refer interested readers to [#Boguslaw]
 
-First we will establish some basic classifications of smart houses, to better compare the different systems. All systems can contain switches, sensors and remote controls, the difference is the functionally they provide, and how they operate.
-
-We classify the smart environments into three categories, Controllable, Programmable and Intelligent. These categories are based on the taxonomy presented in Boguslaw Pilich's Master Thesis and we refer interested readers to [#Boguslaw]
-
-All three categories of smart environments can contain switches, sensors and remote controls, thus the differences between the systems is what functionality they provide and how they operate.
 
 #### Controllable houses
 
-These are the simplest of the smart house solutions. Input devices like switches, remotes and sensors, can be setup to control output devices like appliance and dimmer switches, HVAC (Heating, Ventilation and Air Conditioning), etc. These solution may also include macros, e.g. where a single button may turn off all the lights in the home. 
+These are the simplest of the home control solutions. Input devices such as switches, remotes and sensors, can be setup to control output devices such as appliances, dimmer switches and HVAC (Heating, Ventilation and Air Conditioning), etc. These solutions may also include macros, e.g. where a single button may turn off all the lights in the home. 
 
 #### Programmable houses
 These solutions incorporate some degree of logical operations, like having motion sensors only turn on the lights, if lux[^luxsensor] sensors are below above a certain threshold. They may be able to have scheduled, tasks e.g adjusting the thermostats during standard work-hours. The behavior of these systems have to be programmed by the manufacturer or the users. Consequently, changes in user needs require the system to be reprogrammed.
 
 #### Intelligent houses
-In these solutions some form of artificial intelligence is able to control the home. In computer science the term artificial intelligence is used very loosely. I our case we will define an intelligent house, as a system that is capable of machine learning. That means that the system is capable of evolving behavioral patterns based on empirical data[#wikipedia-machine-learning]. Consequently, the system will over time adapt itself to changes in user needs.
+In these solutions some form of artificial intelligence is able to control the home. In computer science the term artificial intelligence is often used loosely. For the purpose of this thesis we will define an intelligent house, as a system that is capable of machine learning. That means that the system is capable of evolving behavioral patterns based on empirical data[#wikipedia-machine-learning]. Consequently, the system will over time adapt itself to changes in user needs.
 
 The solutions presented, are some of the most widespread smart house solutions, and represents the three different types of systems: Controllable, Programmable and Intelligent houses.
 
@@ -51,50 +49,49 @@ INSTEON is a controllable home control system, targeted at private homes. Nodes 
 * motion sensors
 * assorted bridge devices
 
-INSTEON supports external application to be run on PC connected through a bridge devices to the network. By this logic it is technically possible to extend the system with a programmable or even intelligent component. However no commercial products providing these features currently exists. [#INSTEON]
+INSTEON supports external applications to be run on a PC connected through a bridge device to the network. By extension it is technically possible to extend the system with a programmable or even intelligent component. However no commercial products providing these features currently exists. [#INSTEON]
 
-INSTEON's solution is fairly widespread in the US. It represents what a commercial controllable smart house is capable of. It's functionaly very simplistic, but being able to communicate using the home electrical wiring, makes it a very non-intrusive system to install in an existing home. It enables the user more control of his home than just normal wall switches, being able to control his home with a remote and motion sensors. But in the end there is no intelligence in the INSTEON system, it can only do simple actions based on user inputs. 
+INSTEON's solution is fairly widespread in the US. It represents what a commercial controllable house is capable of. The systems functionality is very limited, but being able to communicate using the home electrical wiring, makes it a very non-intrusive system to install in an existing home. It enables the user increased control of his home compared to the regular wall switches, by allowing him to control his home with remote controls and motion sensors. The INSTEON system is limited by its lack of intelligence or programmable logic, and can only perform simple actions based on user inputs. 
 
 **Clipsal (C-Bus)** 
 
-Clipsal is targeted at large scale home control. The system is install in such prominent buildings as the Sydney Opera house, Wembly Stadium and many more. Nodes communicate over its own separate wired network, using the C-Bus protocol. Each node has its own microprocessor, allowing for distributed intelligence. This means each node can be individually programmed, allowing any device to be added to a Clipsal system. This allows unconventional devices like motors for stadium roofs and many other devices to be part of the network. Nodes can also be programmed to autonomously control the system, e.g. in a hotel a control unit in each appartment could monitor temperatur sensors, control ventilation and heating, while also logging power 
+Clipsal is a large scale control system, targeted at the industrial sector. The system is installed in such prominent buildings as the Sydney Opera house, Wembly Stadium and many more. Nodes communicate over its own separate wired network, using the C-Bus protocol. Each node has its own microprocessor, allowing for distributed logic. This means each node can be individually programmed, allowing a wide array of different devices to be added to a Clipsal system without having to modify the c-bus protocol. This allows unconventional devices like motors for stadium roofs and many others, to be part of the network. Nodes can also be programmed to autonomously control the system, e.g. in a hotel a control unit in each apartment could monitor temperature sensors, control ventilation and heating, while also logging power to a central database.
 
-Clipsal represents the flexibility and scalability programmable solutions on the market are able to achieve. A very unique feature of Clipsal is the distrubuted logic. Most programmable systems have central logic, where every other node in the system are slave nodes. With the microprocessors in each node, logic can be distrubuted over a multitude of nodes, allowing nodes to be in charge of subsections of the system. The distributed logic can remove single point of failure, by eliminating the possibility that a single faulty node can prevent the entire system from working, making the system much more fault tolerant.
+Clipsal represents the flexibility and scalability, programmable solutions on the market are able to achieve. A very unique feature of Clipsal is the distributed logic. Most programmable systems are essentially controllable systems witn a central logic, where every other node in the system acts as slave nodes[^slave-nodes]. With the microprocessors in each node, logic can be distributed over a multitude of nodes, allowing nodes to be in charge of subsections of the system. The distributed logic can also remove the problem of a single point of failure, where a single faulty node can prevent the entire system from working. This results in a more robust and fault tolerant system.
 
-But all of the features of the Clipsal system comes at a price. The system requires a wired communication network, and programming nodes to individual needs requires professional expertise. This is negligeble price to pay for a buisness, for the features it provides, but makes the system very expensive for a private user. [#CBus]
+All of the features of the Clipsal system comes at a price. The system requires a wired communication network, and programming nodes to individual needs requires professional expertise. This is a negligible price to pay for a larger corporation, compared to the features it provides, but makes the system very expensive for a private user. [#CBus]
 
 **LK IHC**
 
-LK IHC is targeted at private homes. It can be installed with a wired network, or using wireless communication. This solution tends to be build around simple wall switches, but with programmable scenarios. An example of this could be having a switch near the front door and the master bedroom that turns off all lights. The IHC is a modular system, where modules like wireless communication or alarms, can be added to the base installation. <diskuter modular>
+LK IHC is targeted at private homes. It can be installed with a wired network, or using wireless communication. This solution tends to be build around simple wall switches, but with programmable scenarios. An example of this could be having a switch near the front door and the master bedroom that turns off all lights. The IHC is a modular system, where modules like wireless communication or alarms, can be added to the base installation.
 
 The IHC modules includes a programmable logic controller[^plc] which allows the system to be programmed. An example of this taken from their own presentation of the product is that motion sensors that normally are set to control the lights could, if the alarm is activated, be programmed to dial 911. 
 LK IHC was per 2008 installed in nearly 30% of newly constructed building in denmark.[#MSsurvey]  [#LK IHC].
 
-While the programmable logic controller provides an extended list of possibilities, programming the PLC requires a great deal of technical expertise. 
+While the programmable logic controller provides an extended list of possibilities, programming the PLC requires a great deal of technical expertise and is not a feasible task for the  average end user. 
 
 **MIT House_n**
 
 House_n differs from the previous systems, as it is not a finished implementation, but a framework for a research projects. There are not any widespread commercially available intelligent smart house solution on the market, or at least that satisfies our classification of intelligent. 
 
-House_n represent one of many smart environment, build by universities around the world. The smart environments are homes for one or more inhabitants, and are part of a living laboratory. The living lab part of House_n is called PlaceLab, and is a one-bedroom condominium, inhabited by volunteers for varying lengths of time. These homes are designed for multi-disciplinary studies, of people and their pattens and interactions with new technology and smart home environments. Being university run smart homes, the work coming out of these facilities tends to be proof of concepts. This means there are no complete product based on these projects. [#MIT House_n]
+House_n represent one of many smart environment, build by universities around the world. The smart environments usually houses one or more inhabitants, and are part of a living laboratory. The living lab part of House_n is called PlaceLab, and is a one-bedroom condominium, inhabited by volunteers for varying lengths of time. These homes are designed for multi-disciplinary studies, of people and their pattens and interactions with new technology and smart home environments. Being university run smart homes, the work coming out of these facilities tends to be proof of concepts. This means there are no complete product based on these projects. [#MIT House_n]
 
-Like the Clipsal system, the nodes of House_n have distributed intelligence, and uses Hidden Markov Models to learn from user behavior. The system is also able to relay data gathered by the system, to PDA's or smartphones carried by the inhabitants of the house. 
-The intelligence of House_n comes from the work of each team of master students working on the project. Each project explores different aspects of machine learning. The exact intellion gence implementation of House_n is dependant on the currently ongoing projects [#House_n ongoing]
-[#House_n ongoing]: http://architecture.mit.edu/house_n/projects.html
+Like the Clipsal system, the nodes of House_n have distributed intelligence, and uses Hidden Markov Models[^hidden-markov] to learn from user behavior. The system is also able to relay data gathered by the system, to PDA's or smartphones carried by the inhabitants of the house. 
+The intelligence of House_n comes from the work of each team of master students working on the project. Each project explores different aspects of machine learning. The exact intelligence implementation of House_n is dependant on the currently ongoing projects [#House_n ongoing]
 
-The projects shown in this survey represent the solutions currently available or in development. There are many different controllable and programmable solution commercially available, with INSTEON, Clipsal C-bus and LK IHC being some of the more widespread representative solutions. INSTEON being a simple controllable solution, Clipsal C-bus and LK IHK are both programmable smart house solutions, but where LK IHC is designed for private homes, the Clipsal C-bus system is better suited for larger buildings. 
+The projects shown in this survey represent the solutions currently available or in development. There are many different controllable and programmable solutions commercially available, with INSTEON, Clipsal C-bus and LK IHC being some of the more widespread solutions. INSTEON represents the domain of controllable houses. Clipsal C-bus and LK IHK are both programmable home control solutions, but where LK IHC is designed for private homes, the Clipsal C-bus system is better suited for larger buildings. 
 
-MIT's House_n in this survey represent that truly intelligent smart houses only exists in demonstration environments and as proofs of concept, and are not yet available on the commercial market.
+MIT's House_n in this survey represents that truly intelligent smart houses only exists in demonstration environments and as proofs of concept, and are not yet available on the commercial market.
 
-<small conclusion on survey>
-One of the main problems with current home control solutions is that installing such a system is rather costly and requires installation and configuration, which is rarely trivial. Some of the more advanced systems on the market, such as the LK IHC, incorporate motion sensors and timers that automatically turn on and off lights or various appliances. These systems will save money over time, but they require extensive configuration or programming in order to function properly.
-<mere konklusion, tilføj elementer til de enkelte huses konklusionser der kan refereres her>
+One of the general problems with current home control solutions is that purchasing such a system is rather costly and requires both installation and configuration, which is rarely trivial. Some of the more advanced systems on the market, such as the LK IHC, incorporate motion sensors and timers that automatically turn on and off lights or various appliances. These systems will save money over time, but they require extensive configuration or programming in order to function properly.
+
+As mentioned in the introduction, the main focus of our project is reducing energy consumption. This is an area where most modern home control systems falls short . Most systems are capable of providing only a modest reduction in power consumption, and some even increase the net consumption by adding the cost of running the control system. We want our system to differ from others on this specific aspect. In our system, reducing power consumption is the number one priority.
+
+
 
 
 ### BIIIB 
-
-Of all the  qualities mentioned in our vision for the system,  power saving is the most important. As seen in the survey above, this is an area where most modern home control systems falls short . Most systems are capable of providing only a modest reduction in power consumption, and some even increase the net consumption by adding the cost of running the control system. We want our system to differ from others on this specific aspect. In our system, reducing power consumption is the number one priority.<rewrite>
-
+<intro>
 We want the users interactions with the system, to be as simple and familiar as possible. The user should only interact with the system through the wall mounted switches that are already present in all normal houses. 
 
 We will accomplish this by creating a system that focuses on turning off all lights and appliances where they are not needed. There are several advantages to this approach, compared to attempting to reduce the power consumption of active appliances. The main advantage is that it provides the largest reduction in power consumption. Most people remember to turn off the light in the bathroom, when they leave it, but this is far less common for the kitchen, or dining room, and only the most environmentally conscious people would ever turn off the light in the living room when they got to the bathroom. This means that there is a lot of wasted energy in the normal household . 
@@ -200,6 +197,8 @@ Based of the analysis above we can now form a requirement specification for the 
 [#LK IHC]: Lauritz Knudsens. http://www.lk.dk
  
 [#MSsurvey]: Mads Ingwar and Soeren Kristian Jensen. IMM Smart House Project: a state of the art survey. 2008.
+
+[#House_n ongoing]: http://architecture.mit.edu/house_n/projects.html
 
 [^placebosystem]: A system where the sensors and switches have no actual effect on the house, but are merely there to collect data.
 

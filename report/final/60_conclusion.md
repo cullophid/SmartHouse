@@ -37,20 +37,15 @@ The next phase of development for the project would be to get ready for the lear
 
 We base our statistical correlation table on the assumption, that a user will most likely turn on the light where he is, and look at the interval just after a switch is turned on. A way to augment that analysis, is by flipping the assumption on it's head, that the user will most likely turn off the light where he isn't. The user is most likely not going to be where the lights are off, so any sensors activated when the lights are off, are most likely not in the same room as the switch. 
 
-#### 
+#### Decision matrix persistency
 
-if new event patterns match old patterns, the by all means use both. And if the differ, user mainly new data
-    
-### Awesome quotes
+The longer back in time the system looks for user data, the more likely it is too see each pattern multiple times. The more times the system sees a given pattern, the more confident the system can be in the probabilities for that pattern. However the system should also be able to react to changes in user behavior, so there is a limit to how long back in time the system should look. 
 
-lille liste af citater som godt kunne passe ind i rapporten
+To be able to best react changes, the system should only keep the most recent data. But this would drasicly reduce the systems confidence in the decision matrix. A static way to solve the problem would be to always look a fixed period of time back, attempting to strike a balance between the systems confidence and ability to react.
 
-_I am among those who think that science has great beauty. A scientist in his laboratory is not only a technician: he is also a child placed before natural phenomena which impress him like a fairy tale._ -- Marie Curie
+A dynamic way to solve the problem would be to compare the most recent patterns to the old patterns. As long as there is a resonably low discrepency, the system can keep using old data. And if the discrepency gets too big, the system base it decisions purely on recent data, to better react to the changes in user behavior.
 
-_Good judgment comes from experience, and experience comes from bad judgment._ -- Barry LePatner
+#### Only looking at patterns when moving between rooms
 
-_Nothing can be so amusingly arrogant as a young man who has just discovered an old idea and thinks it is his own._ -- Sidney J. Harris
+The system could use the statistical correlation table to only look at event patterns where the user moves between two different room.
 
-_The more original a discovery, the more obvious it seems afterwards._ -- Arthur Koestler
-
-o

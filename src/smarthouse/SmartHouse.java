@@ -48,7 +48,7 @@ public class SmartHouse implements TimeoutListener {
 		try {
 			debug = Config.debug;
 			Class.forName("com.mysql.jdbc.Driver");//load the mysql driver
-			conn = DriverManager.getConnection("jdbc:mysql://localhost/kiiib?user=KIIIB&password=42");//connect to the database
+			conn = DriverManager.getConnection(Config.DB);//connect to the database
 			stmt = conn.createStatement();
 			decisionMatrix = new DecisionMatrix();
 			correlation = new Correlation();
@@ -83,7 +83,7 @@ public class SmartHouse implements TimeoutListener {
 
 	/*
 	 * Method called when a sensorevent occurs in the simulator
-	 * @author Andreas m�ller & David Emil Lemvigh
+	 * @author Andreas & David 
 	 */
 	public void sensorEvent(int sensorId){
 		try{
@@ -115,7 +115,7 @@ public class SmartHouse implements TimeoutListener {
 	}
 	/*
 	 * Method called when a switch event occurs in the simulator
-	 * @author Andreas M�ller & David Emil Lemvigh
+	 * @author Andreas & David 
 	 */
 	public void switchEvent(int switchId, int status){
 		try{

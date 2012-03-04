@@ -60,16 +60,24 @@ public class KeyList{
     }
     public void printValues(){
         for (int i : keys){
-            System.out.print(i+" ");
+            System.out.print(ZoneEvent.getIDString(i) + " ");
         }
     }
     public ArrayList<Integer> getKeys(){
         return keys;
     }
+    
+    public boolean hasZoneEvent() {
+        for (int i : keys){
+            if (i >= 256)
+                return true;
+        }
+        return false;
+    }
 	public String toString(){
 		String returnstr = "";
 		for (int i : keys){
-			returnstr = returnstr+i+" ";
+			returnstr = returnstr+ZoneEvent.getIDString(i)+" ";
 		}
 		return returnstr;
 	}

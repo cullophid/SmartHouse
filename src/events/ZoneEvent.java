@@ -22,6 +22,7 @@ public class ZoneEvent extends Event {
     public ZoneEvent(long ts, int ... ids) {
         this(ids);
         this.ts = ts;
+        this.id = getID(ids);
     }
     
     public ZoneEvent(List<Event> zone) {
@@ -59,8 +60,13 @@ public class ZoneEvent extends Event {
         System.arraycopy(ids, 0, tmp, 1, ids.length);
         ids = tmp;
         Arrays.sort(ids);
+        this.id = getID(ids);
     }
     
+
+    /**
+     * overrides the super class method compareID, to compare idx to all the ids in the zone event
+     */
     @Override
     public boolean compareID(int idx) {
         for(int id : ids) {
@@ -69,8 +75,7 @@ public class ZoneEvent extends Event {
         }
         return false;
     }
-    
-        
+
     public String toString() {
         return tsString() + " Zone event " + Arrays.toString(ids);
     }
@@ -112,10 +117,11 @@ public class ZoneEvent extends Event {
         if (id < 256)
             return Integer.toString(id);
         
-        StringBuffer sb = new StringBuffer();
+        StringBuffer sb = new StringBuffer("[");
         for (int i : getIDs(id))
             sb.append(i + ",");
-
-        return sb.substring(0, sb.length()-1);
+        sb.setCharAt(sb.length()-1, ']');
+        
+        return sb.toString();
     }
 }
