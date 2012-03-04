@@ -7,51 +7,85 @@ Base Header Level:  1
 
 ## Introduction
 
-In the recent years we have seen an increase in climate awareness. The subject is gaining more and more media coverage. A survey conducted from 2007 to 2008 by the international research organization Galllup[^gallup], shows that 82% of americans and 88% of europeans are very aware of the current climate issues we are facing such as global warming. In the same survey Gallup also concludes that 67% of americans and 59% europeans view global warming as a serious threat to them selves and their families[gallup-2009][#gallup-2009]. With the rise of concern with the general public, the demand for sustainable solutions increases. 
-According to the United States Energy Information Administration[^eia],  the residential constituted 22% of the total energy consumption in the US[eia-2011][#eia-2011]. 	
+In the recent years we have seen an increase in climate awareness. Environmental issues such as global warming, are widely debated both on a political and personal level, and the subject is gaining increased media coverage. A survey conducted from 2007 to 2008 by the international research organization Galllup[^gallup] shows that 82% of americans and 88% of europeans are very aware of the current climate issues we are facing[gallup-2009][#gallup-2009]. In the same survey Gallup also concludes, that 67% of americans and 59% europeans view global warming as a serious threat to them selves and their families. With the rise of concern with the general public, the demand for sustainable solutions increases. We are already seeing a large number of companies, spending a considerable amount of money to be classified as environmentally conscious. Companies such as Amazon are spending millions of dollars on sustainable buildings, in order to maintain an image as an environmentally conscious company. 
 
-<Were not creating a smart house>
-<were examining the possibilities of creating a smart house>
+In the residential sector the environmental awareness id equally present, but the so called "green wave"[^green wave] has not had nearly the same commercial impact. This is however not due to lack of potential. According to the United States Energy Information Administration[^eia],  the residential sector constituted 22% of the total energy consumption in the US[eia-2011][#eia-2011]. The main problem in this sector is financial. Improving your residence to be more environmentally friendly is costly, and though most improvements generally pay for them selves over time, the return of investment will often take several years. This problem is not nearly as big in the business sector, where the gain in public image can be very valuable, and may even be worth the investment in it self. In the residential sector, however, the financial benefits of installing environmentally friendly technology solely come from the reduction in energy consumption.
+
+There is a lot of focus on saving energy by changing habits, such as remembering to turn off the light on the bathroom, or not using the standby feature on many appliances. All these initiatives certainly help, but if we want to make a significant reduction in our energy consumption we need smart environments[^smart-envirionments], that are capable of micro managing our energy use. 
+
+The idea of smart environments is a product of the concept ubiquitous computing[^ubiquitous computing], a term invented by the late computer scientist Mark Weiser[^weiser]. Weisier coined the term while working  as chief technologist at the Xerox Palo Alto Research Center (PARC)[^parc]. Ubiquitous computing proposes a new paradigm in human-computer interaction, where the role of the computer is to serve the users, rather than act as a tool that requires direct interaction. Smart environments fulfill this role, by monitoring its users, and acting on their behalf, without the need of their active participance.  It is described by Mark Weiser as:
+
+_"a physical world that is richly and invisibly interwoven with sensors, actuators, displays, and computational elements, embedded seamlessly in the everyday objects of our lives, and connected through a continuous network"_  -Mark Weiser
+
+The concept of smart environments originated in 1988, but in the recent years we have seen a large development in this field. This in mainly due to the development in computing power, and availability of embedded systems, which lies at the heart of the smart environments.
+
+The purpose of this thesis is to explore the possibilities of developing a low cost intelligent home control system, capable of reducing the power consumption in normal households. This control system will be based on the core concepts of smart environments. The thesis will serve as a research paper on the possibilities of using machine learning[^machine-learning] algorithms to develop an advanced artificial intelligence, capable of controlling a house hold, and reducing power consumption.  We have created a prototype of a smart environment, that serves as a proof of concept, and can be used as the basis for further development. The final product shows the power of ubiquity computing, as a means of reducing energy consumption in the normal household.
+
+The thesis will focus solely on lighting control in the smart environment. This allows us to focus on the integration of machine learning, rather than adding a large array of functionality. The advantage of focussing on lighting compared to other aspects, is that we are provided instant visual feedback when manipulating the environment.This will prove very useful for development and testing purposes. The core concepts of controlling the light will be similar to many of the other task that can be handled by a smart environment, therefore the solutions developed as a result of the work done in this thesis, will be transferable to other areas, such as heating regulation, air-conditioning, etc.
+
+The thesis is structured as follows:
+
+In the chapter "Analysis" we will identify and analyze the problems and issues, related to developing an intelligent home control system. This involves analyzing existing solutions and technologies related to the technological field of smart environments.
+
+In the chapter "Design" we will discuss our solutions to the problems identified in the analysis. We will also briefly present the development process, and how this have affected the final product. This chapter will also hold a theory section, where we will discuss the most important technologies we have used, along with the mathematical theory that forms the basis for our solution.
+
+The "Implementation" chapter examines the transition from a software blueprint to working code. In the chapter, we will in detail describe the problems we had to solve when coding the system.
+
+Finally we will evaluate the results of our research in the chapter "Evaluation". The chapter will both evaluate our solution and contain a description of the software tests we have performed on the system.
 
 
-[^gallup]: International research  organization famous for making polls. http://ww.gallup.com
+
+[^gallup]: International research  organization famous for their large scale international polls. http://ww.gallup.com
 
 [^eia]: http://www.eia.gov/
-
+[^smart-environments]: ref needed
 [#gallup-2009]: http://www.gallup.com/poll/124652/awareness-climate-change-threat-vary-region.aspx
 
 [#eia-2011]: http://205.254.135.24/totalenergy/data/annual/showtext.cfm?t=ptb0201a
-
+[^green-wave]: The "Green Wave" is a term used to refer to the spread of environmental considerations in business and political decision making.
+	
 ## Analysis
-<Mark weiser>
-<smart environments>
+
+The first task in any project is to analyze the problem at hand.  Before attempting to design an intelligent home control system, we must first which problems that may arise when developing a system like this. These problems may be related to the general field of home control systems, or they may be arise with the introduction of machine learning. In this chapter we will also clearly define what features we want in the system, and what features we do not want. Some features will also be excluded to avoid spreading the focus of the project too thin. Features ignored with the purpose of limiting the project scope will be discussed in the section "Future work" in the "Conclusion" chapter.
+
+The project contains a large element of unpredictability, as a result of incorporating machine learning based on real life data. As a result the development process will be a repeating cycle where one iteration will look as follows:
+
+\\[Development \rightarrow Training \rightarrow Evaluation\\]
+	
+Some of the problems discussed in this section may not be intuitive, as some of them we were unable to predict before the end of the first development cycle.
+This concept of development cycles will be discussed further in the "Design" Chapter.
+
+With each problem discussed in this chapter we will briefly present our solution strategy, and discuss relevant alternatives.
+
+We will start out with a small representative survey of existing systems, both available on the commercial market, and in development.
+
+We will then, in relation to the findings in the survey, discuss both the problems we have found with the existing solutions, and those related to developing a smart environment based on machine learning.
 
 ### Smart House Survey
 
 _"If I have seen further it is by standing on the shoulders of giants"_ -- Isaac Newton
 
-The beginning of any good project starts with a survey of what already exists in the field. 
+The beginning of any good project starts with a survey of what already exists. 
 
-Which smart house solutions already exist, and what are their capabilities? What are the industry standards, if any? This section will provide a representative selection of smart house solutions. However, it will not be an exhaustive survey of all smart house solutions.
+In the following section we present a short survey of what already exists in the field of smart environments. We evaluate the existing home control solutions and their capabilities and review the industry standards. This section is intended as a representative selection of smart environments and thus will not contain an exhaustive survey of all existing solutions on the market.
 
 First we will establish some basic classifications of smart houses, to better compare the different systems. All systems can contain switches, sensors and remote controls, the difference is the functionally they provide, and how they operate.
 
-We distinguish between three types of systems, which are derived from the taxonomies presented in Boguslaw Pilich's Master Thesis [#Boguslaw] :
-<maybe extend this explanation>
+We classify the smart environments into three categories, Controllable, Programmable and Intelligent. These categories are based on the taxonomy presented in Boguslaw Pilich's Master Thesis and we refer interested readers to [#Boguslaw]
+
+All three categories of smart environments can contain switches, sensors and remote controls, thus the differences between the systems is what functionality they provide and how they operate.
 
 #### Controllable houses
 
 These are the simplest of the smart house solutions. Input devices like switches, remotes and sensors, can be setup to control output devices like appliance and dimmer switches, HVAC (Heating, Ventilation and Air Conditioning), etc. These solution may also include macros, e.g. where a single button may turn off all the lights in the home. 
 
 #### Programmable houses
-These solutions incorporate some degree of logical operations, like having motions sensors not turn on the lights, if lux[^luxsensor] sensors are above a threshold. They may be able to have scheduled task, e.g. turning down the thermostats during standard work-hours. The behavior of these systems have to be programmed by the manufacturer or the users. Consequently, changes in user needs require the system to be reprogrammed.
+These solutions incorporate some degree of logical operations, like having motion sensors only turn on the lights, if lux[^luxsensor] sensors are below above a certain threshold. They may be able to have scheduled, tasks e.g adjusting the thermostats during standard work-hours. The behavior of these systems have to be programmed by the manufacturer or the users. Consequently, changes in user needs require the system to be reprogrammed.
 
 #### Intelligent houses
 In these solutions some form of artificial intelligence is able to control the home. In computer science the term artificial intelligence is used very loosely. I our case we will define an intelligent house, as a system that is capable of machine learning. That means that the system is capable of evolving behavioral patterns based on empirical data[#wikipedia-machine-learning]. Consequently, the system will over time adapt itself to changes in user needs.
 
 The solutions presented, are some of the most widespread smart house solutions, and represents the three different types of systems: Controllable, Programmable and Intelligent houses.
-
-<TODO hurtig conclusion om hver løsning, hvad synes vi om dem>
 
 **INSTEON**
 
@@ -63,50 +97,48 @@ INSTEON is a controllable home control system, targeted at private homes. Nodes 
 * motion sensors
 * assorted bridge devices
 
-INSTEON supports external application to be run on PC connected through a bridge devices to the network. By this logic it is  technically possible to make the system programmable or even intelligent. However no commercial products providing these features currently exists. [#INSTEON]
+INSTEON supports external application to be run on PC connected through a bridge devices to the network. By this logic it is technically possible to extend the system with a programmable or even intelligent component. However no commercial products providing these features currently exists. [#INSTEON]
 
-INSTEON's solution is fairly widespread in the US, and is a successor to the Redoak X10 system, and is compatable with it's product.<does this matter?> It represents what a commercial controllable smart house is capable of. It's functionaly very simplistic, but being able to communicate using the home electrical wiring, makes it a very non-intrusive system to install in an existing home. <lidt mere konklusion :)>
+INSTEON's solution is fairly widespread in the US. It represents what a commercial controllable smart house is capable of. It's functionaly very simplistic, but being able to communicate using the home electrical wiring, makes it a very non-intrusive system to install in an existing home. It enables the user more control of his home than just normal wall switches, being able to control his home with a remote and motion sensors. But in the end there is no intelligence in the INSTEON system, it can only do simple actions based on user inputs. 
 
-<TODO en lidt bedre konklusion>
+**Clipsal (C-Bus)** 
 
-**Clipsal C-Bus**
+Clipsal is targeted at large scale home control. The system is install in such prominent buildings as the Sydney Opera house, Wembly Stadium and many more. Nodes communicate over its own separate wired network, using the C-Bus protocol. Each node has its own microprocessor, allowing for distributed intelligence. This means each node can be individually programmed, allowing any device to be added to a Clipsal system. This allows unconventional devices like motors for stadium roofs and many other devices to be part of the network. Nodes can also be programmed to autonomously control the system, e.g. in a hotel a control unit in each appartment could monitor temperatur sensors, control ventilation and heating, while also logging power 
 
-Clipsal is targeted at large scale home control. The system is install in such prominent buildings as the Sydney Opera house, Wembly Stadium and many more. Nodes communicate over its own separate wired network, using the C-bus protocol. Each node has its own microprocessor, which allows for distributed intelligence.<diskuter forskellen mellem ditributed og local intelligence> Each node can also be individually programmed, and communicate over the shared bus. This allows unconventional devices like motors for stadium roofs and many other devices to be part of the network. 
+Clipsal represents the flexibility and scalability programmable solutions on the market are able to achieve. A very unique feature of Clipsal is the distrubuted logic. Most programmable systems have central logic, where every other node in the system are slave nodes. With the microprocessors in each node, logic can be distrubuted over a multitude of nodes, allowing nodes to be in charge of subsections of the system. The distributed logic can remove single point of failure, by eliminating the possibility that a single faulty node can prevent the entire system from working, making the system much more fault tolerant.
 
-Clipsal's C-bus represents the flexibility and scalability programmable solutions on the market are able to achieve. It can also be installed in a private home. However, compared to other systems the rquirement of a separate wiring through-out a home can be a disadvantage. [#CBus] <skel mellem bus og system. diskuter distribuerede element mere>
-
-<TODO en lidt bedre konklusion>
+But all of the features of the Clipsal system comes at a price. The system requires a wired communication network, and programming nodes to individual needs requires professional expertise. This is negligeble price to pay for a buisness, for the features it provides, but makes the system very expensive for a private user. [#CBus]
 
 **LK IHC**
 
-LK IHC is targeted at private homes. It can be installed with a wired network, or using wireless communication. This solution tends to be build around simple wall switches, but with programmable scenarios, e.g. having a switch near the front door and the master bedroom that turns off all lights. It is a modular system, where modules like wireless communication or alarms, can be added to the base installation. <diskuter modular>
+LK IHC is targeted at private homes. It can be installed with a wired network, or using wireless communication. This solution tends to be build around simple wall switches, but with programmable scenarios. An example of this could be having a switch near the front door and the master bedroom that turns off all lights. The IHC is a modular system, where modules like wireless communication or alarms, can be added to the base installation. <diskuter modular>
 
-The basic LK IHC installation is a controllable system. However, the modules can provide programmable functionality to the system, i.e. motion sensors normally control the lights, but if the alarm system is activated, the system can call 911. LK IHC was per 2008 installed in nearly 30% of newly constructed building in denmark.[#MSsurvey]  [#LK IHC]. <diskuter pros cons>
+The IHC modules includes a programmable logic controller[^plc] which allows the system to be programmed. An example of this taken from their own presentation of the product is that motion sensors that normally are set to control the lights could, if the alarm is activated, be programmed to dial 911. 
+LK IHC was per 2008 installed in nearly 30% of newly constructed building in denmark.[#MSsurvey]  [#LK IHC].
 
+While the programmable logic controller provides an extended list of possibilities, programming the PLC requires a great deal of technical expertise. 
 
 **MIT House_n**
 
-House_n differs from the previous systems, as it isn't a finished implementation, but a framework for research projects. There aren't any widespread commercially available intelligent smart house solution on the market, or at least that satisfies our classification of intelligent. 
+House_n differs from the previous systems, as it is not a finished implementation, but a framework for a research projects. There are not any widespread commercially available intelligent smart house solution on the market, or at least that satisfies our classification of intelligent. 
 
-House_n represent one of many smart environment, build by universities around the world. The smart environments are homes for one or more inhabitants, and are part of a living laboratory. The living lab part of House_n is called PlaceLab, and is a one-bedroom condominium, inhabited by volunteers for varying lengths of time. These homes are designed for multi-disciplinary studies, of people and their pattens and interactions with new technology and smart home environments. Being university run smart homes, the work coming out of these facilities tends to be proof of concepts. [#MIT House_n]<diskuter house_n som et ikke komplet produkt>
+House_n represent one of many smart environment, build by universities around the world. The smart environments are homes for one or more inhabitants, and are part of a living laboratory. The living lab part of House_n is called PlaceLab, and is a one-bedroom condominium, inhabited by volunteers for varying lengths of time. These homes are designed for multi-disciplinary studies, of people and their pattens and interactions with new technology and smart home environments. Being university run smart homes, the work coming out of these facilities tends to be proof of concepts. This means there are no complete product based on these projects. [#MIT House_n]
 
-<TODO men fair nok, de er proof on concept, hvilke projekter findes der. Eller hvorfor snakker vi ikke om dem>
-
+Like the Clipsal system, the nodes of House_n have distributed intelligence, and uses Hidden Markov Models to learn from user behavior. The system is also able to relay data gathered by the system, to PDA's or smartphones carried by the inhabitants of the house. 
+The intelligence of House_n comes from the work of each team of master students working on the project. Each project explores different aspects of machine learning. The exact intellion gence implementation of House_n is dependant on the currently ongoing projects [#House_n ongoing]
 
 The projects shown in this survey represent the solutions currently available or in development. There are many different controllable and programmable solution commercially available, with INSTEON, Clipsal C-bus and LK IHC being some of the more widespread representative solutions. INSTEON being a simple controllable solution, Clipsal C-bus and LK IHK are both programmable smart house solutions, but where LK IHC is designed for private homes, the Clipsal C-bus system is better suited for larger buildings. 
 
-
 MIT's House_n in this survey represent that truly intelligent smart houses only exists in demonstration environments and as proofs of concept, and are not yet available on the commercial market.
 
-
 <small conclusion on survey>
-One of the main problems with current home control solutions is that installing such a system is rather costly and requires installation and configuration, which is rarely trivial . Some of the more advanced systems on the market, such as the LK IHC, incorporate motion sensors and timers  that automatically turn on and off lights or various appliances. These systems will  save money over time, but they require  extensive configuration or programming in order to function properly.
+One of the main problems with current home control solutions is that installing such a system is rather costly and requires installation and configuration, which is rarely trivial. Some of the more advanced systems on the market, such as the LK IHC, incorporate motion sensors and timers that automatically turn on and off lights or various appliances. These systems will save money over time, but they require extensive configuration or programming in order to function properly.
 <mere konklusion, tilføj elementer til de enkelte huses konklusionser der kan refereres her>
 
 
 ### BIIIB 
 
-Of all the  qualities mentioned in our vision for the system,  power saving is the most important. As seen in the survey above, this is an area where most modern home control systems falls short . Most systems are capable of providing only a modest reduction in power consumption, and some even increase the net consumption by adding the cost of running the control system. We want our system to differ from others on this specific aspect. In our system, reducing power consumption is the number one priority.
+Of all the  qualities mentioned in our vision for the system,  power saving is the most important. As seen in the survey above, this is an area where most modern home control systems falls short . Most systems are capable of providing only a modest reduction in power consumption, and some even increase the net consumption by adding the cost of running the control system. We want our system to differ from others on this specific aspect. In our system, reducing power consumption is the number one priority.<rewrite>
 
 We want the users interactions with the system, to be as simple and familiar as possible. The user should only interact with the system through the wall mounted switches that are already present in all normal houses. 
 
@@ -168,7 +200,7 @@ We chose to install a "placebo" system[^placebosystem] of wireless switches and 
 
 ### Analyzing the collected data
 
-_“If you torture data long enough, it will tell you what you want!”_ -Ronald Coase 
+_"If you torture data long enough, it will tell you what you want!"_ -Ronald Coase 
 	
 Now that we have a lot of data on our users interactions with the house, we need to analyze the data in order for our systems AI to act on the collected data. To be more specific: We need to create a decision scheme that the AI can use as a base for its decision making. 
 
@@ -214,14 +246,19 @@ Based of the analysis above we can now form a requirement specification for the 
  
 [#MSsurvey]: Mads Ingwar and Soeren Kristian Jensen. IMM Smart House Project: a state of the art survey. 2008.
 
+[#House_n ongoing]: http://architecture.mit.edu/house_n/projects.html
+
 [^placebosystem]: A system where the sensors and switches have no actual effect on the house, but are merely there to collect data.
 
 [^luxsensor]: A device for measuring the amount of light in a room. 
 
-[^multilateration]: Multilateration is a navigation technique based on the measurement of the difference in distance to two or more stations at known locations that broadcast signals at known times<add explanation of config>
+[^multilateration]: Multilateration is a navigation technique based on the measurement of the difference in distance to two or more stations at known locations that broadcast signals at known times
+<add explanation of config>
 ## Design
 
-In this chapter we will describe the design process, and discuss the major decisions we have made in regard to the system design. Since the system is research minded, and since the purpose of the project is to analyze the possibilities of developing an intelligent home control system using machine learning technology, we had to make some adjustments to the development process. The traditional waterfall model[^waterfallmodel] for software development dictates that after finishing the project analysis, we would start designing how the system should handle the problems found in the analysis, along with the system architecture. Finally we would then implement the designed solution. With this project we were however faced with an additional challenge. When using machine learning you generally end up with a system that does not have an intuitive execution flow. This means that it can be almost impossible to predict the execution outcome because of the vast amounts of data that form basis for the systems decision making. This means that we have no way of verifying the validity of our proposed solution before implementing the system, or at least parts of it. Therefore we decided to approach the project by using incremental development instead[^incremental-development]. <perhaps describe incremental development>
+_The best computer is a quiet, invisible servant._ -Mark Weiser
+
+In this chapter we will describe the design process, and discuss the major decisions we have made in regard to the system design. Since the system is research minded, and since the purpose of the project is to analyze the possibilities of developing an intelligent home control system using machine learning technology, we had to make some adjustments to the development process. The traditional waterfall model[^waterfallmodel] for software development dictates that after finishing the project analysis, we would start designing how the system should handle the problems found in the analysis, along with the system architecture. Finally we would then implement the designed solution. With this project we were however faced with an additional challenge. When using machine learning you generally end up with a system that does not have an intuitive execution flow. This means that it can be almost impossible to predict the execution outcome because of the vast amounts of data that form basis for the systems decision making. This means that we have no way of verifying the validity of our proposed solution before implementing the system, or at least parts of it. Therefore we decided to approach the project by using incremental development instead[^incremental-development]. 
 
 In order to successfully apply this development model we must first divide the project into smaller parts, that can be implemented with each cycle. This design approach also inspired our final system design. Just like the development had several phases, where each phase had to be concluded in order to activate the next, the system will have similarly <huh?> have different stages of operations. These stages are determined by the amount of data the system have collected on the user.
 
@@ -229,7 +266,7 @@ The system will have two different stages of operation.
 
 * In **The passive learning stage**, the system is running, but it has not yet collected enough data to make intelligent decisions. This stage is called the passive learning stage because the system is training it self by  
 
-* The system enters **the active learning stage** when there's enough data to attempt to manipulate the switches in the house. We call this the active learning stage, because the system now actively attempts to interact with the house's swithes . If the system makes a mistake and the user corrects it, e.g., the system turns off the lights and the user turns it back on, we can use that interaction to train our system further. In this case we can see it as the user punishing the system for making a mistake. The system will then adjust its decision scheme.  This way the system will actively initiate a learning sequence. The system will remain in this stage indefinitely, and will continue to train it self using both passive and active learning. 
+* The system enters **the active learning stage** when there's enough data to attempt to manipulate the switches in the house. We call this the active learning stage, because the system now actively attempts to interact with the house's switches . If the system makes a mistake and the user corrects it, e.g., the system turns off the lights and the user turns it back on, we can use that interaction to train our system further. In this case we can see it as the user punishing the system for making a mistake. The system will then adjust its decision scheme.  This way the system will actively initiate a learning sequence. The system will remain in this stage indefinitely, and will continue to train it self using both passive and active learning. 
 
 By using incremental development we are able to design and implement the system one stage at a time, and evaluate the passive part of the system before designing the active part.
 
@@ -245,7 +282,7 @@ In the section "The active learning stage" we will discuss the additional proces
 
 ### Theory
 
-_"Stand back! Im going to try science!"_ -Randal Munroe
+_"Stand back! I'm going to try science!"_ -Randal Munroe
 
 In the core of our system lies a series of machine learning algorithms. In this section we will explain some of the basic concepts of machine learning, along with the statistical theory that it is based on.
 
@@ -293,7 +330,7 @@ In the passive learning stage the system monitors the user and trains it self ba
 <add reference to markov chains!!!!> <ULTRA IMPORTANT ANDREAS!>
 <use the phrase sensor pattern>
 <pattern interval>
-We want to be able to trigger the switches, based on more than just where the user is right now. We want to be able to look at where the user is coming from, and try to predict where the light needs to be turned on or off. So the light is already on when the user enters a room, and is turned off where it isn't needed. 
+We want to be able to trigger the switches, based on more than just where the user is right now. We want to be able to look at where the user is coming from, and try to predict where the light needs to be turned on or off. So the light is already on when the user enters a room, and is turned off where it's not needed. 
 
 We want to determine the series of sensor events, or pattern, that leads up to a user turning the lights on or off, e.g. which sensors are triggered when a user goes from the couch to the restroom. If a series of sensor events, are less than some time interval apart, we consider them to be part of an event pattern. The time interval needs to be long enough, that a user moving around normally is seen as a continuous event pattern, and not broken into fragments. The time interval also needs to be short enough, that different user action, is seen as separate event patterns. For instance, a user going the kitchen to get a snack, and then returns to the living room, should ideally be seen as two separate event patterns.
 
@@ -392,15 +429,17 @@ The entire algorithm is run both for "on" and "off" switch event. This results i
 
 #### Zones
 <add the other benefit>
-In many cases to cover an entire room with sensors, the sensors end up overlapping in some areas. These overlaps can be used to increase the precision of the sensors. If two sensors triggers shortly after each other, then the user is in the zone where the two sensors overlap. In cases where multiple sensors triggers at the same time, it can be seen as one zone event.
+In order for motion sensors to cover an entire room, the sensors tends to end up overlapping. These overlaps can be used to increase the precision of the sensors. If two sensors triggers shortly after each other, the user must be in the overlapping area between the two sensors. In cases where multiple sensors triggers at the same time, it can instead be seen as a single zone event.
 
-[Take](#zoneimg) as an example, of three sensors which overlap a bit, and three paths past the sensors a, b and c. The paths b and c should only be observed as zone events by the system. While a path should look something like 1, zone 1 & 2, 2, zone 2 & 3, 3. depending on the cooldown of the sensors each event may be multiple times in the pattern.
+[Take](#zoneimg) as an example, three sensors (1, 2 and 3) with overlap, and three paths the user could take (_A_, _B_ and _C_). The paths _B_ and _C_ should only be observed as zone events by the system. Path _A_ should be detected as the event pattern [1, zone 1 & 2, 2, zone 2 & 3, 3].
 
 ![Sensors with overlapping zones][zoneimg]
 
 [zoneimg]: figures/zone.png "Sensor zones"
 
-Zones can also provide augment the system in other ways, than just increasing the precision of the motion sensors. When a user enters an area where sensors overlap, it might not be important which of them fires first. Without zone events, the path c would trigger either sensor 2 or 3 first, and these would be considered two distinct event patterns by the system. By looking at is as the same zone event no matter which sensor fired first, the system would be able to learn the intended behavior for path c faster by looking at is a zone event.
+Zones can also augment the system by removing ambiguity when a user enters an area where sensors over lap. For path c without zone events, it's uncertain if sensor 2 or 3 would detect the user first, and these would be considered distinct event patterns by the system. With zone detection, the pattern will look the same to the system no matter which sensor fired first, and as a result the system would be able to learn the intended behavior for path c faster. 
+
+Zones allow the system to determine the user's position more precisely, and to learn faster by removing ambiguity in some cases.
 
 ### The active learning stage
 
@@ -414,6 +453,8 @@ The system should start attempting to control the home, once it is confident eno
 
 Exactly what the threshold should be, is up to speculation and could be determined through experimentation, once the system in ready to enter the learning stage. The second rule is to make sure, the system doesn't start acting based on patterns only observed once.
 <we have to do better than this!>
+
+In this section will to discuss the learning that will take place in the evolution stage. 
 
 #### Switch and sensor correlation
 
@@ -466,33 +507,22 @@ The problem with a timeout based solution, is people sitting still. Most people 
 * __Remember, the most important documentation of the implementation is comments in the code!__
 
 ### The physical setup
-<more information on z-wave>
-<more information on zwapi>
-<insert pictures from the installation>
-Since we needed real life data to train the system, the first task of the project was to create a physical system to start collecting data. We installed wireless switches and PIR sensors[^pir] in a [David's appartment](#Hellebaekgade). The placebo switches were placed next to the normal switches controlling the light for each room, in all cases being the switch closest to the entrance. We installed a total of 10 motion sensors and 5 switches throughout the apartment, that collected data non stop for a period of two weeks.
+
+Since we needed real life data to train the system, the first task of the project was to create a physical system to start collecting data. We installed wireless switches and PIR sensors[^pir] in [David's appartment](#Hellebaekgade). The placebo switches were placed next to the normal switches controlling the light for each room, in all cases being the switch closest to the entrance. We installed a total of 10 motion sensors and 5 switches throughout the apartment, that collected data non stop for a period of two weeks.
 
 The sensor setup consisted of three sensors in the living room, two sensors in the hallway, kitchen and bedroom, and one in the bathroom. When placing the sensors, we tried to provide as close to full coverage as possible, with special emphasis on making sure all the doorways were covered. 
 
 [^pir]: Passive infrared sensors.
-
 ![Map of the testing environment with sensor and switch locations][Hellebaekgade]
 
-The wireless nodes we have available communicate using the Zensys Z-Wave protocol. This protocol was chosen because we already prior to this project had designed and implemented a z-wave API[^api] in java. This greatly reduced the time and effort needed to setup and implement the data collection system.
+The wireless nodes we have available communicate using the Zensys Z-Wave protocol[^z-wave]. This protocol was chosen because we already prior to this project had designed and implemented a z-wave API[^api] in java. This greatly reduced the time and effort needed to setup and implement the data collection system.
 
-![A PIR motion sensor installed on location in hellebaekgade][bedroom]
-![A "placebo" switch installed on location in hellebækgade ][livingroom]
-![A PIR motion sensor installed on location in hellebaekgade][bathroom]
-![A "placebo" switch installed on location in hellebækgade ][switch]
+![Sensor installed in the bedroom][bedroom]
+![Sensor installed in the livingroom ][livingroom]
+![Sensor installed int the bath room][bathroom]
+![Switch installed int the living room][switch]
 
-
-
-
-[bedroom]: figures/bedroom.jpg "A PIR motion sensor installed on location in hellebækgade" width="300px"
-[livingroom]: figures/livingroom.jpg "A "placebo" switch installed on location in hellebækgade" width="300px"
-[bathroom]: figures/bathroom.jpg "A PIR motion sensor installed on location in hellebækgade" width="300px"
-[switch]: figures/switch.jpg "A "placebo" switch installed on location in hellebækgade" width="300px"
-<insert images>
-We setup a mini PC with a Z-Wave serial device, and configured all PIR sensor and switches to send notifications to the PC, when they where activated. The PC ran a Z-Wave API, which we added a listener to, so that sensor and switch event was logged to a SQL database.
+We setup a mini PC with a Z-Wave serial device, and configured all PIR sensor and switches to send notifications to the PC, when they where activated. The PC ran a Z-Wave API, which we added a listener to, so that sensor and switch event was logged to an SQL database.
 
 | sensor_events        ||
 |-----------|-----------|
@@ -508,33 +538,81 @@ We setup a mini PC with a Z-Wave serial device, and configured all PIR sensor an
 [Database table for switch events][sensor table]
 
 ### Simulator / AI interface
+To test the system we have a smart house simulator available, which was developed by a team of DTU students as part of a [bachelor thesis][#scalasim]. We extended the simulator with an AI module, implementing the features discussed in this report. The simulator is implemented in scala, but we chose to implement the AI module in Java. Since both languages compiles to byte code Scala and Java interface very easily, and Scala code can invoke Java methods and vice versa. We chose to implement the AI in Java, to work in a language we're well-versed in, to increase our productivity and quality of the code. 
 
-We have a smart house simulator available, which will be extended with an AI module, implementing the features discussed in this report. The simulator is implemented in scala, so an obvious choise would be to implement the AI in scala aswell. However work with the simulator in the initial stages of the project, showed that our programming speed in scala was too slow to get any meaningful amount of work done. The scala language is build upon Java, and both languages compiles to bytecode in _.class_ files. A result of that is that Scala and Java interface very easily, and Scala code can invoke Java methods and vice versa. We chose to implement the AI in Java, working in a language we're well-versed in, to increase our productivity and quality of the code.
+With the simulator we are able the test the system in the active learning stage of the system. The system has all the data gathered from the passive learning stage, and we are able to see how the system would behave in the beginning of the active learning stage. As stated in the analysis, simulated user data will never be as good a actual user data, and we will not place significant weight on learning based on the simulator. But with the simulator we can see if the system is acting and reacting as expected in the active learning stage.
+
+With the simulator well be able to evaluate how able the system is able to act based on the decision table, turning the light on and off as the user moves around the house. We'll be able to see if the system is correctly turning off the light based on the correlation table.
 <TODO credit the guys who wrote the simulator>
 
-
 ### Configuration
-<describe the config interface>
-### Decision Matrix
+The config class in created as a simple static class that uses a file reader to load a config file stored on the hard drive. The config class initially holds the default values for the system, which are overwritten with the values from the config file.
+If no config file is present on the system, the config class generates a file based on the default values. After loading the config file, the other classes in the system, can then access the static fields of the class. These values are never altered after initially loading the config file.
 
-Antallet af gange den klasse har skiftet navn... I've lost count... 
-				- svaret er 4
-<TODO Andy, you deal with it>
+A typical config file could look like this:
+
+	#automatically generated preferences file
+	#delete to return to default settings
+	pattern_interval 3000
+	pattern_length 2
+	probability_threshold 0.01
+	use_zones true
+	zone_interval 500
+	correlation_interval 7000
+	
 
 ### Event patterns
 
-To make lookups based on the lastest event pattern, each new sensor event needs to be a matched to see if it's part of a pattern.
-As each sensor and switch event is received by the system, a list of the most recent event pattern is maintained in an EventList. 
+To make lookups based on the observed event pattern, each new sensor eventis matched to see if it is part of a pattern. 
+As each sensor and switch event is received by the system, a list of the most recent event pattern is maintained in an EventList. EventList is basically a queue of sensor events, a FIFO list with a max length. If the list is a max capacity when a new event is added, the list is subsequently dequeued. The pattern interval rule is maintained by looking that last event in the queue, when a new event is added. If the last event is more than pattern interval old compared to the new event, the queue is cleared before the new event is queued.
+    
+    EventList add(event):
+    queue events
+    if events.tail.time + pattern_interval < event.time
+    do
+        events.clear
+    fi
+    events.add(event)
+    
+If zone detection is enabled, EventList first checks if the last event is less than zone interval old compared to the new event. If a zone is detected, the last event in the list is replaced with a zone event.
 
-EventList determines if the lastest event is part of the pattern, and determines if a zone event has occured (if set to use zone events). 
+The EventList is used to make lookups in the decision matrix, which takes a fixed length array of sensor IDs as key. When looking up patterns shorter than the configured pattern length, the pattern is prefixed with _-1_ IDs, to maintain the fixed length.
 
-The invariant of the EventList, is that after an event is added, the event list contains the current event patttern. This pattern can then be used to determine if any switches should be turned on or off.
+#### Zone events
+
+Zone events are represented as en extension of sensor events, with a list off all the sensors that are part of the zone event. In order to look up zone events in the decision matrix, each zone also has a single integer id representation. The id is calculated from the sorted list sensor.
+    
+    getID()
+    sum = 0
+    for sensor in zone
+        sum = sum*256 + sensor.id
+    return sum
+    
+For zone events based on at most 4 sensors, with id values less than 256, this function generates unique and compareable ids.
+
+### Decision Matrix and KeyList
+The Decision Matrix is the class that holds the decision table. The class consists of the two matrices "on" and "off"  which are the two decision tables.Instead of implementing the matrices as multidimensional arrays we have chosen to use hash-maps were the key is an array of length n. There are two main advantages to using hash maps instead of multidimensional arrays. The first advantage of this is that the lookup time is much faster in a hashmap, than an n-dimensional array. This is especially true when the amount of data in the system increases, and when increasing the number of dimension, i.e. increasing the pattern length. Secondly the multidimensional array would be much larger since it would have to allocate space for every possible pattern instead of just the ones extrapolated from the collected data.
+
+Using an array as a key for the hash map does however come with a few problems. The main issue is that the hash function for arrays is inherited from the object class. This means that two arrays containing the same elements will produce different hash codes.  In order for our map to function properly, identical arrays must produce identical hash codes. The same problem occurs when comparing arrays using the equals() method. 
+
+ We addressed this problem by implementing a KeyList class with a custom designed hashCode() and equals() method. The equals method was done by individually comparing each element in the list, and returning true, if the pairwise comparisons all succeeded. The hasCode() method is based on the hashCode method used in the String object in java. The method iterated through each element in the list, and for each value the sum of the previous values are multiplied by 31, and the current value is added. This ensures a very low collision rate with the amount of sensor and switches that are likely to be used in a private home.
+ 
+ Besides the increased speed when performing lookup operations, the main advantage of using Hash maps is that it greatly simplifies extracting the keylist from a specific value. This is necessary when we divide the values in the decision maps "on" and"off" with the values in the denominator map. This is done by iterating through the decision maps, and for each value we extract the key, remove the last element, the switch event, and converts the resulting EventList into a KeyList to be used in the denominator map. When using Hash Maps this process is simply done using the keySet() method. but if we used multidimensional arrays instead, we would have to iterate through all possible key combinations in an array of unknown dimensions.
+ 
+The Hash maps are generated in the method generateBasicMatrices(). This function first sends a query to the database returning all existing events. As the system scales, this will be have to be changed since collecting all the data using a single query could be a problem especially on a system with limited virtual memory. During the course of the project the size of the database never exceeded 1.3 MB, so it will require a substantial amount of data to cause problems for an average laptop.
+
+Once the data is returned from the database the system iterates through the resultset, and inserts the data into the hashmaps as described in the design chapter. Finally the values in the maps "on" and "off" is divided by the corresponding values in the denominator map.
+
+ If the use_zones option is enabled in the config file, the Decision matrix will repeat the process above using an EventList with zones enabled. This is done in the method generateZoneMatrices(). This time how ever a pattern not containing a zone event will not be added to the decision maps. This method uses temporary decision maps called "zoneOn" and "zoneOff". After the probability values in these maps have been properly calculated, they are appended to the original decision maps "on" and "off". 
+
 
 ### Correlation table
-<intro to the correlation table>
+
+The correlation table is based on both statistical data from the passive learning stage, as well as corrections and punishments from the active learning stage. First the statistical correlation is calculated, and then the corrections are added ontop of that.
+
 #### Correlation statistical generation
 
-Correlation calculates the probability that a sensor is correlated a switch. It scans the database, and looks at the interval just after a switch is triggered. The sensors that triggered in the interval, are counted for that interval, in a way thay they're only counted once per switch event. If a multiple switch event are triggered in the same interval, the sensor events in the overlapping intervals should be counted for each of those switches. Having the number of times each switch is triggered, and each sensors triggeres with the given time interval, it's then calculated the probability that \\( sensor_i \\) is triggered, given that a \\( switch_j \\) was turned on atmost \\( \Delta t \\) ago. This gives the statistical correlation probability table. 
+The Correlation calculates the probability that a sensor is correlated a switch. It scans the database, and looks at the interval just after a switch is triggered. The sensors that triggered in the interval, are counted for that interval, in a way thay they're only counted once per switch event. If a multiple switch event are triggered in the same interval, the sensor events in the overlapping intervals should be counted for each of those switches. Having the number of times each switch is triggered, and each sensors triggeres with the given time interval, it's then calculated the probability that \\( sensor_i \\) is triggered, given that a \\( switch_j \\) was turned on atmost \\( \Delta t \\) ago. This gives the statistical correlation probability table. 
 
 To this the correlation confirmations in the database, is then added. Each row in the database table contains the accululated correlation correction for that switch / sensor pair. The correlation correction is simply added to the correlation based on the statistical data.
 
@@ -559,6 +637,13 @@ These correlation corrections are stored in a separate table in the database. Th
 Timers are implemented in the Timer and Sleeper class. Sleeper is a fairly simple class, it sleeps starts a new thread, sleeps for a given time, then fires a timeout event to a given timeout listener. Timer simply holds a map, where each switch can set a timeout. Timer creates a sleeper object, and puts in the map. The sleepers can then easily be monitored and interrupted if needed. 
 
 To received the timeout events the SmartHouse class implements TimeoutListener. 
+
+[bedroom]: figures/bedroom.JPG "A PIR motion sensor installed on location in hellebækgade" width="300px"
+[livingroom]: figures/livingroom.JPG "A "placebo" switch installed on location in hellebækgade" width="300px"
+[bathroom]: figures/bathroom.JPG "A PIR motion sensor installed on location in hellebækgade" width="300px"
+[switch]: figures/switch.JPG "A "placebo" switch installed on location in hellebækgade" width="300px"
+[#scalasim]: Sune Keller and Martin Skytte Kristensen. Simulation and visualization of intellight light control system. Bachelor thesis 2010.
+Mads Ingwar and Soeren Kristian Jensen. IMM Smart House Project: a state of the art survey. 2008.
 
 
 ## Evaluation
@@ -586,36 +671,141 @@ _"If it compiles, it is good; if it boots up, it is perfect."_ -- Linus Torvalds
 
 ### Software testing
 
-For the relative simple and predictable module EventList, we have done some white-box testing, using JUnit tests. Making sure it correctly detect zones,that pattern ordering is preserved, and old event are purged when new events are added according to the pattern length and interval parameters. The more complex modules DecisionMatrix and Correlation are tested and evaluated based on the gathered user data.
+The implementation have been tested using a combination of white box and black box testing. 
+<TODO bedre intro>
 
-### Decision matrix
+#### White box testing 
 
-A bit of sensor meta data:
+We have used JUnit tests to implement the white box testing. The relative simple Event classes, EventList and KeyList have been tested in this way. 
 
-45.628 sensor events
-346 switch events, 194 on and 152 off. The observant reader might wonder why there are a lot more off commands than on commands? The short answer is the user's may have forgotten to press the placebo switches from time to time.
+#### Black box testing
 
+The more complex classes DecisionMatrix and Correlation are tested using black box testing, and are based on data generated by the simulator. The testing setup for the black box test black box test, consists of 6 sensors (1,2,3,7,8,9) and 3 switches (4,5,6). A simulated takes various paths to generate a representative sample of event patterns.
 
-<TODO 111 also being the theoretical maximum of unique patterns, for a home with 10 sensors
-1  : no sensors, just switch
-10 : single sensor events then switch event
-100 (10*10) : two sensor events then switch event
-I'm slightly impressed>
+| Index | Description | Event sequence |
+|:-----:|:------------|:--------------:|
+| 1     | Path _A_, switch 4 on, sensor 9 | [1, 1&2, 2&3, 3, 4 on, 9] |
+| 2     | Path _B_ then turns switch 5 off | [1&2, 5 off] |
+| 3     | Path _B_ without using any switches | [1&2] |
+| 4     | Path _C_, switch 6 on, sensor 7 | [2&3, 6 on, 7] |
+| 5     | Path _C_ without using any switches | [2&3] |
+| 6     | Path _C_, switch 6 on, sensor 8 | [2&3, 6 on, 8] | 
+[Event patterns used for black box testing][bbox data]
+
+Based on these simple event pattens, an accurate expected output can be determined for both the DecisionMatrix and Correlation. The expected output for the DecisionMatrix is based on the number of times each event pattern has been seen, and the number of times they have led to a switch event. Only patterns which leads to switch events are listed.
+
+| Description | Sensor pattern | Switch | State | Probability |
+|:-----------:|:--------------:|:------:|:-----:|:-----------:|
+| without zone events |||||
+| Path _A_ | [1, 1, 2, 2, 3] | 4 | on | 1 |
+| Path _B_ | [1, 2] | 5 | off | 0.5 |
+| Path _C_ | [2, 3] | 6 | on | 0.67 |
+| with zone events |||||
+| Path _A_ | [1, 1&2, 2&3] | 4 | on | 1 |
+| Path _B_ | [1, 2] | 5 | off | 0.5 |
+| Path _C_ | [2, 3] | 6 | on | 0.67 |
+[DecisionMatrix's expected output][matrix expected]
+
+Testing of the DecisionMatrix releaved what at first looked like an error. The probability for Path _C_ without zones had a probability of 100%, but with zones had the expected probability of 67%. Investigation revealed the cause was test case 5, where sensor 2 and 3 was triggered in the opposite order as test case 4 and 6. So while this error at first glace looked like a bug, is actually a feature, and one of the very reasons zone events were implemented. All other probabilities in the DecisionMatrix was as expected.
+
+For the correlation table, the output is determined only by test cases where switches are turned on (1, 4 and 6). The expected output is:
+
+| switches | sensors |||
+|   | 7 | 8 | 9 |
+|:-:|:-:|:-:|:-:|
+| 4 | 0 | 0 | 1 |
+| 6 | 0.5 | 0.5 | 0 |
+[Correlation table's expected output][corr expected]
+
+The correlation table produced the expected results.
+<TODO correlation doesn't work yet>
+
+![Overview of the simple setup used for black box testing the DecisionMatrix and Correlation][zonetest]
+
+[zonetest]:figures/zone2.png "Black box testing setup" 
+
+### Passive learning data
+
+This section is going to evaluate how much the system have been able to learn, based on the data collected from the passive learning stage. In total 45.628 sensor events and 346 switch events was recorded. This is a very high sensor event to switch event ration, slight above 130 sensor events per switch event.
+
+Of the 346 switch events, 194 was On events and 152 was Off events. If all switch event in a continuous period was recorded, the discrepency between on and off events would be atmost the number of actual switches. This could be due to lost Z-Wave messages, users forgetting to pressing the placebo switches. The system isn't dependant on the correct ordering of switch events, i.e. that On events are eventually always followed by an Off event, and vice versa. 
+
+The discrepency between On and Off events, are an indicator that data have been lost, the system should still be able to learn based on the user data. The system will obviously not be able to learn based on the lost switch events. Assuming only switch events are lost, the missing switch events will also impact the system by having an increased sensor to switch event ratio, lowering the probabilities in the decision matrix.
+
+The Correlation table isn't based on the entire data set of sensor events, but merely the interval after each On event. Therefor the sensor to switch event ratio for the Correlation table, isn't necesarily affected by missing switch events. 
+
+#### Decision matrix
+
+With the expectancy that the probabilitites are going to be relatively low, for each switch pattern, the evaluation of Decision Matrix will look at patterns detected more than how high or low the probability should be. The Decision Matrix will be evaluated for different configurations, to see which advantages or disadvantages each configuration has.
+
+| Pattern | Probability | Description |
+|:-------:|:-----------:|:------------|
+| 20 21 13 on | 0.57% | Moving in the hallway, and turning on the light in the Living room |
+| 27 28 18 on | 0.75% | Moving in the bedroom, and turning on the light |
+| 20 20 19 on | 2.38% | Moving in the hallway and turning on the light in the restroom |
+| 20 21 19 on | 2.17% | |
+| 21 20 19 on | 1.70% | |
+| 21 25 17 on | 3.26% | Moving from the hallway into the kitchen and turning on the light |
+| 20 25 17 on | 5.76% | |
+| 20 20 19 off | 1.49% | Moving in the hallway turning off the light in the restroom |
+| 21 20 19 off | 1.2% | |
+| 20 21 19 off | 1.14% | |
+[Decision matrix, patterns detected atleast 5 times, pattern length 2, without zone detection][decision2false]
+
+With pattern length two, most of the patterns, above the confidence limit, only contain sensor event from a single room (from here on refered to as single room patterns). With the probabilities being as low as they are, it means the single room patterns get triggered a lot, without the light being switched on or off. This means if the system were to act based on these single room patterns, it would mostly likely turn the lights on and off, while the user were still in the room.
+
+There are only two pattern where sensor events are from different room (from here on refered to as multi room patterns): [20, 25 -> 17 on] and [21, 25 -> 17 on]. These two patterns occur when the user moves from the hallway and into the kitchen, and then turns on the light in the kitchen. These two multi room patterns, not only sound reasonable, but also have the highest probabilies of all the patterns above the confidence limit. 
+
+With pattern length two, and zone detection enabled, no event patterns with zones (from here on referd to as zone patterns) are seen leading to switch events 5 times or more. So for pattern length two, adding zones detection doesn't give any patterns above the confidence limit, for our data set. While zone events can reduce the ambiguity and allow the system to learn faster, physical motion sensors tends to have a cooldown. Cooldown means it takes some time, after the sensor has detected motion, before it will detect motion again. A result of this is that zone events are less likely to be detected. Two sensors might overlap, but if time between the two sensors are triggered are longer than the zone detection interval. The cooldown then cause the two sensors to keep firing sensor events too far apart to be detected as zone events.  
+
+| Pattern | Probability | Description |
+|:-------:|:-----------:|:------------|
+| 27 27 28 18 on | 1.86% | Moving in the bedroom, and turning on the light |
+| 20 21 20 19 on | 2.35% | Moving in the hallway, and turning on the light in the restroom |
+| 21 20 21 19 on | 2.03% | 
+| 29 21 20 19 off | 10.2% | Moving from the restroom to the hallway, turning off the light in the restroom |
+| 21 20 21 19 off | 2.36% | Moving in the hallway, turning off the light in the restroom |
+[Decision matrix, patterns detected atleast 5 times, pattern length 3, without zone detection][decision3false]
+
+When the pattern length is increased to three, fewer distinct switch patterns above the confidence limit are detected. Just as when the pattern length was two, the majority of the patterns are single room patterns. There is one multi room pattern: [29, 21, 10 -> 19 off] where the user leaves the restroom, enters the hallway and turns off the light to the restroom. Like the other two multi room patterns, this pattern sounds reasonable, and have a relatively high probility of just over 10%.
+
+Again adding zone detection doesn't prododuce any zone patterns above the confidence threshold .
+
+| Pattern | Probability | Description |
+|:-------:|:-----------:|:------------|
+| 28 27 21 20 19on | 8.33% | Moving from the bedroom to the hallway, turning on the light in the restroom |
+| 29 29 21 20 19 off | 11.11% | Moving from the restroom the the hallway, turning off the light in the restroom |
+| -1 21 20 21 19 off | 9.38% | Moving in the hallway, turning off the light in the restroom |
+[Decision matrix, patterns detected atleast 3 times, pattern length 4, without zone detection][decision4false]
+
+Increasing the pattern length to 4, no patterns were above the confidence limit of 5, so these patterns have only been see 3 or more times. This matrix have an interesting multi room pattern [28, 27, 21, 20 -> 19 on], where the user moves from the bedroom to the hallway, and then turn on the light to the restroom. While a plausable pattern, it isn't a pattern that can be guaranteed to always happen. 
+
+The previous multi room patterns were pattern that would close to always be correct, turning on the light when entering the kitchen, and turning off the light when leaving the restroom. But going from the bedroom to the hallways, is not a guarantee that the user needs light on in the restroom.
+
+<TODO move decision matrix meta data up>
+In order to better evaluate the Decision Matrix, it have been run on the training several times, with different pattern lengths, with and without zone detection. The evaluation will look upon the advantages and disadvantages the different configurations, and 
 
 | Settings                      || Unique observed patterns                     |||
 | Pattern length | Zones enabled | Movement patterns | On patterns | Off patterns |
 |:--------------:|:-------------:|:-----------------:|:-----------:|:------------:|
-| 2              | No            | 111               | 89          | 72           |
-| 2              | Yes           | 928               | 147         | 120          |
-| 3              | No            | 910               | 142         | 117          |
-| 3              | Yes           | 4097              | 225         | 171          |
+| 2              | No            | 111               | 90          | 78           |
+| 2              | Yes           | 1.168             | 149         | 121          |
+| 3              | No            | 910               | 142         | 116          |
+| 3              | Yes           | 3.870             | 227         | 173          |
+| 4              | No            | 3.614             | 169         | 121          |
+| 7              | Yes           | 12.967            | 322         | 215          |
 [Statistics about the Decision matrix][dtable metadata]
 
-With zones enabled, the system looks at the event patterns both with and without zone. Which is why there are more observed on patterns, than actual on commands, when the pattern length is longer than three and zone detection is on. 
+With zones enabled, the system looks at the event patterns leading up to each switch event, with and without zone detection. Detecting up to two switch patterns for every switch event, in some configurations there are more total switch patterns detected than actual switch events. A complete dump of all patterns detected by the Decision Matrix for each configuration is included in the appendix.
+
+With a 130 to 1 sensor to switch event ratio, the probabilities for each event pattern leading to a switch event is very low. This isn't necesarily a problem, it may just mean the probability threshold, for the system to be confident enough to manipulate switches, needs to be equally low. 
+
+A lot of the On / Off patterns detected by the Decision Matrix have only been observed once. We're going to set the confindence threshold so that a pattern must have lead to an On or Off event atleast 5 times, and then analyse the correctness of the patterns observed 
 
 <TODO vi skal nok lige snakke lidt om hvad vi kan og vil konkludere baseret paa decision matrix>
+<TODO snippets from different configurations>
 
-### Correlation
+#### Correlation
 
 In this section we are going to evaluate how well correlation, based on the generated user data, matches to the actual setup. Is the system able to get accurate estimates of which sensors and switches are in the same room. We are also going to evaluate how well the correlation based timeout would work, with or without correlation corrections. Prior to looking at the actual data, we want to state some resoanable goals we want the system to achieve for the correlation probabilities:
 
@@ -648,7 +838,10 @@ One thing to note is, these are the probabilities based solely on the statistica
 
 #### Correlation based timeout
 
-The implemented functionality of the correlation table, is to determine the timeout when a switch is turned on. So how well is the correlation table able to keep the light on where it's needed? Different areas should have different timeouts, but the most important for the system is to have long timeouts in areas where the user is likely to be still for extended periods of time, while still wanting the light to remain on. The most obvious area would be the sofa, 
+The implemented functionality of the correlation table, is to determine the timeout for each switch. How well is the correlation table able to keep the light on where it's needed. Different areas should have different timeouts, but most important is for the system to have long timeouts in areas where the user is likely to be still for extended periods of time, while still wanting the light to remain on. The most obvious area would be the sofa, where a user is likely to be for hours. Based on passive learning data, the system would have one of the lowest timeouts when the user is detected in the sofa, where it should be the highest. 
+
+However with active learning the correlation correction comes into effect. Every time the system incorrectly turns off the light, and the user turns it on again, the system is punished and increases the correlation, and by extension the timeout. As a result of this, the system will gradually increase the timeout until it no longer turns off the light, while the user is watching TV.
+
 
 
 ## Conclusion
@@ -689,20 +882,15 @@ The next phase of development for the project would be to get ready for the lear
 
 We base our statistical correlation table on the assumption, that a user will most likely turn on the light where he is, and look at the interval just after a switch is turned on. A way to augment that analysis, is by flipping the assumption on it's head, that the user will most likely turn off the light where he isn't. The user is most likely not going to be where the lights are off, so any sensors activated when the lights are off, are most likely not in the same room as the switch. 
 
-#### 
+#### Decision matrix persistency
 
-if new event patterns match old patterns, the by all means use both. And if the differ, user mainly new data
-    
-### Awesome quotes
+The longer back in time the system looks for user data, the more likely it is too see each pattern multiple times. The more times the system sees a given pattern, the more confident the system can be in the probabilities for that pattern. However the system should also be able to react to changes in user behavior, so there is a limit to how long back in time the system should look. 
 
-lille liste af citater som godt kunne passe ind i rapporten
+To be able to best react changes, the system should only keep the most recent data. But this would drasicly reduce the systems confidence in the decision matrix. A static way to solve the problem would be to always look a fixed period of time back, attempting to strike a balance between the systems confidence and ability to react.
 
-_I am among those who think that science has great beauty. A scientist in his laboratory is not only a technician: he is also a child placed before natural phenomena which impress him like a fairy tale._ -- Marie Curie
+A dynamic way to solve the problem would be to compare the most recent patterns to the old patterns. As long as there is a resonably low discrepency, the system can keep using old data. And if the discrepency gets too big, the system base it decisions purely on recent data, to better react to the changes in user behavior.
 
-_Good judgment comes from experience, and experience comes from bad judgment._ -- Barry LePatner
+#### Only looking at patterns when moving between rooms
 
-_Nothing can be so amusingly arrogant as a young man who has just discovered an old idea and thinks it is his own._ -- Sidney J. Harris
+The system could use the statistical correlation table to only look at event patterns where the user moves between two different room.
 
-_The more original a discovery, the more obvious it seems afterwards._ -- Arthur Koestler
-
-o

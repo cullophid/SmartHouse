@@ -1,7 +1,9 @@
 \newpage
 \appendix
+<<<<<<< HEAD
 \section{Source Listings}
 %\input{appendix_ai}
+=======
 
 \chapter{Source Listings}
 \input{appendix_ai}
@@ -26,5 +28,6 @@
 \subsection{Pattern length 4, without zones}
 \lstinputlisting[language=XML, caption=EventList.java]{dump/dump-3-true.txt}
 
+>>>>>>> 475c0f4a85e3411dc72eef19943e458632a9bffa
 \end{document}
 % % % EOF % % %

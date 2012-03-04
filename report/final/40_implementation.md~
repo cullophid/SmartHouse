@@ -38,7 +38,12 @@ We setup a mini PC with a Z-Wave serial device, and configured all PIR sensor an
 [Database table for switch events][sensor table]
 
 ### Simulator / AI interface
+<<<<<<< HEAD
+To test the system we have a smart house simulator available, which we extended with an AI module, implementing the features discussed in this report. The simulator is implemented in scala, but we chose to implement the AI module in Java. Since both languages compile to byte code Scala and Java interface very easily, and Scala code can invoke Java methods and vice versa. We chose to implement the AI in Java, to work in a language we're well-versed in, to increase our productivity and quality of the code. 
+=======
+
 To test the system we have a smart house simulator available, which was developed by a team of DTU students as part of a [bachelor thesis][#scalasim]. We extended the simulator with an AI module, implementing the features discussed in this report. The simulator is implemented in scala, but we chose to implement the AI module in Java. Since both languages compiles to byte code Scala and Java interface very easily, and Scala code can invoke Java methods and vice versa. We chose to implement the AI in Java, to work in a language we're well-versed in, to increase our productivity and quality of the code. 
+>>>>>>> 475c0f4a85e3411dc72eef19943e458632a9bffa
 
 With the simulator we are able the test the system in the active learning stage of the system. The system has all the data gathered from the passive learning stage, and we are able to see how the system would behave in the beginning of the active learning stage. As stated in the analysis, simulated user data will never be as good a actual user data, and we will not place significant weight on learning based on the simulator. But with the simulator we can see if the system is acting and reacting as expected in the active learning stage.
 
@@ -46,6 +51,10 @@ With the simulator well be able to evaluate how able the system is able to act b
 <TODO credit the guys who wrote the simulator>
 
 ### Configuration
+<<<<<<< HEAD
+=======
+
+>>>>>>> 475c0f4a85e3411dc72eef19943e458632a9bffa
 The config class in created as a simple static class that uses a file reader to load a config file stored on the hard drive. The config class initially holds the default values for the system, which are overwritten with the values from the config file.
 If no config file is present on the system, the config class generates a file based on the default values. After loading the config file, the other classes in the system, can then access the static fields of the class. These values are never altered after initially loading the config file.
 
