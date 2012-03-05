@@ -193,3 +193,35 @@ The implemented functionality of the correlation table, is to determine the time
 However with active learning the correlation correction comes into effect. Every time the system incorrectly turns off the light, and the user turns it on again, the system is punished and increases the correlation, and by extension the timeout. As a result of this, the system will gradually increase the timeout until it no longer turns off the light, while the user is watching TV.
 
 
+### Power savings
+
+They proposision for this project, was it's ability to reduce power consumption. One thing is learning power reducing behavoir, another how well this learned behavior is able to reduce power consumption. This secsion is going to evaluate how well the keep switches off when they aren't needed. 
+
+If the system was fully functional and installed, the ideal way to measure the energy savings would be to simply look at how much power the home comsumes when the system is running, and how much it consumed before the system was installed. Since the system haven't been installed in a home, where it's able to control the switches, this isn't a possibility.
+
+Another way to to measure the energy savings would be to the system in a simulated environment. A simulated user could then move around the home, based on the collected sensor data but without using the switch events collected. It would then be possible to compare how long the light was on in the simulated environment, compared to the collected data. However the system doesn't have enough training data to be able to reliably control the light autonomously.
+
+A good room to analyze for energy savings are the living room. This a room where most people don't turn off the light before they go to bed at night. This a place where our system would be much more vigorous about turning off the light every time the user leaves the room. So we're going to analyze how well the system would be able to learn when to turn the light for the living room On and Off, and how much power is saved by comparing automated light switching to the actual switch data. Unfortunately not all switch events have been logged, as there is a descrepency of 40 more On events than Off events. So care has to taken when analyzing a how long the light have been based on the switch events. We have looked at the data and chosen periods where the switch patterns look plausable.
+
+First part of the analysis is looking at how close to learning when to turn the light in the living room on and off. The idea patterns to learn is turning the light off when the user leaves the living room, and turning the light back on when entering.
+
+    (4/716) key: 20 23 13 on value: 0.005586592
+    (3/530) key: 20 24 13 on value: 0.0056603774
+    (2/593) key: 24 20 13 off value: 0.0033726813
+    (2/577) key: 23 20 13 off value: 0.0034662045
+
+These are the patterns the system have detected for turning the light on and off, when the user enters and leaves the living room. None of the patterns are above the confidence limit, but they have been detected more than once, so it's plausable that more user data would get them above the confidence limit. The probabilities are very low, but this comes from the same user behavoir the system is trying to fix, that most users do not turn the light off every time they leave the living room. For the purpose of evaluating the potential energy saving, lets assume that the system has learned the four decision patterns listed above.
+
+First attempt of analyzing the data this way revealed the system was some times not able to detect the user reentering the living room, leaving the user in darkness for hours. This was due to the pattern being interrupted by other sensors. To fix this problem, the simulated user will turn on the light upon entering the living room, even if the user isn't detected by the system. 
+
+| Date | Duration | Power saving | 
+|:----:|:--------:|:------------:|
+| Dec 18th | 11 hours | 1½ hours |
+| Dec 23rd | 15 hours | 1 hour   |
+[Power saving when running the system. The duration is how long 
+the light was on for without the system, and the power saving how much time light was off with the system running][powersave]
+
+For most other days the switch data was to unreliable to be used for evaluation. The data doesn't have any off events for the living room from December 26th to December 29th. Based on December 18th and 23rd, the system is able to reduce living room energy consumption by 10%.
+
+Analyzing the hallway would be a bit more difficult to learn for the system.  With the data collected, the system was barely able to detect the off patterns for the living room. There are a lot more distinct pattern leading out of the hallway, requiring a lot more user data to have all patterns above the confidence limit. The hallway is probably the room where the system would be able to provide the biggest energy saving as a percentage. If the system was able to reliably turn off the light every time it wasn't needed, the light in the hallway would only be on for a very small fraction of the day. 
+
